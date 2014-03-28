@@ -1,9 +1,9 @@
-Arquitectura de Software-Proyecto Telefonia
+Arquitectura de Software-Proyecto Teledonía
 ====================
 
 Proyecto para Arquitectura de software grupo 4 semestre 1 2014
 
-Proyecto Telefonia
+Proyecto Telefonía
 
 Integrantes:
  * Camilo Antonio Albarracin Cañón     2258121
@@ -13,7 +13,7 @@ Integrantes:
  * Daniel Reinaldo Zorro Forero        2879178
 
 
-1 iteracion-Prueba de arquitectura:
+1 Iteracion-Prueba de arquitectura:
  * Documento Entregable
  * Actualizar Arquitectura
  * Gui
