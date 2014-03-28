@@ -15,6 +15,7 @@ Integrantes:
 
 1 Iteracion-Prueba de arquitectura:
  * Documento Entregable
+ * Hacer Backlog Scrum
  * Actualizar Arquitectura
  * Gui
  * Contol:Empleado
