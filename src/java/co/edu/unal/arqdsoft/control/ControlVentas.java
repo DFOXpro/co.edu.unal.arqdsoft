@@ -15,9 +15,16 @@ import co.edu.unal.arqdsoft.entidad.*;
 public class ControlVentas {
     Empleado empleado;
     Venta venta;
-//    Plan plan;
-//    public boolean VentaExitosa(string id,Plan pĺan) {
-//        return false
-//    }
+    Plan plan;
+    Cliente cliente;
+    DaoEmpleado daoEmpleado;
+    DaoVenta daoVenta;
+    DaoPlan daoPlan;
+    DaoCliente daoCliente;
+    public boolean VentaExitosa(String empleado,String cliente,Plan pĺan) {
+        
+        
+        return false;
+    }
 
 }
