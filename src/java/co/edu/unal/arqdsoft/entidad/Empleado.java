@@ -74,6 +74,10 @@ public class Empleado implements Serializable {
         this.contrasena = contrasena;
         this.rol = rol;
     }
+
+    public Empleado() {
+    }
+    
     
     
      public int getId() {

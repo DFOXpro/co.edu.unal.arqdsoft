@@ -7,11 +7,14 @@
 package co.edu.unal.arqdsoft.dao;
 
 import co.edu.unal.arqdsoft.entidad.Empleado;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NonUniqueResultException;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 /**
  *
@@ -19,7 +22,7 @@ import javax.persistence.Persistence;
  */
 public class DaoEmpleado {
     
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("TelefonosPU");
+    static EntityManagerFactory emf = Persistence.createEntityManagerFactory("co-edu-unal-arqdsoftPU");
     
     /**
      * Este metodo solo se crea ara hacer pruebas de guardado en la base de datos
@@ -47,10 +50,24 @@ public class DaoEmpleado {
      * @param contrasena
      * @return 
      */
-    public Empleado login(String usuario,String contrasena) {
+    
+    public static Empleado login(String usuario,String contrasena) {
         EntityManager em = emf.createEntityManager();
-        //TODO buscar empleado
-        return null;
+        Empleado empleado=null;
+        Query q;
+        q=em.createQuery("SELECT e FROM Empleado e WHERE e.usuario LIKE :usuario AND e.contrasena LIKE :contrasena")
+                .setParameter("usuario",usuario)
+                .setParameter("contrasena",contrasena);
+        
+        try{
+            em.getTransaction().begin();
+            empleado=(Empleado)q.getSingleResult();
+        }catch(Exception e){
+            e.printStackTrace();
+            empleado=null;
+        }
+         em.close();
+         return empleado;
     }
     
 }
