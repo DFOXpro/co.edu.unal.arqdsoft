@@ -11,7 +11,8 @@ import co.edu.unal.arqdsoft.dao.*;
  *
  * @author dfoxpro
  */
-public class ControlEmpleado {
+public class ControlVentas {
+    
     
             
 }
