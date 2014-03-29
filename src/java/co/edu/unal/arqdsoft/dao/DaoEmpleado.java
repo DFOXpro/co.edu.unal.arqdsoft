@@ -39,12 +39,17 @@ public class DaoEmpleado {
             em.close();
         }
     }
-    
-    //TODO login empleado
-    //TODO 
 
+    /**
+     * Metodo encargado de hacer el login de usuario, si ocurre un error o los datos ingresados no
+     * corresponden a ningún usuario retorna null.
+     * @param usuario
+     * @param contrasena
+     * @return 
+     */
     public Empleado login(String usuario,String contrasena) {
         EntityManager em = emf.createEntityManager();
+        //TODO buscar empleado
         return null;
     }
     
