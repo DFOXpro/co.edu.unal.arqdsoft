@@ -16,7 +16,8 @@ public class ControlVentas {
     Empleado empleado;
     Venta venta;
     Plan plan;
-    public boolean VentaExitosa(String id,Plan pĺan) {
+    Cliente cliente;
+    public boolean VentaExitosa(String empleado,String cliente,Plan pĺan) {
         return false;
     }
 
