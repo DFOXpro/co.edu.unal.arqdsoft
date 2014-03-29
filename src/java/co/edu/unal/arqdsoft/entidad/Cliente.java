@@ -4,7 +4,7 @@ package co.edu.unal.arqdsoft.entidad;
  *
  * @author jspoloa
  */
-class Cliente {
+public class Cliente {
     private int id;
     private String nombre;
     private String informacion;

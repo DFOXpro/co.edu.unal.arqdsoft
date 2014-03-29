@@ -8,18 +8,17 @@ package co.edu.unal.arqdsoft.entidad;
 
 /**
  *
- * @author jrfrancos
+ * @author Jhhfrancos
  */
-public class Plan {
+public class Productos {
     private String nombre;
     private String descripcion;
     private double valor;
-    private Productos productos;
-    public Plan(String nombre, String descripcion, double valor, Productos productos){
+    
+    public Productos(String nombre, String descripcion, double valor){
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.valor = valor;
-        this.productos = productos;
     }
 
     /**
@@ -63,18 +62,5 @@ public class Plan {
     public void setValor(double valor) {
         this.valor = valor;
     }
-
-    /**
-     * @return the productos
-     */
-    public Productos getProductos() {
-        return productos;
-    }
-
-    /**
-     * @param productos the productos to set
-     */
-    public void setProductos(Productos productos) {
-        this.productos = productos;
-    }
+            
 }

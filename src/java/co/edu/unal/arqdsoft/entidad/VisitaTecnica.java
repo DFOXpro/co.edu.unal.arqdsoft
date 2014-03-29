@@ -6,10 +6,93 @@
 
 package co.edu.unal.arqdsoft.entidad;
 
+import java.util.Date;
+
 /**
  *
- * @author Jose
+ * @author Jhhfrancos
  */
-class VisitaTecnica {
-    
+public class VisitaTecnica {
+    private int id;
+    private Empleado tecnico;
+    private Date fechaVisita;
+    private ReporteDano reporte;
+    private String direccion;
+    public VisitaTecnica(int id, Empleado tecnico, Date fechaVisita, ReporteDano reporte, String direccion){
+        this.id = id;
+        this.tecnico = tecnico;
+        this.fechaVisita = fechaVisita;
+        this.reporte = reporte;
+        this.direccion = direccion;
+    }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the tecnico
+     */
+    public Empleado getTecnico() {
+        return tecnico;
+    }
+
+    /**
+     * @param tecnico the tecnico to set
+     */
+    public void setTecnico(Empleado tecnico) {
+        this.tecnico = tecnico;
+    }
+
+    /**
+     * @return the fechaVisita
+     */
+    public Date getFechaVisita() {
+        return fechaVisita;
+    }
+
+    /**
+     * @param fechaVisita the fechaVisita to set
+     */
+    public void setFechaVisita(Date fechaVisita) {
+        this.fechaVisita = fechaVisita;
+    }
+
+    /**
+     * @return the reporte
+     */
+    public ReporteDano getReporte() {
+        return reporte;
+    }
+
+    /**
+     * @param reporte the reporte to set
+     */
+    public void setReporte(ReporteDano reporte) {
+        this.reporte = reporte;
+    }
+
+    /**
+     * @return the direccion
+     */
+    public String getDireccion() {
+        return direccion;
+    }
+
+    /**
+     * @param direccion the direccion to set
+     */
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
 }
