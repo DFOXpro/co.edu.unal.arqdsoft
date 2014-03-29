@@ -4,32 +4,30 @@
  * and open the template in the editor.
  */
 package co.edu.unal.arqdsoft.control;
+
 import co.edu.unal.arqdsoft.dao.*;
+import co.edu.unal.arqdsoft.entidad.*;
 
 /**
  *
  * @author dmlr
  */
 public class Autenticacion {
-
+    
     //TODO/**
     /**
-     * Comprueba que el usuario que esta ingresando 
-     * exista en la base de datos.
-     * 
+     * Comprueba que el usuario que esta ingresando exista en la base de datos.
+     *
      * @param usuario usuario a comprobar
      * @param contraseña la contraseña del usuario
      * @return esUsuario devuelve true en caso de ser usario, false de no serlo
      */
     public boolean CetificarUsuario(String usuario, String contraseña) {
-        boolean esUsuario=false;
-        
-//        DaoEmpleado a=DaoEmpleado.Buscar(usuario);
-//        if(contraseña.equals(a.contraseña)){
-//            return true;
-//        }
-        
+        boolean esUsuario = false;
+        //encerrar en trycach, revisar formato
+//        Empleado a=DaoEmpleado.BuscarUsuario(usuario,contraseña);
+        //como?
         return false;
-        
+
     }
 }
