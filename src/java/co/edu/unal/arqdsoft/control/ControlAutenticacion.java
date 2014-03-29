@@ -20,16 +20,16 @@ public class ControlAutenticacion {
      *
      * @param usuario usuario a comprobar
      * @param contraseña la contraseña del usuario
-     * @return esUsuario devuelve true en caso de ser usario, false de no serlo
+     * @return retornara el empleado logeado o null de no existir el usuario
      */
-    public Empleado CetificarUsuario(String usuario, String contraseña) {
-        boolean esUsuario = false;
-        //encerrar en trycach, revisar formato
+    public Empleado cetificarUsuario(String usuario, String contraseña) {
         try {
-            Empleado a = DaoEmpleado.Login(usuario, contraseña);
+            DaoEmpleado c=new DaoEmpleado();
+            Empleado a = c.login(usuario, contraseña);
             a.setUsuario(null);
             a.setContrasena(null);
             return a;
+           
         } catch (Exception e) {
         }
 
