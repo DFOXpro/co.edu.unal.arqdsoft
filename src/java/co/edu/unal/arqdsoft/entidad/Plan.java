@@ -5,21 +5,50 @@
  */
 
 package co.edu.unal.arqdsoft.entidad;
-
+import java.io.Serializable;
+import java.util.List;
+import javax.annotation.Generated;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 /**
  *
  * @author jrfrancos
  */
-public class Plan {
+@Entity
+public class Plan implements Serializable{
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.TABLE)
+    private int id;
     private String nombre;
     private String descripcion;
     private double valor;
-    private Productos productos;
-    public Plan(String nombre, String descripcion, double valor, Productos productos){
+    //@ManyToMany
+    private List<Productos> productos;
+    
+    public Plan(int id, String nombre, String descripcion, double valor, List<Productos> productos) {
+        this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.valor = valor;
         this.productos = productos;
+    }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
@@ -67,14 +96,14 @@ public class Plan {
     /**
      * @return the productos
      */
-    public Productos getProductos() {
+    public List<Productos> getProductos() {
         return productos;
     }
 
     /**
      * @param productos the productos to set
      */
-    public void setProductos(Productos productos) {
+    public void setProductos(List<Productos> productos) {
         this.productos = productos;
     }
 }
