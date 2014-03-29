@@ -24,7 +24,12 @@ public class Cliente implements Serializable{
     private Plan planes;
     //@OneToMany
     private List<ReporteDano> reporteDano;
-    
+    //documentacion
+    //documentacion
+    //documentacion
+    //documentacion
+    //documentacion
+    //documentacion
     public Cliente(int id, String nombre, String informacion, Plan planes, List<ReporteDano> reporteDano) {
         this.id = id;
         this.nombre = nombre;
