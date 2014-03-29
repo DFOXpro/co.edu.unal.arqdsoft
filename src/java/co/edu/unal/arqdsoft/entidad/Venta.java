@@ -24,11 +24,11 @@ public class Venta implements Serializable{
     @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;
     private Date fecha;
-    @ManyToOne
+    //@ManyToOne
     private Cliente cliente;
-    @ManyToOne
+    //@ManyToOne
     private Empleado vendedor;
-    @ManyToOne
+    //@ManyToOne
     private Plan plan;
 
     public Venta(int id, Date fecha, Cliente cliente, Empleado vendedor, Plan plan) {
