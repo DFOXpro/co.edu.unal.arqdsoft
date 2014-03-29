@@ -31,13 +31,12 @@ public class ControlVentas {
      * @return retorna si se hizo la venta
      */
     public boolean ventaExitosa(String empleado, String cliente, Plan pĺan) {
-        
+
         return false;
     }
 
     public boolean agregarCliente(int id, String nombre, String informacion, Plan planes) {
-        Cliente e =new Cliente(id, nombre,informacion, plan, null);
+        Cliente e = new Cliente(id, nombre, informacion, plan, null);
         return false;
     }
-
 }
