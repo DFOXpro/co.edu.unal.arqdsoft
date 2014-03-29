@@ -22,18 +22,18 @@ public class ControlAutenticacion {
      * @param contraseña la contraseña del usuario
      * @return esUsuario devuelve true en caso de ser usario, false de no serlo
      */
-    public boolean CetificarUsuario(String usuario, String contraseña) {
+    public Empleado CetificarUsuario(String usuario, String contraseña) {
         boolean esUsuario = false;
         //encerrar en trycach, revisar formato
         try {
-            Empleado a = DaoEmpleado.BuscarUsuario(usuario, contraseña);
-            return true;
-
+            Empleado a = DaoEmpleado.Login(usuario, contraseña);
+            a.setUsuario(null);
+            a.setContrasena(null);
+            return a;
         } catch (Exception e) {
-            
         }
 
-        return false;
+        return null;
 
     }
 }
