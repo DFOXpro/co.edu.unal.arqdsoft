@@ -1,15 +1,53 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package co.edu.unal.arqdsoft.entidad;
 
 /**
  *
- * @author Jose
+ * @author jspoloa
  */
 class Cliente {
+    private int id;
+    private String nombre;
+    private String informacion;
+    private Plan planes;
+
+    public Cliente(int id, String nombre, String informacion, Plan planes) {
+        this.id = id;
+        this.nombre = nombre;
+        this.informacion = informacion;
+        this.planes = planes;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getInformacion() {
+        return informacion;
+    }
+
+    public void setInformacion(String informacion) {
+        this.informacion = informacion;
+    }
+
+    public Plan getPlanes() {
+        return planes;
+    }
+
+    public void setPlanes(Plan planes) {
+        this.planes = planes;
+    }
+    
     
 }
