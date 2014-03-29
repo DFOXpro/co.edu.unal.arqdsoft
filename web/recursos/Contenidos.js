@@ -18,7 +18,7 @@ Contenido.cambiar = function (req){
 //Autenticacion Inicio
 Autenticacion = new Object();
 Autenticacion.enviar = function (){
-    var json = "{usuario:"+$("#usuario").value+",contrasen:"+$("#contrasena").value+"}";
+    var json = "{usuario:"+$("#usuario").value+",contrasena:"+$("#contrasena").value+"}";
     sendRequest(url_root+"autenticacion",Contenido.cambiar,json);
 };
 //Autenticacion Fin
