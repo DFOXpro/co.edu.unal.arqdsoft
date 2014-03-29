@@ -14,4 +14,14 @@ import co.edu.unal.arqdsoft.entidad.*;
  */
 public class ControlProductos {
 
+    public boolean nuevoProducto(String empleado,String cliente,Plan pĺan) {
+        
+        
+        return false;
+    }
+    public boolean modificarProducto(String empleado,String cliente,Plan pĺan) {
+        
+        
+        return false;
+    }
 }

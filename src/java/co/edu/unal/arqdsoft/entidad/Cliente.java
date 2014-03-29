@@ -24,7 +24,7 @@ public class Cliente implements Serializable{
     private Plan planes;
     //@OneToMany
     private List<ReporteDano> reporteDano;
-    
+    //y donde esta el javadoc del constructor
     public Cliente(int id, String nombre, String informacion, Plan planes, List<ReporteDano> reporteDano) {
         this.id = id;
         this.nombre = nombre;
