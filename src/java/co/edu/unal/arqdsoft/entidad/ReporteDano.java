@@ -6,15 +6,26 @@
 
 package co.edu.unal.arqdsoft.entidad;
 
+import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
  * @author Jhhfrancos
  */
-public class ReporteDano {
+@Entity
+public class ReporteDano implements Serializable{
+    @Id
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private long id;
+    //@ManyToOne
     private Cliente cliente;
+    //@ManyToOne
     private Empleado operador;
     private Date fechaCreacion;
     private String descripcion;
