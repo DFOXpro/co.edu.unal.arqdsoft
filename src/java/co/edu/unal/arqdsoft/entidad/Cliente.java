@@ -18,7 +18,7 @@ public class Cliente implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;
-    private String nombre; 
+    private String nombre;
     private String informacion;
     //@ManyToOne
     private Plan planes;

@@ -18,7 +18,7 @@ import javax.persistence.ManyToMany;
  *
  * @author Jhhfrancos
  */
-@Entity
+@Entity 
 public class Productos  implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)

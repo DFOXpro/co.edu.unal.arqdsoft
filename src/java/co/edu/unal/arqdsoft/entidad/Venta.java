@@ -26,7 +26,7 @@ public class Venta implements Serializable{
     private Date fecha;
     //@ManyToOne
     private Cliente cliente;
-    //@ManyToOne
+    //@ManyToOne 
     private Empleado vendedor;
     //@ManyToOne
     private Plan plan;

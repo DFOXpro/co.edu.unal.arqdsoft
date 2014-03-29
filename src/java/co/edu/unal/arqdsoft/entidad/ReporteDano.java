@@ -25,7 +25,7 @@ public class ReporteDano implements Serializable{
     private long id;
     //@ManyToOne
     private Cliente cliente;
-    //@ManyToOne
+    //@ManyToOne 
     private Empleado operador;
     private Date fechaCreacion;
     private String descripcion;
