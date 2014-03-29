@@ -6,10 +6,46 @@
 
 package co.edu.unal.arqdsoft.dao;
 
+import co.edu.unal.arqdsoft.entidad.Empleado;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 /**
  *
  * @author dfoxpro
  */
 public class DaoEmpleado {
-    //TODO
+    
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("TelefonosPU");
+    
+    /**
+     * Este metodo solo se crea ara hacer pruebas de guardado en la base de datos
+     * ya que la administración de empleados se sale de nuestro alcance.
+     * @param empleado 
+     */
+    public void persist(Empleado empleado) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(empleado);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", e);
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+        }
+    }
+    
+    //TODO login empleado
+    //TODO 
+
+    public Empleado login(String usuario,String contrasena) {
+        EntityManager em = emf.createEntityManager();
+        return null;
+    }
+    
 }
