@@ -20,8 +20,10 @@ public class VisitaTecnica implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;
+    //@ManyToOne
     private Empleado tecnico;
     private Date fechaVisita;
+    //@ManyToOne
     private ReporteDano reporte;
     private String direccion;
     
