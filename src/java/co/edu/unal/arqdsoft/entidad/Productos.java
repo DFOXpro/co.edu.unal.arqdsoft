@@ -6,19 +6,45 @@
 
 package co.edu.unal.arqdsoft.entidad;
 
+import java.io.Serializable;
+import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
 /**
  *
  * @author Jhhfrancos
  */
-public class Productos {
+@Entity
+public class Productos  implements Serializable{
+    @Id
+    @GeneratedValue(strategy = GenerationType.TABLE)
+    private int id;
     private String nombre;
     private String descripcion;
     private double valor;
-    
-    public Productos(String nombre, String descripcion, double valor){
+    public Productos(int id, String nombre, String descripcion, double valor) {
+        this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.valor = valor;
+    }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
@@ -62,5 +88,8 @@ public class Productos {
     public void setValor(double valor) {
         this.valor = valor;
     }
-            
+    
+    
+    
+                
 }

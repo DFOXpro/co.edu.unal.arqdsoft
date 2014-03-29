@@ -17,7 +17,13 @@ public class ControlVentas {
     Venta venta;
     Plan plan;
     Cliente cliente;
+    DaoEmpleado daoEmpleado;
+    DaoVenta daoVenta;
+    DaoPlan daoPlan;
+    DaoCliente daoCliente;
     public boolean VentaExitosa(String empleado,String cliente,Plan pĺan) {
+        
+        
         return false;
     }
 
