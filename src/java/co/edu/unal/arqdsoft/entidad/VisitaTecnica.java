@@ -6,18 +6,25 @@
 
 package co.edu.unal.arqdsoft.entidad;
 
+import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.*;
+import javax.persistence.ManyToOne;
 
 /**
  *
  * @author Jhhfrancos
  */
-public class VisitaTecnica {
+@Entity
+public class VisitaTecnica implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;
     private Empleado tecnico;
     private Date fechaVisita;
     private ReporteDano reporte;
     private String direccion;
+    
     public VisitaTecnica(int id, Empleado tecnico, Date fechaVisita, ReporteDano reporte, String direccion){
         this.id = id;
         this.tecnico = tecnico;

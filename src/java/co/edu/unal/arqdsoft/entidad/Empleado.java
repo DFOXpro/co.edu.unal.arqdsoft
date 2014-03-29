@@ -6,20 +6,27 @@
 
 package co.edu.unal.arqdsoft.entidad;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import javax.persistence.*;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author jspoloa
  */
-public class Empleado {
+@Entity
+public class Empleado implements Serializable {
+
     /**
      * La variable rol contiene los diferentes roles que puede tener un empleado.
      * Un empleado solo puede tener un rol especifico. 
      **/
     public enum roles {OPERARIO,VENDEDOR,TECNICO,ADMINPRODUCTOS};
-    
+    @Id
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;
     private String nombre;
     private String informacion;
@@ -28,12 +35,37 @@ public class Empleado {
     private String usuario;
     private String contrasena;
     private roles rol; 
-    //TODO definir como se manejara la relacion entre Venta y Empleado
-    private Venta ventas;
-    //TODO definir como se manejara la relacion entre VisitaTecnica y Empleado
-    private VisitaTecnica visitasTecnicas;
 
-    public Empleado(int id, String nombre, String informacion, ArrayList<Date> horarioDisponible, String usuario, String contrasena, roles rol, Venta ventas, VisitaTecnica visitasTecnicas) {
+    //TODO Arreglar relaciones
+    /*@OneToMany
+    private List<Venta> ventas;
+    //TODO definir como se manejara la relacion entre VisitaTecnica y Empleado
+    @OneToMany
+    private List<VisitaTecnica> visitasTecnicas;  */
+    /*public Empleado(int id, String nombre, String informacion, ArrayList<Date> horarioDisponible, String usuario, String contrasena, roles rol, List<Venta> ventas, List<VisitaTecnica> visitasTecnicas) {
+    this.id = id;
+    this.nombre = nombre;
+    this.informacion = informacion;
+    this.horarioDisponible = horarioDisponible;
+    this.usuario = usuario;
+    this.contrasena = contrasena;
+    this.rol = rol;
+    this.ventas = ventas;
+    this.visitasTecnicas = visitasTecnicas;
+    }*/
+    
+    /**
+     * Constructor para pruebas de guardado en la base de datos
+     * sin relaciones con las otras entidades.
+     * @param id
+     * @param nombre
+     * @param informacion
+     * @param horarioDisponible
+     * @param usuario
+     * @param contrasena
+     * @param rol 
+     */
+    public Empleado(int id, String nombre, String informacion, ArrayList<Date> horarioDisponible, String usuario, String contrasena, roles rol) {
         this.id = id;
         this.nombre = nombre;
         this.informacion = informacion;
@@ -41,11 +73,10 @@ public class Empleado {
         this.usuario = usuario;
         this.contrasena = contrasena;
         this.rol = rol;
-        this.ventas = ventas;
-        this.visitasTecnicas = visitasTecnicas;
     }
-
-    public int getId() {
+    
+    
+     public int getId() {
         return id;
     }
 
@@ -101,22 +132,19 @@ public class Empleado {
         this.rol = rol;
     }
 
-    public Venta getVentas() {
-        return ventas;
-    }
-
-    public void setVentas(Venta ventas) {
-        this.ventas = ventas;
-    }
-
-    public VisitaTecnica getVisitasTecnicas() {
-        return visitasTecnicas;
-    }
-
-    public void setVisitasTecnicas(VisitaTecnica visitasTecnicas) {
-        this.visitasTecnicas = visitasTecnicas;
-    }
-    
-    
-    
+//    public List<Venta> getVentas() {
+//        return ventas;
+//    }
+//
+//    public void setVentas(List<Venta> ventas) {
+//        this.ventas = ventas;
+//    }
+//
+//    public List<VisitaTecnica> getVisitasTecnicas() {
+//        return visitasTecnicas;
+//    }
+//
+//    public void setVisitasTecnicas(List<VisitaTecnica> visitasTecnicas) {
+//        this.visitasTecnicas = visitasTecnicas;
+//    }
 }
