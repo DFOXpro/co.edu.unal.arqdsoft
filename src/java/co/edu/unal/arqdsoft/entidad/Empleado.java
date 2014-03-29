@@ -65,8 +65,8 @@ public class Empleado implements Serializable {
      * @param contrasena
      * @param rol 
      */
-    public Empleado(int id, String nombre, String informacion, ArrayList<Date> horarioDisponible, String usuario, String contrasena, roles rol) {
-        this.id = id;
+    public Empleado(String nombre, String informacion, ArrayList<Date> horarioDisponible, String usuario, String contrasena, roles rol) {
+        //this.id = id;
         this.nombre = nombre;
         this.informacion = informacion;
         this.horarioDisponible = horarioDisponible;
