@@ -24,11 +24,11 @@ public class Autenticacion {
     public boolean CetificarUsuario(String usuario, String contraseña) {
         boolean esUsuario=false;
         
-        Empleado a=Empleado.Buscar(usuario);
-        if(contraseña.equals(a.contraseña)){
-            return true;
-        }
-                      
+//        DaoEmpleado a=DaoEmpleado.Buscar(usuario);
+//        if(contraseña.equals(a.contraseña)){
+//            return true;
+//        }
+        
         return false;
         
     }

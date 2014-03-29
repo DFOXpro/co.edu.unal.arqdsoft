@@ -4,12 +4,14 @@
  * and open the template in the editor.
  */
 
-package co.edu.unal.arqdsoft.dao;
+package co.edu.unal.arqdsoft.control;
+import co.edu.unal.arqdsoft.dao.*;
 
 /**
  *
  * @author dfoxpro
  */
-public class Empleado {
-    //TODO
+public class ControlEmpleado {
+    
+            
 }
