@@ -13,5 +13,11 @@ import co.edu.unal.arqdsoft.entidad.*;
  * @author dfoxpro
  */
 public class ControlVentas {
+    Empleado empleado;
+    Venta venta;
+    Plan plan;
+    public boolean VentaExitosa(string id,Plan pĺan) {
+        return false
+    }
 
 }
