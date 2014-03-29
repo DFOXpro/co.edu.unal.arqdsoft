@@ -3,13 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package co.edu.unal.arqdsoft.control;
 
 /**
  *
- * @author dfoxpro
+ * @author dmlr
  */
 public class Autenticacion {
-    //TODO
+
+    //TODO/**
+    /**
+     *
+     * @param usuario
+     * @param contraseña
+     * @return esUsuario
+     */
+    public boolean cetificarUsuario(String usuario, String contraseña) {
+        boolean esUsuario=false;
+        
+        return false;
+    }
 }
