@@ -25,7 +25,7 @@ public class VisitaTecnica implements Serializable {
     private Date fechaVisita;
     //@ManyToOne
     private ReporteDano reporte;
-    private String direccion;
+    private String direccion; 
     
     public VisitaTecnica(int id, Empleado tecnico, Date fechaVisita, ReporteDano reporte, String direccion){
         this.id = id;

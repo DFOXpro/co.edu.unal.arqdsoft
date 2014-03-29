@@ -25,7 +25,7 @@ public class Plan implements Serializable{
     private int id;
     private String nombre;
     private String descripcion;
-    private double valor;
+    private double valor; 
     //@ManyToMany
     private List<Productos> productos;
     
