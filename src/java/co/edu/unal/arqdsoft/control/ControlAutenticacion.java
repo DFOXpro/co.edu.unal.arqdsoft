@@ -13,8 +13,6 @@ import co.edu.unal.arqdsoft.entidad.*;
  * @author dmlr
  */
 public class ControlAutenticacion {
-
-    //TODO/**
     /**
      * Comprueba que el usuario que esta ingresando exista en la base de datos.
      *
@@ -29,6 +27,5 @@ public class ControlAutenticacion {
         a.setUsuario(null);
         a.setContrasena(null);
         return a;
-
     }
 }

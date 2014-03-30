@@ -5,15 +5,22 @@
  */
 package co.edu.unal.arqdsoft.presentacion.servlet;
 
+import co.edu.unal.arqdsoft.presentacion.JSON;
 import co.edu.unal.arqdsoft.control.ControlAutenticacion;
 import co.edu.unal.arqdsoft.entidad.Empleado;
+import co.edu.unal.arqdsoft.presentacion.Respuesta;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
+import org.json.simple.parser.JSONParser;
 
 /**
  *
@@ -32,22 +39,25 @@ public class Autenticacion extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//Este sí funciona!!!!!!!
-        InputStream is = request.getInputStream();
-        byte[] charr = new byte[is.available()];
-        is.read(charr);
-        String t = new String(charr,"UTF-8"); 
-        System.out.println(t);
-
-//        ControlAutenticacion control = new ControlAutenticacion();
-//        Empleado empleado = control.cetificarUsuario("jspoloa", "123456");
-//        System.out.println("");
-//        response.setContentType("application/json;charset=UTF-8");
-//        try (PrintWriter out = response.getWriter()) {
-//            if (empleado == null)
-//                out.println("{error:\"El usuario o la contraseña están mal escritas\",contenido:\"\"}");
-//            else out.println("{error:\"\",contenido:\"Bienvenido\"}");
-//        }
+        try {
+            JSONObject obj = JSON.toObject(request);
+            Empleado empleado = ControlAutenticacion.cetificarUsuario(
+                ""+obj.get("usuario"),
+                ""+obj.get("contrasena")
+            );
+            response.setContentType("application/json;charset=UTF-8");
+            try (PrintWriter out = response.getWriter()) {
+                Respuesta r;
+                if (empleado == null)
+                    r = new Respuesta("El usuario o la contraseña están mal escritas", "");
+                else r = new Respuesta("", "Bienvenido");
+                out.write(JSON.toString(r));
+            } catch (Exception ex) {
+                Logger.getLogger(JSON.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } catch (Exception ex) {
+            System.out.println("Error con el request, no es valido:" + ex);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
