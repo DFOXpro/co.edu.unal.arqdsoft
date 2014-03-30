@@ -48,12 +48,12 @@ public class DaoEmpleadoTest {
 //    public void testPersist() {
 //        System.out.println("persist");
 //        DaoEmpleado dao=new DaoEmpleado();
-//        String nombre="José Santiago Polo Acosta";
-//        String informacion="80128928;31846541440;carrera24 #23-20";
+//        String nombre="Daniel Reinaldo Zorro";
+//        String informacion="1033123456;3194232200;calle falsa 123";
 //        ArrayList<Date> horarioDisponible=null;
-//        String usuario="jspoloa";
+//        String usuario="drzorro";
 //        String contrasena="123456";
-//        Empleado.roles rol=Empleado.roles.VENDEDOR;
+//        Empleado.roles rol=Empleado.roles.OPERARIO;
 //        
 //        Empleado empleado= new Empleado(nombre,informacion,horarioDisponible,usuario,contrasena,rol);
 //        dao.persist(empleado);
@@ -66,7 +66,7 @@ public class DaoEmpleadoTest {
     @Test
     public void testLogin() {
         System.out.println("login");
-        String usuario = "jspoloa";
+        String usuario = "drzorro";
         String contrasena = "123456";
         DaoEmpleado dao=new DaoEmpleado();
         Empleado empleado = dao.login(usuario, contrasena);

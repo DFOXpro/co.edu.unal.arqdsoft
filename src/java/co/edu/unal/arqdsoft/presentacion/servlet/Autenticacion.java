@@ -36,7 +36,8 @@ public class Autenticacion extends HttpServlet {
         System.out.println("asd: " + request.getQueryString());
         System.out.println("asd: " + request.getParameter("usuario"));
         ControlAutenticacion control = new ControlAutenticacion();
-        Empleado empleado = control.cetificarUsuario("perro", "gato");
+        Empleado empleado = control.cetificarUsuario("jspoloa", "123456");
+        System.out.println("");
         response.setContentType("application/json;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             if (empleado.equals(null))

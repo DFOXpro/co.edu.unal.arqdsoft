@@ -45,9 +45,9 @@ public class DaoProductosTest {
     @Test
     public void testCrear() {
         System.out.println("crear");
-        int id = 132456;
+        //int id = 132456;
         double valor = 11111;
-        Productos productos = new Productos(id, null, null, valor);
+        Productos productos = new Productos(null, null, valor);
         System.out.print("creo o no creo...pero llego aca");
         DaoProductos daoProducto = new DaoProductos();
         
