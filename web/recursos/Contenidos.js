@@ -18,8 +18,13 @@ Contenido.cambiar = function (req){
 //Autenticacion Inicio
 Autenticacion = new Object();
 Autenticacion.enviar = function (){
-    var json = "{usuario:"+$("#usuario").value+",contrasena:"+$("#contrasena").value+"}";
-    sendRequest(url_root+"autenticacion",Contenido.cambiar,json);
+    //var json = "{usuario:"+$("#usuario").value+",contrasena:"+$("#contrasena").value+"}";
+    //var data = "usuario="+$("#usuario").value+"&contrasena="+$("#contrasena").value;
+    var data = new FormData();
+    data.append("usuario", $("#usuario").value);
+    data.append("contrasena", $("#contrasena").value);
+
+    sendRequest(url_root+"autenticacion",Contenido.cambiar,data);
 };
 //Autenticacion Fin
 

@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package co.edu.unal.arqdsoft.presentacion.servlet;
 
+import co.edu.unal.arqdsoft.control.ControlAutenticacion;
+import co.edu.unal.arqdsoft.entidad.Empleado;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -30,12 +31,17 @@ public class Autenticacion extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("asd: "+request);               
-                
+        System.out.println("asd: " + request);
+        System.out.println("asd: " + request.getMethod());
+        System.out.println("asd: " + request.getQueryString());
+        System.out.println("asd: " + request.getParameter("usuario"));
+        ControlAutenticacion control = new ControlAutenticacion();
+        Empleado empleado = control.cetificarUsuario("perro", "gato");
         response.setContentType("application/json;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
+            if (empleado.equals(null))
+                out.println("{error:\"El usuario o la contraseña están mal escritas\",contenido:\"\"}");
+            else out.println("{error:\"\",contenido:\"Bienvenido\"}");
         }
     }
 
