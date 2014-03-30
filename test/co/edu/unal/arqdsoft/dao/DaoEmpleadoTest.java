@@ -44,34 +44,37 @@ public class DaoEmpleadoTest {
     /**
      * Test of persist method, of class DaoEmpleado.
      */
-    @Test
-    public void testPersist() {
-        System.out.println("persist");
-        DaoEmpleado dao=new DaoEmpleado();
-        String nombre="José Santiago Polo Acosta";
-        String informacion="80128928;31846541440;carrera24 #23-20";
-        ArrayList<Date> horarioDisponible=null;
-        String usuario="jspoloa";
-        String contrasena="123456";
-        Empleado.roles rol=Empleado.roles.VENDEDOR;
-        
-        Empleado empleado= new Empleado(nombre,informacion,horarioDisponible,usuario,contrasena,rol);
-        dao.persist(empleado);
-        System.out.println(empleado.getNombre()+" "+empleado.getInformacion());
-    }
+//    @Test
+//    public void testPersist() {
+//        System.out.println("persist");
+//        DaoEmpleado dao=new DaoEmpleado();
+//        String nombre="José Santiago Polo Acosta";
+//        String informacion="80128928;31846541440;carrera24 #23-20";
+//        ArrayList<Date> horarioDisponible=null;
+//        String usuario="jspoloa";
+//        String contrasena="123456";
+//        Empleado.roles rol=Empleado.roles.VENDEDOR;
+//        
+//        Empleado empleado= new Empleado(nombre,informacion,horarioDisponible,usuario,contrasena,rol);
+//        dao.persist(empleado);
+//        System.out.println(empleado.getNombre()+" "+empleado.getInformacion());
+//    }
 
     /**
      * Test of login method, of class DaoEmpleado.
      */
-//    @Test
-//    public void testLogin() {
-//        System.out.println("login");
-//        String usuario = "";
-//        String contrasena = "";
-//        DaoEmpleado instance = new DaoEmpleado();
-//        Empleado expResult = null;
-//        Empleado result = instance.login(usuario, contrasena);
-//        assertEquals(expResult, result);
-//    }
+    @Test
+    public void testLogin() {
+        System.out.println("login");
+        String usuario = "jspoloa";
+        String contrasena = "123456";
+        DaoEmpleado dao=new DaoEmpleado();
+        Empleado empleado = dao.login(usuario, contrasena);
+        if(empleado!=null)
+            System.out.println(empleado.getNombre());
+        else
+            System.out.println("empleado es null");
+        //assertEquals(expResult, result);
+    }
     
 }
