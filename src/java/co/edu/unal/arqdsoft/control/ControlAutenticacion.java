@@ -24,8 +24,7 @@ public class ControlAutenticacion {
      */
     public Empleado cetificarUsuario(String usuario, String contraseña) {
         try {
-            DaoEmpleado c=new DaoEmpleado();
-            Empleado a = c.login(usuario, contraseña);
+            Empleado a = DaoEmpleado.login(usuario, contraseña);
             a.setUsuario(null);
             a.setContrasena(null);
             return a;
