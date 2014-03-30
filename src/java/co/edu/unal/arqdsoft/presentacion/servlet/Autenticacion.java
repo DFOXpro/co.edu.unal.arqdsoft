@@ -8,6 +8,7 @@ package co.edu.unal.arqdsoft.presentacion.servlet;
 import co.edu.unal.arqdsoft.control.ControlAutenticacion;
 import co.edu.unal.arqdsoft.entidad.Empleado;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -31,20 +32,22 @@ public class Autenticacion extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("asd: " + request);
-        System.out.println("asd: " + request.getMethod());
-        System.out.println("asd: " + request.getQueryString());
-        System.out.println("asd: " + request.getParameter("usuario"));
-        System.out.println("asd: " + (String) request.getAttribute("usuario"));
-        ControlAutenticacion control = new ControlAutenticacion();
-        Empleado empleado = control.cetificarUsuario("jspoloa", "123456");
-        System.out.println("");
-        response.setContentType("application/json;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            if (empleado == null)
-                out.println("{error:\"El usuario o la contraseña están mal escritas\",contenido:\"\"}");
-            else out.println("{error:\"\",contenido:\"Bienvenido\"}");
-        }
+//Este sí funciona!!!!!!!
+        InputStream is = request.getInputStream();
+        byte[] charr = new byte[is.available()];
+        is.read(charr);
+        String t = new String(charr,"UTF-8"); 
+        System.out.println(t);
+
+//        ControlAutenticacion control = new ControlAutenticacion();
+//        Empleado empleado = control.cetificarUsuario("jspoloa", "123456");
+//        System.out.println("");
+//        response.setContentType("application/json;charset=UTF-8");
+//        try (PrintWriter out = response.getWriter()) {
+//            if (empleado == null)
+//                out.println("{error:\"El usuario o la contraseña están mal escritas\",contenido:\"\"}");
+//            else out.println("{error:\"\",contenido:\"Bienvenido\"}");
+//        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
