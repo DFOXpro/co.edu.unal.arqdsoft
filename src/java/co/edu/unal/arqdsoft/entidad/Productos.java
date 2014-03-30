@@ -26,8 +26,8 @@ public class Productos  implements Serializable{
     private String nombre;
     private String descripcion;
     private double valor;
-    public Productos(int id, String nombre, String descripcion, double valor) {
-        this.id = id;
+    
+    public Productos(String nombre, String descripcion, double valor) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.valor = valor;
