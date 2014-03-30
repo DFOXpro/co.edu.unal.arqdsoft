@@ -35,11 +35,12 @@ public class Autenticacion extends HttpServlet {
         System.out.println("asd: " + request.getMethod());
         System.out.println("asd: " + request.getQueryString());
         System.out.println("asd: " + request.getParameter("usuario"));
+        System.out.println("asd: " + (String) request.getAttribute("usuario"));
         ControlAutenticacion control = new ControlAutenticacion();
         Empleado empleado = control.cetificarUsuario("perro", "gato");
         response.setContentType("application/json;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            if (empleado.equals(null))
+            if (empleado == null)
                 out.println("{error:\"El usuario o la contraseña están mal escritas\",contenido:\"\"}");
             else out.println("{error:\"\",contenido:\"Bienvenido\"}");
         }

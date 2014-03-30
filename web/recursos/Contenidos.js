@@ -11,7 +11,10 @@ Contenido = new Object();
  * @returns {undefined}
  */
 Contenido.cambiar = function (req){
-    //TODO
+    //if(req)
+    var respuesta = JSON.parse(req);
+    if(respuesta.error.lenght > 0) $("#error").innerHTML=respuesta.error;
+    else $("article").innerHTML=respuesta.contenido;
     console.log("Contenido.cambiar"+req);
 };
 
