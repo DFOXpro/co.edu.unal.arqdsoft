@@ -38,13 +38,17 @@ public class Autenticacion extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            JSONObject obj = JSON.toObject(request);
-            //Empleado emp = null;
-            Empleado emp = new Empleado("Pedro", "asd", null, "pedro", null, Empleado.roles.ADMINPRODUCTOS);
+            /*TEST*/
+            //Empleado emp = null;//Si no da autorizacion
+            Empleado emp = new Empleado("Pedro", "asd", null, "pedro", null, Empleado.roles.ADMINPRODUCTOS);//Si sí da autorización
+            /*TEST FIN*/
+            /*CONDUCTO REGULAR*/
+//            JSONObject obj = JSON.toObject(request);
 //            Empleado emp = ControlAutenticacion.cetificarUsuario(
 //                ""+obj.get("usuario"),
 //                ""+obj.get("contrasena")
 //            );
+            /*CONDUCTO REGULAR FIN*/
             response.setContentType("application/json;charset=UTF-8");
             try (PrintWriter out = response.getWriter()) {
                 Respuesta r;
@@ -60,6 +64,7 @@ public class Autenticacion extends HttpServlet {
 //                        emp.getId(),
 //                        emp.getRol().name()
 //                    );
+
                     Contenido c = new Contenido(emp, t);
                     r = new Respuesta("", c);
                 }
