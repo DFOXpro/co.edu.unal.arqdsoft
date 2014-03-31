@@ -45,17 +45,17 @@ public class Autenticacion extends HttpServlet {
             /*CONDUCTO REGULAR*/
             JSONObject obj = JSON.toObject(request);
             Empleado emp = ControlAutenticacion.cetificarUsuario(
-                ""+obj.get("usuario"),
-                ""+obj.get("contrasena")
+                    "" + obj.get("usuario"),
+                    "" + obj.get("contrasena")
             );
             /*CONDUCTO REGULAR FIN*/
             response.setContentType("application/json;charset=UTF-8");
             try (PrintWriter out = response.getWriter()) {
                 Respuesta r;
-                if (emp == null)
+                if (emp == null) {
                     r = new Respuesta("El usuario o la contraseña están mal escritas", new Contenido());
-                else {
-                    String t = JSON.getTemplate(getServletContext().getResourceAsStream("/vistas/"+emp.getRol().name()+".html"));
+                } else {
+                    String t = JSON.getTemplate(getServletContext().getResourceAsStream("/vistas/" + emp.getRol().name() + ".html"));
 //POR SI ACASO
 //                    String template = "Hello %s Please find attached %s which is due on %s";
 //                    t = String.format(
@@ -90,6 +90,7 @@ public class Autenticacion extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+
     }
 
     /**

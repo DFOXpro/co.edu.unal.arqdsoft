@@ -61,7 +61,7 @@ public class DaoEmpleado {
             em.getTransaction().begin();
             empleado=(Empleado)q.getSingleResult();
         }catch(Exception e){
-            e.printStackTrace();
+            //e.printStackTrace();
             empleado=null;
         }
          em.close();
