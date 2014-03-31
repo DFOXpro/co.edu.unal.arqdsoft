@@ -14,7 +14,7 @@ import java.util.Objects;
  */
 public class Respuesta {
     private String error;
-    private String contenido;
+    private Contenido contenido;
 
     public String getError() {
         return error;
@@ -24,15 +24,15 @@ public class Respuesta {
         this.error = error;
     }
 
-    public String getContenido() {
+    public Contenido getContenido() {
         return contenido;
     }
 
-    public void setContenido(String contenido) {
+    public void setContenido(Contenido contenido) {
         this.contenido = contenido;
     }
 
-    public Respuesta(String error, String contenido) {
+    public Respuesta(String error, Contenido contenido) {
         this.error = error;
         this.contenido = contenido;
     }
@@ -66,5 +66,11 @@ public class Respuesta {
     @Override
     public String toString() {
         return "Respuesta{" + "error=" + error + ", contenido=" + contenido + '}';
+    }
+
+    public String toJSON() {
+        return "{\"error\":\""+ error +
+                "\",\"contenido\":" + contenido.toJSON()+
+                "}";
     }
 }

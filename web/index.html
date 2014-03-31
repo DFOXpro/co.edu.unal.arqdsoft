@@ -9,25 +9,31 @@ and open the template in the editor.
         <title>Proyecto de Telefonia</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" rel="stylesheet" href="recursos/css/app.css">
     </head>
     <body>
-        <header></header>
+        <header>
+            <span id="h_usuario"></span>
+            <span id="h_rol"></span>
+            <button>Iniciar seción</button>
+        </header>
         <section>
-            <div id="autenticacion">
-                <input type="text" id="usuario" placeholder="Usuario">
-                <input type="password" id="contrasena" placeholder="Contraseña">
-                <input type="button" id="enviar" value="Ingresar">
-                <span id="error"></span>
-            </div>
+            <form id="autenticacion">
+                <input type="text" id="a_usuario" placeholder="Usuario">
+                <input type="password" id="a_contrasena" placeholder="Contraseña">
+                <input type="submit" value="Ingresar">
+                <div id="error" class="error"></div>
+            </form>
         </section>
         <footer></footer>
         <script type="text/javascript">
             //VARIABLES
-            url_root="/co-edu-unal-arqdsoft/";
+            url_root = "/co-edu-unal-arqdsoft/";
         </script>
-        <script type="text/javascript" src="recursos/Utiles.js"></script>
-        <script type="text/javascript" src="recursos/Contenidos.js"></script>
-        <script type="text/javascript" src="recursos/Eventos.js"></script>
+        <script type="text/javascript" src="recursos/js/Utiles.js"></script>
+        <script type="text/javascript" src="recursos/js/Contenidos.js"></script>
+        <script type="text/javascript" src="recursos/js/Autenticacion.js"></script>
+        <script type="text/javascript" src="recursos/js/Eventos.js"></script>
         <script type="text/javascript">
             Evento.innit();
         </script>

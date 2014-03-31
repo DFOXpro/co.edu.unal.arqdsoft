@@ -26,7 +26,7 @@ function sendRequest(url, callback, data) {
 
     xhr.onreadystatechange = function() {//Call a function when the state changes.
         if (xhr.readyState == 4 && xhr.status == 200) {
-            callback(xhr.responseText);
+            callback(JSON.parse(xhr.responseText));
         }
     };
     console.log(data);

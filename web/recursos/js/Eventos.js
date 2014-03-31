@@ -7,8 +7,10 @@ Evento = new Object();
 
 Evento.innit = function() {
     //console.log("a");
-    $("#enviar").addEventListener("click", function() {
+    $("#autenticacion").addEventListener("submit", function(event) {
         //console.log("b");
+        event.preventDefault();
+        if(Autenticacion.verificar())
         Autenticacion.enviar();
     });
 };

@@ -8,9 +8,9 @@ package co.edu.unal.arqdsoft.presentacion.servlet;
 import co.edu.unal.arqdsoft.presentacion.JSON;
 import co.edu.unal.arqdsoft.control.ControlAutenticacion;
 import co.edu.unal.arqdsoft.entidad.Empleado;
+import co.edu.unal.arqdsoft.presentacion.Contenido;
 import co.edu.unal.arqdsoft.presentacion.Respuesta;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,8 +19,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-import org.json.simple.parser.JSONParser;
 
 /**
  *
@@ -41,19 +39,33 @@ public class Autenticacion extends HttpServlet {
             throws ServletException, IOException {
         try {
             JSONObject obj = JSON.toObject(request);
-            Empleado empleado = ControlAutenticacion.cetificarUsuario(
-                ""+obj.get("usuario"),
-                ""+obj.get("contrasena")
-            );
+            //Empleado emp = null;
+            Empleado emp = new Empleado("Pedro", "asd", null, "pedro", null, Empleado.roles.ADMINPRODUCTOS);
+//            Empleado emp = ControlAutenticacion.cetificarUsuario(
+//                ""+obj.get("usuario"),
+//                ""+obj.get("contrasena")
+//            );
             response.setContentType("application/json;charset=UTF-8");
             try (PrintWriter out = response.getWriter()) {
                 Respuesta r;
-                if (empleado == null)
-                    r = new Respuesta("El usuario o la contraseña están mal escritas", "");
-                else r = new Respuesta("", "Bienvenido");
-                out.write(JSON.toString(r));
+                if (emp == null)
+                    r = new Respuesta("El usuario o la contraseña están mal escritas", new Contenido());
+                else {
+                    String t = JSON.getTemplate(getServletContext().getResourceAsStream("/vistas/"+emp.getRol().name()+".html"));
+//POR SI ACASO
+//                    String template = "Hello %s Please find attached %s which is due on %s";
+//                    t = String.format(
+//                        t,
+//                        emp.getNombre(),
+//                        emp.getId(),
+//                        emp.getRol().name()
+//                    );
+                    Contenido c = new Contenido(emp, t);
+                    r = new Respuesta("", c);
+                }
+                out.write(r.toJSON());
             } catch (Exception ex) {
-                Logger.getLogger(JSON.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Autenticacion.class.getName()).log(Level.SEVERE, null, ex);
             }
         } catch (Exception ex) {
             System.out.println("Error con el request, no es valido:" + ex);

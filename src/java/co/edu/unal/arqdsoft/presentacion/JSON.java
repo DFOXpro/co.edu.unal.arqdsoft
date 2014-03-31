@@ -5,7 +5,10 @@
  */
 package co.edu.unal.arqdsoft.presentacion;
 
+import java.io.IOException;
 import java.io.InputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
@@ -37,8 +40,24 @@ public class JSON {
     public static String toString(Respuesta arg) {
         JSONObject obj=new JSONObject();
         obj.put("error",arg.getError());
-        obj.put("contenido",arg.getContenido());
+        obj.put("contenido",arg.getContenido().toJSON());
         return obj.toJSONString();
     }
-    
+
+    public static String getTemplate(InputStream is){
+        try {
+            byte[] charr = new byte[is.available()];
+            is.read(charr);
+            String text = new String(charr, "UTF-8");
+            text = text.replace("\n", "").replace("\r", "").replace("  ", "");
+            return text;
+        } catch (IOException ex) {
+            Logger.getLogger(JSON.class.getName()).log(Level.SEVERE, null, ex);
+            return "";
+        }
+    }
+
+    private static Object getServletContext() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
