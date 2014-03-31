@@ -29,6 +29,14 @@ public class Plan implements Serializable{
     //@ManyToMany
     private List<Productos> productos;
     
+    /**
+     *  Constructor de la clase plan para la creacion de  un nuevo plan especificando cada uno de los campos
+     * @param id    un numero entero indicando el id del plan
+     * @param nombre    una cadena de caracteres que representa el nombre del plan
+     * @param descripcion   una breve descripcion de el plan
+     * @param valor el costo que tendra el plan en el mercado
+     * @param productos una lista conteniendo objetos de tipo productos con los productos que conforman el plan
+     */
     public Plan(int id, String nombre, String descripcion, double valor, List<Productos> productos) {
         this.id = id;
         this.nombre = nombre;

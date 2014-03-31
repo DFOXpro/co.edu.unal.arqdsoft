@@ -24,13 +24,16 @@ public class Cliente implements Serializable{
     private Plan planes;
     //@OneToMany
     private List<ReporteDano> reporteDano;
-    //documentacion
-    //documentacion
-    //documentacion
-    //documentacion
-    //documentacion
-    //documentacion
-    public Cliente(int id, String nombre, String informacion, Plan planes, List<ReporteDano> reporteDano) {
+
+    /**
+     * Constructor de la clase cliente especificando cada uno de los campos
+     * @param id    Un entero representando la id asignada al nuevo cliente
+     * @param nombre    Una cadena de caracteres con el nombre del nuevo cliente 
+     * @param informacion   Una cadena de caracdteres con informacion de interes sobre el cliente
+     * @param planes    Un objeto de tipo plan representando el plan que tiene actualmente el cliente
+     * @param reporteDano   Una lista de objetos de tipo ReporteDano con todos los reportes realizados por el cliente
+     */
+        public Cliente(int id, String nombre, String informacion, Plan planes, List<ReporteDano> reporteDano) {
         this.id = id;
         this.nombre = nombre;
         this.informacion = informacion;

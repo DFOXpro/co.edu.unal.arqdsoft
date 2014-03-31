@@ -27,6 +27,14 @@ public class VisitaTecnica implements Serializable {
     private ReporteDano reporte;
     private String direccion; 
     
+    /**
+     * Constructor de la clase VisitaTecnica especificando todos los campos del objeto
+     * @param id    Variable entera con el identificador de el numero de visita tecnica
+     * @param tecnico   Variable tipo empleado que hace referencia a el tecnico que realizo o realizara la visita
+     * @param fechaVisita   Variable de tipo daate con la fecha en la cual se realizo o realizara la visita tecnica
+     * @param reporte   Objeto de tipo ReporteDano con la llamada y respectivo reporte de la cual deriva esta visita tecnica
+     * @param direccion Cadena de caracteres conteniendo la direccion exacta donde se llevara a cabo la visita
+     */
     public VisitaTecnica(int id, Empleado tecnico, Date fechaVisita, ReporteDano reporte, String direccion){
         this.id = id;
         this.tecnico = tecnico;
