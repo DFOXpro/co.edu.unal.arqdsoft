@@ -17,14 +17,15 @@ Autenticacion.verificar = function (){
     };
 };
 Autenticacion.enviar = function (){
-    var data = {
-        usuario:$("#a_usuario").value,
-        contrasena:$("#a_contrasena").value
-    };
-    //var data = "usuario="+$("#usuario").value+"&contrasena="+$("#contrasena").value;
+//    var data = {
+//        usuario:$("#a_usuario").value,
+//        contrasena:$("#a_contrasena").value
+//    };
+//    var data = "usuario="+$("#usuario").value+"&contrasena="+$("#contrasena").value;
 //    var data = new FormData();
 //    data.append("usuario", $("#usuario").value);
 //    data.append("contrasena", $("#contrasena").value);
-
-    sendRequest(url_root+"autenticacion",Contenido.cambiar,JSON.stringify(data));
+    data = "usuario="+$("#a_usuario").value+"&contrasena="+$("#a_contrasena").value;
+    //sendRequest(url_root+"autenticacion",Contenido.cambiar,JSON.stringify(data));
+    sendRequest(url_root+"autenticacion",Contenido.cambiar,data);
 };

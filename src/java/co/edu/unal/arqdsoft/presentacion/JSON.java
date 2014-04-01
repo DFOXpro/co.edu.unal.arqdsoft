@@ -26,10 +26,14 @@ public class JSON {
      * @throws Exception 
      */
     public static JSONObject toObject(HttpServletRequest request) throws Exception {
-        InputStream is = request.getInputStream();
-        byte[] charr = new byte[is.available()];
-        is.read(charr);
-        return (JSONObject) JSONValue.parse(new String(charr, "UTF-8"));
+        if(request.getParameter("usuario")!= null){//Servidor independiente
+            return (JSONObject) JSONValue.parse(request.getQueryString());
+        } else {//Servidor base netbeans
+            InputStream is = request.getInputStream();
+            byte[] charr = new byte[is.available()];
+            is.read(charr);
+            return (JSONObject) JSONValue.parse(new String(charr, "UTF-8"));
+        }
     }
 
     /**

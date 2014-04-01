@@ -30,7 +30,7 @@ function sendRequest(url, callback, data) {
         }
     };
     console.log(data);
-    xhr.send(data);
+    xhr.send("Content-Type: application/x-www-form-urlencoded\n\n"+"Content-Length: "+data.length+"\n"+data);
 }
 //AJAX Fin
 console.log("Utiles cargados");
