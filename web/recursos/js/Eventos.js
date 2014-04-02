@@ -15,4 +15,5 @@ Evento.innit = function() {
     });
 };
 
+window.addEventListener("load",Evento.innit);
 console.log("Eventos cargados");

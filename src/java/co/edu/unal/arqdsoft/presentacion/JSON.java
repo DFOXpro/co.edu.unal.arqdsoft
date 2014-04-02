@@ -56,7 +56,7 @@ public class JSON {
             byte[] charr = new byte[is.available()];
             is.read(charr);
             String text = new String(charr, "UTF-8");
-            text = text.replace("\n", "").replace("\r", "").replace("  ", "");
+            text = text.replace("\n", "").replace("\r", "").replace("  ", "").replace("\"", "'");
             return text;
         } catch (IOException ex) {
             Logger.getLogger(JSON.class.getName()).log(Level.SEVERE, null, ex);
