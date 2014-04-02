@@ -73,6 +73,7 @@ public class Autenticacion extends HttpServlet {
                 Logger.getLogger(Autenticacion.class.getName()).log(Level.SEVERE, null, ex);
             }
         } catch (Exception ex) {
+            Logger.getLogger(Autenticacion.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Error con el request, no es valido:" + ex);
         }
     }

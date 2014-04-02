@@ -23,14 +23,15 @@ $ = function(selector) {
 function sendRequest(url, callback, data) {
     var xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
-
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.onreadystatechange = function() {//Call a function when the state changes.
         if (xhr.readyState == 4 && xhr.status == 200) {
             callback(JSON.parse(xhr.responseText));
         }
     };
     console.log(data);
-    xhr.send("Content-Type: application/x-www-form-urlencoded\n\n"+"Content-Length: "+data.length+"\n"+data);
+    //xhr.send("Content-Type: application/x-www-form-urlencoded\n\n"+"Content-Length: "+data.length+"\n"+data);
+    xhr.send(data);
 }
 //AJAX Fin
 console.log("Utiles cargados");
