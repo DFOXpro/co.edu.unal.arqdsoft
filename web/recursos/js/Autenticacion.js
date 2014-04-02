@@ -16,6 +16,20 @@ Autenticacion.verificar = function (){
         return false;
     };
 };
+Autenticacion.recibir = function (respuesta){
+    if(respuesta.error.length == 0){
+        usuario.id = respuesta.contenido.usuario.id;
+        usuario.rol = respuesta.contenido.usuario.rol;
+        usuario.nombre = respuesta.contenido.usuario.nombre;
+        $("#h_usuario").innerHTML=usuario.nombre;
+        $("#h_rol").innerHTML=usuario.rol;
+        $("#h_b_sesion").class="";
+        $("#h_b_sesion").innerHTML="Cerrar sesión";
+        Evento.cerrarSesion();
+        $("section").innerHTML=respuesta.contenido.section;
+    }
+    Contenido.cambiar(respuesta);
+};
 Autenticacion.enviar = function (){
     /*Modo JSON*/
 //    var data = {
@@ -26,6 +40,6 @@ Autenticacion.enviar = function (){
 
     /* Modo request*/
     data = "usuario="+$("#a_usuario").value+"&contrasena="+$("#a_contrasena").value;
-    sendRequest(url_root+"autenticacion",Contenido.cambiar,data);
+    sendRequest(url_root+"autenticacion",Autenticacion.recibir,data);
     
 };

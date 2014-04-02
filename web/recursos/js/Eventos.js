@@ -15,5 +15,8 @@ Evento.innit = function() {
     });
 };
 
+Evento.cerrarSesion = function (){
+    $("#h_b_sesion").addEventListener("click", function (){location.reload()});
+};
 window.addEventListener("load",Evento.innit);
 console.log("Eventos cargados");

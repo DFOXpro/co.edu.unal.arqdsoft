@@ -16,16 +16,7 @@ var usuario = {
  */
 Contenido.cambiar = function (respuesta){
     if(respuesta.error.length > 0) $("#error").innerHTML=respuesta.error;
-    else {
-        if(usuario.id == "") {
-            usuario.id = respuesta.contenido.usuario.id;
-            usuario.rol = respuesta.contenido.usuario.rol;
-            usuario.nombre = respuesta.contenido.usuario.nombre;
-            $("#h_usuario").innerHTML=usuario.nombre;
-            $("#h_rol").innerHTML=usuario.rol;
-        }
-        $("section").innerHTML=respuesta.contenido.section;
-    }
+    else $("section").innerHTML=respuesta.contenido.section;
     //console.log("Contenido.cambiar: "+respuesta);
 };
 
