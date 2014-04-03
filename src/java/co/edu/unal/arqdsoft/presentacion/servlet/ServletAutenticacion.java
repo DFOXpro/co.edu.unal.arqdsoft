@@ -56,16 +56,11 @@ public class ServletAutenticacion extends HttpServlet {
                     r = new Respuesta("El usuario o la contraseña están mal escritas", new Contenido());
                 } else {
                     String t = JSON.getTemplate(getServletContext().getResourceAsStream("/vistas/" + emp.getRol().name() + ".html"));
-//POR SI ACASO
-//                    String template = "Hello %s Please find attached %s which is due on %s";
-//                    t = String.format(
-//                        t,
-//                        emp.getNombre(),
-//                        emp.getId(),
-//                        emp.getRol().name()
-//                    );
-
-                    Contenido c = new Contenido(emp, t);
+                    JSONObject d = new JSONObject();
+                    d.put("id", emp.getId());
+                    d.put("nombre", emp.getNombre());
+                    d.put("rol", emp.getRol().name());
+                    Contenido c = new Contenido(d, t);
                     r = new Respuesta("", c);
                 }
                 out.write(r.toJSON());

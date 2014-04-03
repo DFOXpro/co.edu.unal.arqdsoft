@@ -6,55 +6,51 @@
 
 package co.edu.unal.arqdsoft.presentacion;
 
-import co.edu.unal.arqdsoft.entidad.Empleado;
 import java.util.Objects;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONAware;
+import org.json.simple.JSONObject;
 
 /**
  *
  * @author dfoxpro
  */
 public class Contenido {
-    private Empleado usuario;
-    private String section;
+    private JSONAware dato;
+    private String html;
 
-    public Contenido(Empleado usuario, String section) {
-        this.usuario = usuario;
-        if(usuario != null){
-            this.usuario.setContrasena(null);
-            this.usuario.setHorarioDisponible(null);
-            this.usuario.setInformacion(null);
-        }
-        this.section = section;
+    public Contenido(JSONAware dato, String section) {
+        this.dato = dato;
+        this.html = section;
     }
     public Contenido() {
-        this.usuario = new Empleado();
-        this.usuario.setNombre("");
-        this.usuario.setId(0);
-        this.usuario.setRol(Empleado.roles.VENDEDOR);
-        this.section = "";
+        this.dato = new JSONObject();
+        this.html = "";
     }
 
-    public Empleado getUsuario() {
-        return usuario;
+    public JSONAware getDato() {
+        if(dato instanceof JSONObject) return (JSONObject) dato;
+        if(dato instanceof JSONArray) return (JSONArray) dato;
+        return null;
     }
 
-    public void setUsuario(Empleado usuario) {
-        this.usuario = usuario;
+    public void setDato(JSONAware dato) {
+        this.dato = dato;
     }
 
-    public String getSection() {
-        return section;
+    public String getHtml() {
+        return html;
     }
 
-    public void setSection(String section) {
-        this.section = section;
+    public void setHtml(String html) {
+        this.html = html;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.usuario);
-        hash = 97 * hash + Objects.hashCode(this.section);
+        hash = 97 * hash + Objects.hashCode(this.dato);
+        hash = 97 * hash + Objects.hashCode(this.html);
         return hash;
     }
 
@@ -67,25 +63,20 @@ public class Contenido {
             return false;
         }
         final Contenido other = (Contenido) obj;
-        if (!Objects.equals(this.usuario, other.usuario)) {
+        if (!Objects.equals(this.dato, other.dato)) {
             return false;
         }
-        if (!Objects.equals(this.section, other.section)) {
+        if (!Objects.equals(this.html, other.html)) {
             return false;
         }
         return true;
     }
 
     public String toJSON() {
-        if(usuario != null)
+        if(dato != null)
         return 
-            "{" +
-                "\"usuario\":{" +
-                    "\"nombre\":\""+usuario.getNombre() +
-                    "\",\"id\":\"" + usuario.getId() +
-                    "\", \"rol\":\"" + usuario.getRol().name() +
-                "\"}, \"section\":\"" + section + "\"}";
+            "{\"dato\":" +dato.toJSONString()+",\"html\":\"" + html + "\"}";
         else return
-            "{\"section\":\"" + section + "\"}";
+            "{\"html\":\"" + html + "\"}";
     }
 }

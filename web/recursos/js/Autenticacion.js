@@ -18,9 +18,9 @@ Autenticacion.verificar = function (){
 };
 Autenticacion.recibir = function (respuesta){
     if(respuesta.error.length == 0){
-        usuario.id = respuesta.contenido.usuario.id;
-        usuario.rol = respuesta.contenido.usuario.rol;
-        usuario.nombre = respuesta.contenido.usuario.nombre;
+        usuario.id = respuesta.contenido.dato.id;
+        usuario.rol = respuesta.contenido.dato.rol;
+        usuario.nombre = respuesta.contenido.dato.nombre;
 //        $("#h_usuario").html(usuario.nombre);
 //        $("#h_rol").html(usuario.rol);
         $("#h_b_sesion").class="";
@@ -28,14 +28,6 @@ Autenticacion.recibir = function (respuesta){
     Contenido.cambiarSeccion(respuesta);
 };
 Autenticacion.enviar = function (){
-    /*Modo JSON*/
-//    var data = {
-//        usuario:$("#a_usuario").value,
-//        contrasena:$("#a_contrasena").value
-//    };
-//    sendRequest(url_root+"autenticacion",Contenido.cambiar,JSON.stringify(data));
-
-    /* Modo request*/
     $("#error").html("Comprobando");
     sendRequest(
         "autenticacion",

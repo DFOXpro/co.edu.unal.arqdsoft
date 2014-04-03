@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package co.edu.unal.arqdsoft.presentacion.servlet;
 
 import co.edu.unal.arqdsoft.control.ControlProductos;
@@ -21,13 +20,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 /**
  *
  * @author dfoxpro
  */
-@WebServlet(name = "AdministrarProductos", urlPatterns = {"/administrarproductos"})
 public class ServletProductos extends HttpServlet {
 
     /**
@@ -44,27 +43,26 @@ public class ServletProductos extends HttpServlet {
         try {
             JSONObject obj = JSON.toObject(request);
             Respuesta r;
-            if(obj.get("accion").equals("listarProductos"))
+            if (obj.get("accion").equals("listarProductos")) {
                 r = listarProductos();
-            else if(obj.get("accion").equals("crearProductos"))
+            } else if (obj.get("accion").equals("crearProductos")) {
                 r = crearProductos(obj);
-            else if(obj.get("accion").equals("actualizarProductos"))
+            } else if (obj.get("accion").equals("actualizarProductos")) {
                 r = actualizarProductos(obj);
-            else if(obj.get("accion").equals("borrarProductos"))
+            } else if (obj.get("accion").equals("borrarProductos")) {
                 r = borrarProductos(obj);
-
-            else if(obj.get("accion").equals("listarPlanes"))
+            } else if (obj.get("accion").equals("listarPlanes")) {
                 r = listarPlanes();
-            else if(obj.get("accion").equals("crearPlanes"))
+            } else if (obj.get("accion").equals("crearPlanes")) {
                 r = crearPlanes(obj);
-            else if(obj.get("accion").equals("actualizarPlanes"))
+            } else if (obj.get("accion").equals("actualizarPlanes")) {
                 r = actualizarPlanes(obj);
-            else if(obj.get("accion").equals("borrarPlanes"))
+            } else if (obj.get("accion").equals("borrarPlanes")) {
                 r = borrarPlanes(obj);
-            else
+            } else {
                 r = new Respuesta("Error de comunicación", new Contenido());
+            }
 
-            
             response.setContentType("application/json;charset=UTF-8");
             try (PrintWriter out = response.getWriter()) {
                 out.write(r.toJSON());
@@ -78,7 +76,7 @@ public class ServletProductos extends HttpServlet {
             response.setContentType("application/json;charset=UTF-8");
             try (PrintWriter out = response.getWriter()) {
                 out.write(
-                    new Respuesta("Error de comunicación", new Contenido()).toJSON()
+                        new Respuesta("Error de comunicación", new Contenido()).toJSON()
                 );
             } catch (Exception ex1) {
                 Logger.getLogger(ServletProductos.class.getName()).log(Level.SEVERE, null, ex1);
@@ -126,15 +124,21 @@ public class ServletProductos extends HttpServlet {
     }// </editor-fold>
 
     private Respuesta listarProductos() {
-        String s = "";
-        ArrayList<Producto> prdts = new ArrayList();//ControlProductos.getProductos();
+        //ArrayList<Producto> prdts = ControlProductos.getProductos();
+        /*TEST*/
+        ArrayList<Producto> prdts = new ArrayList();
         prdts.add(new Producto("Telefono", null, 0));
         prdts.add(new Producto("Internet", null, 0));
         prdts.add(new Producto("PBX", null, 0));
-        for (Producto temp : prdts)
-            s+="<li><a href='#' onclick='doSomething(); return false;'>"+
-                temp.getNombre()+"</a></li>";
-        return new Respuesta("", new Contenido(null, s));
+        /*TEST FIN*/
+        JSONArray list = new JSONArray();
+        for (Producto temp : prdts) {
+            JSONObject t = new JSONObject();
+            t.put("nombre", temp.getNombre());
+            t.put("id", temp.getId());
+            list.add(t);
+        }
+        return new Respuesta("", new Contenido(list, ""));
     }
 
     private Respuesta listarPlanes() {

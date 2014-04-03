@@ -18,24 +18,11 @@
     <ul class="blocks-thumbs thumbs-rollover">
         <li>
             <ul id="ad_listaProductos">
-                <li><a>Prducto A</a></li>
-                <li><a>Prducto B</a></li>
-                <li><a>Prducto C</a></li>
-                <li><a>Prducto D</a></li>
-                <li><a>Prducto E</a></li>
-                <li><a>Prducto A</a></li>
-                <li><a>Prducto B</a></li>
-                <li><a>Prducto C</a></li>
-                <li><a>Prducto D</a></li>
-                <li><a>Prducto E</a></li>
-                <li><a>Prducto A</a></li>
-                <li><a>Prducto B</a></li>
-                <li><a>Prducto C</a></li>
-                <li><a>Prducto D</a></li>
-                <li><a>Prducto E</a></li>
+<!-- Dinamico futuro:
+Poner templates y sacar html del JS-->
             </ul>
         </li>
-        <li>
+        <li id="ad_infoProducto" class="hidden">
             <h2>Productos</h2>
             <label for='ad_id'>ID</label><br>
             <input id='ad_id' type='number' placeholder='05'><br>
@@ -57,8 +44,8 @@
         <li>
             <div>
                 <button id='ad_b_Crear'>Crear</button>
-                <button id='ad_b_Actualizar'>Actualizar</button>
-                <button id='ad_b_Borrar'>Borrar</button>
+                <button id='ad_b_Actualizar' class="hidden">Actualizar</button>
+                <button id='ad_b_Borrar' class="hidden">Borrar</button>
             </div>
         </li>
     </ul>
@@ -67,4 +54,4 @@
     <h2>Planes</h2>
     <span>//TODO</span>
 </article>
-<script src="recursos/js/Productos.js"></script>
+<script>Productos.innit();</script>

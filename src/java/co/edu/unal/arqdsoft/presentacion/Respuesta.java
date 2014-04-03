@@ -69,8 +69,10 @@ public class Respuesta {
     }
 
     public String toJSON() {
-        return "{\"error\":\""+ error +
-                "\",\"contenido\":" + contenido.toJSON()+
-                "}";
+        String s = "{\"error\":\""+ error +
+            "\",\"contenido\":" + contenido.toJSON()+
+            "}";
+        System.out.println(s);
+        return s;
     }
 }

@@ -1,8 +1,3 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 Productos = new Object();
 Productos.getProductos = function (){
     sendRequest(
@@ -14,12 +9,19 @@ Productos.getProductos = function (){
 };
 Productos.mostrarProductos = function (respuesta){
     if(respuesta.error.length == 0){
-        $("ad_listaProductos").html(respuesta.contenido.section);
-    }else $("#error").html(respuesta.error);
+        var array = respuesta.contenido.dato;
+        var s = "";
+        for (var i in array) {
+            s+="<li><a href='#' onclick='doSomething("+array[i].id+"); return false;'>"+array[i].nombre+"</a></li>";
+        }
+        $("#ad_listaProductos").html(s);
+    } else $("#error").html(respuesta.error);
 };
+
 Productos.getPlanes = function (){
     //TODO
 };
+
 Productos.innit = function (){
     Evento.menu($("#l_ad_productos"), $("#ad_productos"));
     Evento.menu($("#l_ad_planes"), $("#ad_planes"));
@@ -27,5 +29,18 @@ Productos.innit = function (){
     Productos.getProductos();
 };
 
-Productos.innit();
+Productos.mostrarProducto = function (respuesta){
+    
+};
+
+Productos.getProducto = function (nombre){
+    sendRequest(
+        "productos",
+        Productos.mostrarProducto,
+        "getProducto",
+        nombre
+    );
+};
+
+//Productos.innit();
 console.log("AdminProductos cargados");

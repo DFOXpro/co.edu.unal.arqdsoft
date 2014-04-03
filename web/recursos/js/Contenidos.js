@@ -16,7 +16,7 @@ var usuario = {
  */
 Contenido.cambiarSeccion = function (respuesta){
     if(respuesta.error.length > 0) $("#error").html(respuesta.error);
-    else $("section").html(respuesta.contenido.section);
+    else $("section").html(respuesta.contenido.html);
     //console.log("Contenido.cambiar: "+respuesta);
 };
 
