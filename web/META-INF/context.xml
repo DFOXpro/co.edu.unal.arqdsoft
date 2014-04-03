@@ -1,2 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context antiJARLocking="true" path="/co-edu-unal-arqdsoft"/>
+<Context antiJARLocking="true" path="/co-edu-unal-arqdsoft">
+  <Resource auth="Container" driverClassName="org.postgresql.Driver" maxActive="20" maxIdle="10" maxWait="-1" name="Postgre" password="lima09" type="javax.sql.DataSource" url="jdbc:postgresql://localhost/ArquiSoft" username="postgres"/>
+</Context>

@@ -19,7 +19,7 @@ import javax.persistence.ManyToMany;
  * @author Jhhfrancos
  */
 @Entity 
-public class Productos  implements Serializable{
+public class Producto  implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;
@@ -28,12 +28,12 @@ public class Productos  implements Serializable{
     private double valor;
     
     /**
-     *  Constructor de la clase productos especificando todos los campos exceptuando la id
+     *  Constructor de la clase producto especificando todos los campos exceptuando la id
      * @param nombre    Cadena de caracteres conteniendo el nombre del nuevo producto
      * @param descripcion   Cadena de caracteres con una descripcion breve del producto
      * @param valor     Valor monetario que tendra el producto en el mercado
      */
-    public Productos(String nombre, String descripcion, double valor) {
+    public Producto(String nombre, String descripcion, double valor) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.valor = valor;
@@ -93,9 +93,5 @@ public class Productos  implements Serializable{
      */
     public void setValor(double valor) {
         this.valor = valor;
-    }
-    
-    
-    
-                
+    }               
 }

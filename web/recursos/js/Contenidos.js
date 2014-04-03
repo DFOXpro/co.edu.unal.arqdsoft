@@ -14,10 +14,15 @@ var usuario = {
  * @param {type} req
  * @returns {undefined}
  */
-Contenido.cambiar = function (respuesta){
-    if(respuesta.error.length > 0) $("#error").innerHTML=respuesta.error;
-    else $("section").innerHTML=respuesta.contenido.section;
+Contenido.cambiarSeccion = function (respuesta){
+    if(respuesta.error.length > 0) $("#error").html(respuesta.error);
+    else $("section").html(respuesta.contenido.section);
     //console.log("Contenido.cambiar: "+respuesta);
+};
+
+Contenido.cambiarArticulo = function (articulo){
+    $("article").addClass("hidden");
+    articulo.removeClass("hidden");
 };
 
 console.log("Contenidos cargados");

@@ -3,13 +3,14 @@
   <persistence-unit name="co-edu-unal-arqdsoftPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <class>co.edu.unal.arqdsoft.entidad.Empleado</class>
+    <class>co.edu.unal.arqdsoft.entidad.Producto</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
-      <property name="hibernate.connection.username" value="postgres"/>
-      <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
-      <property name="hibernate.connection.password" value="lima09"/>
-      <property name="hibernate.connection.url" value="jdbc:postgresql://25.66.188.21/ArquiSoft"/>
+      <property name="hibernate.connection.username" value="app"/>
+      <property name="hibernate.connection.driver_class" value="org.apache.derby.jdbc.ClientDriver"/>
+      <property name="hibernate.connection.password" value="app"/>
+      <property name="hibernate.connection.url" value="jdbc:derby://localhost:1527/ArquiSoft"/>
       <property name="hibernate.hbm2ddl.auto" value="update"/>
     </properties>
   </persistence-unit>

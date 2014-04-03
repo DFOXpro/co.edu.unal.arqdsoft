@@ -24,7 +24,7 @@ import org.json.simple.JSONObject;
  *
  * @author dfoxpro
  */
-public class Autenticacion extends HttpServlet {
+public class ServletAutenticacion extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -45,8 +45,8 @@ public class Autenticacion extends HttpServlet {
             /*CONDUCTO REGULAR*/
             JSONObject obj = JSON.toObject(request);
             Empleado emp = ControlAutenticacion.cetificarUsuario(
-                    "" + obj.get("usuario"),
-                    "" + obj.get("contrasena")
+                    "" + obj.get("accion"),
+                    "" + obj.get("datos")
             );
             /*CONDUCTO REGULAR FIN*/
             response.setContentType("application/json;charset=UTF-8");
@@ -70,10 +70,10 @@ public class Autenticacion extends HttpServlet {
                 }
                 out.write(r.toJSON());
             } catch (Exception ex) {
-                Logger.getLogger(Autenticacion.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ServletAutenticacion.class.getName()).log(Level.SEVERE, null, ex);
             }
         } catch (Exception ex) {
-            Logger.getLogger(Autenticacion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletAutenticacion.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Error con el request, no es valido:" + ex);
         }
     }

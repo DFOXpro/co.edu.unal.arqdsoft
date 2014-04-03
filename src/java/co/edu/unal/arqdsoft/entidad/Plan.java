@@ -27,7 +27,7 @@ public class Plan implements Serializable{
     private String descripcion;
     private double valor; 
     //@ManyToMany
-    private List<Productos> productos;
+    private List<Producto> productos;
     
     /**
      *  Constructor de la clase plan para la creacion de  un nuevo plan especificando cada uno de los campos
@@ -37,7 +37,7 @@ public class Plan implements Serializable{
      * @param valor el costo que tendra el plan en el mercado
      * @param productos una lista conteniendo objetos de tipo productos con los productos que conforman el plan
      */
-    public Plan(int id, String nombre, String descripcion, double valor, List<Productos> productos) {
+    public Plan(int id, String nombre, String descripcion, double valor, List<Producto> productos) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -104,14 +104,14 @@ public class Plan implements Serializable{
     /**
      * @return the productos
      */
-    public List<Productos> getProductos() {
+    public List<Producto> getProductos() {
         return productos;
     }
 
     /**
      * @param productos the productos to set
      */
-    public void setProductos(List<Productos> productos) {
+    public void setProductos(List<Producto> productos) {
         this.productos = productos;
     }
 }

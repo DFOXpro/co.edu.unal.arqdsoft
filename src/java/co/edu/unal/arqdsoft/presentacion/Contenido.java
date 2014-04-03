@@ -19,9 +19,11 @@ public class Contenido {
 
     public Contenido(Empleado usuario, String section) {
         this.usuario = usuario;
-        this.usuario.setContrasena(null);
-        this.usuario.setHorarioDisponible(null);
-        this.usuario.setInformacion(null);
+        if(usuario != null){
+            this.usuario.setContrasena(null);
+            this.usuario.setHorarioDisponible(null);
+            this.usuario.setInformacion(null);
+        }
         this.section = section;
     }
     public Contenido() {
@@ -75,6 +77,7 @@ public class Contenido {
     }
 
     public String toJSON() {
+        if(usuario != null)
         return 
             "{" +
                 "\"usuario\":{" +
@@ -82,5 +85,7 @@ public class Contenido {
                     "\",\"id\":\"" + usuario.getId() +
                     "\", \"rol\":\"" + usuario.getRol().name() +
                 "\"}, \"section\":\"" + section + "\"}";
+        else return
+            "{\"section\":\"" + section + "\"}";
     }
 }

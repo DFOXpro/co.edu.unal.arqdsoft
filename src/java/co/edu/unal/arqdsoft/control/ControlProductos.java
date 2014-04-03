@@ -7,6 +7,7 @@ package co.edu.unal.arqdsoft.control;
 
 import co.edu.unal.arqdsoft.dao.*;
 import co.edu.unal.arqdsoft.entidad.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -23,5 +24,9 @@ public class ControlProductos {
         
         
         return false;
+    }
+    public static ArrayList<Producto> getProductos(){
+        //TODO
+        return null;
     }
 }

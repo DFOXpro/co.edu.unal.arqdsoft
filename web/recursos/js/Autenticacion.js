@@ -6,13 +6,13 @@
 Autenticacion = new Object();
 Autenticacion.verificar = function (){
     var r = {error:""};
-    if($("#a_usuario").value == "") r.error = "Escriba un usuario";
-    else if($("#a_contrasena").value == "" ) r.error = "Escriba una contraseña";
-    else if($("#a_usuario").value.length < 4 ) r.error = "Escriba bien el usuario";
-    else if($("#a_contrasena").value.length < 4 ) r.error = "Escriba bien la contraseña";
+    if($("#a_usuario").val() == "") r.error = "Escriba un usuario";
+    else if($("#a_contrasena").val() == "" ) r.error = "Escriba una contraseña";
+    else if($("#a_usuario").val().length < 4 ) r.error = "Escriba bien el usuario";
+    else if($("#a_contrasena").val().length < 4 ) r.error = "Escriba bien la contraseña";
     if (r.error == "") return true;
     else {
-        Contenido.cambiar(r);
+        Contenido.cambiarSeccion(r);
         return false;
     };
 };
@@ -21,14 +21,11 @@ Autenticacion.recibir = function (respuesta){
         usuario.id = respuesta.contenido.usuario.id;
         usuario.rol = respuesta.contenido.usuario.rol;
         usuario.nombre = respuesta.contenido.usuario.nombre;
-        $("#h_usuario").innerHTML=usuario.nombre;
-        $("#h_rol").innerHTML=usuario.rol;
+//        $("#h_usuario").html(usuario.nombre);
+//        $("#h_rol").html(usuario.rol);
         $("#h_b_sesion").class="";
-        $("#h_b_sesion").innerHTML="Cerrar sesión";
-        Evento.cerrarSesion();
-        $("section").innerHTML=respuesta.contenido.section;
     }
-    Contenido.cambiar(respuesta);
+    Contenido.cambiarSeccion(respuesta);
 };
 Autenticacion.enviar = function (){
     /*Modo JSON*/
@@ -39,8 +36,11 @@ Autenticacion.enviar = function (){
 //    sendRequest(url_root+"autenticacion",Contenido.cambiar,JSON.stringify(data));
 
     /* Modo request*/
-    $("#error").innerHTML = "Comprobando";
-    data = "usuario="+$("#a_usuario").value+"&contrasena="+$("#a_contrasena").value;
-    sendRequest(url_root+"autenticacion",Autenticacion.recibir,data);
-    
+    $("#error").html("Comprobando");
+    sendRequest(
+        "autenticacion",
+        Autenticacion.recibir,
+        $("#a_usuario").val(),
+        $("#a_contrasena").val()
+    );
 };

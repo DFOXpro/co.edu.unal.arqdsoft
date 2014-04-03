@@ -7,7 +7,7 @@ Evento = new Object();
 
 Evento.innit = function() {
     //console.log("a");
-    $("#autenticacion").addEventListener("submit", function(event) {
+    $("#autenticacion").submit(function(event) {
         //console.log("b");
         event.preventDefault();
         if(Autenticacion.verificar())
@@ -15,8 +15,12 @@ Evento.innit = function() {
     });
 };
 
-Evento.cerrarSesion = function (){
-    $("#h_b_sesion").addEventListener("click", function (){location.reload()});
+Evento.cerrarSesion = function (elemento){
+    elemento.click(function (){location.reload()});
 };
+
+Evento.menu = function (origen, objetivo){
+    origen.click(function (){Contenido.cambiarArticulo(objetivo)});
+}
 window.addEventListener("load",Evento.innit);
 console.log("Eventos cargados");

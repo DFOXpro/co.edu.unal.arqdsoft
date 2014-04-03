@@ -3,15 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-/**
- * 
- * @param {type} selector
- * @returns {DOM element}
- */
-$ = function(selector) {
-    return document.querySelector(selector);
-};
-
 
 //AJAX inicio
 /**
@@ -20,15 +11,16 @@ $ = function(selector) {
  * @param {string} data Datos a enviar Json 
  * @returns {undefined}
  */
-function sendRequest(url, callback, data) {
+function sendRequest(url, callback, accion, datos) {
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", url, true);
+    xhr.open("POST", url_root+url, true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.onreadystatechange = function() {//Call a function when the state changes.
         if (xhr.readyState == 4 && xhr.status == 200) {
             callback(JSON.parse(xhr.responseText));
         }
     };
+    var data = "accion="+accion+"&datos="+datos;
     console.log(data);
     //xhr.send("Content-Type: application/x-www-form-urlencoded\n\n"+"Content-Length: "+data.length+"\n"+data);
     xhr.send(data);

@@ -26,10 +26,10 @@ public class JSON {
      * @throws Exception 
      */
     public static JSONObject toObject(HttpServletRequest request) throws Exception {
-        if(request.getParameter("usuario")!= null){//Servidor independiente
+        if(request.getParameter("accion")!= null){//Servidor independiente
             JSONObject r = new JSONObject();
-            r.put("usuario", request.getParameter("usuario"));
-            r.put("contrasena", request.getParameter("contrasena"));
+            r.put("accion", request.getParameter("accion"));
+            r.put("datos", request.getParameter("datos"));
             return r;
         } else {//Servidor base netbeans
             InputStream is = request.getInputStream();

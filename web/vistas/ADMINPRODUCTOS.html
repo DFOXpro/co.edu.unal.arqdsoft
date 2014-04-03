@@ -4,20 +4,30 @@
     <div id="menu-holder">
         <!-- Navigation -->
         <ul id="nav" class="sf-menu">
-            <li class="current-menu-item">Plane<span class="subheader"></span></li>
-            <li>Productos<span class="subheader">Awesome options</span></li>
-            <li>Cerrar Session<span class="subheader">Get in touch</span></li>
+            <li id="l_ad_productos" class="current-menu-item"><a>Productos</a><span class="subheader"></span></li>
+            <li id="l_ad_planes"><a>Planes</a><span class="subheader">Awesome options</span></li>
+            <li id="l_ad_cerrarSesion"><a>Cerrar Sesión</a><span class="subheader">Get in touch</span></li>
         </ul>
         <!-- Navigation -->
     </div>
     <!-- ENDS menu-holder -->
 </div>
 <!-- ENDS Menu -->
-<article class="panes">
+<article id="ad_productos" class="panes">
     <div id='error'></div>
     <ul class="blocks-thumbs thumbs-rollover">
         <li>
-            <ul>
+            <ul id="ad_listaProductos">
+                <li><a>Prducto A</a></li>
+                <li><a>Prducto B</a></li>
+                <li><a>Prducto C</a></li>
+                <li><a>Prducto D</a></li>
+                <li><a>Prducto E</a></li>
+                <li><a>Prducto A</a></li>
+                <li><a>Prducto B</a></li>
+                <li><a>Prducto C</a></li>
+                <li><a>Prducto D</a></li>
+                <li><a>Prducto E</a></li>
                 <li><a>Prducto A</a></li>
                 <li><a>Prducto B</a></li>
                 <li><a>Prducto C</a></li>
@@ -53,7 +63,8 @@
         </li>
     </ul>
 </article>
-<article>
+<article id="ad_planes" class="hidden">
     <h2>Planes</h2>
     <span>//TODO</span>
 </article>
+<script src="recursos/js/Productos.js"></script>

@@ -6,7 +6,7 @@
 
 package co.edu.unal.arqdsoft.dao;
 
-import co.edu.unal.arqdsoft.entidad.Productos;
+import co.edu.unal.arqdsoft.entidad.Producto;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -40,16 +40,16 @@ public class DaoProductosTest {
     }
 
     /**
-     * Test of crear method, of class DaoProductos.
+     * Test of crear method, of class DaoProducto.
      */
     @Test
     public void testCrear() {
         System.out.println("crear");
         //int id = 132456;
         double valor = 11111;
-        Productos productos = new Productos(null, null, valor);
+        Producto productos = new Producto(null, null, valor);
         System.out.print("creo o no creo...pero llego aca");
-        DaoProductos daoProducto = new DaoProductos();
+        DaoProducto daoProducto = new DaoProducto();
         
         daoProducto.crear(productos);
         //TODO
