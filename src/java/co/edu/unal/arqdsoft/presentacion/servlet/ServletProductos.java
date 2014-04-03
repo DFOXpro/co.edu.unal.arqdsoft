@@ -45,6 +45,8 @@ public class ServletProductos extends HttpServlet {
             Respuesta r;
             if (obj.get("accion").equals("listarProductos")) {
                 r = listarProductos();
+            } else if (obj.get("accion").equals("getProducto")) {
+                r = getProducto(obj);
             } else if (obj.get("accion").equals("crearProductos")) {
                 r = crearProductos(obj);
             } else if (obj.get("accion").equals("actualizarProductos")) {
@@ -139,6 +141,31 @@ public class ServletProductos extends HttpServlet {
             list.add(t);
         }
         return new Respuesta("", new Contenido(list, ""));
+    }
+
+    private Respuesta getProducto(JSONObject obj) {
+        String error = "Problemas con la comunicación";
+        try{
+            //Producto p = ControlProductos.getProducto((int) obj.get("datos"));
+            /*TEST*/
+            Producto p = new Producto("Telefono", "muy comunicativo", 18000);
+            p.setId(123);
+            /*TEST FIN*/
+            if(p != null){
+                JSONObject t = new JSONObject();
+                t.put("nombre", p.getNombre());
+                t.put("id", p.getId());
+                t.put("descripcion", p.getDescripcion());
+                t.put("valor", p.getValor());
+                return new Respuesta("", new Contenido(t, ""));
+            }else{
+                error = "No existe el producto, no debería de pasar, no sea curioso";//ERROR de SEGURIDAD
+                throw new SecurityException(obj.get("datos").toString());
+            }
+        } catch(Exception ex){
+            return new Respuesta(error, new Contenido());
+        }
+        return null;
     }
 
     private Respuesta listarPlanes() {
