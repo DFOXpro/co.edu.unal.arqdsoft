@@ -10,20 +10,31 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link type="text/css" rel="stylesheet" href="recursos/css/app.css">
+        <!-- CSS -->
+        <link rel="stylesheet" href="recursos/css/style.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="recursos/css/tabs.css" type="text/css" media="screen" />
+        <!--[if IE 8]>
+                <link rel="stylesheet" type="text/css" media="screen" href="css/ie8-hacks.css" />
+        <![endif]-->
     </head>
-    <body>
+    <body class="home">
         <header>
-            <span id="h_usuario"></span>
-            <span id="h_rol"></span>
-            <button id="h_b_sesion" class="hidden">Iniciar seción</button>
+            <article>
+                <a href="index.html"><img id="logo" src="recursos/img/logo.png" alt="Nova" /></a>
+                <span id="h_usuario"></span>
+                <span id="h_rol"></span>
+                <button id="h_b_sesion" class="hidden">Iniciar seción</button>
+            </article>
         </header>
         <section>
-            <form id="autenticacion">
-                <input type="text" id="a_usuario" placeholder="Usuario">
-                <input type="password" id="a_contrasena" placeholder="Contraseña">
-                <input type="submit" value="Ingresar">
-                <div id="error" class="error"></div>
-            </form>
+            <article>
+                <form id="autenticacion">
+                    <input type="text" id="a_usuario" placeholder="Usuario">
+                    <input type="password" id="a_contrasena" placeholder="Contraseña">
+                    <input type="submit" value="Ingresar">
+                    <div id="error" class="error"></div>
+                </form>
+            </article>
         </section>
         <footer></footer>
         <script type="text/javascript">

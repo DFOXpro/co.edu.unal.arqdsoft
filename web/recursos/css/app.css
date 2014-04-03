@@ -7,6 +7,9 @@ and open the template in the editor.
     Created on : 30/03/2014, 07:29:08 PM
     Author     : dfoxpro
 */
+article {
+    margin-top: 20px;
+}
 .error {
     color: red;
 }

@@ -39,6 +39,7 @@ Autenticacion.enviar = function (){
 //    sendRequest(url_root+"autenticacion",Contenido.cambiar,JSON.stringify(data));
 
     /* Modo request*/
+    $("#error").innerHTML = "Comprobando";
     data = "usuario="+$("#a_usuario").value+"&contrasena="+$("#a_contrasena").value;
     sendRequest(url_root+"autenticacion",Autenticacion.recibir,data);
     
