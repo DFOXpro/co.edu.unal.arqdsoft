@@ -26,7 +26,10 @@ Productos.setProducto = function (){
     }
     sendRequest(
         "productos",
-        Productos.mostrarProductos,
+        function (respuesta){
+            Productos.mostrarProducto(respuesta);
+            Productos.getProductos();
+        },
         "setProducto",
         JSON.stringify(data)
     );
@@ -62,7 +65,7 @@ Productos.getPlanes = function (){
 Productos.innit = function (){
     Evento.menu($("#l_ad_productos"), $("#ad_productos"));
     Evento.boton($("#ad_b_CrearProductos"), function (){
-        $("#ad_idProductos").val(0);
+        $("#ad_idProductos").val(-1);
         Productos.setProducto();
     });
     Evento.boton($("#ad_b_ActualizarProductos"), Productos.setProducto);

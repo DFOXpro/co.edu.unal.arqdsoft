@@ -169,9 +169,14 @@ public class ServletProductos extends HttpServlet {
     }
 
     private Respuesta setProductos(JSONObject obj) {
+        String error = "Problemas con la comunicación";
         try{
             obj = (JSONObject)JSONValue.parse(obj.get("datos").toString());
-            ControlProductos.setProducto((int)obj.get("id"), obj.get("nombre"), obj.get("descripcion"), obj.get("valor"));
+            Producto p = ControlProductos.setProducto(
+                (int)obj.get("id"),
+                obj.get("nombre").toString(),
+                obj.get("descripcion").toString(),
+                (double)obj.get("valor"));
             if(p != null){
                 JSONObject t = new JSONObject();
                 t.put("nombre", p.getNombre());
@@ -180,8 +185,8 @@ public class ServletProductos extends HttpServlet {
                 t.put("valor", p.getValor());
                 return new Respuesta("", new Contenido(t, ""));
             }else{
-                error = "No existe el producto, no debería de pasar, no sea curioso";//ERROR de SEGURIDAD
-                throw new SecurityException(obj.get("datos").toString());
+                error = "No se creó el producto";
+                throw new Exception();
             }
         } catch(Exception ex){
             return new Respuesta(error, new Contenido());
