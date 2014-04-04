@@ -30,7 +30,7 @@ public class ControlVentas {
      * @param plan plan que el cliente adquiere
      * @return retorna si se hizo la venta
      */
-    public boolean venta(String empleado, String[] cliente, Plan plan) {
+    public boolean venta(String empleado, String[] cliente, int plan) {
         this.agregarCliente(Integer.valueOf(cliente[0]), cliente[1],cliente[2],plan);
         
         return false;
@@ -43,9 +43,9 @@ public class ControlVentas {
      * @param plan
      * @return
      */
-    public boolean ventaCE(String empleado, int cliente, Plan plan) {
-        DaoVenta.CrearVenta(cliente,empleado,plan);
-        
+    public boolean ventaCE(String empleado, int cliente, String[] plan) {
+        Plan planE=new Plan(0/*id*/, null, null, 0.0/*valor*/, null);
+        DaoVenta.CrearVenta(cliente,empleado,planE);
         return false;
     }
 
@@ -54,11 +54,12 @@ public class ControlVentas {
      * @param id
      * @param nombre
      * @param informacion
-     * @param planes
+     * @param idPlan
      * @return
      */
-    public boolean agregarCliente(int id, String nombre, String informacion, Plan planes) {
-        Cliente e = new Cliente(id, nombre, informacion, plan, null);
+    public boolean agregarCliente(int id, String nombre, String informacion,int idPlan) {
+        DaoCliente.NuevoCliente(id,nombre,informacion,idPlan);
         return false;
     }
+
 }

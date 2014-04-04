@@ -6,10 +6,20 @@
 
 package co.edu.unal.arqdsoft.dao;
 
+import co.edu.unal.arqdsoft.entidad.Cliente;
+
 /**
  *
  * @author dfoxpro
  */
 public class DaoCliente {
+
+    public static void NuevoCliente(Cliente e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static void NuevoCliente(int id, String nombre, String informacion, int idPlan) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
