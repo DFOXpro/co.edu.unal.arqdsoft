@@ -11,22 +11,28 @@ import java.util.ArrayList;
 
 /**
  *
- * @author dfoxpro
+ * @author dmlr7
  */
 public class ControlProductos {
 
-    public boolean nuevoProducto(String empleado,String cliente,Plan pĺan) {
-        
-        
+    public boolean nuevoProducto(String empleado, String cliente, Plan pĺan) {
+
         return false;
     }
-    public boolean modificarProducto(String empleado,String cliente,Plan pĺan) {
-        
-        
+
+    public boolean modificarProducto(String empleado, String cliente, Plan pĺan) {
+
         return false;
     }
-    public static ArrayList<Producto> getProductos(){
+
+    public static ArrayList<Producto> getProductos() {
         //TODO
-        return null;
+        ArrayList<Producto> P = DaoProducto.getProductos();
+        return P;
+    }
+    public static ArrayList<Plan> getPlanes() {
+        //TODO
+        ArrayList<Plan> P = DaoPlan.getPlanes();
+        return P;
     }
 }

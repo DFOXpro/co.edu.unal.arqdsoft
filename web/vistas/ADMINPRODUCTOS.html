@@ -18,40 +18,73 @@
     <ul class="blocks-thumbs thumbs-rollover">
         <li>
             <ul id="ad_listaProductos">
-<!-- Dinamico futuro:
-Poner templates y sacar html del JS-->
+                <!-- Dinamico futuro:
+                Poner templates y sacar html del JS-->
             </ul>
         </li>
         <li id="ad_infoProducto" class="hidden">
             <h2>Productos</h2>
-            <label for='ad_id'>ID</label><br>
-            <input id='ad_id' type='number' placeholder='05'><br>
+            <label for='ad_idProductos'>ID</label><br>
+            <input id='ad_idProductos' type='number' placeholder='05'><br>
             <!--Obsolete
                             <button id='Buscar'>Buscar</button>-->
             <div>
                 <label for='ad_nombre'>Nombre</label><br>
-                <input id='ad_nombre' type='text' placeholder='05'><br>
+                <input id='ad_nombreProductos' type='text' placeholder='05'><br>
             </div>
             <div>
                 <label for='ad_descripcion'>Descripción</label><br>
-                <input id='ad_descripcion' type='text' placeholder='05'><br>
+                <input id='ad_descripcionProductos' type='text' placeholder='05'><br>
             </div>
             <div>
                 <label for='ad_valor'>Valor</label><br>
-                <input id='ad_valor' type='number' placeholder='05'><br>
+                <input id='ad_valorProductos' type='number' placeholder='05'><br>
             </div>
         </li>
         <li>
             <div>
-                <button id='ad_b_Crear'>Crear</button>
-                <button id='ad_b_Actualizar' class="hidden">Actualizar</button>
-                <button id='ad_b_Borrar' class="hidden">Borrar</button>
+                <button id='ad_b_CrearProductos'>Crear</button>
+                <button id='ad_b_ActualizarProductos' class="hidden">Actualizar</button>
+                <button id='ad_b_BorrarProductos' class="hidden">Borrar</button>
             </div>
         </li>
     </ul>
 </article>
 <article id="ad_planes" class="hidden">
     <h2>Planes</h2>
-    <span>//TODO</span>
+    <ul class="blocks-thumbs thumbs-rollover">
+        <li>
+            <ul id="ad_listaPlanes">
+                <!-- Dinamico futuro:
+                Poner templates y sacar html del JS-->
+            </ul>
+        </li>
+        <li id="ad_infoPlanes" class="hidden">
+            <h2>Productos</h2>
+            <label for='ad_idPlanes'>ID</label><br>
+            <input id='ad_idPlanes' type='number' placeholder='05'><br>
+            <!--Obsolete
+                            <button id='Buscar'>Buscar</button>-->
+            <div>
+                <label for='ad_nombrePlanes'>Nombre</label><br>
+                <input id='ad_nombrePlanes' type='text' placeholder='05'><br>
+            </div>
+            <div>
+                <label for='ad_descripcionPlanes'>Descripción</label><br>
+                <input id='ad_descripcionPlanes' type='text' placeholder='05'><br>
+            </div>
+            <div>
+                <label for='ad_valorPlanes'>Valor</label><br>
+                <input id='ad_valorPlanes' type='number' placeholder='05'><br>
+            </div>
+        </li>
+        <li>
+            <div>
+                <button id='ad_b_CrearPlanes'>Crear</button>
+                <button id='ad_b_ActualizarPlanes' class="hidden">Actualizar</button>
+                <button id='ad_b_BorrarPlanes' class="hidden">Borrar</button>
+            </div>
+        </li>
+    </ul>
 </article>
 <script>Productos.innit();</script>
