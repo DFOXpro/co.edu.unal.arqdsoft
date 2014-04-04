@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
 
 /**
  *
@@ -47,16 +48,14 @@ public class ServletProductos extends HttpServlet {
                 r = listarProductos();
             } else if (obj.get("accion").equals("getProducto")) {
                 r = getProducto(obj);
-            } else if (obj.get("accion").equals("setProductos")) {
+            } else if (obj.get("accion").equals("setProducto")) {
                 r = setProductos(obj);//Crear y Actualizar
-            } else if (obj.get("accion").equals("borrarProductos")) {
+            } else if (obj.get("accion").equals("borrarProducto")) {
                 r = borrarProductos(obj);
             } else if (obj.get("accion").equals("listarPlanes")) {
                 r = listarPlanes();
-            } else if (obj.get("accion").equals("crearPlanes")) {
-                r = crearPlanes(obj);
-            } else if (obj.get("accion").equals("actualizarPlanes")) {
-                r = actualizarPlanes(obj);
+            } else if (obj.get("accion").equals("setPlan")) {
+                r = setPlanes(obj);
             } else if (obj.get("accion").equals("borrarPlanes")) {
                 r = borrarPlanes(obj);
             } else {
@@ -170,18 +169,30 @@ public class ServletProductos extends HttpServlet {
     }
 
     private Respuesta setProductos(JSONObject obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try{
+            obj = (JSONObject)JSONValue.parse(obj.get("datos").toString());
+            ControlProductos.setProducto((int)obj.get("id"), obj.get("nombre"), obj.get("descripcion"), obj.get("valor"));
+            if(p != null){
+                JSONObject t = new JSONObject();
+                t.put("nombre", p.getNombre());
+                t.put("id", p.getId());
+                t.put("descripcion", p.getDescripcion());
+                t.put("valor", p.getValor());
+                return new Respuesta("", new Contenido(t, ""));
+            }else{
+                error = "No existe el producto, no debería de pasar, no sea curioso";//ERROR de SEGURIDAD
+                throw new SecurityException(obj.get("datos").toString());
+            }
+        } catch(Exception ex){
+            return new Respuesta(error, new Contenido());
+        }
     }
 
     private Respuesta borrarProductos(JSONObject obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private Respuesta crearPlanes(JSONObject obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private Respuesta actualizarPlanes(JSONObject obj) {
+    private Respuesta setPlanes(JSONObject obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

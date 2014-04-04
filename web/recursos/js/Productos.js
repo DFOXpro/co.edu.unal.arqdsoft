@@ -26,8 +26,8 @@ Productos.setProducto = function (){
     }
     sendRequest(
         "productos",
-        Contenido.cambiarSeccion(/*Sea lo que sea devuelve un dato en error XD*/),
-        "getProducto",
+        Productos.mostrarProductos,
+        "setProducto",
         JSON.stringify(data)
     );
 };
@@ -65,7 +65,7 @@ Productos.innit = function (){
         $("#ad_idProductos").val(0);
         Productos.setProducto();
     });
-
+    Evento.boton($("#ad_b_ActualizarProductos"), Productos.setProducto);
     Evento.menu($("#l_ad_planes"), $("#ad_planes"));
     Evento.cerrarSesion($("#l_ad_cerrarSesion"));
     Productos.getProductos();
