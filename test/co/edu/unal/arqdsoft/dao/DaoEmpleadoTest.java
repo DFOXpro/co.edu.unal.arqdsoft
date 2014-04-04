@@ -58,7 +58,7 @@ public class DaoEmpleadoTest {
         Empleado empleado= new Empleado(nombre,informacion,horarioDisponible,usuario,contrasena,rol);
         dao.persist(empleado);
         dao.persist(new Empleado("Pedro", "abc", null, "pedro", "123456", Empleado.roles.ADMINPRODUCTOS));
-        dao.persist(new Empleado("Potter", "abc", null, "potter", "123456", Empleado.roles.TECNICO));
+        dao.persist(new Empleado("Polo", "abc", null, "potter", "123456", Empleado.roles.TECNICO));
         dao.persist(new Empleado("Potter", "abc", null, "polo", "123456", Empleado.roles.VENDEDOR));
         System.out.println(empleado.getNombre()+" "+empleado.getInformacion());
     }
