@@ -176,7 +176,7 @@ public class ServletProductos extends HttpServlet {
                 (int)obj.get("id"),
                 obj.get("nombre").toString(),
                 obj.get("descripcion").toString(),
-                (double)obj.get("valor"));
+                obj.get("valor").toString());
             if(p != null){
                 JSONObject t = new JSONObject();
                 t.put("nombre", p.getNombre());
