@@ -26,13 +26,11 @@ public class ControlProductos {
     }
 
     public static ArrayList<Producto> getProductos() {
-        //TODO
-        ArrayList<Producto> P = DaoProducto.getProductos();
-        return P;
+        //TODO 
+        return DaoProducto.getProductos();
     }
     public static ArrayList<Plan> getPlanes() {
         //TODO
-        ArrayList<Plan> P = DaoPlan.getPlanes();
-        return P;
+        return DaoPlan.getPlanes();
     }
 }
