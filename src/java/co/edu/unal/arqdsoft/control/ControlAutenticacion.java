@@ -13,6 +13,7 @@ import co.edu.unal.arqdsoft.entidad.*;
  * @author dmlr
  */
 public class ControlAutenticacion {
+
     /**
      * Comprueba que el usuario que esta ingresando exista en la base de datos.
      *
@@ -22,8 +23,9 @@ public class ControlAutenticacion {
      */
     public static Empleado cetificarUsuario(String usuario, String contraseña) {
         Empleado a = DaoEmpleado.login(usuario, contraseña);
-        if(a==null)
+        if (a == null) {
             return null;
+        }
         a.setUsuario(null);
         a.setContrasena(null);
         return a;

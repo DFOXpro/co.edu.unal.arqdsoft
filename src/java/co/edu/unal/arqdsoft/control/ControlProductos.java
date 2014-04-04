@@ -15,20 +15,43 @@ import java.util.ArrayList;
  */
 public class ControlProductos {
 
-    public boolean nuevoProducto(String empleado, String cliente, Plan pĺan) {
+    /**
+     *
+     * @param empleado empleado que
+     * @param cliente
+     * @param pĺan
+     * @return
+     */
+    public static boolean nuevoProducto(String empleado, String cliente, Plan pĺan) {
 
         return false;
     }
 
-    public boolean modificarProducto(String empleado, String cliente, Plan pĺan) {
+    /**
+     *
+     * @param empleado
+     * @param cliente
+     * @param pĺan
+     * @return
+     */
+    public static boolean modificarProducto(String empleado, String cliente, Plan pĺan) {
 
         return false;
     }
 
+    /**
+     *
+     * @return
+     */
     public static ArrayList<Producto> getProductos() {
         //TODO 
         return DaoProducto.getProductos();
     }
+
+    /**
+     *
+     * @return
+     */
     public static ArrayList<Plan> getPlanes() {
         //TODO
         return DaoPlan.getPlanes();

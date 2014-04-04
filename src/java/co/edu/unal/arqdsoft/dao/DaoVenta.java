@@ -6,10 +6,16 @@
 
 package co.edu.unal.arqdsoft.dao;
 
+import co.edu.unal.arqdsoft.entidad.Plan;
+
 /**
  *
  * @author dfoxpro
  */
 public class DaoVenta {
+
+    public static void CrearVenta(int cliente, String empleado, Plan plan) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

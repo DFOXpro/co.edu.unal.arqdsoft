@@ -50,7 +50,7 @@
         </li>
     </ul>
 </article>
-<article id="ad_planes" class="hidden">
+<article id="ad_planes" class="panes">
     <h2>Planes</h2>
     <ul class="blocks-thumbs thumbs-rollover">
         <li>
@@ -77,16 +77,18 @@
                 <label for='ad_valorPlanes'>Valor</label><br>
                 <input id='ad_valorPlanes' type='number' placeholder='05'><br>
             </div><div>
-                <label for='ad_ProductosPlanes'>Valor</label><br>
-                <input id='ad_ProductosPlanes' type='number' placeholder='05'><br>
+                <label for='ad_ProductosPlanes'>lista</label><br>
+                <select id="ad_ProductosPlanes">
+                    <optgroup></optgroup>
+                </select><br>
             </div>
         </li>
         <li>
             <div>
-                <button id='ad_b_CrearPlanes' onclick="unhidde()">Crear</button>
+                <button id='ad_b_CrearPlanes' onclick="unhidde()" >Crear</button>
                 <script>function unhidde()
                     {
-                        document.getElementById('ad_infoPlanes').setAttribute('class','pane')
+                        document.getElementById('ad_infoPlanes').setAttribute('class', 'pane')
                     }
                 </script>
                 <button id='ad_b_ActualizarPlanes' class="hidden">Actualizar</button>
