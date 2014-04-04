@@ -17,6 +17,21 @@ Productos.getProducto = function (id){
     );
 };
 
+Productos.setProducto = function (){
+    var data = {
+        id:$("#ad_idProductos").val(),
+        nombre:$("#ad_nombreProductos").val(),
+        descripcion:$("#ad_descripcionProductos").val(),
+        valor:$("#ad_valorProductos").val()
+    }
+    sendRequest(
+        "productos",
+        Contenido.cambiarSeccion(/*Sea lo que sea devuelve un dato en error XD*/),
+        "getProducto",
+        JSON.stringify(data)
+    );
+};
+
 Productos.mostrarProductos = function (respuesta){
     if(respuesta.error.length == 0){
         var array = respuesta.contenido.dato;
@@ -46,6 +61,11 @@ Productos.getPlanes = function (){
 
 Productos.innit = function (){
     Evento.menu($("#l_ad_productos"), $("#ad_productos"));
+    Evento.boton($("#ad_b_CrearProductos"), function (){
+        $("#ad_idProductos").val(0);
+        Productos.setProducto();
+    });
+
     Evento.menu($("#l_ad_planes"), $("#ad_planes"));
     Evento.cerrarSesion($("#l_ad_cerrarSesion"));
     Productos.getProductos();

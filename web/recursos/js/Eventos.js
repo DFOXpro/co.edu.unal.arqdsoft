@@ -21,6 +21,10 @@ Evento.cerrarSesion = function (elemento){
 
 Evento.menu = function (origen, objetivo){
     origen.click(function (){Contenido.cambiarArticulo(objetivo)});
-}
+};
+
+Evento.boton = function (boton, funcion){
+    boton.click(funcion);
+};
 window.addEventListener("load",Evento.innit);
 console.log("Eventos cargados");
