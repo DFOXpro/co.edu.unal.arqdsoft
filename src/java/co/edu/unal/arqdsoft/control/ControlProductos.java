@@ -23,7 +23,7 @@ public class ControlProductos {
      */
     public static boolean nuevoProducto(String[] producto) {
         Producto p = new Producto(producto[0], producto[1], Double.valueOf(producto[2]));
-        DaoProducto.crearProducto(p);        
+        DaoProducto.crearProducto(p);
         return false;
     }
 
@@ -58,7 +58,7 @@ public class ControlProductos {
      * @return
      */
     public static boolean modificarPlan(int id, String[] plan) {
-        
+
         return false;
     }
 
@@ -98,5 +98,16 @@ public class ControlProductos {
     public static Plan getPlane(int idPlan) {
         //TODO
         return DaoPlan.getPlane(idPlan);
+    }
+
+    public static Producto setProducto(int id, String get, String get0, String get1) {
+        String[] p={get,get0,get1};
+        if (id != -1) {
+            ControlProductos.nuevoProducto(p);
+        } else {
+            ControlProductos.modificarProducto(id,p);
+        }
+
+        return null;
     }
 }
