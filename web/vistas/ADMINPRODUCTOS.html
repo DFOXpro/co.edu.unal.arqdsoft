@@ -4,7 +4,7 @@
     <div id="menu-holder">
         <!-- Navigation -->
         <ul id="nav" class="sf-menu">
-            <li id="l_ad_productos" class="current-menu-item"><a>Productos</a><span class="subheader"></span></li>
+            <li id="l_ad_productos"><a>Productos</a><span class="subheader"></span></li>
             <li id="l_ad_planes"><a>Planes</a><span class="subheader">Awesome options</span></li>
             <li id="l_ad_cerrarSesion"><a>Cerrar Sesión</a><span class="subheader">Get in touch</span></li>
         </ul>
@@ -13,8 +13,9 @@
     <!-- ENDS menu-holder -->
 </div>
 <!-- ENDS Menu -->
+<div id='error'></div>
 <article id="ad_productos" class="panes">
-    <div id='error'></div>
+    <h2>Productos</h2>
     <ul class="blocks-thumbs thumbs-rollover">
         <li>
             <ul id="ad_listaProductos">
@@ -23,9 +24,8 @@
             </ul>
         </li>
         <li id="ad_infoProducto" class="hidden">
-            <h2>Productos</h2>
             <label for='ad_idProductos'>ID</label><br>
-            <input id='ad_idProductos' type='number' placeholder='05'><br>
+            <input id='ad_idProductos' type='number' placeholder='05' disabled><br>
             <!--Obsolete
                             <button id='Buscar'>Buscar</button>-->
             <div>
@@ -50,7 +50,7 @@
         </li>
     </ul>
 </article>
-<article id="ad_planes" class="panes">
+<article id="ad_planes" class="panes hidden">
     <h2>Planes</h2>
     <ul class="blocks-thumbs thumbs-rollover">
         <li>

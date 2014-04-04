@@ -47,10 +47,8 @@ public class ServletProductos extends HttpServlet {
                 r = listarProductos();
             } else if (obj.get("accion").equals("getProducto")) {
                 r = getProducto(obj);
-            } else if (obj.get("accion").equals("crearProductos")) {
-                r = crearProductos(obj);
-            } else if (obj.get("accion").equals("actualizarProductos")) {
-                r = actualizarProductos(obj);
+            } else if (obj.get("accion").equals("setProductos")) {
+                r = setProductos(obj);//Crear y Actualizar
             } else if (obj.get("accion").equals("borrarProductos")) {
                 r = borrarProductos(obj);
             } else if (obj.get("accion").equals("listarPlanes")) {
@@ -171,11 +169,7 @@ public class ServletProductos extends HttpServlet {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private Respuesta crearProductos(JSONObject obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private Respuesta actualizarProductos(JSONObject obj) {
+    private Respuesta setProductos(JSONObject obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
