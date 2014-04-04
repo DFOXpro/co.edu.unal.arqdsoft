@@ -39,7 +39,7 @@ public class DaoProducto {
             em.close();
         }
     }
-    public static ArrayList<Producto> getProductos() {
+    public static ArrayList<Producto> getProductos(int idProducto) {
         
         return null;
 

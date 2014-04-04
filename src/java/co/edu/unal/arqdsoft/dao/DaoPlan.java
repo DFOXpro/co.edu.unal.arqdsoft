@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class DaoPlan {
 
-    public static ArrayList<Plan> getPlanes() {
+    public static ArrayList<Plan> getPlanes(int idPlan) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

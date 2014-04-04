@@ -52,7 +52,7 @@ public class ControlProductos {
     /**
      *
      * @param id id del producto a modificar
-     * @param producto nueva definicion del producto
+     * @param plan id del plan a modificar
      * @return
      */
     public static boolean modificarPlan(int id, String[] plan) {
@@ -64,17 +64,17 @@ public class ControlProductos {
      *
      * @return
      */
-    public static ArrayList<Producto> getProductos() {
+    public static ArrayList<Producto> getProductos(int idProducto) {
         //TODO 
-        return DaoProducto.getProductos();
+        return DaoProducto.getProductos(idProducto);
     }
 
     /**
      *
      * @return
      */
-    public static ArrayList<Plan> getPlanes() {
+    public static ArrayList<Plan> getPlanes(int idPlan) {
         //TODO
-        return DaoPlan.getPlanes();
+        return DaoPlan.getPlanes(idPlan);
     }
 }
