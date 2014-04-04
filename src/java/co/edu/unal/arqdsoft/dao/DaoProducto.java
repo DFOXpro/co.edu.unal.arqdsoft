@@ -19,6 +19,14 @@ import javax.persistence.Persistence;
  */
 public class DaoProducto {
 
+    public static void modificarProducto(int idProducto, Producto p) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static Producto getProducto(int idProducto) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public DaoProducto() {
     }
 
@@ -39,7 +47,7 @@ public class DaoProducto {
             em.close();
         }
     }
-    public static ArrayList<Producto> getProductos(int idProducto) {
+    public static ArrayList<Producto> getProductos() {
         
         return null;
 
