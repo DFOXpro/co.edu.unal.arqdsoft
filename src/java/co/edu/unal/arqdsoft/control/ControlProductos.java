@@ -99,15 +99,28 @@ public class ControlProductos {
         //TODO
         return DaoPlan.getPlane(idPlan);
     }
-
+    
+    /**
+     *
+     * @param id id del producto a modificar / nulo si se esta creando
+     * @param get nombre del producto
+     * @param get0 descripcion del producto
+     * @param get1 valor del producto
+     * @return retorna nulo si no se creo el producto o no se modifico
+     */
     public static Producto setProducto(int id, String get, String get0, String get1) {
-        String[] p={get,get0,get1};
-        if (id != -1) {
-            ControlProductos.nuevoProducto(p);
-        } else {
-            ControlProductos.modificarProducto(id,p);
-        }
 
-        return null;
+        Producto p2 = new Producto(get, get0, Double.valueOf(get1));
+        try {
+            String[] p = {get, get0, get1};
+            if (id != -1) {
+                ControlProductos.nuevoProducto(p);
+            } else {
+                ControlProductos.modificarProducto(id, p);
+            }
+        } catch (Exception e) {
+            return null;
+        }
+        return p2;
     }
 }
