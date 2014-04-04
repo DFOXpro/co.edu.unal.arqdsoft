@@ -4,9 +4,8 @@
     <div id="menu-holder">
         <!-- Navigation -->
         <ul id="nav" class="sf-menu">
-            <li id="l_ad_productos"><a>Productos</a><span class="subheader"></span></li>
-            <li id="l_ad_planes"><a>Planes</a><span class="subheader">Awesome options</span></li>
-            <li id="l_ad_cerrarSesion"><a>Cerrar Sesión</a><span class="subheader">Get in touch</span></li>
+            <li id="l_ad_productos"><a>Venta</a><span class="subheader">Realizar venta</span></li>
+            <li id="l_ad_cerrarSesion"><a>Cerrar Sesión</a>
         </ul>
         <!-- Navigation -->
     </div>
@@ -24,26 +23,25 @@
             </ul>
         </li>
         <li id="ad_infoProducto" class="panes">
-            <label for='ad_idProductos'>ID</label><br>
-            <input id='ad_idProductos' type='number' placeholder='05' disabled><br>
-            <!--Obsolete
-                            <button id='Buscar'>Buscar</button>-->
+            <label for='ad_idCliente'>Cedula Cliente</label><br>
+            <input id='ad_idCliente' type='number' placeholder='05' disabled><br>
             <div>
-                <label for='ad_nombreProductos'>Nombre</label><br>
-                <input id='ad_nombreProductos' type='text' placeholder='05'><br>
+                <label for='ad_nombreCliente'>Nombre</label><br>
+                <input id='ad_nombreCliente' type='text' placeholder='05'><br>
             </div>
             <div>
-                <label for='ad_descripcionProductos'>Descripción</label><br>
-                <input id='ad_descripcionProductos' type='text' placeholder='05'><br>
+                <label for='ad_informacionCliente'>Descripción</label><br>
+                <input id='ad_informacionCliente' type='text' placeholder='05'><br>
             </div>
             <div>
-                <label for='ad_valorProductos'>Valor</label><br>
+                <label for='ad_valorProductos'>Plan</label><br><!-- Lista los Planes disponibles-->
                 <input id='ad_valorProductos' type='number' placeholder='05'><br>
             </div>
         </li>
         <li>
             <div>
-                <button id='ad_b_CrearProductos'>Crear</button>
+                <button id='ad_b_crearVenta'>Crear</button>
+                <button id='ad_b_buscarCliente'>Buscar Por Cedula</button>            
             </div>
         </li>
     </ul>
