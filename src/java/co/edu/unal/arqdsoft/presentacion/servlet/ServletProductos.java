@@ -165,7 +165,6 @@ public class ServletProductos extends HttpServlet {
         } catch(Exception ex){
             return new Respuesta(error, new Contenido());
         }
-        return null;
     }
 
     private Respuesta listarPlanes() {
