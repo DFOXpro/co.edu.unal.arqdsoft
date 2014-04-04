@@ -8,6 +8,7 @@ package co.edu.unal.arqdsoft.control;
 import co.edu.unal.arqdsoft.dao.*;
 import co.edu.unal.arqdsoft.entidad.*;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -17,25 +18,45 @@ public class ControlProductos {
 
     /**
      *
-     * @param empleado empleado que
-     * @param cliente
-     * @param pĺan
+     * @param producto
      * @return
      */
-    public static boolean nuevoProducto(String empleado, String cliente, Plan pĺan) {
-
+    public static boolean nuevoProducto(String[] producto) {
+        
+        
         return false;
     }
 
     /**
      *
-     * @param empleado
-     * @param cliente
-     * @param pĺan
+     * @param id id del producto a modificar
+     * @param producto nueva definicion del producto
      * @return
      */
-    public static boolean modificarProducto(String empleado, String cliente, Plan pĺan) {
+    public static boolean modificarProducto(int id, String[] producto) {
+        
+        return false;
+    }
+    /**
+     *
+     * @param plan String con los datos del plan sin productos
+     * @param productos lista de ids de los productos
+     * @return
+     */
+    public static boolean nuevoPlan(String[] plan, List<Producto> productos) {
+        Plan p = new Plan(Integer.getInteger(plan[0]),plan[1], plan[2], Double.valueOf(plan[3]), productos);
+        DaoPlan.CrearPlan(p);
+        return false;
+    }
 
+    /**
+     *
+     * @param id id del producto a modificar
+     * @param producto nueva definicion del producto
+     * @return
+     */
+    public static boolean modificarPlan(int id, String[] plan) {
+        
         return false;
     }
 
