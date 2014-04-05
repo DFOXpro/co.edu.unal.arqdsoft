@@ -14,7 +14,7 @@ import co.edu.unal.arqdsoft.entidad.Plan;
  */
 public class DaoVenta {
 
-    public static void CrearVenta(int cliente, String empleado, Plan plan) {
+    public static void CrearVenta(int cliente, String empleado, int plan) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
