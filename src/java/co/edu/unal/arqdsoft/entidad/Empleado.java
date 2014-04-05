@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.*;
 import javax.persistence.OneToMany;
 
@@ -44,61 +45,50 @@ public class Empleado implements Serializable {
         /**
          *Rol encargado de crear, modificar y/o eliminar productos de la bandeja de productos de la compañia
          */
-        ADMINPRODUCTOS};
+        ADMINPRODUCTOS
+    };
+    
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;
     private String nombre;
     private String informacion;
-    //TODO definir como manejar los horarios de los tecnicos
     private ArrayList<Date> horarioDisponible;
     private String usuario;
     private String contrasena;
     private roles rol; 
-
-    //TODO Arreglar relaciones
-    /*@OneToMany
+     /**
+     * Relaciones:
+     * Las relaciones de Empleado son de uno a muchos con ventas ya que un empleado puede tener muchas ventas
+     * pero una venta solo tiene un empleado.
+     * De igual forma un empleado puede tener muchas visitas tecnicas o reportes de daños a su nombre
+     * pero cada visita y reporte de daño tienen un solo empleado a cargo.
+     */ 
+    @OneToMany(mappedBy = "empleado")
     private List<Venta> ventas;
-    //TODO definir como se manejara la relacion entre VisitaTecnica y Empleado
-    @OneToMany
-    private List<VisitaTecnica> visitasTecnicas;  */
-    /*public Empleado(int id, String nombre, String informacion, ArrayList<Date> horarioDisponible, String usuario, String contrasena, roles rol, List<Venta> ventas, List<VisitaTecnica> visitasTecnicas) {
-    this.id = id;
-    this.nombre = nombre;
-    this.informacion = informacion;
-    this.horarioDisponible = horarioDisponible;
-    this.usuario = usuario;
-    this.contrasena = contrasena;
-    this.rol = rol;
-    this.ventas = ventas;
-    this.visitasTecnicas = visitasTecnicas;
-    }*/
-    
-    /**
-     * Constructor para pruebas de guardado en la base de datos
-     * sin relaciones con las otras entidades.
-     * @param nombre
-     * @param informacion
-     * @param horarioDisponible
-     * @param usuario
-     * @param contrasena
-     * @param rol 
+    @OneToMany(mappedBy = "empleado")
+    private List<VisitaTecnica> visitasTecnicas;
+     @OneToMany(mappedBy = "empleado")
+    private List<ReporteDano> reportesDanos;
+
+         /**
+     * Clase constructor
      */
-    public Empleado(String nombre, String informacion, ArrayList<Date> horarioDisponible, String usuario, String contrasena, roles rol) {
-        //this.id = id;
+    public Empleado() {
+    }
+    
+    public Empleado(String nombre, String informacion, ArrayList<Date> horarioDisponible, String usuario, String contrasena, roles rol, List<Venta> ventas, List<VisitaTecnica> visitasTecnicas, List<ReporteDano> reportesDanos) {
         this.nombre = nombre;
         this.informacion = informacion;
         this.horarioDisponible = horarioDisponible;
         this.usuario = usuario;
         this.contrasena = contrasena;
         this.rol = rol;
+        this.ventas = ventas;
+        this.visitasTecnicas = visitasTecnicas;
+        this.reportesDanos = reportesDanos;
     }
 
-    /**
-     * Clase constructor
-     */
-    public Empleado() {
-    }
     
     /**
      * Retorna la id del empleado
@@ -212,19 +202,71 @@ public class Empleado implements Serializable {
         this.rol = rol;
     }
 
-//    public List<Venta> getVentas() {
-//        return ventas;
-//    }
-//
-//    public void setVentas(List<Venta> ventas) {
-//        this.ventas = ventas;
-//    }
-//
-//    public List<VisitaTecnica> getVisitasTecnicas() {
-//        return visitasTecnicas;
-//    }
-//
-//    public void setVisitasTecnicas(List<VisitaTecnica> visitasTecnicas) {
-//        this.visitasTecnicas = visitasTecnicas;
-//    }
+    public List<Venta> getVentas() {
+        return ventas;
+    }
+
+    public void setVentas(List<Venta> ventas) {
+        this.ventas = ventas;
+    }
+
+    public List<VisitaTecnica> getVisitasTecnicas() {
+        return visitasTecnicas;
+    }
+
+    public void setVisitasTecnicas(List<VisitaTecnica> visitasTecnicas) {
+        this.visitasTecnicas = visitasTecnicas;
+    }
+
+    public List<ReporteDano> getReportesDanos() {
+        return reportesDanos;
+    }
+
+    public void setReportesDanos(List<ReporteDano> reportesDanos) {
+        this.reportesDanos = reportesDanos;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 41 * hash + this.id;
+        hash = 41 * hash + Objects.hashCode(this.nombre);
+        hash = 41 * hash + Objects.hashCode(this.usuario);
+        hash = 41 * hash + Objects.hashCode(this.contrasena);
+        hash = 41 * hash + Objects.hashCode(this.rol);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Empleado other = (Empleado) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (!Objects.equals(this.nombre, other.nombre)) {
+            return false;
+        }
+        if (!Objects.equals(this.usuario, other.usuario)) {
+            return false;
+        }
+        if (!Objects.equals(this.contrasena, other.contrasena)) {
+            return false;
+        }
+        if (this.rol != other.rol) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Empleado{" + "id=" + id + ", nombre=" + nombre + ", informacion=" + informacion + ", horarioDisponible=" + horarioDisponible + ", usuario=" + usuario + ", contrasena=" + contrasena + ", rol=" + rol + ", ventas=" + ventas + ", visitasTecnicas=" + visitasTecnicas + ", reportesDanos=" + reportesDanos + '}';
+    }
+
 }

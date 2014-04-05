@@ -8,11 +8,15 @@ package co.edu.unal.arqdsoft.entidad;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -23,13 +27,28 @@ public class ReporteDano implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private long id;
-    //@ManyToOne
-    private Cliente cliente;
-    //@ManyToOne 
-    private Empleado operador;
+    
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaCreacion;
     private String descripcion;
     private Boolean resuelto;
+    /**
+     * Relaciones:
+     * Cada reporte de daño tiene solo un empleado a cargo, sin embargo ese empleado puede tener varios reportes de daños
+     * a su nombre.
+     * De igual forma cada reporte esta asignado a un Cliente, pero un Cliente puede tener varios reportes a su nombre.
+     * Un reporte de daño puede tener 0 o varias visitas tecnicas, pero cada visita tecnica esta asignada a un solo 
+     * reporte de daño.
+     */
+    @ManyToOne
+    private Cliente cliente;
+    @ManyToOne 
+    private Empleado operador;
+    @OneToMany(mappedBy = "reporteDano")
+    private List<VisitaTecnica> visitasTecnicas;
+
+    public ReporteDano() {
+    }
 
     /**
      * Constructor de la clase ReporteDano especificando todos los campos del objeto
@@ -38,15 +57,16 @@ public class ReporteDano implements Serializable{
      * @param operador  Objeto de tipo empleado que se refiere al operador que tomo la llamada de soporte
      * @param fechaCreacion Variable tipo date con la fecha de creacion de el reporte
      * @param descripcion   Una breve descripcion del daño que se especifico en el reporte
-     * @param resuleto  Objeto de tipo booleano representando si el problema fue resuelto(1) o si aun no tiene solucion(0)
+     * @param resuelto  Objeto de tipo booleano representando si el problema fue resuelto(1) o si aun no tiene solucion(0)
+     * @param visitasTecnicas Las visitas tecnicas que fueron generadas para este reporte.
      */
-    public ReporteDano(long id, Cliente cliente, Empleado operador, Date fechaCreacion, String descripcion, Boolean resuleto){
-        this.id = id;
-        this.cliente = cliente;
-        this.operador = operador;
+    public ReporteDano(Date fechaCreacion, String descripcion, Boolean resuelto, Cliente cliente, Empleado operador, List<VisitaTecnica> visitasTecnicas) {
         this.fechaCreacion = fechaCreacion;
         this.descripcion = descripcion;
-        this.resuelto = resuleto;
+        this.resuelto = resuelto;
+        this.cliente = cliente;
+        this.operador = operador;
+        this.visitasTecnicas = visitasTecnicas;
     }
 
     /**
@@ -132,4 +152,61 @@ public class ReporteDano implements Serializable{
     public void setResuelto(Boolean resuelto) {
         this.resuelto = resuelto;
     }
+
+    public List<VisitaTecnica> getVisitasTecnicas() {
+        return visitasTecnicas;
+    }
+
+    public void setVisitasTecnicas(List<VisitaTecnica> visitasTecnicas) {
+        this.visitasTecnicas = visitasTecnicas;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 71 * hash + (int) (this.id ^ (this.id >>> 32));
+        hash = 71 * hash + Objects.hashCode(this.fechaCreacion);
+        hash = 71 * hash + Objects.hashCode(this.descripcion);
+        hash = 71 * hash + Objects.hashCode(this.resuelto);
+        hash = 71 * hash + Objects.hashCode(this.cliente);
+        hash = 71 * hash + Objects.hashCode(this.operador);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ReporteDano other = (ReporteDano) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (!Objects.equals(this.fechaCreacion, other.fechaCreacion)) {
+            return false;
+        }
+        if (!Objects.equals(this.descripcion, other.descripcion)) {
+            return false;
+        }
+        if (!Objects.equals(this.resuelto, other.resuelto)) {
+            return false;
+        }
+        if (!Objects.equals(this.cliente, other.cliente)) {
+            return false;
+        }
+        if (!Objects.equals(this.operador, other.operador)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "ReporteDano{" + "id=" + id + ", fechaCreacion=" + fechaCreacion + ", descripcion=" + descripcion + ", resuelto=" + resuelto + ", cliente=" + cliente + ", operador=" + operador + ", visitasTecnicas=" + visitasTecnicas + '}';
+    }
+    
+    
 }
