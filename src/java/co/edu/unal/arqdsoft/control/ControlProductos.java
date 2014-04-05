@@ -22,7 +22,7 @@ public class ControlProductos {
      * @return informa si se pudo insertar o no el producto
      */
     public static boolean nuevoProducto(String[] producto) {
-        Producto p = new Producto(producto[0], producto[1], Double.valueOf(producto[2]));
+        Producto p = new Producto(producto[0], producto[1], Double.valueOf(producto[2]),null);
         DaoProducto dP=new DaoProducto();
         dP.crearProducto(p);
         return false;
@@ -35,7 +35,7 @@ public class ControlProductos {
      * @return
      */
     public static boolean modificarProducto(int idProducto, String[] producto) {
-        Producto p = new Producto(producto[0], producto[1], Double.valueOf(producto[2]));
+        Producto p = new Producto(producto[0], producto[1], Double.valueOf(producto[2]),null);
         DaoProducto.modificarProducto(idProducto, p);
         return false;
     }
@@ -49,7 +49,7 @@ public class ControlProductos {
      * @return
      */
     public static boolean nuevoPlan(String plan1,String plan2,String plan3, List<Producto> productos) {
-        Plan p = new Plan( plan1, plan2, Double.valueOf(plan3), productos);
+        Plan p = new Plan( plan1, plan2, Double.valueOf(plan3), productos,null);
         DaoPlan.CrearPlan(p);
         return false;
     }
@@ -113,7 +113,7 @@ public class ControlProductos {
      */
     public static Producto setProducto(int id, String get, String get0, String get1) {
 
-        Producto p2 = new Producto(get, get0, Double.valueOf(get1));
+        Producto p2 = new Producto(get, get0, Double.valueOf(get1),null);
         try {
             String[] p = {get, get0, get1};
             if (id != -1) {
@@ -125,5 +125,10 @@ public class ControlProductos {
             return null;
         }
         return p2;
+    }
+    public static boolean borrarProducto(int id){
+        DaoProducto.eliminarProducto(ControlProductos.getProducto(id));
+        return false;
+    
     }
 }
