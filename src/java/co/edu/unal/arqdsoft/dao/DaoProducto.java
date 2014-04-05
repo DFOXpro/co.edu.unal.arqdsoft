@@ -20,6 +20,7 @@ import javax.persistence.Query;
  * @author Jhh
  */
 public class DaoProducto {
+
     /**
      *
      */
@@ -27,6 +28,7 @@ public class DaoProducto {
     }
 
     static EntityManagerFactory emf = Persistence.createEntityManagerFactory("co-edu-unal-arqdsoftPU");
+
     /**
      *
      * @param idObject
@@ -46,12 +48,13 @@ public class DaoProducto {
             ret = true;
         } catch (Exception e) {
             e.printStackTrace();
-            em.getTransaction().rollback();            
+            em.getTransaction().rollback();
         } finally {
             em.close();
             //return ret;
         }
     }
+
     /**
      *
      * @param idProducto
@@ -75,10 +78,11 @@ public class DaoProducto {
             System.out.println("LOGRO CATCH EXCEPT" + e.toString());
         } finally {
             em.close();
-            System.out.println(producto.getNombre()+ "nombre DEL PRODUCTO");
-            return producto;
+            System.out.println(producto.getNombre() + "nombre DEL PRODUCTO");
         }
+        return producto;
     }
+
     /**
      *
      * @param object
@@ -100,10 +104,6 @@ public class DaoProducto {
             return ret;
         }
     }
-    
-    public static void eliminarProducto(Producto producto,Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     /**
      *
@@ -117,7 +117,7 @@ public class DaoProducto {
             em.persist(producto);
             em.getTransaction().commit();
         } catch (Exception e) {
-            
+
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "NO GUARDO!!!!", e);
             em.getTransaction().rollback();
         } finally {
@@ -130,7 +130,7 @@ public class DaoProducto {
      * @param prod
      * @return
      */
-    public Producto leerProducto(Producto prod){
+    public Producto leerProducto(Producto prod) {
         EntityManager em = emf.createEntityManager();
         Producto producto = null;
         System.out.println("ANTES DEL QUERY" + prod.getNombre());
@@ -148,7 +148,7 @@ public class DaoProducto {
             System.out.println("LOGRO CATCH EXCEPT" + e.toString());
         } finally {
             em.close();
-            System.out.println(producto.getNombre()+ "nombre DEL PRODUCTO");
+            System.out.println(producto.getNombre() + "nombre DEL PRODUCTO");
             return producto;
         }
     }
@@ -158,7 +158,7 @@ public class DaoProducto {
      * @return
      */
     public static ArrayList<Producto> getProductos() {
-        
+
         return null;
 
     }
