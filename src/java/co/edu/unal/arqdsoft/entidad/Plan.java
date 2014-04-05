@@ -7,12 +7,13 @@
 package co.edu.unal.arqdsoft.entidad;
 import java.io.Serializable;
 import java.util.List;
-import javax.annotation.Generated;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 /**
  *
  * @author jrfrancos
@@ -26,8 +27,22 @@ public class Plan implements Serializable{
     private String nombre;
     private String descripcion;
     private double valor; 
-    @ManyToMany
+    /**
+     * Relaciones:
+     * Las relaciones de Plan son de muchos a muchos con Producto, ya que un Plan contiene uno o varios productos
+     * y un producto esta en uno o varios planes. A su vez una Venta solo tiene un plan pero varios planes pueden
+     * estar en diferentes ventas.
+     */ 
+    @ManyToMany(mappedBy = "planes")
     private List<Producto> productos;
+    @OneToMany(mappedBy = "plan")
+    private List<Venta> venta;
+    
+    /**
+     * Constructor por defecto
+     */
+    public Plan() {
+    }
     
     /**
      *  Constructor de la clase plan para la creacion de  un nuevo plan especificando cada uno de los campos
@@ -35,13 +50,14 @@ public class Plan implements Serializable{
      * @param descripcion   una breve descripcion de el plan
      * @param valor el costo que tendra el plan en el mercado
      * @param productos una lista conteniendo objetos de tipo productos con los productos que conforman el plan
+     * @param venta las ventas en las cuales esta este plan
      */
-    public Plan(String nombre, String descripcion, double valor, List<Producto> productos) {
-        //this.id = id;
+    public Plan(String nombre, String descripcion, double valor, List<Producto> productos, List<Venta> venta) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.valor = valor;
         this.productos = productos;
+        this.venta=venta;
     }
 
     /**
@@ -113,4 +129,52 @@ public class Plan implements Serializable{
     public void setProductos(List<Producto> productos) {
         this.productos = productos;
     }
+
+    public List<Venta> getVenta() {
+        return venta;
+    }
+
+    public void setVenta(List<Venta> venta) {
+        this.venta = venta;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 43 * hash + this.id;
+        hash = 43 * hash + Objects.hashCode(this.nombre);
+        hash = 43 * hash + Objects.hashCode(this.descripcion);
+        hash = 43 * hash + (int) (Double.doubleToLongBits(this.valor) ^ (Double.doubleToLongBits(this.valor) >>> 32));
+        return hash;
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Plan other = (Plan) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (!Objects.equals(this.nombre, other.nombre)) {
+            return false;
+        }
+        if (!Objects.equals(this.descripcion, other.descripcion)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.valor) != Double.doubleToLongBits(other.valor)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Plan{" + "id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", valor=" + valor + ", productos=" + productos + ", venta=" + venta + '}';
+    }
+    
 }

@@ -8,11 +8,13 @@ package co.edu.unal.arqdsoft.entidad;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -23,25 +25,40 @@ public class Venta implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
-    //@ManyToOne
+    /**
+     * @Var direccionInstalacion
+     * Dirección en a cual sera instalado el plan vendido.
+     */
+    private String direccionInstalacion;
+     /**
+     * Relaciones:
+     * Cada venta tiene asignado un solo cliente, un solo vendedor y un unico plan.
+     */
+    @ManyToOne
     private Cliente cliente;
-    //@ManyToOne 
+    @ManyToOne 
     private Empleado vendedor;
-    //@ManyToOne
+    @ManyToOne
     private Plan plan;
+
+    public Venta() {
+    }
 
     /**
      *
      * @param id
      * @param fecha
+     * @param direccionInstalacion
      * @param cliente
      * @param vendedor
      * @param plan
      */
-    public Venta(int id, Date fecha, Cliente cliente, Empleado vendedor, Plan plan) {
+    public Venta(int id, Date fecha, String direccionInstalacion, Cliente cliente, Empleado vendedor, Plan plan) {
         this.id = id;
         this.fecha = fecha;
+        this.direccionInstalacion= direccionInstalacion;
         this.cliente = cliente;
         this.vendedor = vendedor;
         this.plan = plan;
@@ -126,5 +143,61 @@ public class Venta implements Serializable{
     public void setPlan(Plan plan) {
         this.plan = plan;
     }
+
+    public String getDireccionInstalacion() {
+        return direccionInstalacion;
+    }
+
+    public void setDireccionInstalacion(String direccionInstalacion) {
+        this.direccionInstalacion = direccionInstalacion;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 23 * hash + this.id;
+        hash = 23 * hash + Objects.hashCode(this.fecha);
+        hash = 23 * hash + Objects.hashCode(this.direccionInstalacion);
+        hash = 23 * hash + Objects.hashCode(this.cliente);
+        hash = 23 * hash + Objects.hashCode(this.vendedor);
+        hash = 23 * hash + Objects.hashCode(this.plan);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Venta other = (Venta) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (!Objects.equals(this.fecha, other.fecha)) {
+            return false;
+        }
+        if (!Objects.equals(this.direccionInstalacion, other.direccionInstalacion)) {
+            return false;
+        }
+        if (!Objects.equals(this.cliente, other.cliente)) {
+            return false;
+        }
+        if (!Objects.equals(this.vendedor, other.vendedor)) {
+            return false;
+        }
+        if (!Objects.equals(this.plan, other.plan)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Venta{" + "id=" + id + ", fecha=" + fecha + ", direccionInstalacion=" + direccionInstalacion + ", cliente=" + cliente + ", vendedor=" + vendedor + ", plan=" + plan + '}';
+    }
+    
     
 }

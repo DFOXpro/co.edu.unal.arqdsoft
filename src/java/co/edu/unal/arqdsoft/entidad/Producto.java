@@ -8,6 +8,7 @@ package co.edu.unal.arqdsoft.entidad;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,37 +27,29 @@ public class Producto  implements Serializable{
     private String nombre;
     private String descripcion;
     private double valor;
+    /**
+     * Relaciones:
+     * La relacion de Producto es de uno a muchos con Plan, ya que un Plan puede tener uno o mas productos
+     * y un Producto puede estar en uno o mas planes.
+     */ 
+    @ManyToMany(mappedBy = "productos")
+    private List<Plan> planes;
+
+    public Producto() {
+    }
     
     /**
-     *  Constructor de la clase producto especificando todos los campos exceptuando la id
+     * Constructor de la clase producto especificando todos los campos exceptuando la id
      * @param nombre    Cadena de caracteres conteniendo el nombre del nuevo producto
      * @param descripcion   Cadena de caracteres con una descripcion breve del producto
      * @param valor     Valor monetario que tendra el producto en el mercado
+     * @param planes Los planes en los cuales esta este producto
      */
-    public Producto(String nombre, String descripcion, double valor) {
+    public Producto(String nombre, String descripcion, double valor, List<Plan> planes) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.valor = valor;
-    }
-
-    /**
-     *
-     * @param id
-     * @param nombre
-     * @param descripcion
-     * @param valor
-     */
-    public Producto(int id, String nombre, String descripcion, double valor) {
-        this.id = id;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.valor = valor;
-    }
-
-    /**
-     *
-     */
-    public Producto() {
+        this.planes=planes;
     }
     
 
@@ -114,5 +107,54 @@ public class Producto  implements Serializable{
      */
     public void setValor(double valor) {
         this.valor = valor;
-    }               
+    }     
+
+    public List<Plan> getPlanes() {
+        return planes;
+    }
+
+    public void setPlanes(List<Plan> planes) {
+        this.planes = planes;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 83 * hash + this.id;
+        hash = 83 * hash + Objects.hashCode(this.nombre);
+        hash = 83 * hash + Objects.hashCode(this.descripcion);
+        hash = 83 * hash + (int) (Double.doubleToLongBits(this.valor) ^ (Double.doubleToLongBits(this.valor) >>> 32));
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Producto other = (Producto) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (!Objects.equals(this.nombre, other.nombre)) {
+            return false;
+        }
+        if (!Objects.equals(this.descripcion, other.descripcion)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.valor) != Double.doubleToLongBits(other.valor)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Producto{" + "id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", valor=" + valor + ", planes=" + planes + '}';
+    }
+    
+    
 }

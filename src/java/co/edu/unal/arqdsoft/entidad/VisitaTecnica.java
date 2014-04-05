@@ -20,12 +20,20 @@ public class VisitaTecnica implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;
-    //@ManyToOne
-    private Empleado tecnico;
     private Date fechaVisita;
-    //@ManyToOne
-    private ReporteDano reporte;
     private String direccion; 
+    /**
+     * Relaciones:
+     * Una vista tecnica tiene un solo tecnico a cargo y esta asignada a un solo reporte de daño.
+     */
+    @ManyToOne
+    private Empleado tecnico;
+    @ManyToOne
+    private ReporteDano reporte;
+    
+
+    public VisitaTecnica() {
+    }
     
     /**
      * Constructor de la clase VisitaTecnica especificando todos los campos del objeto
