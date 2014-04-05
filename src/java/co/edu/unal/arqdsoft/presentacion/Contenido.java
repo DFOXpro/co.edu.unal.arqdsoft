@@ -19,33 +19,62 @@ public class Contenido {
     private JSONAware dato;
     private String html;
 
+    /**
+     *
+     * @param dato
+     * @param section
+     */
     public Contenido(JSONAware dato, String section) {
         this.dato = dato;
         this.html = section;
     }
+
+    /**
+     *
+     */
     public Contenido() {
         this.dato = new JSONObject();
         this.html = "";
     }
 
+    /**
+     *
+     * @return
+     */
     public JSONAware getDato() {
         if(dato instanceof JSONObject) return (JSONObject) dato;
         if(dato instanceof JSONArray) return (JSONArray) dato;
         return null;
     }
 
+    /**
+     *
+     * @param dato
+     */
     public void setDato(JSONAware dato) {
         this.dato = dato;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getHtml() {
         return html;
     }
 
+    /**
+     *
+     * @param html
+     */
     public void setHtml(String html) {
         this.html = html;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 7;
@@ -54,6 +83,11 @@ public class Contenido {
         return hash;
     }
 
+    /**
+     *
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -72,6 +106,10 @@ public class Contenido {
         return true;
     }
 
+    /**
+     *
+     * @return
+     */
     public String toJSON() {
         if(dato != null)
         return 

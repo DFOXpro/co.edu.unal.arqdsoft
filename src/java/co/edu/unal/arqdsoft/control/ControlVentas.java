@@ -62,10 +62,21 @@ public class ControlVentas {
         DaoCliente.NuevoCliente(id,nombre,informacion,idPlan);
         return false;
     }
+
+    /**
+     *
+     * @return
+     */
     public static ArrayList<Cliente> getclientes(){
         
         return null;    
     }
+
+    /**
+     *
+     * @param id
+     * @return
+     */
     public static Cliente getcliente(int id){
         
         return null;    

@@ -19,23 +19,44 @@ import javax.persistence.Persistence;
  */
 public class DaoProducto {
 
+    /**
+     *
+     * @param idProducto
+     * @param p
+     */
     public static void modificarProducto(int idProducto, Producto p) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     *
+     * @param idProducto
+     * @return
+     */
     public static Producto getProducto(int idProducto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     *
+     * @param p
+     */
     public static void crearProducto(Producto p) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     *
+     */
     public DaoProducto() {
     }
 
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("co-edu-unal-arqdsoftPU");
 
+    /**
+     *
+     * @param producto
+     */
     public void crear(Producto producto) {
         System.out.print("LOOOOOOOOOOOOOOOOL");
         EntityManager em = emf.createEntityManager();
@@ -51,6 +72,11 @@ public class DaoProducto {
             em.close();
         }
     }
+
+    /**
+     *
+     * @return
+     */
     public static ArrayList<Producto> getProductos() {
         
         return null;

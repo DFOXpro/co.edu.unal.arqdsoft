@@ -41,6 +41,14 @@ public class Cliente implements Serializable{
         this.reporteDano = reporteDano;
     }
 
+    /**
+     *
+     * @param id
+     * @param nombre
+     * @param informacion
+     * @param idPlan
+     * @param object
+     */
     public Cliente(int id, String nombre, String informacion, int idPlan, Object object) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
