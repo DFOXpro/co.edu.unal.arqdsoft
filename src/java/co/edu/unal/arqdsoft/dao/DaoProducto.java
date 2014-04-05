@@ -28,25 +28,80 @@ public class DaoProducto {
     public DaoProducto() {
     }
 
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("co-edu-unal-arqdsoftPU");
+    static EntityManagerFactory emf = Persistence.createEntityManagerFactory("co-edu-unal-arqdsoftPU");
     /**
      *
-     * @param idProducto
-     * @param p
+     * @param idObject
+     * @param nuevoObjeto
      */
-    public static void modificarProducto(int idProducto, Producto p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public static void modificarProducto(int idObject, Producto nuevoObjeto) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        boolean ret = false;
+        try {
+            Producto object = getProducto(idObject);
+            object.setNombre(nuevoObjeto.getNombre());
+            object.setDescripcion(nuevoObjeto.getDescripcion());
+            object.setValor(nuevoObjeto.getValor());
+            em.merge(object);
+            em.getTransaction().commit();
+            ret = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            em.getTransaction().rollback();            
+        } finally {
+            em.close();
+            //return ret;
+        }
     }
-
     /**
      *
      * @param idProducto
      * @return
      */
     public static Producto getProducto(int idProducto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = emf.createEntityManager();
+        Producto producto = null;
+        System.out.println("ANTES DEL QUERY" + idProducto);
+        Query q = em.createQuery("SELECT u FROM Producto u "
+                + "WHERE u.id = :idProducto").setParameter("idProducto", idProducto);
+        System.out.println("llego");
+        try {
+            producto = (Producto) q.getSingleResult();
+            System.out.println("LOGRO SINGLE");
+        } catch (NonUniqueResultException e) {
+            producto = (Producto) q.getResultList().get(0);
+            System.out.println("LOGRO CATCH SIMPLE");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("LOGRO CATCH EXCEPT" + e.toString());
+        } finally {
+            em.close();
+            System.out.println(producto.getNombre()+ "nombre DEL PRODUCTO");
+            return producto;
+        }
     }
-
+    /**
+     *
+     * @param object
+     * @return
+     */
+    public boolean eliminarProducto(Producto object) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        boolean ret = false;
+        try {
+            em.remove(object);
+            em.getTransaction().commit();
+            ret = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+            return ret;
+        }
+    }
     /**
      *
      * @param producto
