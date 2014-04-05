@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -28,9 +26,9 @@ public class Cliente implements Serializable{
      * Como la venta incluye el plan adquirido, solo es necesario añadir la venta al cliente
      * Los planes adquiridos por el cliente se pueden obtener usando el campo ventas.
      */    
-    //@ManyToOne
+    @OneToMany
     private List<Venta> ventas;
-    //@ManyToOne
+    @OneToMany
     private List<ReporteDano> reporteDano;
 
     public Cliente() {
