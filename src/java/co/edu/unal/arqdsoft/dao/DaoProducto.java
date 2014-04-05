@@ -67,6 +67,11 @@ public class DaoProducto {
         }
     }
 
+    /**
+     *
+     * @param prod
+     * @return
+     */
     public Producto leerProducto(Producto prod){
         EntityManager em = emf.createEntityManager();
         Producto producto = null;

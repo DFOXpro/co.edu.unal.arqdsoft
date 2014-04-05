@@ -39,6 +39,13 @@ public class Producto  implements Serializable{
         this.valor = valor;
     }
 
+    /**
+     *
+     * @param id
+     * @param nombre
+     * @param descripcion
+     * @param valor
+     */
     public Producto(int id, String nombre, String descripcion, double valor) {
         this.id = id;
         this.nombre = nombre;
@@ -46,6 +53,9 @@ public class Producto  implements Serializable{
         this.valor = valor;
     }
 
+    /**
+     *
+     */
     public Producto() {
     }
     

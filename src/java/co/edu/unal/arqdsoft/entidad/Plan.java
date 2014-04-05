@@ -31,7 +31,6 @@ public class Plan implements Serializable{
     
     /**
      *  Constructor de la clase plan para la creacion de  un nuevo plan especificando cada uno de los campos
-     * @param id    un numero entero indicando el id del plan
      * @param nombre    una cadena de caracteres que representa el nombre del plan
      * @param descripcion   una breve descripcion de el plan
      * @param valor el costo que tendra el plan en el mercado

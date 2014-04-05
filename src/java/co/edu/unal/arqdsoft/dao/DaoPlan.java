@@ -46,9 +46,16 @@ public class DaoPlan {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     *
+     */
     public DaoPlan() {
     }
     
+    /**
+     *
+     * @param object
+     */
     public void crear(Object object) {
         EntityManager em = emf.createEntityManager();
         try {
