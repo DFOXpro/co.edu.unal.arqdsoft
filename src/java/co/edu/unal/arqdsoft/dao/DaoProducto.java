@@ -58,7 +58,7 @@ public class DaoProducto {
      * @param producto
      */
     public void crear(Producto producto) {
-        System.out.print("LOOOOOOOOOOOOOOOOL");
+        
         EntityManager em = emf.createEntityManager();
 
         try {
@@ -66,6 +66,7 @@ public class DaoProducto {
             em.persist(producto);
             em.getTransaction().commit();
         } catch (Exception e) {
+            
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "NO GUARDO!!!!", e);
             em.getTransaction().rollback();
         } finally {
