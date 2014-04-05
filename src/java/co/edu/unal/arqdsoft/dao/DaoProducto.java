@@ -33,11 +33,11 @@ public class DaoProducto {
      *
      * @param idObject
      * @param nuevoObjeto
+     * @return 
      */
-    public static void modificarProducto(int idObject, Producto nuevoObjeto) {
+    public static boolean modificarProducto(int idObject, Producto nuevoObjeto) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-        boolean ret = false;
         try {
             Producto object = getProducto(idObject);
             object.setNombre(nuevoObjeto.getNombre());
@@ -45,13 +45,13 @@ public class DaoProducto {
             object.setValor(nuevoObjeto.getValor());
             em.merge(object);
             em.getTransaction().commit();
-            ret = true;
         } catch (Exception e) {
             e.printStackTrace();
             em.getTransaction().rollback();
+            return false;
         } finally {
             em.close();
-            //return ret;
+            return true;
         }
     }
 
@@ -109,7 +109,7 @@ public class DaoProducto {
      *
      * @param producto
      */
-    public void crearProducto(Producto producto) {
+    public boolean crearProducto(Producto producto) {
         EntityManager em = emf.createEntityManager();
 
         try {
@@ -120,8 +120,10 @@ public class DaoProducto {
 
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "NO GUARDO!!!!", e);
             em.getTransaction().rollback();
+            return false;
         } finally {
             em.close();
+            return true;
         }
     }
 

@@ -23,9 +23,8 @@ public class ControlProductos {
      */
     public static boolean nuevoProducto(String[] producto) {
         Producto p = new Producto(producto[0], producto[1], Double.valueOf(producto[2]));
-        DaoProducto dP=new DaoProducto();
-        dP.crearProducto(p);
-        return false;
+        DaoProducto dP = new DaoProducto();
+        return dP.crearProducto(p);
     }
 
     /**
@@ -36,8 +35,8 @@ public class ControlProductos {
      */
     public static boolean modificarProducto(int idProducto, String[] producto) {
         Producto p = new Producto(producto[0], producto[1], Double.valueOf(producto[2]));
-        DaoProducto.modificarProducto(idProducto, p);
-        return false;
+        return DaoProducto.modificarProducto(idProducto, p);
+
     }
 
     /**
@@ -48,25 +47,25 @@ public class ControlProductos {
      * @param productos lista de ids de los productos
      * @return
      */
-    public static boolean nuevoPlan(String plan1,String plan2,String plan3, List<Producto> productos) {
-        Plan p = new Plan( plan1, plan2, Double.valueOf(plan3), productos,null);
-        DaoPlan.CrearPlan(p);
-        return false;
+    public static boolean nuevoPlan(String plan1, String plan2, String plan3, List<Producto> productos) {
+        Plan p = new Plan(plan1, plan2, Double.valueOf(plan3), productos, null);
+        return DaoPlan.CrearPlan(p);
+        
     }
 
     /**
      *
      * @param plan1
      * @param plan2
-     * @param plan3 
+     * @param plan3
      * @param productos
      * @return
      */
-    public static boolean modificarPlan(int id,String plan1,String plan2,String plan3, List<Producto> productos) {
-        Plan p=new Plan(plan1, plan2, Double.valueOf(plan3), productos, null);
-        DaoPlan dP= new DaoPlan();
-        boolean b=dP.modificarPlan(id,p);
-        
+    public static boolean modificarPlan(int id, String plan1, String plan2, String plan3, List<Producto> productos) {
+        Plan p = new Plan(plan1, plan2, Double.valueOf(plan3), productos, null);
+        DaoPlan dP = new DaoPlan();
+        boolean b = dP.modificarPlan(id, p);
+
         return b;
     }
 
@@ -103,7 +102,7 @@ public class ControlProductos {
     public static Plan getPlane(int idPlan) {
         return DaoPlan.getPlane(idPlan);
     }
-    
+
     /**
      *
      * @param id id del producto a modificar / nulo si se esta creando
@@ -133,10 +132,10 @@ public class ControlProductos {
      * @param id
      * @return
      */
-    public static boolean borrarProducto(int id){
-        DaoProducto p=new DaoProducto();
+    public static boolean borrarProducto(int id) {
+        DaoProducto p = new DaoProducto();
         return p.eliminarProducto(ControlProductos.getProducto(id));
-    
+
     }
 
     /**
@@ -144,9 +143,9 @@ public class ControlProductos {
      * @param id
      * @return
      */
-    public static boolean borrarPlan(int id){
-        DaoPlan p=new DaoPlan();
+    public static boolean borrarPlan(int id) {
+        DaoPlan p = new DaoPlan();
         return p.eliminarPlan(ControlProductos.getProducto(id));
-    
+
     }
 }
