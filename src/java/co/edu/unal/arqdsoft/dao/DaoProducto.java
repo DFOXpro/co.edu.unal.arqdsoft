@@ -11,7 +11,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NonUniqueResultException;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 /**
  *
@@ -19,6 +21,14 @@ import javax.persistence.Persistence;
  */
 public class DaoProducto {
 
+    
+    /**
+     *
+     */
+    public DaoProducto() {
+    }
+
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("co-edu-unal-arqdsoftPU");
     /**
      *
      * @param idProducto
@@ -39,26 +49,9 @@ public class DaoProducto {
 
     /**
      *
-     * @param p
-     */
-    public static void crearProducto(Producto p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    /**
-     *
-     */
-    public DaoProducto() {
-    }
-
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("co-edu-unal-arqdsoftPU");
-
-    /**
-     *
      * @param producto
      */
-    public void crear(Producto producto) {
-        
+    public void crearProducto(Producto producto) {
         EntityManager em = emf.createEntityManager();
 
         try {
@@ -71,6 +64,29 @@ public class DaoProducto {
             em.getTransaction().rollback();
         } finally {
             em.close();
+        }
+    }
+
+    public Producto leerProducto(Producto prod){
+        EntityManager em = emf.createEntityManager();
+        Producto producto = null;
+        System.out.println("ANTES DEL QUERY" + prod.getNombre());
+        Query q = em.createQuery("SELECT u FROM Producto u "
+                + "WHERE u.nombre LIKE :nombre").setParameter("nombre", prod.getNombre());
+        System.out.println("llego");
+        try {
+            producto = (Producto) q.getSingleResult();
+            System.out.println("LOGRO SINGLE");
+        } catch (NonUniqueResultException e) {
+            producto = (Producto) q.getResultList().get(0);
+            System.out.println("LOGRO CATCH SIMPLE");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("LOGRO CATCH EXCEPT" + e.toString());
+        } finally {
+            em.close();
+            System.out.println(producto.getNombre()+ "nombre DEL PRODUCTO");
+            return producto;
         }
     }
 

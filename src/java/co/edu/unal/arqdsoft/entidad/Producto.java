@@ -39,6 +39,17 @@ public class Producto  implements Serializable{
         this.valor = valor;
     }
 
+    public Producto(int id, String nombre, String descripcion, double valor) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.valor = valor;
+    }
+
+    public Producto() {
+    }
+    
+
     /**
      * @return the id
      */

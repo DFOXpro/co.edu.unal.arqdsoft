@@ -8,12 +8,18 @@ package co.edu.unal.arqdsoft.dao;
 
 import co.edu.unal.arqdsoft.entidad.Plan;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
  * @author dfoxpro
  */
 public class DaoPlan {
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("co-edu-unal-arqdsoftPU");
 
     /**
      *
@@ -39,5 +45,23 @@ public class DaoPlan {
     public static Plan getPlane(int idPlan) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public DaoPlan() {
+    }
+    
+    public void crear(Object object) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(object);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", e);
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+        }
+    }
+    
     
 }

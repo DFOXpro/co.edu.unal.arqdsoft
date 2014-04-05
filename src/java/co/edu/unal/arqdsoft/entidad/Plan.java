@@ -26,7 +26,7 @@ public class Plan implements Serializable{
     private String nombre;
     private String descripcion;
     private double valor; 
-    //@ManyToMany
+    @ManyToMany
     private List<Producto> productos;
     
     /**
@@ -37,8 +37,8 @@ public class Plan implements Serializable{
      * @param valor el costo que tendra el plan en el mercado
      * @param productos una lista conteniendo objetos de tipo productos con los productos que conforman el plan
      */
-    public Plan(int id, String nombre, String descripcion, double valor, List<Producto> productos) {
-        this.id = id;
+    public Plan(String nombre, String descripcion, double valor, List<Producto> productos) {
+        //this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.valor = valor;
