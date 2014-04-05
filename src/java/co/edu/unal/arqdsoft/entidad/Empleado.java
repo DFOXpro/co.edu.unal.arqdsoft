@@ -77,7 +77,6 @@ public class Empleado implements Serializable {
     /**
      * Constructor para pruebas de guardado en la base de datos
      * sin relaciones con las otras entidades.
-     * @param id
      * @param nombre
      * @param informacion
      * @param horarioDisponible

@@ -21,7 +21,7 @@ public class Cliente implements Serializable{
     private String nombre;
     private String informacion;
     //@ManyToOne
-    private Plan planes;
+    private List<Plan> planes;
     //@OneToMany
     private List<ReporteDano> reporteDano;
 
@@ -33,7 +33,7 @@ public class Cliente implements Serializable{
      * @param planes    Un objeto de tipo plan representando el plan que tiene actualmente el cliente
      * @param reporteDano   Una lista de objetos de tipo ReporteDano con todos los reportes realizados por el cliente
      */
-        public Cliente(int id, String nombre, String informacion, Plan planes, List<ReporteDano> reporteDano) {
+        public Cliente(int id, String nombre, String informacion, List<Plan> planes, List<ReporteDano> reporteDano) {
         this.id = id;
         this.nombre = nombre;
         this.informacion = informacion;
@@ -41,6 +41,14 @@ public class Cliente implements Serializable{
         this.reporteDano = reporteDano;
     }
 
+    /**
+     *
+     * @param id
+     * @param nombre
+     * @param informacion
+     * @param idPlan
+     * @param object
+     */
     public Cliente(int id, String nombre, String informacion, int idPlan, Object object) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -90,14 +98,14 @@ public class Cliente implements Serializable{
     /**
      * @return the planes
      */
-    public Plan getPlanes() {
+    public List<Plan> getPlanes() {
         return planes;
     }
 
     /**
      * @param planes the planes to set
      */
-    public void setPlanes(Plan planes) {
+    public void setPlanes(List<Plan> planes) {
         this.planes = planes;
     }
 

@@ -16,27 +16,52 @@ public class Respuesta {
     private String error;
     private Contenido contenido;
 
+    /**
+     *
+     * @return
+     */
     public String getError() {
         return error;
     }
 
+    /**
+     *
+     * @param error
+     */
     public void setError(String error) {
         this.error = error;
     }
 
+    /**
+     *
+     * @return
+     */
     public Contenido getContenido() {
         return contenido;
     }
 
+    /**
+     *
+     * @param contenido
+     */
     public void setContenido(Contenido contenido) {
         this.contenido = contenido;
     }
 
+    /**
+     *
+     * @param error
+     * @param contenido
+     */
     public Respuesta(String error, Contenido contenido) {
         this.error = error;
         this.contenido = contenido;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 5;
@@ -45,6 +70,11 @@ public class Respuesta {
         return hash;
     }
 
+    /**
+     *
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -63,11 +93,19 @@ public class Respuesta {
         return true;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "Respuesta{" + "error=" + error + ", contenido=" + contenido + '}';
     }
 
+    /**
+     *
+     * @return
+     */
     public String toJSON() {
         String s = "{\"error\":\""+ error +
             "\",\"contenido\":" + contenido.toJSON()+

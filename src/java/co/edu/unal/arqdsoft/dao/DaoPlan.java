@@ -15,14 +15,27 @@ import java.util.ArrayList;
  */
 public class DaoPlan {
 
+    /**
+     *
+     * @return
+     */
     public static ArrayList<Plan> getPlanes() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     *
+     * @param p
+     */
     public static void CrearPlan(Plan p) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     *
+     * @param idPlan
+     * @return
+     */
     public static Plan getPlane(int idPlan) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

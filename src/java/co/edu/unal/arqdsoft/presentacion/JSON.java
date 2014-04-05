@@ -51,6 +51,11 @@ public class JSON {
         return obj.toJSONString();
     }
 
+    /**
+     *
+     * @param is
+     * @return
+     */
     public static String getTemplate(InputStream is){
         try {
             byte[] charr = new byte[is.available()];

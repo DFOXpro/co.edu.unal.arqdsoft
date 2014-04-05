@@ -1,16 +1,76 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<!-- Menu -->
+<div id="menu">
+    <!-- ENDS menu-holder -->
+    <div id="menu-holder">
+        <!-- Navigation -->
+        <ul id="nav" class="sf-menu">
+            <li id="l_op_operario"><a>Servicio Tecnico</a><span class="subheoper">Intente Resolver el problema del Cliente</span></li>
+            <li id="l_op_visitaTecnica"><a>Asignar Visita</a><span class="subheoper">Asigna visita tecnica al cliente</span></li>
+            <li id="l_op_cerrarSesion"><a>Cerrar Sesión</a>
+        </ul>
+        <!-- Navigation -->
+    </div>
+    <!-- ENDS menu-holder -->
+</div>
+<!-- ENDS Menu -->
+<div id='error'></div>
+<article id="op_productos" class="panes">
+    <h2>Servicio Tecnico</h2>
+    <ul class="blocks-thumbs thumbs-rolloopr">
+        <li>
+            <ul id="op_listaEmpty">
+                <!-- Dinamico futuro:
+                Poner templates y sacar html del JS-->
+            </ul>
+        </li>
+        <li id="op_reporteDaño">
+            <label for='op_idCliente'>Cedula Cliente</label><br>
+            <input id='op_idCliente' type='number' placeholder='05'><br>
+            <div>
+                <label for='op_nombreCliente'>Nombre</label><br><!-- solo ver -->
+                <input id='op_nombreCliente' type='text' placeholder='05' disabled><br>
+            </div>
+            <div>
+                <label for='op_informacionDaño'>Informacion Daño</label><br>
+                <input id='op_informacionDaño' type='text' placeholder='05'><br>
+            </div>
+            <div>
+                <label for='op_solucionOfrecida'>Solucion ofrecida</label><br>
+                <input id='op_solucionOfrecida' type='number' placeholder='05'><br>
+            </div>
+        </li>
+        <li>
+            <div>
+                <button id='op_b_buscarCliente'>Buscar Por Cedula</button>            
+                <button id='op_b_actualizarReporte'>Actualizar Reporte</button>            
+            </div>
+        </li>
+    </ul>
+</article>
+
+<article id="op_visitaTecnica" class="panes hidden">
+    <h2>Asignar Visista Tecnica</h2>
+    <ul class="blocks-thumbs thumbs-rolloopr">
+        <li>
+            <ul id="op_listaEmpty2">
+                <!-- Dinamico futuro:
+                Poner templates y sacar html del JS-->
+            </ul>
+        </li>
+        <li id="op_asignarTecnico">
+            <select>
+                <!-- lista de tecnicos -->
+            </select>
+            <select>
+                <!-- horarios disponibles del tecnico en cuention(seleccionado anteriormente) -->
+            </select>
+
+        </li>
+        <li>
+            <div>
+                <button id='op_b_buscarTecnico'>Buscar Tecnico</button>            
+                <button id='op_b_enviarTecnico'>Enviar Tecnico</button>            
+            </div>
+        </li>
+</article>
+<script>Ventas.innit();</script>

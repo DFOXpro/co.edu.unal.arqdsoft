@@ -7,6 +7,8 @@ package co.edu.unal.arqdsoft.control;
 
 import co.edu.unal.arqdsoft.dao.*;
 import co.edu.unal.arqdsoft.entidad.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -43,9 +45,8 @@ public class ControlVentas {
      * @param plan
      * @return
      */
-    public boolean ventaCE(String empleado, int cliente, String[] plan) {
-        Plan planE=new Plan(0/*id*/, null, null, 0.0/*valor*/, null);
-        DaoVenta.CrearVenta(cliente,empleado,planE);
+    public boolean ventaCE(String empleado, int cliente, int plan) {
+        DaoVenta.CrearVenta(cliente,empleado,plan);
         return false;
     }
 
@@ -60,6 +61,25 @@ public class ControlVentas {
     public boolean agregarCliente(int id, String nombre, String informacion,int idPlan) {
         DaoCliente.NuevoCliente(id,nombre,informacion,idPlan);
         return false;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public static ArrayList<Cliente> getclientes(){
+        
+        return null;    
+    }
+
+    /**
+     *
+     * @param id
+     * @return
+     */
+    public static Cliente getcliente(int id){
+        
+        return null;    
     }
 
 }
