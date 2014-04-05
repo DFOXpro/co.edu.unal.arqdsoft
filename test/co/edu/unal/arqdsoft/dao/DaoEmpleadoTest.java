@@ -48,19 +48,9 @@ public class DaoEmpleadoTest {
     public void testPersist() {
         System.out.println("persist");
         DaoEmpleado dao=new DaoEmpleado();
-        String nombre="Daniel Reinaldo Zorro";
-        String informacion="1033123456;3194232200;calle falsa 123";
-        ArrayList<Date> horarioDisponible=null;
-        String usuario="drzorro";
-        String contrasena="123456";
-        Empleado.roles rol=Empleado.roles.OPERARIO;
-        
-        Empleado empleado= new Empleado(nombre,informacion,horarioDisponible,usuario,contrasena,rol);
-        dao.persist(empleado);
-        dao.persist(new Empleado("Pedro", "abc", null, "pedro", "123456", Empleado.roles.ADMINPRODUCTOS));
-        dao.persist(new Empleado("Polo", "abc", null, "polo", "123456", Empleado.roles.TECNICO));
-        dao.persist(new Empleado("Dmlr", "abc", null, "dmlr", "123456", Empleado.roles.VENDEDOR));
-        System.out.println(empleado.getNombre()+" "+empleado.getInformacion());
+        dao.persist(new Empleado("Pedro", "abc", null, "pedro", "123456", Empleado.roles.ADMINPRODUCTOS,null,null,null));
+        dao.persist(new Empleado("Polo", "abc", null, "polo", "123456", Empleado.roles.TECNICO,null,null,null));
+        dao.persist(new Empleado("Dmlr", "abc", null, "dmlr", "123456", Empleado.roles.VENDEDOR,null,null,null));
     }
 
     /**
