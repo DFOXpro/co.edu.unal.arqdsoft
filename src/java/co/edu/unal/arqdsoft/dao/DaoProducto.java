@@ -21,6 +21,10 @@ import javax.persistence.Query;
  */
 public class DaoProducto {
 
+    public static void eliminarProducto(Producto producto) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
     /**
      *
