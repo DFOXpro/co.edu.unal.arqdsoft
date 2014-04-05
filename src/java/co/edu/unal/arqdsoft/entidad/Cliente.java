@@ -2,11 +2,9 @@ package co.edu.unal.arqdsoft.entidad;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -15,113 +13,117 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class Cliente implements Serializable{
+    /**
+     * @Var id
+     * El id del cliente sera la cedula de ciudadania
+     */
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    private int id;
+    private long id;
     private String nombre;
     private String informacion;
-    //@ManyToOne
-    private List<Plan> planes;
-    //@OneToMany
+    /**
+     * Como la venta incluye el plan adquirido, solo es necesario añadir la venta al cliente
+     * Los planes adquiridos por el cliente se pueden obtener usando el campo ventas.
+     */    
+    @OneToMany
+    private List<Venta> ventas;
+    @OneToMany
     private List<ReporteDano> reporteDano;
 
-    /**
-     * Constructor de la clase cliente especificando cada uno de los campos
-     * @param id    Un entero representando la id asignada al nuevo cliente
-     * @param nombre    Una cadena de caracteres con el nombre del nuevo cliente 
-     * @param informacion   Una cadena de caracdteres con informacion de interes sobre el cliente
-     * @param planes    Un objeto de tipo plan representando el plan que tiene actualmente el cliente
-     * @param reporteDano   Una lista de objetos de tipo ReporteDano con todos los reportes realizados por el cliente
-     */
-        public Cliente(int id, String nombre, String informacion, List<Plan> planes, List<ReporteDano> reporteDano) {
+    public Cliente() {
+    }
+
+    public Cliente(long id, String nombre, String informacion, List<Venta> ventas, List<ReporteDano> reporteDano) {
         this.id = id;
         this.nombre = nombre;
         this.informacion = informacion;
-        this.planes = planes;
+        this.ventas = ventas;
         this.reporteDano = reporteDano;
     }
 
-    /**
-     *
-     * @param id
-     * @param nombre
-     * @param informacion
-     * @param idPlan
-     * @param object
-     */
-    public Cliente(int id, String nombre, String informacion, int idPlan, Object object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    /**
-     * @return the id
-     */
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    /**
-     * @param id the id to set
-     */
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    /**
-     * @return the nombre
-     */
     public String getNombre() {
         return nombre;
     }
 
-    /**
-     * @param nombre the nombre to set
-     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    /**
-     * @return the informacion
-     */
     public String getInformacion() {
         return informacion;
     }
 
-    /**
-     * @param informacion the informacion to set
-     */
     public void setInformacion(String informacion) {
         this.informacion = informacion;
     }
 
-    /**
-     * @return the planes
-     */
-    public List<Plan> getPlanes() {
-        return planes;
+    public List<Venta> getVentas() {
+        return ventas;
     }
 
-    /**
-     * @param planes the planes to set
-     */
-    public void setPlanes(List<Plan> planes) {
-        this.planes = planes;
+    public void setVentas(List<Venta> ventas) {
+        this.ventas = ventas;
     }
 
-    /**
-     * @return the reporteDano
-     */
     public List<ReporteDano> getReporteDano() {
         return reporteDano;
     }
 
-    /**
-     * @param reporteDano the reporteDano to set
-     */
     public void setReporteDano(List<ReporteDano> reporteDano) {
         this.reporteDano = reporteDano;
     }
+
+    @Override
+    public String toString() {
+        return "Cliente{" + "id=" + id + ", nombre=" + nombre + ", informacion=" + informacion + ", ventas=" + ventas + ", reporteDano=" + reporteDano + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 29 * hash + (int) (this.id ^ (this.id >>> 32));
+        hash = 29 * hash + Objects.hashCode(this.nombre);
+        hash = 29 * hash + Objects.hashCode(this.informacion);
+        hash = 29 * hash + Objects.hashCode(this.ventas);
+        hash = 29 * hash + Objects.hashCode(this.reporteDano);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Cliente other = (Cliente) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (!Objects.equals(this.nombre, other.nombre)) {
+            return false;
+        }
+        if (!Objects.equals(this.informacion, other.informacion)) {
+            return false;
+        }
+        if (!Objects.equals(this.ventas, other.ventas)) {
+            return false;
+        }
+        if (!Objects.equals(this.reporteDano, other.reporteDano)) {
+            return false;
+        }
+        return true;
+    }
+
     
     
 }
