@@ -42,6 +42,10 @@ public class ControlSoporte {
         return null;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean crearVisitaTecnica() {
         return false;
     }

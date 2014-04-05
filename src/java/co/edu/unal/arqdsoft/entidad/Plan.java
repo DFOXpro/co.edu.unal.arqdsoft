@@ -130,14 +130,26 @@ public class Plan implements Serializable{
         this.productos = productos;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Venta> getVenta() {
         return venta;
     }
 
+    /**
+     *
+     * @param venta
+     */
     public void setVenta(List<Venta> venta) {
         this.venta = venta;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 3;
@@ -148,6 +160,11 @@ public class Plan implements Serializable{
         return hash;
     }
     
+    /**
+     *
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -172,9 +189,13 @@ public class Plan implements Serializable{
         return true;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "Plan{" + "id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", valor=" + valor + ", productos=" + productos + ", venta=" + venta + '}';
     }
-    
+
 }

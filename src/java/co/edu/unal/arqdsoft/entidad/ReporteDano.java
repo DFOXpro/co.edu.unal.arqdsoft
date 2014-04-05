@@ -47,12 +47,14 @@ public class ReporteDano implements Serializable{
     @OneToMany(mappedBy = "reporteDano")
     private List<VisitaTecnica> visitasTecnicas;
 
+    /**
+     *
+     */
     public ReporteDano() {
     }
 
     /**
-     * Constructor de la clase ReporteDano especificando todos los campos del objeto
-     * @param id    Numero de tipo long representando la id del reporte 
+     * Constructor de la clase ReporteDano especificando todos los campos del objeto 
      * @param cliente   Objeto de tipo cliente que hace referencia a quien presento el reporte
      * @param operador  Objeto de tipo empleado que se refiere al operador que tomo la llamada de soporte
      * @param fechaCreacion Variable tipo date con la fecha de creacion de el reporte
@@ -153,14 +155,26 @@ public class ReporteDano implements Serializable{
         this.resuelto = resuelto;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<VisitaTecnica> getVisitasTecnicas() {
         return visitasTecnicas;
     }
 
+    /**
+     *
+     * @param visitasTecnicas
+     */
     public void setVisitasTecnicas(List<VisitaTecnica> visitasTecnicas) {
         this.visitasTecnicas = visitasTecnicas;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 7;
@@ -173,6 +187,11 @@ public class ReporteDano implements Serializable{
         return hash;
     }
 
+    /**
+     *
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -203,6 +222,10 @@ public class ReporteDano implements Serializable{
         return true;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "ReporteDano{" + "id=" + id + ", fechaCreacion=" + fechaCreacion + ", descripcion=" + descripcion + ", resuelto=" + resuelto + ", cliente=" + cliente + ", operador=" + operador + ", visitasTecnicas=" + visitasTecnicas + '}';

@@ -31,7 +31,9 @@ public class VisitaTecnica implements Serializable {
     @ManyToOne
     private ReporteDano reporte;
     
-
+    /**
+     *
+     */
     public VisitaTecnica() {
     }
     

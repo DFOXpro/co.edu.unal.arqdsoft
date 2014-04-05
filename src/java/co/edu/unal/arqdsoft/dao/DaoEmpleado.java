@@ -23,10 +23,18 @@ public class DaoEmpleado {
     
     static EntityManagerFactory emf = Persistence.createEntityManagerFactory("co-edu-unal-arqdsoftPU");
 
+    /**
+     *
+     * @return
+     */
     public static Empleado buscarEmpleado() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     *
+     * @return
+     */
     public static List<Empleado> buscarEmpleados() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

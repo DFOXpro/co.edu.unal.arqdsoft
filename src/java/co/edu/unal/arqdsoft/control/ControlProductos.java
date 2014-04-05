@@ -56,13 +56,18 @@ public class ControlProductos {
 
     /**
      *
-     * @param id id del producto a modificar
-     * @param plan id del plan a modificar
+     * @param plan1
+     * @param plan2
+     * @param plan3 
+     * @param productos
      * @return
      */
-    public static boolean modificarPlan(int id, String[] plan) {
+    public static boolean modificarPlan(int id,String plan1,String plan2,String plan3, List<Producto> productos) {
+        Plan p=new Plan(plan1, plan2, Double.valueOf(plan3), productos, null);
+        DaoPlan dP= new DaoPlan();
+        boolean b=dP.modificarPlan(id,p);
         
-        return false;
+        return b;
     }
 
     /**
@@ -70,7 +75,6 @@ public class ControlProductos {
      * @return retorna lista de productos
      */
     public static ArrayList<Producto> getProductos() {
-        //TODO 
         return DaoProducto.getProductos();
     }
 
@@ -79,7 +83,6 @@ public class ControlProductos {
      * @return lista de planes
      */
     public static ArrayList<Plan> getPlanes() {
-        //TODO
         return DaoPlan.getPlanes();
     }
 
@@ -89,7 +92,6 @@ public class ControlProductos {
      * @return retorna lista de productos
      */
     public static Producto getProducto(int idProducto) {
-        //TODO 
         return DaoProducto.getProducto(idProducto);
     }
 
@@ -99,7 +101,6 @@ public class ControlProductos {
      * @return
      */
     public static Plan getPlane(int idPlan) {
-        //TODO
         return DaoPlan.getPlane(idPlan);
     }
     
@@ -126,9 +127,26 @@ public class ControlProductos {
         }
         return p2;
     }
+
+    /**
+     *
+     * @param id
+     * @return
+     */
     public static boolean borrarProducto(int id){
-        DaoProducto.eliminarProducto(ControlProductos.getProducto(id),null);
-        return false;
+        DaoProducto p=new DaoProducto();
+        return p.eliminarProducto(ControlProductos.getProducto(id));
+    
+    }
+
+    /**
+     *
+     * @param id
+     * @return
+     */
+    public static boolean borrarPlan(int id){
+        DaoPlan p=new DaoPlan();
+        return p.eliminarPlan(ControlProductos.getProducto(id));
     
     }
 }

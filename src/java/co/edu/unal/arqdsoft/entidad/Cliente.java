@@ -29,9 +29,20 @@ public class Cliente implements Serializable{
     @OneToMany(targetEntity=ReporteDano.class,mappedBy = "cliente")
     private List<ReporteDano> reporteDano;
 
+    /**
+     *
+     */
     public Cliente() {
     }
 
+    /**
+     *
+     * @param id
+     * @param nombre
+     * @param informacion
+     * @param ventas
+     * @param reporteDano
+     */
     public Cliente(long id, String nombre, String informacion, List<Venta> ventas, List<ReporteDano> reporteDano) {
         this.id = id;
         this.nombre = nombre;
@@ -40,51 +51,99 @@ public class Cliente implements Serializable{
         this.reporteDano = reporteDano;
     }
 
+    /**
+     *
+     * @return
+     */
     public long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNombre() {
         return nombre;
     }
 
+    /**
+     *
+     * @param nombre
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getInformacion() {
         return informacion;
     }
 
+    /**
+     *
+     * @param informacion
+     */
     public void setInformacion(String informacion) {
         this.informacion = informacion;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Venta> getVentas() {
         return ventas;
     }
 
+    /**
+     *
+     * @param ventas
+     */
     public void setVentas(List<Venta> ventas) {
         this.ventas = ventas;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<ReporteDano> getReporteDano() {
         return reporteDano;
     }
 
+    /**
+     *
+     * @param reporteDano
+     */
     public void setReporteDano(List<ReporteDano> reporteDano) {
         this.reporteDano = reporteDano;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "Cliente{" + "id=" + id + ", nombre=" + nombre + ", informacion=" + informacion + ", ventas=" + ventas + ", reporteDano=" + reporteDano + '}';
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 5;
@@ -96,6 +155,11 @@ public class Cliente implements Serializable{
         return hash;
     }
 
+    /**
+     *
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {

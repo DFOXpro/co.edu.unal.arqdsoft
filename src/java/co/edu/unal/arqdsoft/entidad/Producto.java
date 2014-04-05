@@ -43,7 +43,6 @@ public class Producto  implements Serializable{
      * @param nombre    Cadena de caracteres conteniendo el nombre del nuevo producto
      * @param descripcion   Cadena de caracteres con una descripcion breve del producto
      * @param valor     Valor monetario que tendra el producto en el mercado
-     * @param planes Los planes en los cuales esta este producto
      */
     public Producto(String nombre, String descripcion, double valor) {
         this.nombre = nombre;
@@ -109,7 +108,10 @@ public class Producto  implements Serializable{
         this.valor = valor;
     }     
 
-
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 5;
@@ -120,6 +122,11 @@ public class Producto  implements Serializable{
         return hash;
     }
 
+    /**
+     *
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -144,6 +151,10 @@ public class Producto  implements Serializable{
         return true;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "Producto{" + "id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", valor=" + valor +  '}';

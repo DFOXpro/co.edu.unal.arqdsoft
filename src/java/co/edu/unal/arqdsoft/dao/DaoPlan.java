@@ -7,6 +7,7 @@
 package co.edu.unal.arqdsoft.dao;
 
 import co.edu.unal.arqdsoft.entidad.Plan;
+import co.edu.unal.arqdsoft.entidad.Producto;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -47,7 +48,6 @@ public class DaoPlan {
     }
 
     /**
-     *
      */
     public DaoPlan() {
     }
@@ -68,6 +68,19 @@ public class DaoPlan {
         } finally {
             em.close();
         }
+    }
+
+    /**
+     *
+     * @param producto
+     * @return
+     */
+    public boolean eliminarPlan(Producto producto) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public boolean modificarPlan(int id, Plan p) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

@@ -43,6 +43,9 @@ public class Venta implements Serializable{
     @ManyToOne
     private Plan plan;
 
+    /**
+     *
+     */
     public Venta() {
     }
 
@@ -144,14 +147,26 @@ public class Venta implements Serializable{
         this.plan = plan;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDireccionInstalacion() {
         return direccionInstalacion;
     }
 
+    /**
+     *
+     * @param direccionInstalacion
+     */
     public void setDireccionInstalacion(String direccionInstalacion) {
         this.direccionInstalacion = direccionInstalacion;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 3;
@@ -164,6 +179,11 @@ public class Venta implements Serializable{
         return hash;
     }
 
+    /**
+     *
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -194,6 +214,10 @@ public class Venta implements Serializable{
         return true;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "Venta{" + "id=" + id + ", fecha=" + fecha + ", direccionInstalacion=" + direccionInstalacion + ", cliente=" + cliente + ", vendedor=" + vendedor + ", plan=" + plan + '}';

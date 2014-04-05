@@ -77,6 +77,18 @@ public class Empleado implements Serializable {
     public Empleado() {
     }
     
+    /**
+     *
+     * @param nombre
+     * @param informacion
+     * @param horarioDisponible
+     * @param usuario
+     * @param contrasena
+     * @param rol
+     * @param ventas
+     * @param visitasTecnicas
+     * @param reportesDanos
+     */
     public Empleado(String nombre, String informacion, ArrayList<Date> horarioDisponible, String usuario, String contrasena, roles rol, List<Venta> ventas, List<VisitaTecnica> visitasTecnicas, List<ReporteDano> reportesDanos) {
         this.nombre = nombre;
         this.informacion = informacion;
@@ -202,30 +214,58 @@ public class Empleado implements Serializable {
         this.rol = rol;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Venta> getVentas() {
         return ventas;
     }
 
+    /**
+     *
+     * @param ventas
+     */
     public void setVentas(List<Venta> ventas) {
         this.ventas = ventas;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<VisitaTecnica> getVisitasTecnicas() {
         return visitasTecnicas;
     }
 
+    /**
+     *
+     * @param visitasTecnicas
+     */
     public void setVisitasTecnicas(List<VisitaTecnica> visitasTecnicas) {
         this.visitasTecnicas = visitasTecnicas;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<ReporteDano> getReportesDanos() {
         return reportesDanos;
     }
 
+    /**
+     *
+     * @param reportesDanos
+     */
     public void setReportesDanos(List<ReporteDano> reportesDanos) {
         this.reportesDanos = reportesDanos;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 7;
@@ -237,6 +277,11 @@ public class Empleado implements Serializable {
         return hash;
     }
 
+    /**
+     *
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -264,6 +309,10 @@ public class Empleado implements Serializable {
         return true;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "Empleado{" + "id=" + id + ", nombre=" + nombre + ", informacion=" + informacion + ", horarioDisponible=" + horarioDisponible + ", usuario=" + usuario + ", contrasena=" + contrasena + ", rol=" + rol + ", ventas=" + ventas + ", visitasTecnicas=" + visitasTecnicas + ", reportesDanos=" + reportesDanos + '}';
