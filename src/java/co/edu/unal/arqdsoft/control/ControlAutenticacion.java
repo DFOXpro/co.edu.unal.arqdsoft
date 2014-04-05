@@ -21,7 +21,7 @@ public class ControlAutenticacion {
      * @param contraseña la contraseña del usuario
      * @return retornara el empleado logeado o null de no existir el usuario
      */
-    public static Empleado cetificarUsuario(String usuario, String contraseña) {
+    public static Empleado certificarUsuario(String usuario, String contraseña) {
         Empleado a = DaoEmpleado.login(usuario, contraseña);
         if (a == null) {
             return null;

@@ -38,7 +38,7 @@ public class MiAutenticacion extends HttpServlet {
         String contrasena = request.getParameter("contrasena");
         System.out.println(usuario);
         System.out.println(contrasena);
-        Empleado emp = ControlAutenticacion.cetificarUsuario(usuario, contrasena);
+        Empleado emp = ControlAutenticacion.certificarUsuario(usuario, contrasena);
 
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();

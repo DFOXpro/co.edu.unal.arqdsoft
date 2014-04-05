@@ -44,7 +44,7 @@ public class ServletAutenticacion extends HttpServlet {
             /*TEST FIN*/
             /*CONDUCTO REGULAR*/
             JSONObject obj = JSON.toObject(request);
-            Empleado emp = ControlAutenticacion.cetificarUsuario(
+            Empleado emp = ControlAutenticacion.certificarUsuario(
                     "" + obj.get("accion"),
                     "" + obj.get("datos")
             );

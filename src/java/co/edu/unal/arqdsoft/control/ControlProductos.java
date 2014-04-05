@@ -61,7 +61,7 @@ public class ControlProductos {
      * @return
      */
     public static boolean modificarPlan(int id, String[] plan) {
-
+        
         return false;
     }
 
@@ -76,7 +76,7 @@ public class ControlProductos {
 
     /**
      *
-     * @return
+     * @return lista de planes
      */
     public static ArrayList<Plan> getPlanes() {
         //TODO
@@ -127,7 +127,7 @@ public class ControlProductos {
         return p2;
     }
     public static boolean borrarProducto(int id){
-        DaoProducto.eliminarProducto(ControlProductos.getProducto(id));
+        DaoProducto.eliminarProducto(ControlProductos.getProducto(id),null);
         return false;
     
     }
