@@ -12,6 +12,7 @@
  * @returns {undefined}
  */
 function sendRequest(url, callback, accion, datos) {
+    $("#error").html("Confirmando...");
     var xhr = new XMLHttpRequest();
     xhr.open("POST", url_root+url, true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

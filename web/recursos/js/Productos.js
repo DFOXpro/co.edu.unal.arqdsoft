@@ -1,5 +1,6 @@
 Productos = new Object();
 Productos.getProductos = function (){
+    
     sendRequest(
         "productos",
         Productos.mostrarProductos,
@@ -9,6 +10,7 @@ Productos.getProductos = function (){
 };
 
 Productos.getProducto = function (id){
+    
     sendRequest(
         "productos",
         Productos.mostrarProducto,
@@ -18,6 +20,7 @@ Productos.getProducto = function (id){
 };
 
 Productos.setProducto = function (){
+    
     var data = {
         id:$("#ad_idProductos").val(),
         nombre:$("#ad_nombreProductos").val(),
@@ -35,8 +38,22 @@ Productos.setProducto = function (){
     );
 };
 
+Productos.borrarProducto = function (){
+    
+    sendRequest(
+        "productos",
+        function (respuesta){
+            Productos.mostrarProducto(respuesta);
+            Productos.getProductos();
+        },
+        "borrarProducto",
+        id
+    );
+};
+
 Productos.mostrarProductos = function (respuesta){
     if(respuesta.error.length == 0){
+        $("#error").html("");
         var array = respuesta.contenido.dato;
         var s = "";
         for (var i in array) {
@@ -48,6 +65,7 @@ Productos.mostrarProductos = function (respuesta){
 
 Productos.mostrarProducto = function (respuesta){
     if(respuesta.error.length == 0){
+        $("#error").html("");
         $("#ad_idProductos").val(respuesta.contenido.dato.id);
         $("#ad_nombreProductos").val(respuesta.contenido.dato.nombre);
         $("#ad_descripcionProductos").val(respuesta.contenido.dato.descripcion);
@@ -55,6 +73,7 @@ Productos.mostrarProducto = function (respuesta){
         $("#ad_infoProducto").removeClass("hidden");
         $("#ad_b_ActualizarProductos").removeClass("hidden");
         $("#ad_b_BorrarProductos").removeClass("hidden");
+        $("#ad_b_CancelarProductos").removeClass("hidden");
     } else $("#error").html(respuesta.error);
 };
 
@@ -69,6 +88,13 @@ Productos.innit = function (){
         Productos.setProducto();
     });
     Evento.boton($("#ad_b_ActualizarProductos"), Productos.setProducto);
+    Evento.boton($("#ad_b_BorrarProductos"), Productos.borrarProducto);
+    Evento.boton($("#ad_b_CancelarProductos"), function (){
+        $("#ad_infoProducto").addClass("hidden");
+        $("#ad_b_ActualizarProductos").addClass("hidden");
+        $("#ad_b_BorrarProductos").addClass("hidden");
+        $("#ad_b_CancelarProductos").addClass("hidden");
+    });
     Evento.menu($("#l_ad_planes"), $("#ad_planes"));
     Evento.cerrarSesion($("#l_ad_cerrarSesion"));
     Productos.getProductos();
