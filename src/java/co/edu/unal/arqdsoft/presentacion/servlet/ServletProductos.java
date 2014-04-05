@@ -49,9 +49,9 @@ public class ServletProductos extends HttpServlet {
             } else if (obj.get("accion").equals("getProducto")) {
                 r = getProducto(obj);
             } else if (obj.get("accion").equals("setProducto")) {
-                r = setProductos(obj);//Crear y Actualizar
+                r = setProducto(obj);//Crear y Actualizar
             } else if (obj.get("accion").equals("borrarProducto")) {
-                r = borrarProductos(obj);
+                r = borrarProducto(obj);
             } else if (obj.get("accion").equals("listarPlanes")) {
                 r = listarPlanes();
             } else if (obj.get("accion").equals("setPlan")) {
@@ -160,23 +160,26 @@ public class ServletProductos extends HttpServlet {
                 throw new SecurityException(obj.get("datos").toString());
             }
         } catch(Exception ex){
+            Logger.getLogger(ServletProductos.class.getName()).log(Level.SEVERE, null, ex);
             return new Respuesta(error, new Contenido());
         }
     }
 
-    private Respuesta listarPlanes() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private Respuesta setProductos(JSONObject obj) {
+    private Respuesta setProducto(JSONObject obj) {
         String error = "Problemas con la comunicación";
         try{
             obj = (JSONObject)JSONValue.parse(obj.get("datos").toString());
             Producto p = ControlProductos.setProducto(
-                (int)obj.get("id"),
+                Integer.parseInt(obj.get("id").toString()),
                 obj.get("nombre").toString(),
                 obj.get("descripcion").toString(),
                 obj.get("valor").toString());
+            /*TEST*/
+//            p = new Producto(obj.get("nombre").toString(), obj.get("descripcion").toString(), 100);//Si se guardó
+//            p = null;//Si NO se guardó
+            /*TEST FIN*/
+
+            p.setId(4321);
             if(p != null){
                 JSONObject t = new JSONObject();
                 t.put("nombre", p.getNombre());
@@ -189,11 +192,32 @@ public class ServletProductos extends HttpServlet {
                 throw new Exception();
             }
         } catch(Exception ex){
+            Logger.getLogger(ServletProductos.class.getName()).log(Level.SEVERE, null, ex);
+            return new Respuesta(error, new Contenido());
+        }
+    }
+    
+        private Respuesta borrarProducto(JSONObject obj) {
+        String error = "Problemas con la comunicación";
+        try{
+            //boolean p = ControlProductos.borrarProducto((int) obj.get("datos"));
+            /*TEST*/
+            boolean p = true;
+            //boolean p = false;
+            /*TEST FIN*/
+            if(p){
+                return new Respuesta("", new Contenido());
+            }else{
+                error = "No se pudo borrar el producto.";//ERROR de SEGURIDAD ?
+                throw new SecurityException(obj.get("datos").toString());
+            }
+        } catch(Exception ex){
+            Logger.getLogger(ServletProductos.class.getName()).log(Level.SEVERE, null, ex);
             return new Respuesta(error, new Contenido());
         }
     }
 
-    private Respuesta borrarProductos(JSONObject obj) {
+    private Respuesta listarPlanes() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

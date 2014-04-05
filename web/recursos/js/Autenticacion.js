@@ -28,7 +28,6 @@ Autenticacion.recibir = function (respuesta){
     Contenido.cambiarSeccion(respuesta);
 };
 Autenticacion.enviar = function (){
-    $("#error").html("Comprobando");
     sendRequest(
         "autenticacion",
         Autenticacion.recibir,
