@@ -39,15 +39,16 @@ Productos.setProducto = function (){
 };
 
 Productos.borrarProducto = function (){
-    
     sendRequest(
         "productos",
         function (respuesta){
-            Productos.mostrarProducto(respuesta);
-            Productos.getProductos();
+            if(respuesta.error.length > 0) $("#error").html(respuesta.error);
+            else{
+                Productos.getProductos();
+            }
         },
         "borrarProducto",
-        id
+        $("#ad_idProductos").val()
     );
 };
 

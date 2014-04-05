@@ -160,6 +160,7 @@ public class ServletProductos extends HttpServlet {
                 throw new SecurityException(obj.get("datos").toString());
             }
         } catch(Exception ex){
+            Logger.getLogger(ServletProductos.class.getName()).log(Level.SEVERE, null, ex);
             return new Respuesta(error, new Contenido());
         }
     }
@@ -199,23 +200,19 @@ public class ServletProductos extends HttpServlet {
         private Respuesta borrarProducto(JSONObject obj) {
         String error = "Problemas con la comunicación";
         try{
-            //Producto p = ControlProductos.getProducto((int) obj.get("datos"));
+            //boolean p = ControlProductos.borrarProducto((int) obj.get("datos"));
             /*TEST*/
-            Producto p = new Producto("Telefono", "muy comunicativo", 18000);
-            p.setId(123);
+            boolean p = true;
+            //boolean p = false;
             /*TEST FIN*/
-            if(p != null){
-                JSONObject t = new JSONObject();
-                t.put("nombre", p.getNombre());
-                t.put("id", p.getId());
-                t.put("descripcion", p.getDescripcion());
-                t.put("valor", p.getValor());
-                return new Respuesta("", new Contenido(t, ""));
+            if(p){
+                return new Respuesta("", new Contenido());
             }else{
-                error = "No existe el producto, no debería de pasar, no sea curioso";//ERROR de SEGURIDAD
+                error = "No se pudo borrar el producto.";//ERROR de SEGURIDAD ?
                 throw new SecurityException(obj.get("datos").toString());
             }
         } catch(Exception ex){
+            Logger.getLogger(ServletProductos.class.getName()).log(Level.SEVERE, null, ex);
             return new Respuesta(error, new Contenido());
         }
     }
