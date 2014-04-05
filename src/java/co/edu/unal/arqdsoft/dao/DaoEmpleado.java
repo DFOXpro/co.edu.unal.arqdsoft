@@ -7,6 +7,7 @@
 package co.edu.unal.arqdsoft.dao;
 
 import co.edu.unal.arqdsoft.entidad.Empleado;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
@@ -21,6 +22,15 @@ import javax.persistence.Query;
 public class DaoEmpleado {
     
     static EntityManagerFactory emf = Persistence.createEntityManagerFactory("co-edu-unal-arqdsoftPU");
+
+    public static Empleado buscarEmpleado() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static List<Empleado> buscarEmpleados() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
     /**
      * Este metodo solo se crea ara hacer pruebas de guardado en la base de datos
