@@ -32,8 +32,8 @@ public class Producto  implements Serializable{
      * La relacion de Producto es de uno a muchos con Plan, ya que un Plan puede tener uno o mas productos
      * y un Producto puede estar en uno o mas planes.
      */ 
-    @ManyToMany(mappedBy = "productos")
-    private List<Plan> planes;
+    //@ManyToMany(mappedBy = "productos")
+    //private List<Plan> planes;
 
     public Producto() {
     }
@@ -45,11 +45,11 @@ public class Producto  implements Serializable{
      * @param valor     Valor monetario que tendra el producto en el mercado
      * @param planes Los planes en los cuales esta este producto
      */
-    public Producto(String nombre, String descripcion, double valor, List<Plan> planes) {
+    public Producto(String nombre, String descripcion, double valor) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.valor = valor;
-        this.planes=planes;
+        //this.planes=planes;
     }
     
 
@@ -109,13 +109,6 @@ public class Producto  implements Serializable{
         this.valor = valor;
     }     
 
-    public List<Plan> getPlanes() {
-        return planes;
-    }
-
-    public void setPlanes(List<Plan> planes) {
-        this.planes = planes;
-    }
 
     @Override
     public int hashCode() {
@@ -153,7 +146,7 @@ public class Producto  implements Serializable{
 
     @Override
     public String toString() {
-        return "Producto{" + "id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", valor=" + valor + ", planes=" + planes + '}';
+        return "Producto{" + "id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", valor=" + valor +  '}';
     }
     
     
