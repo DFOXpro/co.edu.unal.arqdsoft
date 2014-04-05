@@ -7,13 +7,15 @@
 package co.edu.unal.arqdsoft.dao;
 
 import co.edu.unal.arqdsoft.entidad.Plan;
+import co.edu.unal.arqdsoft.entidad.Producto;
 import java.util.ArrayList;
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -86,7 +88,7 @@ public class DaoPlanTest {
     public void testCrear() {
         System.out.println("crear");
         List<Producto> productos;
-        Plan object = new Plan("datos para familias", "ninguna Descript", 12000, );
+        Plan object = new Plan("datos para familias", "ninguna Descript", 12000.0,null);
         DaoPlan instance = new DaoPlan();
         instance.crear(object);
         // TODO review the generated test code and remove the default call to fail.

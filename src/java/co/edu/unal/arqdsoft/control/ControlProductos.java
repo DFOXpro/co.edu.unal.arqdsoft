@@ -23,7 +23,8 @@ public class ControlProductos {
      */
     public static boolean nuevoProducto(String[] producto) {
         Producto p = new Producto(producto[0], producto[1], Double.valueOf(producto[2]));
-        DaoProducto.crearProducto(p);
+        DaoProducto dP=new DaoProducto();
+        dP.crearProducto(p);
         return false;
     }
 
@@ -41,12 +42,14 @@ public class ControlProductos {
 
     /**
      *
-     * @param plan String con los datos del plan sin productos
+     * @param plan1
+     * @param plan2
+     * @param plan3
      * @param productos lista de ids de los productos
      * @return
      */
-    public static boolean nuevoPlan(String[] plan, List<Producto> productos) {
-        Plan p = new Plan(Integer.getInteger(plan[0]), plan[1], plan[2], Double.valueOf(plan[3]), productos);
+    public static boolean nuevoPlan(String plan1,String plan2,String plan3, List<Producto> productos) {
+        Plan p = new Plan( plan1, plan2, Double.valueOf(plan3), productos);
         DaoPlan.CrearPlan(p);
         return false;
     }

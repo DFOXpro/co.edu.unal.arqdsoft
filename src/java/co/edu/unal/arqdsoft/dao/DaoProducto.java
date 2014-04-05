@@ -51,7 +51,7 @@ public class DaoProducto {
      *
      * @param producto
      */
-    public static void crearProducto(Producto producto) {
+    public void crearProducto(Producto producto) {
         EntityManager em = emf.createEntityManager();
 
         try {
