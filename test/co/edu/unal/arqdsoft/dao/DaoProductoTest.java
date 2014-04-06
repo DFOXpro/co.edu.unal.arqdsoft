@@ -43,15 +43,15 @@ public class DaoProductoTest {
     /**
      * Test of modificarProducto method, of class DaoProducto.
      */
-   @Test
-    public void testModificarProducto() {
-        System.out.println("modificarProducto");
-        int idProducto = 1;
-        Producto p = new Producto(1,"data", "nada", 12000);
-        DaoProducto.modificarProducto(idProducto, p);
-        // TODO review the generated test code and remove the default call to fail.
-        
-    }
+//   @Test
+//    public void testModificarProducto() {
+//        System.out.println("modificarProducto");
+//        int idProducto = 1;
+//        Producto p = new Producto("data", "nada", 12000);
+//        DaoProducto.modificarProducto(idProducto, p);
+//        // TODO review the generated test code and remove the default call to fail.
+//        
+//    }
 
     /**
      * Test of crearProducto method, of class DaoProducto.
@@ -61,55 +61,51 @@ public class DaoProductoTest {
         System.out.println("crear");
         //int id = 132456;
         
-        Producto productos = new Producto("datos", "ninguna", 12000);
+        Producto productos = new Producto("Linea de telefono local ilimitada", "Linea de telefono con llamadas locales ilimitadas", 30000);
         
         DaoProducto daoProducto = new DaoProducto();
         
         daoProducto.crearProducto(productos);
-        //TODO
     }
     /**
      * Test of crearProducto method, of class DaoProducto.
      */
-    @Test
-    public void testGetProducto() {
-        System.out.println("getProducto");
-        Producto prod = new Producto(1,"data", "nada", 12000);
-        DaoProducto instance = new DaoProducto();
-        Producto expResult = new Producto(1, "data", "nada", 12000);
-        Producto result = instance.getProducto(prod.getId());
-        System.out.println(expResult + " = "+ result);
-        assertEquals(expResult.getId(), result.getId());
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
+//    @Test
+//    public void testGetProducto() {
+//        System.out.println("getProducto");
+//        Producto prod = new Producto("data", "nada", 12000);
+//        DaoProducto instance = new DaoProducto();
+//        Producto expResult = new Producto("data", "nada", 12000);
+//        Producto result = instance.getProducto(prod.getId());
+//        System.out.println(expResult + " = "+ result);
+//        assertEquals(expResult.getId(), result.getId());
+//        // TODO review the generated test code and remove the default call to fail.
+//        //fail("The test case is a prototype.");
+//    }
     /**
      * Test of crearProducto method, of class DaoProducto.
      */
-    @Test
-    public void testLeer() {
-        System.out.println("leer");
-        Producto prod = new Producto(1,"data", "nada", 12000);
-        DaoProducto instance = new DaoProducto();
-        Producto expResult = new Producto(1, "data", "nada", 12000);
-        Producto result = instance.leerProducto(prod);
-        System.out.println(expResult + " = "+ result);
-        assertEquals(expResult.getId(), result.getId());
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
+//    @Test
+//    public void testLeer() {
+//        System.out.println("leer");
+//        Producto prod = new Producto("data", "nada", 12000);
+//        DaoProducto instance = new DaoProducto();
+//        Producto expResult = new Producto("data", "nada", 12000);
+//        Producto result = instance.leerProducto(prod);
+//        System.out.println(expResult + " = "+ result);
+//        assertEquals(expResult.getId(), result.getId());
+//        // TODO review the generated test code and remove the default call to fail.
+//        //fail("The test case is a prototype.");
+//    }
 
     /**
      * Test of getProductos method, of class DaoProducto.
      */
-   /**** @Test
-    public void testGetProductos() {
-        System.out.println("getProductos");
-        ArrayList<Producto> expResult = null;
-        ArrayList<Producto> result = DaoProducto.getProductos();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-    */
+//   @Test
+//    public void testGetProducto() {
+//        System.out.println("getProducto");
+//        Producto producto = DaoProducto.getProducto(1);
+//        System.out.println("nombre del producto "+producto.getNombre());
+//    }
+    
 }

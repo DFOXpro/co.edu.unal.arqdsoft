@@ -51,16 +51,13 @@ public class Venta implements Serializable{
     }
 
     /**
-     *
-     * @param id
      * @param fecha
      * @param direccionInstalacion
      * @param cliente
      * @param vendedor
      * @param plan
      */
-    public Venta(int id, Date fecha, String direccionInstalacion, Cliente cliente, Empleado vendedor, Plan plan) {
-        this.id = id;
+    public Venta( Date fecha, String direccionInstalacion, Cliente cliente, Empleado vendedor, Plan plan) {
         this.fecha = fecha;
         this.direccionInstalacion= direccionInstalacion;
         this.cliente = cliente;

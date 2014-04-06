@@ -12,7 +12,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 /**
  *
@@ -33,7 +32,8 @@ public class Plan implements Serializable{
      * y un producto esta en uno o varios planes. A su vez una Venta solo tiene un plan pero varios planes pueden
      * estar en diferentes ventas.
      */ 
-    @ManyToMany(mappedBy = "plans")
+    
+    @OneToMany
     private List<Producto> productos;
     
     /**
