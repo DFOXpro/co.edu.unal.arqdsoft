@@ -5,7 +5,16 @@ Admin.Planes = new Object();
 Admin.Productos.getProductos = function (){
     sendRequest(
         "productos",
-        Admin.Productos.mostrarProductos,
+            function (respuesta){
+                var s = Admin.Productos.mostrarProductos(respuesta);
+                $("#ad_listaProductos").html(s);
+                $("#ad_d_Planes_AgregarProducto").html(
+                    s.replace(
+                        new RegExp("Admin.Productos.getProducto", 'g'),
+                        "Admin.Planes.agregarProducto"
+                    )
+                );
+            },
         "listarProductos",
         ""
     );
@@ -52,7 +61,7 @@ Admin.Planes.mostrarPlan = function (respuesta){
             s+="<option value='"+respuesta.contenido.dato.productos[i].id+
                 "'>"+respuesta.contenido.dato.productos[i].nombre+"</option>";//TODO FUTURE: use templates
         }
-        $("#ad_ProductosPlanes").html(s);
+        $("#ad_Planes_ListaProductos").html(s);
 
         $("#ad_infoPlanes").removeClass("hidden");
         $("#ad_b_ActualizarPlanes").removeClass("hidden");
@@ -60,8 +69,15 @@ Admin.Planes.mostrarPlan = function (respuesta){
         $("#ad_b_CancelarPlanes").removeClass("hidden");
     } else $("#error").html(respuesta.error);
 };
+Admin.Planes.agregarProducto = function (id, nombre){
+    if ( $("#ad_Planes_ListaProductos[value="+id).length > 0 )alert("El plan ya tiene este producto");
+    else $("#ad_Planes_ListaProductos").append(new Option(nombre, id));
+};
+Admin.Planes.quitarProducto = function (){
+    $("#ad_Planes_ListaProductos").find('option:selected').remove();
+};
 
-Admin.Productos.getProducto = function (id){
+Admin.Productos.getProducto = function (id, nombre){
     
     sendRequest(
         "productos",
@@ -110,9 +126,9 @@ Admin.Productos.mostrarProductos = function (respuesta){
         var array = respuesta.contenido.dato;
         var s = "";
         for (var i in array) {
-            s+="<li><a href='#' onclick='Admin.Productos.getProducto("+array[i].id+"); return false;'>"+array[i].nombre+"</a></li>";//TODO FUTURE: use templates
+            s+="<li><a href='#' onclick='Admin.Productos.getProducto("+array[i].id+",\""+array[i].nombre+"\"); return false;'>"+array[i].nombre+"</a></li>";//TODO FUTURE: use templates
         }
-        $("#ad_listaProductos").html(s);
+        return s;
     } else $("#error").html(respuesta.error);
 };
 
