@@ -59,12 +59,13 @@ public class DaoPlanTest {
     @Test
     public void testCrearPlanConProductoExistente() {
         System.out.println("CrearPlanConProductoExistente");
-        Producto producto=DaoProducto.getProducto(1);
+        DaoProducto daoProducto= new DaoProducto();
         List<Producto> productos=new ArrayList();
-        productos.add(producto);
-        Plan p = new Plan("Plan local ilimitado", "Linea fija con llamadas locales ilimitadas", producto.getValor(), productos);
-        DaoPlan dao= new DaoPlan();
-        dao.crear(p);
+        productos.add(daoProducto.getProducto(1));
+        productos.add(daoProducto.getProducto(32768));
+        Plan p = new Plan("Plan local ilimitado + Internet 5 Megas", "Linea fija con llamadas locales ilimitadas y banda ancha 5 megas", 70000, productos);
+        DaoPlan daoPlan= new DaoPlan();
+        daoPlan.crear(p);
     }
 
     /**

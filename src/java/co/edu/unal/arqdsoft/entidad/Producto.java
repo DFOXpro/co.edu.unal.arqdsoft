@@ -7,11 +7,13 @@
 package co.edu.unal.arqdsoft.entidad;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 /**
  *
@@ -25,6 +27,8 @@ public class Producto  implements Serializable{
     private String nombre;
     private String descripcion;
     private double valor;
+    @ManyToMany(mappedBy = "productos")
+    private List<Plan> plans;
     /**
      * Relaciones:
      * La relacion de Producto es de uno a muchos con Plan, ya que un Plan puede tener uno o mas productos
