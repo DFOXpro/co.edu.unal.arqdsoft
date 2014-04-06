@@ -6,10 +6,16 @@
 
 package co.edu.unal.arqdsoft.dao;
 
+import co.edu.unal.arqdsoft.entidad.ReporteDano;
+
 /**
  *
  * @author dmlr
  */
 public class DaoReporteDano {
+
+    public boolean crearReporteDano(ReporteDano rD) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

@@ -6,6 +6,8 @@
 
 package co.edu.unal.arqdsoft.dao;
 
+import co.edu.unal.arqdsoft.entidad.*;
+
 /**
  *
  * @author dmlr
