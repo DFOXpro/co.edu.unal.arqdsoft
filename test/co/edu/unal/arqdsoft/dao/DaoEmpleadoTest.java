@@ -51,6 +51,7 @@ public class DaoEmpleadoTest {
         dao.persist(new Empleado("Pedro", "abc", null, "pedro", "123456", Empleado.roles.ADMINPRODUCTOS,null,null,null));
         dao.persist(new Empleado("Polo", "abc", null, "polo", "123456", Empleado.roles.TECNICO,null,null,null));
         dao.persist(new Empleado("Dmlr", "abc", null, "dmlr", "123456", Empleado.roles.VENDEDOR,null,null,null));
+        dao.persist(new Empleado("Camilo", "abc", null, "camilo", "123456", Empleado.roles.OPERARIO,null,null,null));
     }
 
     /**
