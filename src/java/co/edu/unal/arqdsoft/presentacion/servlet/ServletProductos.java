@@ -144,24 +144,24 @@ public class ServletProductos extends HttpServlet {
 
     private Respuesta getProducto(JSONObject obj) {
         String error = "Problemas con la comunicación";
-        try{
+        try {
             //Producto p = ControlProductos.getProducto((int) obj.get("datos"));
             /*TEST*/
             Producto p = new Producto("Telefono", "muy comunicativo", 18000);
             p.setId(123);
             /*TEST FIN*/
-            if(p != null){
+            if (p != null) {
                 JSONObject t = new JSONObject();
                 t.put("nombre", p.getNombre());
                 t.put("id", p.getId());
                 t.put("descripcion", p.getDescripcion());
                 t.put("valor", p.getValor());
                 return new Respuesta("", new Contenido(t, ""));
-            }else{
+            } else {
                 error = "No existe el producto, no debería de pasar, no sea curioso";//ERROR de SEGURIDAD
                 throw new SecurityException(obj.get("datos").toString());
             }
-        } catch(Exception ex){
+        } catch (Exception ex) {
             Logger.getLogger(ServletProductos.class.getName()).log(Level.SEVERE, null, ex);
             return new Respuesta(error, new Contenido());
         }
@@ -169,51 +169,51 @@ public class ServletProductos extends HttpServlet {
 
     private Respuesta setProducto(JSONObject obj) {
         String error = "Problemas con la comunicación";
-        try{
-            obj = (JSONObject)JSONValue.parse(obj.get("datos").toString());
+        try {
+            obj = (JSONObject) JSONValue.parse(obj.get("datos").toString());
             Producto p = ControlProductos.setProducto(
-                Integer.parseInt(obj.get("id").toString()),
-                obj.get("nombre").toString(),
-                obj.get("descripcion").toString(),
-                obj.get("valor").toString());
+                    Integer.parseInt(obj.get("id").toString()),
+                    obj.get("nombre").toString(),
+                    obj.get("descripcion").toString(),
+                    obj.get("valor").toString());
             /*TEST*/
 //            p = new Producto(obj.get("nombre").toString(), obj.get("descripcion").toString(), 100);//Si se guardó
 //            p = null;//Si NO se guardó
             /*TEST FIN*/
 
             p.setId(4321);
-            if(p != null){
+            if (p != null) {
                 JSONObject t = new JSONObject();
                 t.put("nombre", p.getNombre());
                 t.put("id", p.getId());
                 t.put("descripcion", p.getDescripcion());
                 t.put("valor", p.getValor());
                 return new Respuesta("", new Contenido(t, ""));
-            }else{
+            } else {
                 error = "No se creó el producto";
                 throw new Exception();
             }
-        } catch(Exception ex){
+        } catch (Exception ex) {
             Logger.getLogger(ServletProductos.class.getName()).log(Level.SEVERE, null, ex);
             return new Respuesta(error, new Contenido());
         }
     }
-    
-        private Respuesta borrarProducto(JSONObject obj) {
+
+    private Respuesta borrarProducto(JSONObject obj) {
         String error = "Problemas con la comunicación";
-        try{
+        try {
             //boolean p = ControlProductos.borrarProducto((int) obj.get("datos"));
             /*TEST*/
             boolean p = true;
             //boolean p = false;
             /*TEST FIN*/
-            if(p){
+            if (p) {
                 return new Respuesta("", new Contenido());
-            }else{
+            } else {
                 error = "No se pudo borrar el producto.";//ERROR de SEGURIDAD ?
                 throw new SecurityException(obj.get("datos").toString());
             }
-        } catch(Exception ex){
+        } catch (Exception ex) {
             Logger.getLogger(ServletProductos.class.getName()).log(Level.SEVERE, null, ex);
             return new Respuesta(error, new Contenido());
         }
@@ -223,10 +223,10 @@ public class ServletProductos extends HttpServlet {
         //ArrayList<Producto> prdts = ControlProductos.getProductos();
         /*TEST*/
         ArrayList<Plan> planes = new ArrayList();
-        planes.add(new Plan("Plan A", null, 0,null));
-        planes.add(new Plan("Plan Telefono", null, 0,null));
-        planes.add(new Plan("Plan dadaese", null, 0,null));
-        planes.add(new Plan("Plan datos", null, 0,null));
+        planes.add(new Plan("Plan A", null, 0, null));
+        planes.add(new Plan("Plan Telefono", null, 0, null));
+        planes.add(new Plan("Plan dadaese", null, 0, null));
+        planes.add(new Plan("Plan datos", null, 0, null));
         /*TEST FIN*/
         JSONArray list = new JSONArray();
         for (Plan temp : planes) {
