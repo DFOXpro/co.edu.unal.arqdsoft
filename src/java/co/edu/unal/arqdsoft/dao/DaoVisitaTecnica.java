@@ -12,4 +12,8 @@ package co.edu.unal.arqdsoft.dao;
  */
 public class DaoVisitaTecnica {
     
+    public boolean crearVisita(VisitaTecnica vT) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 }
