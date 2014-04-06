@@ -69,17 +69,15 @@ public class DaoClienteTest {
     /**
      * Test of getCliente method, of class DaoCliente.
      */
-//    @Test
-//    public void testGetCliente() {
-//        System.out.println("getCliente");
-//        int idCliente = 0;
-//        DaoCliente instance = new DaoCliente();
-//        Cliente expResult = null;
-//        Cliente result = instance.getCliente(idCliente);
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testGetCliente() {
+        System.out.println("getCliente");
+        long idCliente = 80128928;
+        DaoCliente instance = new DaoCliente();
+        long expResult = 80128928;
+        long result = instance.getCliente(idCliente).getId();
+        assertEquals(expResult, result);
+    }
 
     /**
      * Test of getClientes method, of class DaoCliente.
