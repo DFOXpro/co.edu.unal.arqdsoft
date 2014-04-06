@@ -30,7 +30,7 @@ import org.json.simple.JSONValue;
  *
  * @author dmlr
  */
-@WebServlet(name = "ServletVentas", urlPatterns = {"/ServletVentas"})
+@WebServlet(name = "ServletVentas", urlPatterns = {"/ventas"})
 public class ServletVentas extends HttpServlet {
 
     /**
@@ -47,9 +47,7 @@ public class ServletVentas extends HttpServlet {
         try {
             JSONObject obj = JSON.toObject(request);
             Respuesta r;
-            if (obj.get("accion").equals("listaClientes")) {
-                r = listarClientes();
-            } else if (obj.get("accion").equals("getCliente")) {
+            if (obj.get("accion").equals("getCliente")) {
                 r = getClientes(obj);
             } else if (obj.get("accion").equals("setCliente")) {
                 r = setVenta(obj);
@@ -88,13 +86,13 @@ public class ServletVentas extends HttpServlet {
     private Respuesta listarClientes() {
         //ArrayList<Cliente> clnts = Control.getProductos();
         /*TEST*/
-        ArrayList<clnts> prdts = new ArrayList();
+        ArrayList<Cliente> clnts = new ArrayList();
         clnts.add(new Cliente(0,"Cliente A", "Direccion falsa 123", null, null));
         clnts.add(new Cliente(1,"Cliente B", "Direccion falsa 123", null, null));
         clnts.add(new Cliente(2,"Cliente C", "Direccion falsa 123", null, null));
         /*TEST FIN*/
         JSONArray list = new JSONArray();
-        for (Producto temp : clnts) {
+        for (Cliente temp : clnts) {
             JSONObject t = new JSONObject();
             t.put("nombre", temp.getNombre());
             t.put("id", temp.getId());

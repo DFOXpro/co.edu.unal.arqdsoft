@@ -1,6 +1,5 @@
 Admin = new Object();
 Admin.Productos = new Object();
-Admin.Planes = new Object();
 
 Admin.Productos.getProductos = function (){
     sendRequest(
@@ -18,63 +17,6 @@ Admin.Productos.getProductos = function (){
         "listarProductos",
         ""
     );
-};
-
-Admin.Planes.getPlanes = function (){
-    sendRequest(
-        "productos",
-        Admin.Planes.mostrarPlanes,
-        "listarPlanes",
-        ""
-    );
-};
-
-Admin.Planes.mostrarPlanes = function (respuesta){
-    if(respuesta.error.length == 0){
-        $("#error").html("");
-        var array = respuesta.contenido.dato;
-        var s = "";
-        for (var i in array) {
-            s+="<li><a href='#' onclick='Admin.Planes.getPlan("+array[i].id+"); return false;'>"+array[i].nombre+"</a></li>";//TODO FUTURE: use templates
-        }
-        $("#ad_listaPlanes").html(s);
-    } else $("#error").html(respuesta.error);
-};
-
-Admin.Planes.getPlan = function (id){
-    sendRequest(
-        "productos",
-        Admin.Planes.mostrarPlan,
-        "getPlan",
-        id
-    );
-};
-Admin.Planes.mostrarPlan = function (respuesta){
-    if(respuesta.error.length == 0){
-        $("#error").html("");
-        $("#ad_idPlanes").val(respuesta.contenido.dato.id);
-        $("#ad_nombrePlanes").val(respuesta.contenido.dato.nombre);
-        $("#ad_descripcionPlanes").val(respuesta.contenido.dato.descripcion);
-        $("#ad_valorPlanes").val(respuesta.contenido.dato.valor);
-        var s = "";
-        for (var i in respuesta.contenido.dato.productos) {
-            s+="<option value='"+respuesta.contenido.dato.productos[i].id+
-                "'>"+respuesta.contenido.dato.productos[i].nombre+"</option>";//TODO FUTURE: use templates
-        }
-        $("#ad_Planes_ListaProductos").html(s);
-
-        $("#ad_infoPlanes").removeClass("hidden");
-        $("#ad_b_ActualizarPlanes").removeClass("hidden");
-        $("#ad_b_BorrarPlanes").removeClass("hidden");
-        $("#ad_b_CancelarPlanes").removeClass("hidden");
-    } else $("#error").html(respuesta.error);
-};
-Admin.Planes.agregarProducto = function (id, nombre){
-    if ( $("#ad_Planes_ListaProductos option[value="+id+"]").length > 0 ) alert("El plan ya tiene este producto");
-    else $("#ad_Planes_ListaProductos").append(new Option(nombre, id));
-};
-Admin.Planes.quitarProducto = function (){
-    $("#ad_Planes_ListaProductos").find('option:selected').remove();
 };
 
 Admin.Productos.getProducto = function (id, nombre){
@@ -105,33 +47,6 @@ Admin.Productos.setProducto = function (){
     );
 };
 
-Admin.Planes.setPlan = function (){
-    var array= new Array();i=0;
-    $("#ad_Planes_ListaProductos option").each(function() {
-        array[i]={
-            id:$(this).val(),
-            nombre:$(this).html()
-        };
-        i++;
-    });
-    var data = {
-        id:$("#ad_idPlanes").val(),
-        nombre:$("#ad_nombrePlanes").val(),
-        descripcion:$("#ad_descripcionPlanes").val(),
-        valor:$("#ad_valorPlanes").val(),
-        productos: array
-    };
-    sendRequest(
-        "productos",
-        function (respuesta){
-            Admin.Planes.mostrarPlan(respuesta);
-            Admin.Planes.getPlanes();
-        },
-        "setPlan",
-        JSON.stringify(data)
-    );
-};
-
 Admin.Productos.borrarProducto = function (){
     sendRequest(
         "productos",
@@ -143,19 +58,6 @@ Admin.Productos.borrarProducto = function (){
         },
         "borrarProducto",
         $("#ad_idProductos").val()
-    );
-};
-Admin.Planes.borrarPlan = function (){
-    sendRequest(
-        "productos",
-        function (respuesta){
-            if(respuesta.error.length > 0) $("#error").html(respuesta.error);
-            else{
-                Admin.Planes.getPlanes();
-            }
-        },
-        "borrarPlan",
-        $("#ad_idPlanes").val()
     );
 };
 
@@ -183,6 +85,108 @@ Admin.Productos.mostrarProducto = function (respuesta){
         $("#ad_b_BorrarProductos").removeClass("hidden");
         $("#ad_b_CancelarProductos").removeClass("hidden");
     } else $("#error").html(respuesta.error);
+};
+
+
+Admin.Planes = new Object();
+
+Admin.Planes.getPlanes = function (){
+    sendRequest(
+        "productos",
+        Admin.Planes.mostrarPlanes,
+        "listarPlanes",
+        ""
+    );
+};
+
+Admin.Planes.getPlan = function (id){
+    sendRequest(
+        "productos",
+        Admin.Planes.mostrarPlan,
+        "getPlan",
+        id
+    );
+};
+
+Admin.Planes.setPlan = function (){
+    var array= new Array();i=0;
+    $("#ad_Planes_ListaProductos option").each(function() {
+        array[i]={
+            id:$(this).val(),
+            nombre:$(this).html()
+        };
+        i++;
+    });
+    var data = {
+        id:$("#ad_idPlanes").val(),
+        nombre:$("#ad_nombrePlanes").val(),
+        descripcion:$("#ad_descripcionPlanes").val(),
+        valor:$("#ad_valorPlanes").val(),
+        productos: array
+    };
+    sendRequest(
+        "productos",
+        function (respuesta){
+            Admin.Planes.mostrarPlan(respuesta);
+            Admin.Planes.getPlanes();
+        },
+        "setPlan",
+        JSON.stringify(data)
+    );
+};
+
+Admin.Planes.borrarPlan = function (){
+    sendRequest(
+        "productos",
+        function (respuesta){
+            if(respuesta.error.length > 0) $("#error").html(respuesta.error);
+            else{
+                Admin.Planes.getPlanes();
+            }
+        },
+        "borrarPlan",
+        $("#ad_idPlanes").val()
+    );
+};
+
+Admin.Planes.mostrarPlanes = function (respuesta){
+    if(respuesta.error.length == 0){
+        $("#error").html("");
+        var array = respuesta.contenido.dato;
+        var s = "";
+        for (var i in array) {
+            s+="<li><a href='#' onclick='Admin.Planes.getPlan("+array[i].id+"); return false;'>"+array[i].nombre+"</a></li>";//TODO FUTURE: use templates
+        }
+        $("#ad_listaPlanes").html(s);
+    } else $("#error").html(respuesta.error);
+};
+
+Admin.Planes.mostrarPlan = function (respuesta){
+    if(respuesta.error.length == 0){
+        $("#error").html("");
+        $("#ad_idPlanes").val(respuesta.contenido.dato.id);
+        $("#ad_nombrePlanes").val(respuesta.contenido.dato.nombre);
+        $("#ad_descripcionPlanes").val(respuesta.contenido.dato.descripcion);
+        $("#ad_valorPlanes").val(respuesta.contenido.dato.valor);
+        var s = "";
+        for (var i in respuesta.contenido.dato.productos) {
+            s+="<option value='"+respuesta.contenido.dato.productos[i].id+
+                "'>"+respuesta.contenido.dato.productos[i].nombre+"</option>";//TODO FUTURE: use templates
+        }
+        $("#ad_Planes_ListaProductos").html(s);
+
+        $("#ad_infoPlanes").removeClass("hidden");
+        $("#ad_b_ActualizarPlanes").removeClass("hidden");
+        $("#ad_b_BorrarPlanes").removeClass("hidden");
+        $("#ad_b_CancelarPlanes").removeClass("hidden");
+    } else $("#error").html(respuesta.error);
+};
+Admin.Planes.agregarProducto = function (id, nombre){
+    if ( $("#ad_Planes_ListaProductos option[value="+id+"]").length > 0 ) alert("El plan ya tiene este producto");
+    else $("#ad_Planes_ListaProductos").append(new Option(nombre, id));
+};
+Admin.Planes.quitarProducto = function (){
+    $("#ad_Planes_ListaProductos").find('option:selected').remove();
 };
 
 
