@@ -20,6 +20,7 @@ public class VisitaTecnica implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaVisita;
     private String direccion; 
     /**

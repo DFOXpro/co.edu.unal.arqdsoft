@@ -32,8 +32,8 @@ public class Producto  implements Serializable{
      * La relacion de Producto es de uno a muchos con Plan, ya que un Plan puede tener uno o mas productos
      * y un Producto puede estar en uno o mas planes.
      */ 
-    //@ManyToMany(mappedBy = "productos")
-    //private List<Plan> planes;
+    @ManyToMany
+    private List<Plan> plans;
 
     public Producto() {
     }
