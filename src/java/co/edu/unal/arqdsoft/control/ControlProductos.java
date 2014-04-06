@@ -46,7 +46,8 @@ public class ControlProductos {
         }
         Producto p = new Producto(producto, producto1, Double.valueOf(producto2));
         p.setId(idProducto);
-        return dP.modificarProducto(idProducto, p);
+        DaoProducto dP=new DaoProducto();
+        return dP.modificarProducto(dP.getProducto(idProducto), p);
 
     }
 
@@ -143,13 +144,14 @@ public class ControlProductos {
             return null;
 
         }
+        DaoProducto dP =new DaoProducto();
         Producto p2 = new Producto(get, get0, Double.valueOf(get1));
         try {
             String[] p = {get, get0, get1};
             if (id != -1) {
-                ControlProductos.nuevoProducto(p);
+                ControlProductos.nuevoProducto(p[0],p[1],p[2]);
             } else {
-                ControlProductos.modificarProducto(id, p);
+                ControlProductos.modificarProducto(dP.getProducto(id), p[1],p[2],p[3]);
             }
         } catch (Exception e) {
             return null;

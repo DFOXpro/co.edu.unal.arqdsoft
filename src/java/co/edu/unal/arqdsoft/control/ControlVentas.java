@@ -64,7 +64,7 @@ public class ControlVentas {
          if (idPlan == 0 || idPlan < -1||informacion.isEmpty()||nombre.isEmpty()||id == 0 || id < -1) {
             return false;
         }
-        return DaoCliente.NuevoCliente(id, nombre, informacion);
+        return DaoCliente.nuevoCliente(id, nombre, informacion);
         
     }
 
