@@ -14,6 +14,11 @@ import co.edu.unal.arqdsoft.entidad.ReporteDano;
  */
 public class DaoReporteDano {
 
+    /**
+     *
+     * @param rD
+     * @return
+     */
     public boolean crearReporteDano(ReporteDano rD) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

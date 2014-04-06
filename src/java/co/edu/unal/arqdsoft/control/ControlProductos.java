@@ -153,6 +153,15 @@ public class ControlProductos {
 
     }
 
+    /**
+     *
+     * @param parseInt
+     * @param toString
+     * @param toString0
+     * @param toString1
+     * @param ar
+     * @return
+     */
     public static Plan setPlan(int parseInt, String toString, String toString0, String toString1, ArrayList<Producto> ar) {
         Plan p = new Plan(toString, toString1, parseInt, ar);
         if (parseInt != -1) {

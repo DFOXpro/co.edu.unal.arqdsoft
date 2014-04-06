@@ -14,6 +14,11 @@ import co.edu.unal.arqdsoft.entidad.*;
  */
 public class DaoVisitaTecnica {
     
+    /**
+     *
+     * @param vT
+     * @return
+     */
     public boolean crearVisita(VisitaTecnica vT) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

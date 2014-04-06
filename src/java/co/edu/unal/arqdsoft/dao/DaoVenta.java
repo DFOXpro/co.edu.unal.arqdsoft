@@ -19,11 +19,20 @@ public class DaoVenta {
      * @param cliente
      * @param empleado
      * @param plan
+     * @return 
      */
     public static boolean CrearVenta(int cliente, String empleado, int plan) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     *
+     * @param cliente
+     * @param empleado
+     * @param plan
+     * @param dirreccion
+     * @return
+     */
     public static boolean CrearVenta(int cliente, String empleado, int plan, String dirreccion) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
