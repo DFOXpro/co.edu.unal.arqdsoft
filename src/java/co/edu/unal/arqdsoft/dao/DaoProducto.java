@@ -35,7 +35,7 @@ public class DaoProducto {
      * @param nuevoObjeto
      * @return 
      */
-    public boolean modificarProducto(int idObject, Producto nuevoObjeto) {
+    public static boolean modificarProducto(int idObject, Producto nuevoObjeto) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         try {
@@ -60,7 +60,7 @@ public class DaoProducto {
      * @param idProducto
      * @return
      */
-    public Producto getProducto(int idProducto) {
+    public static Producto getProducto(int idProducto) {
         EntityManager em = emf.createEntityManager();
         Producto producto = null;
         //System.out.println("ANTES DEL QUERY" + idProducto);
@@ -85,37 +85,26 @@ public class DaoProducto {
 
     /**
      *
+     * @param p
      * @param object
      * @return
      */
-    public boolean eliminarProducto(Producto object) {
-               
+    public static boolean eliminarProducto(Producto p) {       
+        boolean exito=false;
         EntityManager em = emf.createEntityManager();
-        Producto producto = null;
-        //System.out.println("ANTES DEL QUERY" + object.getId());
-        Query q = em.createQuery("DELETE FROM Producto u "
-                + "WHERE u.id = :idProducto").setParameter("idProducto", object.getId());
-        //System.out.println("llego");
-        
-        try {
-            System.out.println("llego");
-            int result = q.executeUpdate();
-            System.out.println("Rows affected: " + result);
-            System.out.println("LOGRO SINGLE");
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("LOGRO CATCH EXCEPT" + e.toString());
-            return false;
-        } finally {
-            em.close();
-            System.out.println(producto.getNombre() + "nombre DEL PRODUCTO");
-            return true;
+        em.getTransaction().begin();
+        try{
+           Producto producto=em.find(Producto.class,p.getId());
+           em.remove(producto);
+           em.getTransaction().commit();
+           exito= true;
+        }catch(Exception e){
+         em.getTransaction().rollback();
         }
-        
-        
-        
-        
+        finally{
+         em.close();
+         return exito;
+        }   
     }
 
     /**
@@ -123,7 +112,7 @@ public class DaoProducto {
      * @param producto
      * @return 
      */
-    public boolean crearProducto(Producto producto) {
+    public static boolean crearProducto(Producto producto) {
         EntityManager em = emf.createEntityManager();
 
         try {
@@ -131,8 +120,6 @@ public class DaoProducto {
             em.persist(producto);
             em.getTransaction().commit();
         } catch (Exception e) {
-
-            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "NO GUARDO!!!!", e);
             em.getTransaction().rollback();
             return false;
         } finally {
@@ -146,7 +133,7 @@ public class DaoProducto {
      * @param prod
      * @return
      */
-    public Producto leerProducto(Producto prod) {
+    public static Producto leerProducto(Producto prod) {
         EntityManager em = emf.createEntityManager();
         Producto producto = null;
         //System.out.println("ANTES DEL QUERY" + prod.getNombre());
@@ -174,8 +161,6 @@ public class DaoProducto {
      * @return
      */
     public static ArrayList<Producto> getProductos() {
-
         return null;
-
     }
 }

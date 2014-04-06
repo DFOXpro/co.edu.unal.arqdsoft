@@ -62,7 +62,7 @@ public class DaoClienteTest {
         String nombre = "José Santiago Polo Acosta";
         String informacion = "carrera 24 #48-50;3184654140";
         boolean expResult = true;//true para la primera ejecucion, si no se cambia el id debe ponerse false
-        boolean result = DaoCliente.NuevoCliente(id, nombre, informacion);
+        boolean result = DaoCliente.nuevoCliente(id, nombre, informacion);
         assertEquals(expResult, result);
     }
 

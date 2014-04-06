@@ -70,18 +70,27 @@ public class DaoProductoTest {
     /**
      * Test of crearProducto method, of class DaoProducto.
      */
+//    @Test
+//    public void testCrearProducto() {
+//        System.out.println("crear");
+//        //int id = 132456;
+//        
+//        Producto productos = new Producto("Internet Ilimitado 5 Megas", "Internet banda ancha 5 megas", 40000);
+//        
+//        DaoProducto daoProducto = new DaoProducto();
+//        
+//        
+//        assertTrue(daoProducto.crearProducto(productos));
+//    }
+    
     @Test
-    public void testCrearProducto() {
-        System.out.println("crear");
-        //int id = 132456;
-        
-        Producto productos = new Producto("Internet Ilimitado 5 Megas", "Internet banda ancha 5 megas", 40000);
-        
-        DaoProducto daoProducto = new DaoProducto();
-        
-        
-        assertTrue(daoProducto.crearProducto(productos));
+    public void testEliminarProducto() {
+        Producto productoAEliminar = DaoProducto.getProducto(1);
+        System.out.println(productoAEliminar.getId()+" "+productoAEliminar.getNombre());
+        DaoProducto.eliminarProducto(productoAEliminar);
     }
+    
+    
     /**
      * Test of crearProducto method, of class DaoProducto.
      */
