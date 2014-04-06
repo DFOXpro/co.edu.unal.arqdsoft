@@ -1,4 +1,4 @@
-<!-- Menu -->
+    <!-- Menu -->
 <div id="menu">
     <!-- ENDS menu-holder -->
     <div id="menu-holder">
@@ -80,8 +80,11 @@
             </div><div>
                 <label for='ad_ProductosPlanes'>lista</label><br>
                 <select id="ad_ProductosPlanes">
-                    <optgroup></optgroup>
-                </select><br>
+                <!-- Dinamico futuro:
+                Poner templates y sacar html del JS-->
+                </select>
+                <button>Agregar Producto</button>
+                <button>Quitar Producto</button>
             </div>
         </li>
         <li>
@@ -98,4 +101,4 @@
         </li>
     </ul>
 </article>
-<script>Productos.innit();</script>
+<script>Admin.innit();</script>

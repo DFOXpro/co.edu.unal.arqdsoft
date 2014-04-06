@@ -6,6 +6,7 @@
 package co.edu.unal.arqdsoft.presentacion.servlet;
 
 import co.edu.unal.arqdsoft.control.ControlProductos;
+import co.edu.unal.arqdsoft.entidad.Plan;
 import co.edu.unal.arqdsoft.entidad.Producto;
 import co.edu.unal.arqdsoft.presentacion.Contenido;
 import co.edu.unal.arqdsoft.presentacion.JSON;
@@ -16,7 +17,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -54,6 +54,8 @@ public class ServletProductos extends HttpServlet {
                 r = borrarProducto(obj);
             } else if (obj.get("accion").equals("listarPlanes")) {
                 r = listarPlanes();
+            } else if (obj.get("accion").equals("getPlan")) {
+                r = getPlan(obj);
             } else if (obj.get("accion").equals("setPlan")) {
                 r = setPlanes(obj);
             } else if (obj.get("accion").equals("borrarPlanes")) {
@@ -218,7 +220,22 @@ public class ServletProductos extends HttpServlet {
     }
 
     private Respuesta listarPlanes() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //ArrayList<Producto> prdts = ControlProductos.getProductos();
+        /*TEST*/
+        ArrayList<Plan> planes = new ArrayList();
+        planes.add(new Plan("Plan A", null, 0,null));
+        planes.add(new Plan("Plan Telefono", null, 0,null));
+        planes.add(new Plan("Plan dadaese", null, 0,null));
+        planes.add(new Plan("Plan datos", null, 0,null));
+        /*TEST FIN*/
+        JSONArray list = new JSONArray();
+        for (Plan temp : planes) {
+            JSONObject t = new JSONObject();
+            t.put("nombre", temp.getNombre());
+            t.put("id", temp.getId());
+            list.add(t);
+        }
+        return new Respuesta("", new Contenido(list, ""));
     }
 
     private Respuesta setPlanes(JSONObject obj) {
@@ -227,5 +244,41 @@ public class ServletProductos extends HttpServlet {
 
     private Respuesta borrarPlanes(JSONObject obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private Respuesta getPlan(JSONObject obj) {
+        String error = "Problemas con la comunicación";
+        try{
+            //Producto p = ControlProductos.getProducto((int) obj.get("datos"));
+            /*TEST*/
+            ArrayList<Producto> pr= new ArrayList<Producto>();
+            pr.add(new Producto("Telefono", null, 0));
+            pr.add(new Producto("Internet", null, 0));
+            Plan p = new Plan("TelefonoASD", "muy comunicativo", 18000,pr);
+            p.setId(123);
+            /*TEST FIN*/
+            if(p != null){
+                JSONObject t = new JSONObject();
+                t.put("nombre", p.getNombre());
+                t.put("id", p.getId());
+                t.put("descripcion", p.getDescripcion());
+                t.put("valor", p.getValor());
+                JSONArray list = new JSONArray();
+                for (Producto temp : pr) {
+                    JSONObject t1 = new JSONObject();
+                    t1.put("nombre", temp.getNombre());
+                    t1.put("id", temp.getId());
+                    list.add(t1);
+                }
+                t.put("productos", list);
+                return new Respuesta("", new Contenido(t, ""));
+            }else{
+                error = "No existe el producto, no debería de pasar, no sea curioso";//ERROR de SEGURIDAD
+                throw new SecurityException(obj.get("datos").toString());
+            }
+        } catch(Exception ex){
+            Logger.getLogger(ServletProductos.class.getName()).log(Level.SEVERE, null, ex);
+            return new Respuesta(error, new Contenido());
+        }
     }
 }
