@@ -242,7 +242,13 @@ public class ServletProductos extends HttpServlet {
         String error = "Problemas con la comunicación";
         try{
             obj = (JSONObject)JSONValue.parse(obj.get("datos").toString());
+            JSONArray ja = (JSONArray) obj.get("productos");
             ArrayList<Producto> ar = new ArrayList<>();
+            for(int i = 0; i<ja.size();i++){
+                JSONObject t = (JSONObject)ja.get(i);
+                ar.add(new Producto(t.get("nombre").toString(), null, 0));
+                ar.get(i).setId((int)t.get("id"));
+            }
             Plan p = ControlProductos.setPlan(
                 Integer.parseInt(obj.get("id").toString()),
                 obj.get("nombre").toString(),
