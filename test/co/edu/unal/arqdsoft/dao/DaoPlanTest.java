@@ -45,54 +45,52 @@ public class DaoPlanTest {
     /**
      * Test of getPlanes method, of class DaoPlan.
      */
-    @Test
-    public void testGetPlanes() {
-        System.out.println("getPlanes");
-        ArrayList<Plan> expResult = null;
-        ArrayList<Plan> result = DaoPlan.getPlanes();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+//    @Test
+//    public void testGetPlanes() {
+//        System.out.println("getPlanes");
+//        ArrayList<Plan> expResult = null;
+//        ArrayList<Plan> result = DaoPlan.getPlanes();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
 
-    /**
-     * Test of CrearPlan method, of class DaoPlan.
-     */
+
     @Test
-    public void testCrearPlan() {
-        System.out.println("CrearPlan");
-        Plan p = null;
-        DaoPlan.CrearPlan(p);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testCrearPlanConProductoExistente() {
+        System.out.println("CrearPlanConProductoExistente");
+        Producto producto=DaoProducto.getProducto(1);
+        List<Producto> productos=new ArrayList();
+        productos.add(producto);
+        Plan p = new Plan("Plan local ilimitado", "Linea fija con llamadas locales ilimitadas", producto.getValor(), productos);
+        DaoPlan dao= new DaoPlan();
+        dao.crear(p);
     }
 
     /**
      * Test of getPlane method, of class DaoPlan.
      */
-    @Test
-    public void testGetPlane() {
-        System.out.println("getPlane");
-        int idPlan = 0;
-        Plan expResult = null;
-        Plan result = DaoPlan.getPlane(idPlan);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+//    @Test
+//    public void testGetPlane() {
+//        System.out.println("getPlane");
+//        int idPlan = 0;
+//        Plan expResult = null;
+//        Plan result = DaoPlan.getPlane(idPlan);
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
 
     /**
      * Test of crear method, of class DaoPlan.
      */
-    @Test
-    public void testCrear() {
-        System.out.println("crear");
-        List<Producto> productos;
-        Plan object = new Plan("datos para familias", "ninguna Descript", 12000.0,null);
-        DaoPlan instance = new DaoPlan();
-        instance.crear(object);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+//    @Test
+//    public void testCrear() {
+//        System.out.println("crear");
+//        List<Producto> productos;
+//        Plan object = new Plan("datos para familias", "ninguna Descript", 12000.0,null);
+//        DaoPlan instance = new DaoPlan();
+//        instance.crear(object);
+//    }
     
 }
