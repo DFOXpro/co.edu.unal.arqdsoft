@@ -26,12 +26,14 @@ public class ControlSoporte {
     }
 
     /**
+     * se encarga de buscar a los tecnicos por id y su tiempo libre
      *
-     * @return
+     * @return retorna un mapa con llave el id, y valor el arreglo de horario
+     * disponible del empleado
      */
-    public static Map<Integer,ArrayList<Date>> buscarTecnicos() {
+    public static Map<Integer, ArrayList<Date>> tiempoTecnicos() {
         List<Empleado> n = DaoEmpleado.buscarEmpleados();
-        Map<Integer,ArrayList<Date>> d=new SimpleMapProperty<>();
+        Map<Integer, ArrayList<Date>> d = new SimpleMapProperty<>();
         n.stream().forEach((empleado) -> {
             d.put(empleado.getId(), empleado.getHorarioDisponible());
         });
@@ -42,17 +44,33 @@ public class ControlSoporte {
      *
      * @return
      */
-    public static List<Date> visitas() {
-        DaoEmpleado.buscarEmpleado();
-        return null;
+    public static List<VisitaTecnica> visitas() {
+        List<VisitaTecnica> visitasTecnicas = DaoEmpleado.buscarEmpleado().getVisitasTecnicas();
+
+        return visitasTecnicas;
     }
 
     /**
      *
+     * @param idCliente
+     * @param tecnico
+     * @param fecha
+     * @param rD
+     * @param dirreccion
      * @return
      */
-    public static boolean crearVisitaTecnica() {
-        return false;
+    public static boolean crearVisitaTecnica(int idCliente, Empleado tecnico,Date fecha,ReporteDano rD,String dirreccion) {
+        DaoVisitaTecnica dVT=new DaoVisitaTecnica();
+        VisitaTecnica vT=new VisitaTecnica(idCliente, tecnico, fecha, rD, dirreccion);
+        return vT.crearVisita(vT);
     }
+    public static boolean crearReportedano(int idCliente,Date fecha,String dirreccion,int idOperador,boolean fueResuelto) {
+        DaoReporteDano dVT=new DaoReporteDano();
+        DaoCliente c=new DaoCliente();
+        DaoEmpleado o= new DaoEmpleado();
+        ReporteDano vT=new ReporteDano(fecha, dirreccion, fueResuelto, c.getCliente(idCliente),o.getEmpleado(idOperador));
+        return vT.crearVisita(vT);
+    }
+    
 
 }

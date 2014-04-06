@@ -32,5 +32,9 @@ public class DaoCliente {
     public static void NuevoCliente(int id, String nombre, String informacion, int idPlan) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public Cliente getCliente(int idCliente) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

@@ -85,5 +85,9 @@ public class DaoEmpleado {
          em.close();
          return empleado;
     }
+
+    public Empleado getEmpleado(int idOperador) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

@@ -123,4 +123,8 @@ public class VisitaTecnica implements Serializable {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+
+    public boolean crearVisita(VisitaTecnica vT) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

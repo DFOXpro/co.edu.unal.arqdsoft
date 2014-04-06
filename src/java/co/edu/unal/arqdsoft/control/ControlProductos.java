@@ -48,7 +48,7 @@ public class ControlProductos {
      * @return
      */
     public static boolean nuevoPlan(String plan1, String plan2, String plan3, List<Producto> productos) {
-        Plan p = new Plan(plan1, plan2, Double.valueOf(plan3), productos, null);
+        Plan p = new Plan(plan1, plan2, Double.valueOf(plan3), productos);
         return DaoPlan.CrearPlan(p);
         
     }
@@ -63,7 +63,7 @@ public class ControlProductos {
      * @return
      */
     public static boolean modificarPlan(int id, String plan1, String plan2, String plan3, List<Producto> productos) {
-        Plan p = new Plan(plan1, plan2, Double.valueOf(plan3), productos, null);
+        Plan p = new Plan(plan1, plan2, Double.valueOf(plan3), productos);
         DaoPlan dP = new DaoPlan();
         boolean b = dP.modificarPlan(id, p);
 

@@ -229,6 +229,10 @@ public class ReporteDano implements Serializable{
     public String toString() {
         return "ReporteDano{" + "id=" + id + ", fechaCreacion=" + fechaCreacion + ", descripcion=" + descripcion + ", resuelto=" + resuelto + ", cliente=" + cliente + ", operador=" + operador + ", visitasTecnicas=" + visitasTecnicas + '}';
     }
+
+    public boolean crearVisita(ReporteDano vT) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }
