@@ -55,6 +55,7 @@ public class ControlProductos {
 
     /**
      *
+     * @param id
      * @param plan1
      * @param plan2
      * @param plan3

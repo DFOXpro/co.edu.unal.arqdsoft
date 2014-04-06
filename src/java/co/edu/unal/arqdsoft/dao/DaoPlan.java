@@ -33,6 +33,7 @@ public class DaoPlan {
     /**
      *
      * @param p
+     * @return 
      */
     public static boolean CrearPlan(Plan p) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
