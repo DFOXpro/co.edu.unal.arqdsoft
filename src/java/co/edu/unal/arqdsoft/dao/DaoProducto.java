@@ -31,15 +31,15 @@ public class DaoProducto {
 
     /**
      *
-     * @param idObject
+     * @param viejoProducto
      * @param nuevoObjeto
      * @return 
      */
-    public static boolean modificarProducto(int idObject, Producto nuevoObjeto) {
+    public static boolean modificarProducto(Producto viejoProducto, Producto nuevoObjeto) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         try {
-            Producto object = getProducto(idObject);
+            Producto object = getProducto(viejoProducto.getId());
             object.setNombre(nuevoObjeto.getNombre());
             object.setDescripcion(nuevoObjeto.getDescripcion());
             object.setValor(nuevoObjeto.getValor());

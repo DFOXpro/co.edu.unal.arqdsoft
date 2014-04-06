@@ -58,7 +58,7 @@ public class DaoEmpleadoTest {
     @Test
     public void testBuscarEmpleadosDisponibles(){
         System.out.println("buscarEmpleadosDisponibles");
-        ArrayList<Empleado> empleados= new ArrayList<>();
+        ArrayList<Empleado> empleados= new ArrayList();
         empleados=DaoEmpleado.buscarEmpleadosDisponibles();
         System.out.println(empleados.get(0).getNombre());
     }
