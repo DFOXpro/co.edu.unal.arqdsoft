@@ -149,4 +149,8 @@ public class ControlProductos {
         return p.eliminarPlan(ControlProductos.getProducto(id));
 
     }
+
+    public static Plan setPlan(int parseInt, String toString, String toString0, String toString1, ArrayList<Producto> ar) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
