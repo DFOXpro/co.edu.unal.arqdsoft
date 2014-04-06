@@ -68,8 +68,8 @@ public class ControlSoporte {
         DaoReporteDano dVT=new DaoReporteDano();
         DaoCliente c=new DaoCliente();
         DaoEmpleado o= new DaoEmpleado();
-        ReporteDano vT=new ReporteDano(fecha, dirreccion, fueResuelto, c.getCliente(idCliente),o.getEmpleado(idOperador));
-        return vT.crearVisita(vT);
+        ReporteDano vT=new ReporteDano(fecha, dirreccion, fueResuelto, c.getCliente(idCliente),o.getEmpleado(idOperador),null);
+        return dVT.crearVisita(vT);
     }
     
 
