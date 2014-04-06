@@ -27,6 +27,9 @@ public class ControlVentas {
      * @return retorna si se hizo la venta
      */
     public boolean venta(String empleado, String cliente,String cliente1,String cliente2, int plan,String dirreccion) {
+        if (plan == 0 || plan < -1||empleado.isEmpty()||cliente.isEmpty()||cliente1.isEmpty()||cliente2.isEmpty()||dirreccion.isEmpty()) {
+            return false;
+        }
         this.agregarCliente(Integer.valueOf(cliente), cliente1,cliente2,plan);
         
         DaoVenta.CrearVenta(Integer.valueOf(cliente), empleado, plan, dirreccion);
@@ -42,6 +45,9 @@ public class ControlVentas {
      * @return
      */
     public boolean ventaCE(String empleado, int cliente, int plan,String dirreccion) {
+        if (plan == 0 || plan < -1||empleado.isEmpty()||dirreccion.isEmpty()||cliente == 0 || cliente < -1) {
+            return false;
+        }
         return DaoVenta.CrearVenta(cliente,empleado,plan,dirreccion);
         
     }
@@ -55,6 +61,9 @@ public class ControlVentas {
      * @return
      */
     public static boolean agregarCliente(int id, String nombre, String informacion,int idPlan) {
+         if (idPlan == 0 || idPlan < -1||informacion.isEmpty()||nombre.isEmpty()||id == 0 || id < -1) {
+            return false;
+        }
         return DaoCliente.NuevoCliente(id, nombre, informacion);
         
     }
@@ -74,6 +83,9 @@ public class ControlVentas {
      * @return
      */
     public static Cliente getcliente(int id){
+        if (id == 0 || id < -1) {
+            return null;
+        }
         DaoCliente dC=new DaoCliente();
         return dC.getCliente(id);    
     }

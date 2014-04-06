@@ -22,6 +22,9 @@ public class ControlAutenticacion {
      * @return retornara el empleado logeado o null de no existir el usuario
      */
     public static Empleado certificarUsuario(String usuario, String contraseña) {
+        if (usuario==null && contraseña==null) {
+            return null;
+        }
         Empleado a = DaoEmpleado.login(usuario, contraseña);
         if (a == null) {
             return null;
