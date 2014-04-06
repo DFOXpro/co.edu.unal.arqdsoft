@@ -35,7 +35,7 @@ public class DaoCliente {
      * @return 
      * 
      */
-    public static boolean NuevoCliente(long id, String nombre, String informacion) {
+    public static boolean nuevoCliente(long id, String nombre, String informacion) {
         EntityManager em = emf.createEntityManager();
         boolean exito=false;
         em.getTransaction().begin();

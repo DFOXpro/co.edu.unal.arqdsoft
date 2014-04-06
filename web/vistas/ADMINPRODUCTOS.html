@@ -25,20 +25,20 @@
         </li>
         <li id="ad_infoProducto" class="hidden">
             <label for='ad_idProductos'>ID</label><br>
-            <input id='ad_idProductos' type='number' placeholder='05' disabled><br>
+            <input id='ad_idProductos' type='number' placeholder='ID' disabled><br>
             <!--Obsolete
                             <button id='Buscar'>Buscar</button>-->
             <div>
                 <label for='ad_nombreProductos'>Nombre</label><br>
-                <input id='ad_nombreProductos' type='text' placeholder='05'><br>
+                <input id='ad_nombreProductos' type='text' placeholder='Escribe un nombre'><br>
             </div>
             <div>
                 <label for='ad_descripcionProductos'>Descripción</label><br>
-                <input id='ad_descripcionProductos' type='text' placeholder='05'><br>
+                <input id='ad_descripcionProductos' type='text' placeholder='Escribe una descripción'><br>
             </div>
             <div>
                 <label for='ad_valorProductos'>Valor</label><br>
-                <input id='ad_valorProductos' type='number' placeholder='05'><br>
+                <input id='ad_valorProductos' type='number' placeholder='Escribe un valor'><br>
             </div>
         </li>
         <li>
@@ -63,20 +63,18 @@
         <li id="ad_infoPlanes" class="hidden">
             <h2>Planes</h2>
             <label for='ad_idPlanes'>ID</label><br>
-            <input id='ad_idPlanes' type='number' placeholder='05' disabled><br>
-            <!--Obsolete
-                            <button id='Buscar'>Buscar</button>-->
+            <input id='ad_idPlanes' type='number' placeholder='ID' disabled><br>
             <div>
                 <label for='ad_nombrePlanes'>Nombre</label><br>
-                <input id='ad_nombrePlanes' type='text' placeholder='05'><br>
+                <input id='ad_nombrePlanes' type='text' placeholder='Escribe un nombre'><br>
             </div>
             <div>
                 <label for='ad_descripcionPlanes'>Descripción</label><br>
-                <input id='ad_descripcionPlanes' type='text' placeholder='05'><br>
+                <input id='ad_descripcionPlanes' type='text' placeholder='Escribe una descripción'><br>
             </div>
             <div>
                 <label for='ad_valorPlanes'>Valor</label><br>
-                <input id='ad_valorPlanes' type='number' placeholder='05'><br>
+                <input id='ad_valorPlanes' type='number' placeholder='Escribe un valor'><br>
             </div><div>
                 <label for='ad_Planes_ListaProductos'>Lista de productos</label><br>
                 <select id="ad_Planes_ListaProductos">
@@ -92,14 +90,10 @@
         </li>
         <li>
             <div>
-                <button id='ad_b_CrearPlanes' onclick="unhidde()" >Crear</button>
-                <script>function unhidde()
-                    {
-                        document.getElementById('ad_infoPlanes').setAttribute('class', 'pane');
-                    }
-                </script>
+                <button id='ad_b_CrearPlanes' >Crear</button>
                 <button id='ad_b_ActualizarPlanes' class="hidden">Actualizar</button>
                 <button id='ad_b_BorrarPlanes' class="hidden">Borrar</button>
+                <button id='ad_b_CancelarPlanes' class="hidden">Cancelar</button>
             </div>
         </li>
     </ul>

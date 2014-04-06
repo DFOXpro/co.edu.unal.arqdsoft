@@ -7,12 +7,8 @@ package co.edu.unal.arqdsoft.dao;
 
 import co.edu.unal.arqdsoft.entidad.Empleado;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.NonUniqueResultException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
@@ -55,7 +51,7 @@ public class DaoEmpleado {
     }
 
     /**
-     * Este metodo solo se crea ara hacer pruebas de guardado en la base de
+     * Este metodo solo se crea para hacer pruebas de guardado en la base de
      * datos ya que la administración de empleados se sale de nuestro alcance.
      *
      * @param empleado
