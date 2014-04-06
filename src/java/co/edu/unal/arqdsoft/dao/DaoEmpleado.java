@@ -44,18 +44,23 @@ public class DaoEmpleado {
      * Este metodo solo se crea ara hacer pruebas de guardado en la base de datos
      * ya que la administración de empleados se sale de nuestro alcance.
      * @param empleado 
+     * @return  
      */
-    public void persist(Empleado empleado) {
+    public boolean persist(Empleado empleado) {
         EntityManager em = emf.createEntityManager();
+        boolean exito=false;
         try {
             em.getTransaction().begin();
             em.persist(empleado);
             em.getTransaction().commit();
+            exito=true;
         } catch (Exception e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", e);
             em.getTransaction().rollback();
+            exito=false;
         } finally {
             em.close();
+            return exito;
         }
     }
 
