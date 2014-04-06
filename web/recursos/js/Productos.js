@@ -70,7 +70,7 @@ Admin.Planes.mostrarPlan = function (respuesta){
     } else $("#error").html(respuesta.error);
 };
 Admin.Planes.agregarProducto = function (id, nombre){
-    if ( $("#ad_Planes_ListaProductos[value="+id).length > 0 )alert("El plan ya tiene este producto");
+    if ( $("#ad_Planes_ListaProductos option[value="+id+"]").length > 0 ) alert("El plan ya tiene este producto");
     else $("#ad_Planes_ListaProductos").append(new Option(nombre, id));
 };
 Admin.Planes.quitarProducto = function (){
@@ -78,7 +78,6 @@ Admin.Planes.quitarProducto = function (){
 };
 
 Admin.Productos.getProducto = function (id, nombre){
-    
     sendRequest(
         "productos",
         Admin.Productos.mostrarProducto,
@@ -88,13 +87,12 @@ Admin.Productos.getProducto = function (id, nombre){
 };
 
 Admin.Productos.setProducto = function (){
-    
     var data = {
         id:$("#ad_idProductos").val(),
         nombre:$("#ad_nombreProductos").val(),
         descripcion:$("#ad_descripcionProductos").val(),
         valor:$("#ad_valorProductos").val()
-    }
+    };
     sendRequest(
         "productos",
         function (respuesta){
@@ -102,6 +100,33 @@ Admin.Productos.setProducto = function (){
             Admin.Productos.getProductos();
         },
         "setProducto",
+        JSON.stringify(data)
+    );
+};
+
+Admin.Planes.setPlan = function (){
+    var array= new Array();i=0;
+    $("#ad_Planes_ListaProductos option").each(function() {
+        array[i]={
+            id:$(this).val(),
+            nombre:$(this).html()
+        };
+        i++;
+    });
+    var data = {
+        id:$("#ad_idPlanes").val(),
+        nombre:$("#ad_nombrePlanes").val(),
+        descripcion:$("#ad_descripcionPlanes").val(),
+        valor:$("#ad_valorPlanes").val(),
+        productos: array
+    };
+    sendRequest(
+        "productos",
+        function (respuesta){
+            Admin.Planes.mostrarPlan(respuesta);
+            Admin.Planes.getPlanes();
+        },
+        "setPlan",
         JSON.stringify(data)
     );
 };
@@ -154,6 +179,14 @@ Admin.innit = function (){
         Admin.Productos.setProducto();
     });
     Evento.boton($("#ad_b_ActualizarProductos"), Admin.Productos.setProducto);
+
+    Evento.boton($("#ad_b_CrearPlanes"), function (){
+        $("#ad_idPlanes").val(-1);
+        Admin.Planes.setPlan();
+    });
+    Evento.boton($("#ad_b_ActualizarPlanes"), Admin.Planes.setPlan);
+    Evento.boton($("#ad_b_Planes_QuitarProducto"), Admin.Planes.quitarProducto);
+
     Evento.boton($("#ad_b_BorrarProductos"), Admin.Productos.borrarProducto);
     Evento.boton($("#ad_b_CancelarProductos"), function (){
         $("#ad_infoProducto").addClass("hidden");
