@@ -239,7 +239,44 @@ public class ServletProductos extends HttpServlet {
     }
 
     private Respuesta setPlanes(JSONObject obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String error = "Problemas con la comunicación";
+        try{
+            obj = (JSONObject)JSONValue.parse(obj.get("datos").toString());
+            JSONArray ja = (JSONArray) obj.get("productos");
+            ArrayList<Producto> ar = new ArrayList<>();
+            for(int i = 0; i<ja.size();i++){
+                JSONObject t = (JSONObject)ja.get(i);
+                ar.add(new Producto(t.get("nombre").toString(), null, 0));
+                ar.get(i).setId((int)t.get("id"));
+            }
+            Plan p = ControlProductos.setPlan(
+                Integer.parseInt(obj.get("id").toString()),
+                obj.get("nombre").toString(),
+                obj.get("descripcion").toString(),
+                obj.get("valor").toString(),
+                ar
+            );
+            /*TEST*/
+//            p = new Producto(obj.get("nombre").toString(), obj.get("descripcion").toString(), 100);//Si se guardó
+//            p = null;//Si NO se guardó
+            /*TEST FIN*/
+
+            p.setId(4321);
+            if(p != null){
+                JSONObject t = new JSONObject();
+                t.put("nombre", p.getNombre());
+                t.put("id", p.getId());
+                t.put("descripcion", p.getDescripcion());
+                t.put("valor", p.getValor());
+                return new Respuesta("", new Contenido(t, ""));
+            }else{
+                error = "No se creó el producto";
+                throw new Exception();
+            }
+        } catch(Exception ex){
+            Logger.getLogger(ServletProductos.class.getName()).log(Level.SEVERE, null, ex);
+            return new Respuesta(error, new Contenido());
+        }
     }
 
     private Respuesta borrarPlanes(JSONObject obj) {

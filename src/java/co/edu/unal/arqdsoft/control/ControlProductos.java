@@ -16,6 +16,8 @@ import java.util.List;
  */
 public class ControlProductos {
 
+    static DaoProducto dP;
+
     /**
      *
      * @param producto
@@ -35,7 +37,7 @@ public class ControlProductos {
      */
     public static boolean modificarProducto(int idProducto, String[] producto) {
         Producto p = new Producto(producto[0], producto[1], Double.valueOf(producto[2]));
-        return DaoProducto.modificarProducto(idProducto, p);
+        return dP.modificarProducto(idProducto, p);
 
     }
 
@@ -50,7 +52,7 @@ public class ControlProductos {
     public static boolean nuevoPlan(String plan1, String plan2, String plan3, List<Producto> productos) {
         Plan p = new Plan(plan1, plan2, Double.valueOf(plan3), productos);
         return DaoPlan.CrearPlan(p);
-        
+
     }
 
     /**
@@ -92,7 +94,8 @@ public class ControlProductos {
      * @return retorna lista de productos
      */
     public static Producto getProducto(int idProducto) {
-        return DaoProducto.getProducto(idProducto);
+
+        return dP.getProducto(idProducto);
     }
 
     /**
@@ -148,5 +151,15 @@ public class ControlProductos {
         DaoPlan p = new DaoPlan();
         return p.eliminarPlan(ControlProductos.getProducto(id));
 
+    }
+
+    public static Plan setPlan(int parseInt, String toString, String toString0, String toString1, ArrayList<Producto> ar) {
+        Plan p = new Plan(toString, toString1, parseInt, ar);
+        if (parseInt != -1) {
+            modificarPlan(parseInt, toString1, toString, toString, ar);
+        } else {
+            nuevoPlan(toString1, toString, toString, ar);
+        }
+        return p;
     }
 }

@@ -96,8 +96,9 @@ Admin.Productos.setProducto = function (){
     sendRequest(
         "productos",
         function (respuesta){
-            Admin.Productos.mostrarProducto(respuesta);
-            Admin.Productos.getProductos();
+            if(respuesta.error.length == 0)
+                Admin.Productos.getProductos();
+            else $("#error").html(respuesta.error);
         },
         "setProducto",
         JSON.stringify(data)

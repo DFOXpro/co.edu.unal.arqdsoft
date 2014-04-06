@@ -46,6 +46,7 @@ public class DaoCliente {
             exito=true;
         } catch (Exception e) {
             em.getTransaction().rollback();
+            return false;
         } finally {
             em.close();
             return exito;
