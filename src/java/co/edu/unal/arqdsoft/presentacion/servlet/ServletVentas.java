@@ -49,15 +49,13 @@ public class ServletVentas extends HttpServlet {
             Respuesta r;
             if (obj.get("accion").equals("getCliente")) {
                 r = getClientes(obj);
-            } else if (obj.get("accion").equals("setCliente")) {
+            } else if (obj.get("accion").equals("setventa")) {
                 r = setVenta(obj);
             }
-            else if (obj.get("accion").equals("listaVentas")) {
-                r = listarVentas();
-            } else if (obj.get("accion").equals("getVentas")) {
-                r = getVenta(obj);
-            } else if (obj.get("accion").equals("setVentas")) {
-                r = setVenta(obj);
+            else if (obj.get("accion").equals("crearCliente")) {
+                r = crearCliente(obj);
+            } else if (obj.get("accion").equals("listarClientes")) {
+                r = listarClientes();
             } else {
                 r = new Respuesta("Error de comunicación", new Contenido());
             }
@@ -194,46 +192,5 @@ public class ServletVentas extends HttpServlet {
             return new Respuesta(error, new Contenido());
         }
     }
-
-}
-
-// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-/**
- * Handles the HTTP <code>GET</code> method.
- *
- * @param request servlet request
- * @param response servlet response
- * @throws ServletException if a servlet-specific error occurs
- * @throws IOException if an I/O error occurs
- */
-@Override
-        protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-        protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-        public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }
