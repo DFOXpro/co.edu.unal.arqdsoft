@@ -26,7 +26,7 @@ public class Cliente implements Serializable{
      */    
     @OneToMany(mappedBy = "cliente")
     private List<Venta> ventas;
-    @OneToMany(targetEntity=ReporteDano.class,mappedBy = "cliente")
+    @OneToMany(mappedBy = "cliente")
     private List<ReporteDano> reporteDano;
 
     /**

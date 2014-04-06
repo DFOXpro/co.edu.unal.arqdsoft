@@ -33,10 +33,8 @@ public class Plan implements Serializable{
      * y un producto esta en uno o varios planes. A su vez una Venta solo tiene un plan pero varios planes pueden
      * estar en diferentes ventas.
      */ 
-    @ManyToMany(mappedBy = "planes")
+    @ManyToMany(mappedBy = "plans")
     private List<Producto> productos;
-    @OneToMany(mappedBy = "plan")
-    private List<Venta> venta;
     
     /**
      * Constructor por defecto
@@ -50,14 +48,13 @@ public class Plan implements Serializable{
      * @param descripcion   una breve descripcion de el plan
      * @param valor el costo que tendra el plan en el mercado
      * @param productos una lista conteniendo objetos de tipo productos con los productos que conforman el plan
-     * @param venta las ventas en las cuales esta este plan
+     * 
      */
-    public Plan(String nombre, String descripcion, double valor, List<Producto> productos, List<Venta> venta) {
+    public Plan(String nombre, String descripcion, double valor, List<Producto> productos) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.valor = valor;
         this.productos = productos;
-        this.venta=venta;
     }
 
     /**
@@ -134,22 +131,6 @@ public class Plan implements Serializable{
      *
      * @return
      */
-    public List<Venta> getVenta() {
-        return venta;
-    }
-
-    /**
-     *
-     * @param venta
-     */
-    public void setVenta(List<Venta> venta) {
-        this.venta = venta;
-    }
-
-    /**
-     *
-     * @return
-     */
     @Override
     public int hashCode() {
         int hash = 3;
@@ -195,7 +176,7 @@ public class Plan implements Serializable{
      */
     @Override
     public String toString() {
-        return "Plan{" + "id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", valor=" + valor + ", productos=" + productos + ", venta=" + venta + '}';
+        return "Plan{" + "id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", valor=" + valor + ", productos=" + productos + '}';
     }
 
 }

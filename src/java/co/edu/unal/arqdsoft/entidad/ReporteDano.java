@@ -26,8 +26,7 @@ import javax.persistence.Temporal;
 public class ReporteDano implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-    private long id;
-    
+    private long id; 
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaCreacion;
     private String descripcion;
@@ -41,11 +40,11 @@ public class ReporteDano implements Serializable{
      * reporte de daño.
      */
     @ManyToOne
-    private Cliente cliente;
-    @ManyToOne 
     private Empleado operador;
-    @OneToMany(mappedBy = "reporteDano")
+    @OneToMany(mappedBy = "reporte")
     private List<VisitaTecnica> visitasTecnicas;
+    @ManyToOne
+    private Cliente cliente;
 
     /**
      *

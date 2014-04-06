@@ -38,10 +38,11 @@ public class Venta implements Serializable{
      */
     @ManyToOne
     private Cliente cliente;
-    @ManyToOne 
+    @ManyToOne
     private Empleado vendedor;
     @ManyToOne
     private Plan plan;
+
 
     /**
      *

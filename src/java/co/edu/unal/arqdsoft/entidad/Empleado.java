@@ -64,12 +64,12 @@ public class Empleado implements Serializable {
      * De igual forma un empleado puede tener muchas visitas tecnicas o reportes de daños a su nombre
      * pero cada visita y reporte de daño tienen un solo empleado a cargo.
      */ 
-    @OneToMany(mappedBy = "empleado")
+    @OneToMany(mappedBy = "vendedor")
     private List<Venta> ventas;
-    @OneToMany(mappedBy = "empleado")
-    private List<VisitaTecnica> visitasTecnicas;
-     @OneToMany(mappedBy = "empleado")
+    @OneToMany(mappedBy = "operador")
     private List<ReporteDano> reportesDanos;
+    @OneToMany(mappedBy = "tecnico")
+    private List<VisitaTecnica> visitasTecnicas;
 
          /**
      * Clase constructor
