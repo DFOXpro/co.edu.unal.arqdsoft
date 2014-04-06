@@ -6,6 +6,7 @@
 package co.edu.unal.arqdsoft.presentacion.servlet;
 
 import co.edu.unal.arqdsoft.control.ControlProductos;
+import co.edu.unal.arqdsoft.entidad.Cliente;
 import co.edu.unal.arqdsoft.entidad.Plan;
 import co.edu.unal.arqdsoft.entidad.Producto;
 import co.edu.unal.arqdsoft.presentacion.Contenido;
@@ -46,13 +47,18 @@ public class ServletVentas extends HttpServlet {
         try {
             JSONObject obj = JSON.toObject(request);
             Respuesta r;
-            if (obj.get("accion").equals("crearCliente")) {
-                r = crearCliente();
-            } else if (obj.get("accion").equals("crearCliente")) {
-                r = getCliente(obj);
-            } else if (obj.get("accion").equals("crearCliente")) {
+            if (obj.get("accion").equals("listaClientes")) {
+                r = listarClientes();
+            } else if (obj.get("accion").equals("getCliente")) {
                 r = getClientes(obj);
-            } else if (obj.get("accion").equals("crearCliente")) {
+            } else if (obj.get("accion").equals("setCliente")) {
+                r = setVenta(obj);
+            }
+            else if (obj.get("accion").equals("listaVentas")) {
+                r = listarVentas();
+            } else if (obj.get("accion").equals("getVentas")) {
+                r = getVenta(obj);
+            } else if (obj.get("accion").equals("setVentas")) {
                 r = setVenta(obj);
             } else {
                 r = new Respuesta("Error de comunicación", new Contenido());
@@ -79,7 +85,24 @@ public class ServletVentas extends HttpServlet {
 
     }
 
-    private Respuesta crearCliente() {
+    private Respuesta listarClientes() {
+        //ArrayList<Cliente> clnts = Control.getProductos();
+        /*TEST*/
+        ArrayList<clnts> prdts = new ArrayList();
+        clnts.add(new Cliente(0,"Cliente A", "Direccion falsa 123", null, null));
+        clnts.add(new Cliente(1,"Cliente B", "Direccion falsa 123", null, null));
+        clnts.add(new Cliente(2,"Cliente C", "Direccion falsa 123", null, null));
+        /*TEST FIN*/
+        JSONArray list = new JSONArray();
+        for (Producto temp : clnts) {
+            JSONObject t = new JSONObject();
+            t.put("nombre", temp.getNombre());
+            t.put("id", temp.getId());
+            list.add(t);
+        }
+        return new Respuesta("", new Contenido(list, ""));
+    }
+    private Respuesta crearCliente(JSONObject obj) {
         //ArrayList<Producto> prdts = ControlProductos.getProductos();
         /*TEST*/
         ArrayList<Producto> prdts = new ArrayList();
