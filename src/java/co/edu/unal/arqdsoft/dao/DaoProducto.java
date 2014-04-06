@@ -35,7 +35,7 @@ public class DaoProducto {
      * @param nuevoObjeto
      * @return 
      */
-    public static boolean modificarProducto(int idObject, Producto nuevoObjeto) {
+    public boolean modificarProducto(int idObject, Producto nuevoObjeto) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         try {
@@ -60,25 +60,25 @@ public class DaoProducto {
      * @param idProducto
      * @return
      */
-    public static Producto getProducto(int idProducto) {
+    public Producto getProducto(int idProducto) {
         EntityManager em = emf.createEntityManager();
         Producto producto = null;
-        System.out.println("ANTES DEL QUERY" + idProducto);
+        //System.out.println("ANTES DEL QUERY" + idProducto);
         Query q = em.createQuery("SELECT u FROM Producto u "
                 + "WHERE u.id = :idProducto").setParameter("idProducto", idProducto);
-        System.out.println("llego");
+        //System.out.println("llego");
         try {
             producto = (Producto) q.getSingleResult();
-            System.out.println("LOGRO SINGLE");
+          //  System.out.println("LOGRO SINGLE");
         } catch (NonUniqueResultException e) {
             producto = (Producto) q.getResultList().get(0);
-            System.out.println("LOGRO CATCH SIMPLE");
+          //  System.out.println("LOGRO CATCH SIMPLE");
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("LOGRO CATCH EXCEPT" + e.toString());
+          //  System.out.println("LOGRO CATCH EXCEPT" + e.toString());
         } finally {
             em.close();
-            System.out.println(producto.getNombre() + "nombre DEL PRODUCTO");
+          //  System.out.println(producto.getNombre() + "nombre DEL PRODUCTO");
         }
         return producto;
     }
@@ -89,20 +89,33 @@ public class DaoProducto {
      * @return
      */
     public boolean eliminarProducto(Producto object) {
+               
         EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-        boolean ret = false;
+        Producto producto = null;
+        //System.out.println("ANTES DEL QUERY" + object.getId());
+        Query q = em.createQuery("DELETE FROM Producto u "
+                + "WHERE u.id = :idProducto").setParameter("idProducto", object.getId());
+        //System.out.println("llego");
+        
         try {
-            em.remove(object);
-            em.getTransaction().commit();
-            ret = true;
+            System.out.println("llego");
+            int result = q.executeUpdate();
+            System.out.println("Rows affected: " + result);
+            System.out.println("LOGRO SINGLE");
+            
         } catch (Exception e) {
             e.printStackTrace();
-            em.getTransaction().rollback();
+            System.out.println("LOGRO CATCH EXCEPT" + e.toString());
+            return false;
         } finally {
             em.close();
-            return ret;
+            System.out.println(producto.getNombre() + "nombre DEL PRODUCTO");
+            return true;
         }
+        
+        
+        
+        
     }
 
     /**
@@ -135,22 +148,22 @@ public class DaoProducto {
     public Producto leerProducto(Producto prod) {
         EntityManager em = emf.createEntityManager();
         Producto producto = null;
-        System.out.println("ANTES DEL QUERY" + prod.getNombre());
+        //System.out.println("ANTES DEL QUERY" + prod.getNombre());
         Query q = em.createQuery("SELECT u FROM Producto u "
                 + "WHERE u.nombre LIKE :nombre").setParameter("nombre", prod.getNombre());
-        System.out.println("llego");
+        //System.out.println("llego");
         try {
             producto = (Producto) q.getSingleResult();
-            System.out.println("LOGRO SINGLE");
+         //   System.out.println("LOGRO SINGLE");
         } catch (NonUniqueResultException e) {
             producto = (Producto) q.getResultList().get(0);
-            System.out.println("LOGRO CATCH SIMPLE");
+         //   System.out.println("LOGRO CATCH SIMPLE");
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("LOGRO CATCH EXCEPT" + e.toString());
+         //   System.out.println("LOGRO CATCH EXCEPT" + e.toString());
         } finally {
             em.close();
-            System.out.println(producto.getNombre() + "nombre DEL PRODUCTO");
+         //   System.out.println(producto.getNombre() + "nombre DEL PRODUCTO");
             return producto;
         }
     }

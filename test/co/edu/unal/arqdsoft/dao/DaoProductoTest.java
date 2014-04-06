@@ -34,6 +34,11 @@ public class DaoProductoTest {
     
     @Before
     public void setUp() {
+        DaoProducto daoProducto = new DaoProducto();
+        Producto producto;
+        producto = daoProducto.leerProducto(new Producto("Linea de telefono local ilimitada", "Linea de telefono con llamadas locales ilimitadas", 30000));
+        producto.setId(1);
+        
     }
     
     @After
@@ -58,7 +63,13 @@ public class DaoProductoTest {
      */
     @Test
     public void testEliminarProducto(){
-        
+        System.out.println("eliminar");
+        //int id = 132456;
+        Producto productos;
+        DaoProducto daoProducto = new DaoProducto();
+        productos = daoProducto.getProducto(1);
+        //System.out.println("ACa llego Eliminar");
+        assertTrue(daoProducto.eliminarProducto(productos));
     }
     /**
      * Test of crearProducto method, of class DaoProducto.
@@ -72,7 +83,8 @@ public class DaoProductoTest {
         
         DaoProducto daoProducto = new DaoProducto();
         
-        daoProducto.crearProducto(productos);
+        
+        assertTrue(daoProducto.crearProducto(productos));
     }
     /**
      * Test of crearProducto method, of class DaoProducto.
