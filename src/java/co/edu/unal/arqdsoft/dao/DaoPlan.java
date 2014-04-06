@@ -55,19 +55,22 @@ public class DaoPlan {
     
     /**
      *
-     * @param object
+     * @param plan
      */
-    public void crear(Object object) {
+    public boolean crear(Plan plan) {
         EntityManager em = emf.createEntityManager();
+        boolean exito=false;
         try {
             em.getTransaction().begin();
-            em.persist(object);
+            em.persist(plan);
             em.getTransaction().commit();
+            exito=true;
         } catch (Exception e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", e);
             em.getTransaction().rollback();
         } finally {
             em.close();
+            return exito;
         }
     }
 
