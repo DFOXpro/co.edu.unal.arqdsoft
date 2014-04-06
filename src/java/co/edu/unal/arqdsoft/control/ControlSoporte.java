@@ -8,7 +8,6 @@ package co.edu.unal.arqdsoft.control;
 import co.edu.unal.arqdsoft.dao.*;
 import co.edu.unal.arqdsoft.entidad.*;
 import java.util.*;
-import javafx.beans.property.SimpleMapProperty;
 
 /**
  *
@@ -33,7 +32,7 @@ public class ControlSoporte {
      */
     public static Map<Integer, ArrayList<Date>> tiempoTecnicos() {
         List<Empleado> n = DaoEmpleado.buscarEmpleados();
-        Map<Integer, ArrayList<Date>> d = new SimpleMapProperty<>();
+        Map<Integer, ArrayList<Date>> d = new HashMap<>();
         n.stream().forEach((empleado) -> {
             d.put(empleado.getId(), empleado.getHorarioDisponible());
         });
