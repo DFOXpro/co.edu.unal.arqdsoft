@@ -29,12 +29,16 @@ public class ControlVentas {
      *
      * @param empleado identificacion del empleado que realizo la venta
      * @param cliente cliente al que se el hizo la venta
+     * @param cliente1
+     * @param cliente2
      * @param plan plan que el cliente adquiere
+     * @param dirreccion
      * @return retorna si se hizo la venta
      */
-    public boolean venta(String empleado, String[] cliente, int plan) {
-        this.agregarCliente(Integer.valueOf(cliente[0]), cliente[1],cliente[2],plan);
+    public boolean venta(String empleado, String cliente,String cliente1,String cliente2, int plan,String dirreccion) {
+        this.agregarCliente(Integer.valueOf(cliente), cliente1,cliente2,plan);
         
+        DaoVenta.CrearVenta(Integer.valueOf(cliente), empleado, plan, dirreccion);
         return false;
     }
 
@@ -43,11 +47,12 @@ public class ControlVentas {
      * @param empleado
      * @param cliente
      * @param plan
+     * @param dirreccion
      * @return
      */
-    public boolean ventaCE(String empleado, int cliente, int plan) {
-        DaoVenta.CrearVenta(cliente,empleado,plan);
-        return false;
+    public boolean ventaCE(String empleado, int cliente, int plan,String dirreccion) {
+        return DaoVenta.CrearVenta(cliente,empleado,plan,dirreccion);
+        
     }
 
     /**
@@ -59,8 +64,8 @@ public class ControlVentas {
      * @return
      */
     public boolean agregarCliente(int id, String nombre, String informacion,int idPlan) {
-        DaoCliente.NuevoCliente(id,nombre,informacion,idPlan);
-        return false;
+        return DaoCliente.NuevoCliente(id,nombre,informacion,idPlan);
+        
     }
 
     /**
@@ -68,8 +73,8 @@ public class ControlVentas {
      * @return
      */
     public static ArrayList<Cliente> getclientes(){
-        
-        return null;    
+        DaoCliente dC =new DaoCliente();
+        return dC.getClientes();
     }
 
     /**
@@ -78,8 +83,8 @@ public class ControlVentas {
      * @return
      */
     public static Cliente getcliente(int id){
-        
-        return null;    
+        DaoCliente dC=new DaoCliente();
+        return dC.getCliente(id);    
     }
 
 }
