@@ -53,7 +53,7 @@ public class Empleado implements Serializable {
     private int id;
     private String nombre;
     private String informacion;
-    private ArrayList<Date> horarioDisponible;
+    private boolean disponible;
     private String usuario;
     private String contrasena;
     private roles rol; 
@@ -81,7 +81,7 @@ public class Empleado implements Serializable {
      *
      * @param nombre
      * @param informacion
-     * @param horarioDisponible
+     * @param disponible
      * @param usuario
      * @param contrasena
      * @param rol
@@ -89,10 +89,10 @@ public class Empleado implements Serializable {
      * @param visitasTecnicas
      * @param reportesDanos
      */
-    public Empleado(String nombre, String informacion, ArrayList<Date> horarioDisponible, String usuario, String contrasena, roles rol, List<Venta> ventas, List<VisitaTecnica> visitasTecnicas, List<ReporteDano> reportesDanos) {
+    public Empleado(String nombre, String informacion, boolean disponible, String usuario, String contrasena, roles rol, List<Venta> ventas, List<VisitaTecnica> visitasTecnicas, List<ReporteDano> reportesDanos) {
         this.nombre = nombre;
         this.informacion = informacion;
-        this.horarioDisponible = horarioDisponible;
+        this.disponible = disponible;
         this.usuario = usuario;
         this.contrasena = contrasena;
         this.rol = rol;
@@ -151,19 +151,19 @@ public class Empleado implements Serializable {
     }
 
     /**
-     * Obtiene el arreglo de fechas correspondiente al horario disponible
-     * @return el/los horarios disponibles
+     * 
+     * @return boolean
      */
-    public ArrayList<Date> getHorarioDisponible() {
-        return horarioDisponible;
+    public boolean isDisponible() {
+        return disponible;
     }
 
     /**
-     * Define el nuevo conjunto de horarios disponibles para el empleado
-     * @param horarioDisponible el/los horarios disponibles
+     * o
+     * @param disponible 
      */
-    public void setHorarioDisponible(ArrayList<Date> horarioDisponible) {
-        this.horarioDisponible = horarioDisponible;
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
     }
     
     /**
@@ -315,7 +315,7 @@ public class Empleado implements Serializable {
      */
     @Override
     public String toString() {
-        return "Empleado{" + "id=" + id + ", nombre=" + nombre + ", informacion=" + informacion + ", horarioDisponible=" + horarioDisponible + ", usuario=" + usuario + ", contrasena=" + contrasena + ", rol=" + rol + ", ventas=" + ventas + ", visitasTecnicas=" + visitasTecnicas + ", reportesDanos=" + reportesDanos + '}';
+        return "Empleado{" + "id=" + id + ", nombre=" + nombre + ", informacion=" + informacion + ", disponible=" + disponible + ", usuario=" + usuario + ", contrasena=" + contrasena + ", rol=" + rol + ", ventas=" + ventas + ", visitasTecnicas=" + visitasTecnicas + ", reportesDanos=" + reportesDanos + '}';
     }
 
 }
