@@ -57,9 +57,9 @@ public class ServletProductos extends HttpServlet {
             } else if (obj.get("accion").equals("getPlan")) {
                 r = getPlan(obj);
             } else if (obj.get("accion").equals("setPlan")) {
-                r = setPlanes(obj);
+                r = setPlan(obj);
             } else if (obj.get("accion").equals("borrarPlanes")) {
-                r = borrarPlanes(obj);
+                r = borrarPlan(obj);
             } else {
                 r = new Respuesta("Error de comunicación", new Contenido());
             }
@@ -238,7 +238,45 @@ public class ServletProductos extends HttpServlet {
         return new Respuesta("", new Contenido(list, ""));
     }
 
-    private Respuesta setPlanes(JSONObject obj) {
+    private Respuesta getPlan(JSONObject obj) {
+        String error = "Problemas con la comunicación";
+        try{
+            //Producto p = ControlProductos.getProducto((int) obj.get("datos"));
+            /*TEST*/
+            ArrayList<Producto> pr= new ArrayList<Producto>();
+            pr.add(new Producto("Telefono", null, 0));
+            pr.add(new Producto("Internet", null, 0));
+            pr.get(0).setId(123);
+            pr.get(1).setId(465);
+            Plan p = new Plan("TelefonoASD", "muy comunicativo", 18000,pr);
+            p.setId(123);
+            /*TEST FIN*/
+            if(p != null){
+                JSONObject t = new JSONObject();
+                t.put("nombre", p.getNombre());
+                t.put("id", p.getId());
+                t.put("descripcion", p.getDescripcion());
+                t.put("valor", p.getValor());
+                JSONArray list = new JSONArray();
+                for (Producto temp : pr) {
+                    JSONObject t1 = new JSONObject();
+                    t1.put("nombre", temp.getNombre());
+                    t1.put("id", temp.getId());
+                    list.add(t1);
+                }
+                t.put("productos", list);
+                return new Respuesta("", new Contenido(t, ""));
+            }else{
+                error = "No existe el producto, no debería de pasar, no sea curioso";//ERROR de SEGURIDAD
+                throw new SecurityException(obj.get("datos").toString());
+            }
+        } catch(Exception ex){
+            Logger.getLogger(ServletProductos.class.getName()).log(Level.SEVERE, null, ex);
+            return new Respuesta(error, new Contenido());
+        }
+    }
+
+    private Respuesta setPlan(JSONObject obj) {
         String error = "Problemas con la comunicación";
         try{
             obj = (JSONObject)JSONValue.parse(obj.get("datos").toString());
@@ -279,43 +317,21 @@ public class ServletProductos extends HttpServlet {
         }
     }
 
-    private Respuesta borrarPlanes(JSONObject obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private Respuesta getPlan(JSONObject obj) {
+    private Respuesta borrarPlan(JSONObject obj) {
         String error = "Problemas con la comunicación";
-        try{
-            //Producto p = ControlProductos.getProducto((int) obj.get("datos"));
+        try {
+            //boolean p = ControlProductos.borrarPlan((int) obj.get("datos"));
             /*TEST*/
-            ArrayList<Producto> pr= new ArrayList<Producto>();
-            pr.add(new Producto("Telefono", null, 0));
-            pr.add(new Producto("Internet", null, 0));
-            pr.get(0).setId(123);
-            pr.get(1).setId(465);
-            Plan p = new Plan("TelefonoASD", "muy comunicativo", 18000,pr);
-            p.setId(123);
+            boolean p = true;
+            //boolean p = false;
             /*TEST FIN*/
-            if(p != null){
-                JSONObject t = new JSONObject();
-                t.put("nombre", p.getNombre());
-                t.put("id", p.getId());
-                t.put("descripcion", p.getDescripcion());
-                t.put("valor", p.getValor());
-                JSONArray list = new JSONArray();
-                for (Producto temp : pr) {
-                    JSONObject t1 = new JSONObject();
-                    t1.put("nombre", temp.getNombre());
-                    t1.put("id", temp.getId());
-                    list.add(t1);
-                }
-                t.put("productos", list);
-                return new Respuesta("", new Contenido(t, ""));
-            }else{
-                error = "No existe el producto, no debería de pasar, no sea curioso";//ERROR de SEGURIDAD
+            if (p) {
+                return new Respuesta("", new Contenido());
+            } else {
+                error = "No se pudo borrar el producto.";//ERROR de SEGURIDAD ?
                 throw new SecurityException(obj.get("datos").toString());
             }
-        } catch(Exception ex){
+        } catch (Exception ex) {
             Logger.getLogger(ServletProductos.class.getName()).log(Level.SEVERE, null, ex);
             return new Respuesta(error, new Contenido());
         }
