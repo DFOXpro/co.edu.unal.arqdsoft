@@ -254,6 +254,8 @@ public class ServletProductos extends HttpServlet {
             ArrayList<Producto> pr= new ArrayList<Producto>();
             pr.add(new Producto("Telefono", null, 0));
             pr.add(new Producto("Internet", null, 0));
+            pr.get(0).setId(123);
+            pr.get(1).setId(465);
             Plan p = new Plan("TelefonoASD", "muy comunicativo", 18000,pr);
             p.setId(123);
             /*TEST FIN*/
