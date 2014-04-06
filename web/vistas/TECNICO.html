@@ -1,16 +1,52 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<!-- Menu -->
+<div id="menu">
+    <!-- ENDS menu-holder -->
+    <div id="menu-holder">
+        <!-- Navigation -->
+        <ul id="nav" class="sf-menu">
+            <li id="l_te_teerario"><a>Vistas a REalizar</a><span class="subheteer">Que visitas tiene?</span></li>
+            <li id="l_te_cerrarSesion"><a>Cerrar Sesión</a>
+        </ul>
+        <!-- Navigation -->
+    </div>
+    <!-- ENDS menu-holder -->
+</div>
+<!-- ENDS Menu -->
+<div id='error'></div>
+<article id="te_productos" class="panes">
+    <h2>Servicio Tecnico</h2>
+    <ul class="blocks-thumbs thumbs-rollover">
+        <li>
+            <ul id="te_listaEmpty">
+                <!-- Dinamico futuro:
+                Poner templates y sacar html del JS-->
+            </ul>
+        </li>
+        <li id="te_reporteDaño">
+            <label for='te_listaVisitas'>lista Visitas</label><br><!-- ordenadas de la mas cercana a la mas lejana-->
+            <input id='te_listaVisitas' type='number' placeholder='05'><br>
+            <div>
+                <label for='te_nombreCliente'>Cliente</label><br><!-- solo ver -->
+                <input id='te_nombreCliente' type='text' placeholder='05' disabled><br>
+            </div>
+            <div>
+                <label for='te_dirreccionCliente'>Dirreccion</label><br>
+                <input id='te_dirreccionCliente' type='text' placeholder='05'><br>
+            </div>
+            <div>
+                <label for='te_fechaVisita'>fecha</label><br>
+                <input id='te_fechaVisita' type='number' placeholder='05'><br>
+            </div>
+            <div>
+                <label for='te_solucionado'>Solucionado?</label><br>
+                <input id='te_solucionado' type='number' placeholder='05'><br><!--fue solucionado?-->
+            </div>
+        </li>
+        <li>
+            <div>
+                <button id='te_b_buscarCliente'>Hecha</button>            
+                <button id='te_b_actualizarReporte'>No hay nadie</button>            
+            </div>
+        </li>
+    </ul>
+</article>

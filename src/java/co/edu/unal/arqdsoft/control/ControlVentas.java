@@ -16,15 +16,6 @@ import java.util.List;
  */
 public class ControlVentas {
 
-    Empleado empleado;
-    Venta venta;
-    Plan plan;
-    Cliente cliente;
-    DaoEmpleado daoEmpleado;
-    DaoVenta daoVenta;
-    DaoPlan daoPlan;
-    DaoCliente daoCliente;
-
     /**
      *
      * @param empleado identificacion del empleado que realizo la venta
@@ -63,8 +54,8 @@ public class ControlVentas {
      * @param idPlan
      * @return
      */
-    public boolean agregarCliente(int id, String nombre, String informacion,int idPlan) {
-        return DaoCliente.NuevoCliente(id,nombre,informacion,idPlan);
+    public static boolean agregarCliente(int id, String nombre, String informacion,int idPlan) {
+        return DaoCliente.NuevoCliente(id, nombre, informacion);
         
     }
 
