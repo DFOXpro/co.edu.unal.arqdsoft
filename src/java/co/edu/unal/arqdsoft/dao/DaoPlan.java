@@ -56,6 +56,7 @@ public class DaoPlan {
     /**
      *
      * @param plan
+     * @return 
      */
     public boolean crear(Plan plan) {
         EntityManager em = emf.createEntityManager();
@@ -83,6 +84,12 @@ public class DaoPlan {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     *
+     * @param id
+     * @param p
+     * @return
+     */
     public boolean modificarPlan(int id, Plan p) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

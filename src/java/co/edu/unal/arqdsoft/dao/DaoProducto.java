@@ -121,6 +121,7 @@ public class DaoProducto {
     /**
      *
      * @param producto
+     * @return 
      */
     public boolean crearProducto(Producto producto) {
         EntityManager em = emf.createEntityManager();

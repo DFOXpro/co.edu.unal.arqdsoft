@@ -25,9 +25,10 @@ public class DaoEmpleado {
 
     /**
      *
+     * @param id
      * @return
      */
-    public static Empleado buscarEmpleado() {
+    public static Empleado buscarEmpleado(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -91,6 +92,11 @@ public class DaoEmpleado {
          return empleado;
     }
 
+    /**
+     *
+     * @param idOperador
+     * @return
+     */
     public Empleado getEmpleado(int idOperador) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

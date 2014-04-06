@@ -21,7 +21,7 @@ public class ControlSoporte {
      * @return
      */
     public static Empleado buscarTecnico(int id) {
-        return DaoEmpleado.buscarEmpleado();
+        return DaoEmpleado.buscarEmpleado(id);
     }
 
     /**
@@ -34,17 +34,18 @@ public class ControlSoporte {
         List<Empleado> n = DaoEmpleado.buscarEmpleados();
         Map<Integer, ArrayList<Date>> d = new HashMap<>();
         n.stream().forEach((empleado) -> {
-            d.put(empleado.getId(), empleado.getHorarioDisponible());
+            d.put(empleado.getId(), null);
         });
         return d;
     }
 
     /**
      *
+     * @param idTecnico
      * @return
      */
-    public static List<VisitaTecnica> visitas() {
-        List<VisitaTecnica> visitasTecnicas = DaoEmpleado.buscarEmpleado().getVisitasTecnicas();
+    public static List<VisitaTecnica> visitas(int idTecnico) {
+        List<VisitaTecnica> visitasTecnicas = DaoEmpleado.buscarEmpleado(idTecnico).getVisitasTecnicas();
 
         return visitasTecnicas;
     }
@@ -63,6 +64,16 @@ public class ControlSoporte {
         VisitaTecnica vT=new VisitaTecnica(idCliente, tecnico, fecha, rD, dirreccion);
         return dVT.crearVisita(vT);
     }
+
+    /**
+     *
+     * @param idCliente
+     * @param fecha
+     * @param dirreccion
+     * @param idOperador
+     * @param fueResuelto
+     * @return
+     */
     public static boolean crearReportedano(int idCliente,Date fecha,String dirreccion,int idOperador,boolean fueResuelto) {
         DaoReporteDano dRD=new DaoReporteDano();
         DaoCliente c=new DaoCliente();

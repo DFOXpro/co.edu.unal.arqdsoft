@@ -53,6 +53,11 @@ public class DaoCliente {
         }
     }
 
+    /**
+     *
+     * @param idCliente
+     * @return
+     */
     public Cliente getCliente(long idCliente) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -64,6 +69,10 @@ public class DaoCliente {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Cliente> getClientes() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

@@ -40,7 +40,7 @@ public class ServletAutenticacion extends HttpServlet {
         try {
             /*TEST*/
             //Empleado emp = null;//Si no da autorizacion
-            Empleado emp = new Empleado("Pedro", "asd", null, "pedro", null, Empleado.roles.VENDEDOR,null,null,null);//Si sí da autorización
+            Empleado emp = new Empleado("Pedro", "asd",false, "pedro", null, Empleado.roles.VENDEDOR,null,null,null);//Si sí da autorización
             /*TEST FIN*/
             /*CONDUCTO REGULAR*/
 //            JSONObject obj = JSON.toObject(request);
