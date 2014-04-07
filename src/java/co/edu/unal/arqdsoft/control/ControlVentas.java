@@ -20,24 +20,24 @@ public class ControlVentas {
      *
      * @param empleado identificacion del empleado que realizo la venta
      * @param cliente cliente al que se el hizo la venta
-     * @param cliente1
-     * @param cliente2
+     * @param nombre
+     * @param informacion
      * @param plan plan que el cliente adquiere
      * @param dirreccion
      * @return retorna si se hizo la venta
      */
-    public static boolean venta(int empleado, String cliente,String cliente1,String cliente2, int plan,String dirreccion) {
-        if (plan == 0 || plan < -1||empleado==0||empleado<-1||cliente.isEmpty()||cliente1.isEmpty()||cliente2.isEmpty()||dirreccion.isEmpty()) {
+    public static boolean venta(int empleado, String cliente, String nombre, String informacion, int plan, String dirreccion) {
+        if (plan == 0 || plan < -1 || empleado == 0 || empleado < -1 || cliente.isEmpty() || nombre.isEmpty() || informacion.isEmpty() || dirreccion.isEmpty()) {
 
             return false;
         }
-        ControlVentas.agregarCliente(Integer.valueOf(cliente), cliente1,cliente2);
-        
+        ControlVentas.agregarCliente(Integer.valueOf(cliente), nombre, informacion);
+
         DaoVenta.CrearVenta(Integer.valueOf(cliente), empleado, plan, dirreccion);
         return false;
     }
 
-    /** 
+    /**
      *
      * @param empleado
      * @param cliente
@@ -45,13 +45,13 @@ public class ControlVentas {
      * @param dirreccion
      * @return
      */
-    public static boolean ventaCE(int empleado, int cliente, int plan,String dirreccion) {
-        if (plan == 0 || plan < -1||empleado==0||empleado<-1||dirreccion.isEmpty()||cliente == 0 || cliente < -1) {
+    public static boolean ventaCE(int empleado, int cliente, int plan, String dirreccion) {
+        if (plan == 0 || plan < -1 || empleado == 0 || empleado < -1 || dirreccion.isEmpty() || cliente == 0 || cliente < -1) {
 
             return false;
         }
-        return DaoVenta.CrearVenta(cliente,empleado,plan,dirreccion);
-        
+        return DaoVenta.CrearVenta(cliente, empleado, plan, dirreccion);
+
     }
 
     /**
@@ -63,20 +63,19 @@ public class ControlVentas {
      * @return
      */
     public static boolean agregarCliente(int id, String nombre, String informacion) {
-         if (informacion.isEmpty()||nombre.isEmpty()||id == 0 || id < -1) {
+        if (informacion.isEmpty() || nombre.isEmpty() || id == 0 || id < -1) {
             return false;
         }
         return DaoCliente.nuevoCliente(id, nombre, informacion);
-        
+
     }
 
     /**
      *
      * @return
      */
-    public static ArrayList<Cliente> getclientes(){
-        DaoCliente dC =new DaoCliente();
-        return dC.getClientes();
+    public static ArrayList<Cliente> getclientes() {
+        return DaoCliente.getClientes();
     }
 
     /**
@@ -84,15 +83,14 @@ public class ControlVentas {
      * @param id
      * @return
      */
-    public static Cliente getcliente(int id){
+    public static Cliente getcliente(int id) {
         if (id == 0 || id < -1) {
             return null;
         }
-        DaoCliente dC=new DaoCliente();
-        return dC.getCliente(id);    
+        return DaoCliente.getCliente(id);
     }
 
-    public static Venta getVenta(int parseInt, String toString, String toString0, String toString1, int parseInt0, String toString2) {
+    public static Venta setVenta(int parseInt, String toString, String toString0, String toString1, int parseInt0, String toString2) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

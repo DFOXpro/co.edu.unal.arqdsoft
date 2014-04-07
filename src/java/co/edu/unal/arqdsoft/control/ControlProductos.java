@@ -18,52 +18,50 @@ public class ControlProductos {
 
     /**
      *
-     * @param producto
-     * @param producto1
-     * @param producto2
+     * @param nombre
+     * @param descripcion
+     * @param valor
      * @return informa si se pudo insertar o no el producto
      */
-    public static boolean nuevoProducto(String producto, String producto1, String producto2) {
-        if (producto.isEmpty() || producto1.isEmpty() || producto2.isEmpty()) {
+    public static boolean nuevoProducto(String nombre, String descripcion, String valor) {
+        if (nombre.isEmpty() || descripcion.isEmpty() || valor.isEmpty()) {
             return false;
         }
-        Producto p = new Producto(producto, producto1, Double.valueOf(producto2));
-        DaoProducto dP = new DaoProducto();
-        return dP.crearProducto(p);
+        Producto p = new Producto(nombre, descripcion, Double.valueOf(valor));
+        return DaoProducto.crearProducto(p);
     }
 
     /**
      *
-     * @param idProducto id del producto a modificar
-     * @param producto nueva definicion del producto
-     * @param producto1
-     * @param producto2
+     * @param p
+     * @param nombre nueva definicion del producto
+     * @param informacion
+     * @param valor
      * @return
      */
-    public static boolean modificarProducto(Producto p, String producto, String producto1, String producto2) {
-        if (producto.isEmpty() || producto1.isEmpty() || producto2.isEmpty() || p == null) {
+    public static boolean modificarProducto(Producto p, String nombre, String informacion, String valor) {
+        if (nombre.isEmpty() || informacion.isEmpty() || valor.isEmpty() || p == null) {
             return false;
         }
-        Producto p2 = new Producto(producto, producto1, Double.valueOf(producto2));
+        Producto p2 = new Producto(nombre, informacion, Double.valueOf(valor));
         p2.setId(p.getId());
-        DaoProducto dP=new DaoProducto();
-        return dP.modificarProducto(p, p2);
+        return DaoProducto.modificarProducto(p, p2);
 
     }
 
     /**
      *
-     * @param plan1
-     * @param plan2
-     * @param plan3
-     * @param productos lista de ids de los productos
+     * @param nombre
+     * @param descripcion
+     * @param valor
+     * @param listaProductos lista de ids de los productos
      * @return
      */
-    public static boolean nuevoPlan(String plan1, String plan2, String plan3, List<Producto> productos) {
-        if (plan1.isEmpty() || plan2.isEmpty() || plan3.isEmpty() || productos.isEmpty()) {
+    public static boolean nuevoPlan(String nombre, String descripcion, String valor, List<Producto> listaProductos) {
+        if (nombre.isEmpty() || descripcion.isEmpty() || valor.isEmpty() || listaProductos.isEmpty()) {
             return false;
         }
-        Plan p = new Plan(plan1, plan2, Double.valueOf(plan3), productos);
+        Plan p = new Plan(nombre, descripcion, Double.valueOf(valor), listaProductos);
         return DaoPlan.CrearPlan(p);
 
     }
@@ -71,19 +69,18 @@ public class ControlProductos {
     /**
      *
      * @param id
-     * @param plan1
-     * @param plan2
-     * @param plan3
-     * @param productos
+     * @param nombre
+     * @param descripcion
+     * @param valor
+     * @param listaProductos
      * @return
      */
-    public static boolean modificarPlan(int id, String plan1, String plan2, String plan3, List<Producto> productos) {
-        if (plan1.isEmpty() || plan2.isEmpty() || plan3.isEmpty() || productos.isEmpty() || id == 0 || id < -1) {
+    public static boolean modificarPlan(int id, String nombre, String descripcion, String valor, List<Producto> listaProductos) {
+        if (nombre.isEmpty() || descripcion.isEmpty() || valor.isEmpty() || listaProductos.isEmpty() || id == 0 || id < -1) {
             return false;
         }
-        Plan p = new Plan(plan1, plan2, Double.valueOf(plan3), productos);
-        DaoPlan dP = new DaoPlan();
-        boolean b = dP.modificarPlan(dP.getPlan(id), p);
+        Plan p = new Plan(nombre, descripcion, Double.valueOf(valor), listaProductos);
+        boolean b = DaoPlan .modificarPlan(DaoPlan.getPlan(id), p);
 
         return b;
     }
@@ -134,25 +131,24 @@ public class ControlProductos {
     /**
      *
      * @param id id del producto a modificar / nulo si se esta creando
-     * @param get nombre del producto
-     * @param get0 descripcion del producto
-     * @param get1 valor del producto
-     * @return retorna nulo si no se creo el producto o no se modifico
+     * @param nombre
+     * @param descripcion descripcion del producto
+     * @param valor valor del producto
+     * @return 
+     * @nombre retorna nulo si no se creo el producto o no se modifico
      */
-    public static Producto setProducto(int id, String get, String get0, String get1) {
-        if (id == 0 || id < -1 || get.isEmpty() || get0.isEmpty() || get1.isEmpty()) {
+    public static Producto setProducto(int id, String nombre, String descripcion, String valor) {
+        if (id == 0 || id < -1 || nombre.isEmpty() || descripcion.isEmpty() || valor.isEmpty()) {
             return null;
 
         }
-        DaoProducto dP =new DaoProducto();
-        Producto p2 = new Producto(get, get0, Double.valueOf(get1));
+        Producto p2 = new Producto(nombre, descripcion, Double.valueOf(valor));
         try {
-            String[] p = {get, get0, get1};
             if (id == -1) {
-                if(ControlProductos.nuevoProducto(p[0],p[1],p[2])) return p2;
+                if(nuevoProducto(nombre,descripcion,valor)) return p2;
                 else return null;
             } else {
-                if(ControlProductos.modificarProducto(dP.getProducto(id), p[0],p[1],p[2])) return p2;
+                if(modificarProducto(DaoProducto.getProducto(id),nombre,descripcion,valor)) return p2;
                 else return null;
             }
         } catch (Exception e) {
@@ -169,43 +165,42 @@ public class ControlProductos {
         if (id == 0 || id < -1) {
             return false;
         }
-        DaoProducto p = new DaoProducto();
-        return p.eliminarProducto(ControlProductos.getProducto(id));
+        return DaoProducto.eliminarProducto(ControlProductos.getProducto(id));
 
     }
 
     /**
      *
-     * @param id
+     * @param idPlan
      * @return
      */
-    public static boolean borrarPlan(int id) {
-        if (id == 0 || id < -1) {
+    public static boolean borrarPlan(int idPlan) {
+        if (idPlan == 0 || idPlan < -1) {
             return false;
         }
         DaoPlan p = new DaoPlan();
-        return p.eliminarPlan(DaoPlan.getPlan(id));
+        return p.eliminarPlan(DaoPlan.getPlan(idPlan));
 
     }
 
     /**
      *
-     * @param parseInt
-     * @param toString
-     * @param toString0
-     * @param toString1
+     * @param idPlan
+     * @param nombre
+     * @param valor
+     * @param descripcion
      * @param ar
      * @return
      */
-    public static Plan setPlan(int parseInt, String toString, String toString0, String toString1, ArrayList<Producto> ar) {
-        if (parseInt < -1 || parseInt == 0 || toString.isEmpty() || toString0.isEmpty() || toString1.isEmpty()) {
+    public static Plan setPlan(int idPlan, String nombre, String valor, String descripcion, ArrayList<Producto> ar) {
+        if (idPlan < -1 || idPlan == 0 || nombre.isEmpty() || valor.isEmpty() || descripcion.isEmpty()) {
             return null;
-        }
-        Plan p = new Plan(toString, toString1, parseInt, ar);
-        if (parseInt != -1) {
-            modificarPlan(parseInt, toString1, toString, toString, ar);
+        }//String nombre, String descripcion, double valor, List<Producto> productos
+        Plan p = new Plan(nombre, descripcion, Integer.parseInt(valor), ar);
+        if (idPlan != -1) {
+            modificarPlan(idPlan, nombre, descripcion, valor, ar);
         } else {
-            nuevoPlan(toString1, toString, toString, ar);
+            nuevoPlan(nombre, descripcion, valor, ar);
         }
         return p;
     }

@@ -36,6 +36,10 @@ public class DaoVisitaTecnica {
             return visitasTecnicas;
         }
     }
+
+    public static boolean modificarVisitaTecnica(VisitaTecnica old, VisitaTecnica new1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     /**
      *

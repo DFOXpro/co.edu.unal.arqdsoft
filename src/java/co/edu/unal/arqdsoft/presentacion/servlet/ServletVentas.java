@@ -126,7 +126,7 @@ public class ServletVentas extends HttpServlet {
             Venta p=null;
             try {
                 
-            p = ControlVentas.getVenta(
+            p = ControlVentas.setVenta(
                     /*idempleado ,cedula, nombre, informacion,plan,dirrecion*/
                     Integer.parseInt(obj.get("empleado").toString()),
                     obj.get("id").toString(),
