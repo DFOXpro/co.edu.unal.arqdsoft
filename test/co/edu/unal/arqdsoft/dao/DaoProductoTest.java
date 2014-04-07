@@ -72,17 +72,33 @@ public class DaoProductoTest {
     /**
      * Test of crearProducto method, of class DaoProducto.
      */
-//    @Test
-//    public void testCrearProducto() {
-//        System.out.println("crear");
-//        //int id = 132456;
-//        
-//        Producto productos = new Producto("Internet Ilimitado 5 Megas", "Internet banda ancha 5 megas", 40000);
-//        
-//        DaoProducto daoProducto = new DaoProducto();
-//
-//        assertTrue(daoProducto.crearProducto(productos));
-//    }
+    @Test
+    public void testCrearProducto() {
+        System.out.println("crear");
+        //int id = 132456;
+        
+        Producto producto = new Producto("Internet Ilimitado 1 Megas", "Internet banda ancha 1 megas", 20000);
+        Producto producto1 = new Producto("Internet Ilimitado 2 Megas", "Internet banda ancha 2 megas", 30000);
+        Producto producto2 = new Producto("Internet Ilimitado 3 Megas", "Internet banda ancha 3 megas", 38000);
+        Producto producto3 = new Producto("Internet Ilimitado 4 Megas", "Internet banda ancha 4 megas", 45000);
+        Producto producto4 = new Producto("Internet Ilimitado 5 Megas", "Internet banda ancha 5 megas", 50000);
+        Producto producto5 = new Producto("Telefono Ilimitado local", "Telefono Ilimitado local", 15000);
+        Producto producto6 = new Producto("Telefono Ilimitado nacional", "Telefono Ilimitado nacional", 25000);
+        Producto producto7 = new Producto("Telefono Ilimitado nacional+500min UE", "Telefono Ilimitado nacional+500min UE", 35000);
+        Producto producto8 = new Producto("Telefono Ilimitado nacional+500min USA", "Telefono Ilimitado nacional+500min USA", 40000);
+        
+        DaoProducto daoProducto = new DaoProducto();
+
+        assertTrue(daoProducto.crearProducto(producto));
+        assertTrue(daoProducto.crearProducto(producto1));
+        assertTrue(daoProducto.crearProducto(producto2));
+        assertTrue(daoProducto.crearProducto(producto3));
+        assertTrue(daoProducto.crearProducto(producto4));
+        assertTrue(daoProducto.crearProducto(producto5));
+        assertTrue(daoProducto.crearProducto(producto6));
+        assertTrue(daoProducto.crearProducto(producto7));
+        assertTrue(daoProducto.crearProducto(producto8));
+    }
        
     /**
      * Test of crearProducto method, of class DaoProducto.
@@ -100,10 +116,10 @@ public class DaoProductoTest {
 //        //fail("The test case is a prototype.");
 //    }
    
-    @Test
-    public void testGetProductos(){
-        DaoProducto daoProductos = new DaoProducto();
-        
-        System.out.println(daoProductos.getProductos().get(0).getNombre());
-    }
+//    @Test
+//    public void testGetProductos(){
+//        DaoProducto daoProductos = new DaoProducto();
+//        
+//        System.out.println(daoProductos.getProductos().get(0).getNombre());
+//    }
 }
