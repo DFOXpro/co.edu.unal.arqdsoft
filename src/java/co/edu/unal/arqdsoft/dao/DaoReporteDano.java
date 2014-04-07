@@ -6,10 +6,11 @@
 
 package co.edu.unal.arqdsoft.dao;
 
-import static co.edu.unal.arqdsoft.dao.DaoEmpleado.emf;
+import static co.edu.unal.arqdsoft.dao.DaoProducto.emf;
 import co.edu.unal.arqdsoft.entidad.Cliente;
 import co.edu.unal.arqdsoft.entidad.Empleado;
 import co.edu.unal.arqdsoft.entidad.Plan;
+import co.edu.unal.arqdsoft.entidad.Producto;
 import co.edu.unal.arqdsoft.entidad.ReporteDano;
 import co.edu.unal.arqdsoft.entidad.Venta;
 import java.util.Date;
@@ -53,6 +54,39 @@ public class DaoReporteDano {
         } finally {
             em.close();
             return exito;
+        }
+    }
+    
+     public static boolean modificarReporteDano(ReporteDano viejoReporte, ReporteDano nuevoReporte) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        try {
+            ReporteDano object = getReporte(viejoReporte.getId());
+            object.setDescripcion(nuevoReporte.getDescripcion());
+            object.setResuelto(nuevoReporte.getResuelto());
+            em.merge(object);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            em.getTransaction().rollback();
+            return false;
+        } finally {
+            em.close();
+            return true;
+        }
+    }
+
+    private static ReporteDano getReporte(int idReporte) {
+        EntityManager em = emf.createEntityManager();
+        ReporteDano reporte = null;
+        try{
+            em.getTransaction().begin();
+            reporte=em.find(ReporteDano.class, idReporte);
+        }catch(Exception e){
+            reporte=null;
+        }finally{
+            em.close();
+            return reporte;
         }
     }
     

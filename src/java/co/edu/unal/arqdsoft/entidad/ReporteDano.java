@@ -73,7 +73,7 @@ public class ReporteDano implements Serializable{
     /**
      * @return the id
      */
-    public long getId() {
+    public int getId() {
         return id;
     }
 
