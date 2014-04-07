@@ -164,16 +164,12 @@ public class DaoProducto {
         EntityManager em = emf.createEntityManager();
         ArrayList<Producto> productos = new ArrayList();
         Query q = em.createQuery("SELECT u FROM Producto u");
-        //System.out.println("llego");
         try {
             productos = (ArrayList<Producto>) q.getResultList();
-         //   System.out.println("LOGRO SINGLE");
         } catch (Exception e) {
-            e.printStackTrace();
-         //   System.out.println("LOGRO CATCH EXCEPT" + e.toString());
+            //e.printStackTrace();
         } finally {
             em.close();
-         //   System.out.println(producto.getNombre() + "nombre DEL PRODUCTO");
             return productos;
         }
     }
