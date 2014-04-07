@@ -22,27 +22,28 @@
                 Poner templates y sacar html del JS-->
             </ul>
         </li>
-        <li id="ve_infoProducto">
-            <label for='ve_idCliente'>Cedula Cliente</label><br>
-            <input id='ve_idCliente' type='number' placeholder='05'><br>
+        <li id="ve_infoVenta">
             <div>
-                <label for='ve_nombreCliente'>Nombre</label><br>
-                <input id='ve_nombreCliente' type='text' placeholder='05'><br>
-            </div>
-            <div>
-                <label for='ve_informacionCliente'>Descripción</label><br>
-                <input id='ve_informacionCliente' type='text' placeholder='05'><br>
-            </div>
-            <div>
-                <label for='ve_valorProductos'>Plan</label><br><!-- Lista los Planes disponibles-->
-                <input id='ve_valorProductos' type='number' placeholder='05'><br>
-            </div>
-        </li>
-        <li>
-            <div>
+                <label for='ve_idCliente'>Cedula Cliente</label><br>
+                <input id='ve_idCliente' type='number' placeholder='Cedula'><br>
                 <button id='ve_b_crearVenta'>Crear</button>
                 <button id='ve_b_buscarCliente'>Buscar Por Cedula</button>            
             </div>
+            <div>
+                <label for='ve_nombreCliente'>Nombre</label><br>
+                <input id='ve_nombreCliente' type='text' placeholder='Nombre del cliente'><br>
+            </div>
+            <div>
+                <label for='ve_informacionCliente'>Descripción</label><br>
+                <input id='ve_informacionCliente' type='text' placeholder='Direccion, Telefono, Observaciones'><br>
+            </div>
+            <div>
+                <label for='ve_Plan'>Plan</label><br><!-- Lista los Planes disponibles-->
+                <input id='ve_Plan' type='text' placeholder='05' disabled><br>
+            </div>
+        </li>
+        <li>
+            <button id='ve_b_cancelarVenta'>Cancelar</button>
         </li>
     </ul>
 </article>
