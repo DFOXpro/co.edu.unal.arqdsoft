@@ -45,7 +45,7 @@ public class DaoPlanTest {
     /**
      * Test of getPlanes method, of class DaoPlan.
      */
-    @Test
+  /*  @Test
     public void testGetPlanes() {
         System.out.println("getPlanes");
         ArrayList<Plan> expResult = null;
@@ -60,19 +60,24 @@ public class DaoPlanTest {
      */
     @Test
     public void testCrearPlan() {
-        System.out.println("CrearPlan");
-        Plan p = null;
-        boolean expResult = false;
-        boolean result = DaoPlan.CrearPlan(p);
-        assertEquals(expResult, result);
+        DaoProducto daoProducto = new DaoProducto();
+   
+        System.out.println("crearPlan");
+        List<Producto> productos=new ArrayList();
+        productos.add(daoProducto.getProducto(1));
+        productos.add(daoProducto.getProducto(32768));
+        Plan p = new Plan("Plan local ilimitado + Internet 5 Megas", "Linea fija con llamadas locales ilimitadas y banda ancha 5 megas", 70000, productos);
+        DaoPlan instance = new DaoPlan();
+        
+        assertTrue(instance.CrearPlan(p));
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
      * Test of getPlane method, of class DaoPlan.
      */
-    @Test
+ /*   @Test
     public void testGetPlane() {
         System.out.println("getPlane");
         int idPlan = 0;
@@ -83,25 +88,11 @@ public class DaoPlanTest {
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of crear method, of class DaoPlan.
-     */
-    @Test
-    public void testCrear() {
-        System.out.println("crear");
-        Plan plan = null;
-        DaoPlan instance = new DaoPlan();
-        boolean expResult = false;
-        boolean result = instance.crear(plan);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     /**
      * Test of eliminarPlan method, of class DaoPlan.
      */
-    @Test
+  /*  @Test
     public void testEliminarPlan() {
         System.out.println("eliminarPlan");
         Plan plan = null;
@@ -116,7 +107,7 @@ public class DaoPlanTest {
     /**
      * Test of modificarPlan method, of class DaoPlan.
      */
-    @Test
+ /*   @Test
     public void testModificarPlan() {
         System.out.println("modificarPlan");
         int id = 0;
@@ -149,7 +140,7 @@ public class DaoPlanTest {
 //        // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
 //    }
-
+/*
 
     @Test
     public void testCrearPlanConProductoExistente() {
@@ -160,7 +151,7 @@ public class DaoPlanTest {
         productos.add(daoProducto.getProducto(32768));
         Plan p = new Plan("Plan local ilimitado + Internet 5 Megas", "Linea fija con llamadas locales ilimitadas y banda ancha 5 megas", 70000, productos);
         DaoPlan daoPlan= new DaoPlan();
-        daoPlan.crear(p);
+        daoPlan.CrearPlan(p);
     }
 
     /**

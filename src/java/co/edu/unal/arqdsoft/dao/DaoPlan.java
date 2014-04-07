@@ -48,18 +48,20 @@ public class DaoPlan {
      * @param p
      * @return 
      */
-    public static boolean CrearPlan(Plan p) {
+    public static boolean CrearPlan(Plan plan) {
         EntityManager em = emf.createEntityManager();
+        boolean exito=false;
         try {
             em.getTransaction().begin();
-            em.persist(p);
+            em.persist(plan);
             em.getTransaction().commit();
+            exito=true;
         } catch (Exception e) {
+            //Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", e);
             em.getTransaction().rollback();
-            return false;
         } finally {
             em.close();
-            return true;
+            return exito;
         }
     }
 
@@ -68,7 +70,7 @@ public class DaoPlan {
      * @param idPlan
      * @return
      */
-    public static Plan getPlan(int idPlan) {
+    public static Plan getPlan(long idPlan) {
         EntityManager em = emf.createEntityManager();
         Plan plan = null;
         //System.out.println("ANTES DEL QUERY" + idProducto);
@@ -96,28 +98,6 @@ public class DaoPlan {
     public DaoPlan() {
     }
     
-    /**
-     *
-     * @param plan
-     * @return 
-     */
-    public boolean crear(Plan plan) {
-        EntityManager em = emf.createEntityManager();
-        boolean exito=false;
-        try {
-            em.getTransaction().begin();
-            em.persist(plan);
-            em.getTransaction().commit();
-            exito=true;
-        } catch (Exception e) {
-            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", e);
-            em.getTransaction().rollback();
-        } finally {
-            em.close();
-            return exito;
-        }
-    }
-
     /**
      *
      * @param producto
