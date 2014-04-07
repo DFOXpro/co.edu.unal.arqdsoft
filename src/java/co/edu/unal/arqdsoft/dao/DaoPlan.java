@@ -99,11 +99,25 @@ public class DaoPlan {
     
     /**
      *
-     * @param producto
+     * @param Plan p
      * @return
      */
-    public boolean eliminarPlan(Plan plan) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean eliminarPlan(Plan p) {
+        boolean exito=false;
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        try{
+           Plan plan=em.find(Plan.class,p.getId());
+           em.remove(plan);
+           em.getTransaction().commit();
+           exito= true;
+        }catch(Exception e){
+         em.getTransaction().rollback();
+        }
+        finally{
+         em.close();
+         return exito;
+        }   
     }
 
     /**

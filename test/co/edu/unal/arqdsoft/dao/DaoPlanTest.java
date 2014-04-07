@@ -45,14 +45,11 @@ public class DaoPlanTest {
     /**
      * Test of getPlanes method, of class DaoPlan.
      */
-  /*  @Test
+    @Test
     public void testGetPlanes() {
-        System.out.println("getPlanes");
-        ArrayList<Plan> expResult = null;
-        ArrayList<Plan> result = DaoPlan.getPlanes();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        DaoPlan daoPlan = new DaoPlan();
+        
+        System.out.println(daoPlan.getPlanes().get(0).getNombre());
     }
 
     /**
@@ -95,16 +92,16 @@ public class DaoPlanTest {
     /**
      * Test of eliminarPlan method, of class DaoPlan.
      */
-  /*  @Test
+    @Test
     public void testEliminarPlan() {
         System.out.println("eliminarPlan");
-        Plan plan = null;
-        DaoPlan instance = new DaoPlan();
-        boolean expResult = false;
-        boolean result = instance.eliminarPlan(plan);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //int id = 132456;
+        Plan plan;
+        DaoPlan daoPlan = new DaoPlan();
+        // id del plan depende de la base de datos
+        plan = daoPlan.getPlan(65536);
+        //System.out.println("ACa llego Eliminar");
+        assertTrue(daoPlan.eliminarPlan(plan));
     }
 
     /**
