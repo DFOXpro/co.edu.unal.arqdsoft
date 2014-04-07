@@ -58,14 +58,17 @@ public class DaoCliente {
      * @param idCliente
      * @return
      */
-    public Cliente getCliente(long idCliente) {
+    public static Cliente getCliente(long idCliente) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-        //Cliente cliente;
+        Cliente cliente =null;
         try {
-            return em.find(Cliente.class, idCliente);
+            cliente = em.find(Cliente.class, idCliente);
         }catch (Exception e) {
-            return null;
+            cliente= null;
+        }finally {
+            em.close();
+            return cliente;
         }
     }
 
@@ -73,7 +76,7 @@ public class DaoCliente {
      *
      * @return
      */
-    public ArrayList<Cliente> getClientes() {
+    public static ArrayList<Cliente> getClientes() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

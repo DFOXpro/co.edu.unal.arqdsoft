@@ -1,6 +1,11 @@
 Admin = new Object();
 Admin.Productos = new Object();
 
+/**
+*   Funcion que se encarga de enviar la peticion al servlet de productos 
+*   permitiendo listarlos gracias a la respuesta listarproductos que envia
+*   la peticion luego de su ejecucion.
+*/
 Admin.Productos.getProductos = function (){
     sendRequest(
         "productos",
@@ -19,6 +24,7 @@ Admin.Productos.getProductos = function (){
     );
 };
 
+
 Admin.Productos.getProducto = function (id, nombre){
     sendRequest(
         "productos",
@@ -27,6 +33,7 @@ Admin.Productos.getProducto = function (id, nombre){
         id
     );
 };
+
 
 Admin.Productos.setProducto = function (){
     var data = {
@@ -47,6 +54,7 @@ Admin.Productos.setProducto = function (){
     );
 };
 
+
 Admin.Productos.borrarProducto = function (){
     sendRequest(
         "productos",
@@ -60,6 +68,7 @@ Admin.Productos.borrarProducto = function (){
         $("#ad_idProductos").val()
     );
 };
+
 
 Admin.Productos.mostrarProductos = function (respuesta){
     if(respuesta.error.length == 0){

@@ -29,13 +29,19 @@ Ventas.Venta.getPlanes = function (){
     );
 };
 
+Ventas.Venta.setPlan = function (id, nombre){
+    $("#ve_PlanEscojido").removeClass("hidden");
+    $("#ve_PlanEscojer").addClass("hidden");
+    $("#ve_PlanID").val(id);
+    $("#ve_PlanNombre").val(nombre);
+};
 Ventas.Venta.mostrarPlanes = function (respuesta){
     if(respuesta.error.length == 0){
         $("#error").html("");
         var array = respuesta.contenido.dato;
         var s = "";
         for (var i in array) {
-            s+="<li><a href='#' onclick='Ventas.Venta.setPlan("+array[i].id+","+array[i].nombre+"); return false;'>"+array[i].nombre+"</a></li>";//TODO FUTURE: use templates
+            s+="<li><a href='#' onclick='Ventas.Venta.setPlan("+array[i].id+",\""+array[i].nombre+"\"); return false;'>"+array[i].nombre+"</a></li>";//TODO FUTURE: use templates
         }
         $("#ve_PlanLista").html(s);
     } else $("#error").html(respuesta.error);

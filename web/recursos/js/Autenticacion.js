@@ -4,6 +4,14 @@
  * and open the template in the editor.
  */
 Autenticacion = new Object();
+
+/**
+*   La siguiente funcion se encarga de una verificacion a priori de la contraseña y el usuario para
+*   permitir descartar errores comunes como espacios en blanco u tamaños de campos antes de ralizar
+*   la validacion
+*  
+*   @return true en caso de encontrar un error y false en caso de no hacerlo
+*/
 Autenticacion.verificar = function (){
     var r = {error:""};
     if($("#a_usuario").val() == "") r.error = "Escriba un usuario";
@@ -16,6 +24,12 @@ Autenticacion.verificar = function (){
         return false;
     };
 };
+
+/**
+*   Funcion que se encarga de redireccionar a la seccion  adecuada dependiendo
+*   del rol de el usuario no sin antes haber validado si hay algun tipo de error
+*   @param Respuesta del ajax
+*/
 Autenticacion.recibir = function (respuesta){
     if(respuesta.error.length == 0){
         usuario.id = respuesta.contenido.dato.id;
@@ -27,6 +41,11 @@ Autenticacion.recibir = function (respuesta){
     }
     Contenido.cambiarSeccion(respuesta);
 };
+
+/**
+*   Funcion que se encarga del envio de la peticion hacia el servlet de autenticacion
+*   con los datos de usuario y contraseña administrados por el usuario
+*/
 Autenticacion.enviar = function (){
     sendRequest(
         "autenticacion",
