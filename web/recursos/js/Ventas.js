@@ -35,6 +35,12 @@ Ventas.Cliente.mostrarCliente = function (respuesta){
 
 Ventas.Venta = new Object();
 
+/**
+*   Esta funcion es la encargada de enviar peticiones al servlet de ventas para
+*   realizar el registro de una venta nueva con los datos suministrados, hace 
+*   primero una verificacion de los datos ingresados al validarlos nos va a dar
+*   la respuesta de esta peticion y limpiara los datos.
+*/
 Ventas.Venta.enviar = function (){
     var s = "";
     $("#error").html("");
@@ -99,12 +105,21 @@ Ventas.Venta.setPlan = function (id, nombre){
     $("#ve_PlanNombre").val(nombre);
 };
 
+/**
+*   Esta funcion es puramente de navegacion y nos permite cambiar el estado de 
+*   el plan escojido a hidden asi como resetear los campos de id y nombre.
+*/
 Ventas.Venta.resetPlan = function (){
     $("#ve_PlanEscojido").addClass("hidden");
     $("#ve_PlanEscojer").removeClass("hidden");
     $("#ve_PlanID").val("");
     $("#ve_PlanNombre").val("");
 };
+
+/**
+*   Esta funcion es puramente de navegacion y nos permite resetear los campos de
+*   una venta.
+*/
 Ventas.Venta.reset = function (){
     $("#ve_idCliente").prop('disabled', false);
     $("#ve_idCliente").val("");

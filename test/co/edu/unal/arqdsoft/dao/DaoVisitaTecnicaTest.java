@@ -52,7 +52,7 @@ public class DaoVisitaTecnicaTest {
         DaoVisitaTecnica daoVisitaTecnica = new DaoVisitaTecnica();
         DaoReporteDano daoReporteDano = new DaoReporteDano();
         ReporteDano reporteDano = daoReporteDano.getReporte(1);
-        System.out.println(daoVisitaTecnica.getVisitaTecnica(reporteDano).get(0));
+        System.out.println(daoVisitaTecnica.getVisitaTecnica(reporteDano).get(1));
     }
 
     /**
