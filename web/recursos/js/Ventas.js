@@ -1,6 +1,14 @@
 Ventas = new Object();
 Ventas.Cliente = new Object();
 
+Ventas.Cliente.new = function (){
+    $("#ve_idCliente").prop('disabled', false);
+    $("#ve_nombreCliente").prop('disabled', false);
+    $("#ve_nombreCliente").val("");
+    $("#ve_informacionCliente").prop('disabled', false);
+    $("#ve_informacionCliente").val("");
+    
+};
 /**
 *   Esta funcion es la encargada de enviar peticiones al servlet de ventas y por 
 *   medio de la id del cliente y la funcion getcliente obtener un cliente en 
@@ -101,6 +109,7 @@ Ventas.Venta.getPlanes = function (){
 Ventas.Venta.setPlan = function (id, nombre){
     $("#ve_PlanEscojido").removeClass("hidden");
     $("#ve_PlanEscojer").addClass("hidden");
+    $("#ve_direccionInstalacion").prop('disabled', false);
     $("#ve_PlanID").val(id);
     $("#ve_PlanNombre").val(nombre);
 };
@@ -127,6 +136,7 @@ Ventas.Venta.reset = function (){
     $("#ve_nombreCliente").val("");
     $("#ve_informacionCliente").prop('disabled', true);
     $("#ve_informacionCliente").val("");
+    $("#ve_direccionInstalacion").prop('disabled', true);
     $("#ve_direccionInstalacion").val("");
     Ventas.Venta.resetPlan();
 };
@@ -152,8 +162,10 @@ Ventas.Venta.mostrarPlanes = function (respuesta){
 */
 Ventas.innit = function (){
     Evento.boton($("#ve_b_buscarCliente"),Ventas.Cliente.get);
+    Evento.boton($("#ve_b_crearVenta"),Ventas.Cliente.new);
     Evento.boton($("#ve_b_EscojerPlan"),Ventas.Venta.resetPlan);
     Evento.boton($("#ve_b_confirmarVenta"),Ventas.Venta.enviar);
     Evento.boton($("#ve_b_cancelarVenta"),Ventas.Venta.reset);
+    Evento.cerrarSesion($("#l_ve_cerrarSesion"));
     Ventas.Venta.getPlanes();
 };
