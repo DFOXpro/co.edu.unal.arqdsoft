@@ -31,7 +31,7 @@ public class ControlVentas {
 
             return false;
         }
-        ControlVentas.agregarCliente(Integer.valueOf(cliente), cliente1,cliente2,plan);
+        ControlVentas.agregarCliente(Integer.valueOf(cliente), cliente1,cliente2);
         
         DaoVenta.CrearVenta(Integer.valueOf(cliente), empleado, plan, dirreccion);
         return false;
@@ -62,7 +62,7 @@ public class ControlVentas {
      * @param idPlan
      * @return
      */
-    public static boolean agregarCliente(int id, String nombre, String informacion,int idPlan) {
+    public static boolean agregarCliente(int id, String nombre, String informacion) {
          if (idPlan == 0 || idPlan < -1||informacion.isEmpty()||nombre.isEmpty()||id == 0 || id < -1) {
             return false;
         }
@@ -90,6 +90,10 @@ public class ControlVentas {
         }
         DaoCliente dC=new DaoCliente();
         return dC.getCliente(id);    
+    }
+
+    public static Venta getVenta(int parseInt, String toString, String toString0, String toString1, int parseInt0, String toString2) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
