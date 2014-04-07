@@ -46,22 +46,22 @@ public class DaoEmpleadoTest {
     /**
      * Test of persist method, of class DaoEmpleado.
      */
-//    @Test
-//    public void testPersist() {
-//        System.out.println("persist");
-//        DaoEmpleado.persist(new Empleado("Pedro", "abc", true, "pedro", "123456", Empleado.roles.ADMINPRODUCTOS, null, null, null));
-//        DaoEmpleado.persist(new Empleado("Polo", "abc", true, "polo", "123456", Empleado.roles.TECNICO, null, null, null));
-//        DaoEmpleado.persist(new Empleado("Dmlr", "abc", true, "dmlr", "123456", Empleado.roles.VENDEDOR, null, null, null));
-//        DaoEmpleado.persist(new Empleado("Camilo", "abc", true, "camilo", "123456", Empleado.roles.OPERARIO, null, null, null));
-//    }
-
     @Test
-    public void testBuscarEmpleadosDisponibles(){
-        System.out.println("buscarEmpleadosDisponibles");
-        ArrayList<Empleado> empleados= new ArrayList();
-        empleados=DaoEmpleado.buscarEmpleadosDisponibles();
-        System.out.println(empleados.get(0).getNombre());
+    public void testPersist() {
+        System.out.println("persist");
+        DaoEmpleado.persist(new Empleado("Pedro", "abc", true, "pedro", "123456", Empleado.roles.ADMINPRODUCTOS, null, null, null));
+        DaoEmpleado.persist(new Empleado("Polo", "abc", true, "polo", "123456", Empleado.roles.TECNICO, null, null, null));
+        DaoEmpleado.persist(new Empleado("Dmlr", "abc", true, "dmlr", "123456", Empleado.roles.VENDEDOR, null, null, null));
+        DaoEmpleado.persist(new Empleado("Camilo", "abc", true, "camilo", "123456", Empleado.roles.OPERARIO, null, null, null));
     }
+
+//    @Test
+//    public void testBuscarEmpleadosDisponibles(){
+//        System.out.println("buscarEmpleadosDisponibles");
+//        ArrayList<Empleado> empleados= new ArrayList();
+//        empleados=DaoEmpleado.buscarEmpleadosDisponibles();
+//        System.out.println(empleados.get(0).getNombre());
+//    }
 
     /**
      * Test of login method, of class DaoEmpleado.

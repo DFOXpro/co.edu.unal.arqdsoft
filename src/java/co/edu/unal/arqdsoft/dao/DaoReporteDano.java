@@ -8,10 +8,7 @@ package co.edu.unal.arqdsoft.dao;
 
 import co.edu.unal.arqdsoft.entidad.Cliente;
 import co.edu.unal.arqdsoft.entidad.Empleado;
-import co.edu.unal.arqdsoft.entidad.Plan;
-import co.edu.unal.arqdsoft.entidad.Producto;
 import co.edu.unal.arqdsoft.entidad.ReporteDano;
-import co.edu.unal.arqdsoft.entidad.Venta;
 import java.util.Date;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

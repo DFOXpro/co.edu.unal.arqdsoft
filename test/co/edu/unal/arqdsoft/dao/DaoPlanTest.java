@@ -45,12 +45,12 @@ public class DaoPlanTest {
     /**
      * Test of getPlanes method, of class DaoPlan.
      */
-    @Test
-    public void testGetPlanes() {
-        DaoPlan daoPlan = new DaoPlan();
-        
-        System.out.println(daoPlan.getPlanes().get(0).getNombre());
-    }
+//    @Test
+//    public void testGetPlanes() {
+//        DaoPlan daoPlan = new DaoPlan();
+//        
+//        System.out.println(daoPlan.getPlanes().get(0).getNombre());
+//    }
 
     /**
      * Test of CrearPlan method, of class DaoPlan.
