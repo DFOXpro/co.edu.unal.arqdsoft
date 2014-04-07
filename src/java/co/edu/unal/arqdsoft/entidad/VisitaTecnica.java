@@ -46,8 +46,8 @@ public class VisitaTecnica implements Serializable {
      * @param reporte   Objeto de tipo ReporteDano con la llamada y respectivo reporte de la cual deriva esta visita tecnica
      * @param direccion Cadena de caracteres conteniendo la direccion exacta donde se llevara a cabo la visita
      */
-    public VisitaTecnica(int id, Empleado tecnico, Date fechaVisita, ReporteDano reporte, String direccion){
-        this.id = id;
+    public VisitaTecnica(Empleado tecnico, Date fechaVisita, ReporteDano reporte, String direccion){
+        //this.id = id;
         this.tecnico = tecnico;
         this.fechaVisita = fechaVisita;
         this.reporte = reporte;
