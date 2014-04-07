@@ -26,11 +26,11 @@ import javax.persistence.Temporal;
 public class ReporteDano implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-    private long id; 
+    private int id; 
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaCreacion;
     private String descripcion;
-    private Boolean resuelto;
+    private boolean resuelto;
     /**
      * Relaciones:
      * Cada reporte de daño tiene solo un empleado a cargo, sin embargo ese empleado puede tener varios reportes de daños
@@ -80,7 +80,7 @@ public class ReporteDano implements Serializable{
     /**
      * @param id the id to set
      */
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
