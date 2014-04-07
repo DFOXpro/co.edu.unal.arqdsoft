@@ -22,9 +22,10 @@ public class DaoVenta {
 
     /**
      *
-     * @param cliente
-     * @param empleado
-     * @param plan
+     * @param idCliente
+     * @param idVendedor
+     * @param idPlan
+     * @param direccion
      * @return 
      */
     public static boolean CrearVenta(long idCliente, int idVendedor, int idPlan, String direccion) {
