@@ -206,7 +206,7 @@ public class ServletProductos extends HttpServlet {
             if (p) {
                 return new Respuesta("", new Contenido());
             } else {
-                error = "No se pudo borrar el producto.";//ERROR de SEGURIDAD ?
+                error = "No se pudo borrar el producto, tal vez un plan esté usando el producto.";//ERROR de SEGURIDAD ?
                 throw new SecurityException(obj.get("datos").toString());
             }
         } catch (Exception ex) {
