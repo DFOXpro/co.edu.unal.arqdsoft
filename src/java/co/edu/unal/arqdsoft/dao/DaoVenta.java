@@ -13,12 +13,16 @@ import co.edu.unal.arqdsoft.entidad.Plan;
 import co.edu.unal.arqdsoft.entidad.Venta;
 import java.util.Date;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
  * @author jspoloa
  */
 public class DaoVenta {
+    
+    static EntityManagerFactory emf = Persistence.createEntityManagerFactory("co-edu-unal-arqdsoftPU");
 
     /**
      *
