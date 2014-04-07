@@ -49,12 +49,10 @@ public class DaoVisitaTecnicaTest {
     @Test
     public void testGetVisitaTecnica() {
         System.out.println("getVisitaTecnica");
-        ReporteDano reporteDano = null;
-        ArrayList<VisitaTecnica> expResult = null;
-        ArrayList<VisitaTecnica> result = DaoVisitaTecnica.getVisitaTecnica(reporteDano);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        DaoVisitaTecnica daoVisitaTecnica = new DaoVisitaTecnica();
+        DaoReporteDano daoReporteDano = new DaoReporteDano();
+        ReporteDano reporteDano = daoReporteDano.getReporte(1);
+        System.out.println(daoVisitaTecnica.getVisitaTecnica(reporteDano).get(0));
     }
 
     /**
@@ -67,26 +65,15 @@ public class DaoVisitaTecnicaTest {
         DaoEmpleado daoEmpleado = new DaoEmpleado();
         Empleado tecnico = daoEmpleado.getEmpleado(2);
         DaoReporteDano daoReporteDano = new DaoReporteDano();
-        ReporteDano reporteDano = daoReporteDano
+        ReporteDano reporteDano = daoReporteDano.getReporte(1);
                 
-        VisitaTecnica visitaTecnica = new VisitaTecnica(tecnico, new Date(2012,02,20), null, null);
+        VisitaTecnica visitaTecnica = new VisitaTecnica(tecnico, new Date(2012,02,20), reporteDano, "calle falsa 543");
         
-        DaoProducto daoProducto = new DaoProducto();
+        DaoVisitaTecnica daoVisitaTecnica = new DaoVisitaTecnica();
 
-        assertTrue(daoProducto.crearProducto(productos));
+        assertTrue(daoVisitaTecnica.crearVisita(visitaTecnica));
     }
         
-        
-        
-        
-        System.out.println("crearVisita");
-        VisitaTecnica vT = null;
-        DaoVisitaTecnica instance = new DaoVisitaTecnica();
-        boolean expResult = false;
-        boolean result = instance.crearVisita(vT);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+    
     
 }
