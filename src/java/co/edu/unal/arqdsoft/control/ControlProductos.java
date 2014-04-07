@@ -148,7 +148,7 @@ public class ControlProductos {
         Producto p2 = new Producto(get, get0, Double.valueOf(get1));
         try {
             String[] p = {get, get0, get1};
-            if (id != -1) {
+            if (id == -1) {
                 ControlProductos.nuevoProducto(p[0],p[1],p[2]);
             } else {
                 ControlProductos.modificarProducto(dP.getProducto(id), p[1],p[2],p[3]);
