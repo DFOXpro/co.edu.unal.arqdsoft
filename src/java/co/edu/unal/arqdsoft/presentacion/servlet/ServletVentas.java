@@ -51,11 +51,10 @@ public class ServletVentas extends HttpServlet {
                 r = getClientes(obj);
             } else if (obj.get("accion").equals("setventa")) {
                 r = setVenta(obj);
-            }
-            else if (obj.get("accion").equals("crearCliente")) {
+            } else if (obj.get("accion").equals("crearCliente")) {
                 r = crearCliente(obj);
-            } else if (obj.get("accion").equals("listarClientes")) {
-                r = listarClientes();
+            } else if (obj.get("accion").equals("getCliente")) {
+                r = getCliente(obj);
             } else {
                 r = new Respuesta("Error de comunicación", new Contenido());
             }
@@ -81,23 +80,6 @@ public class ServletVentas extends HttpServlet {
 
     }
 
-    private Respuesta listarClientes() {
-        //ArrayList<Cliente> clnts = Control.getProductos();
-        /*TEST*/
-        ArrayList<Cliente> clnts = new ArrayList();
-        clnts.add(new Cliente(0,"Cliente A", "Direccion falsa 123", null, null));
-        clnts.add(new Cliente(1,"Cliente B", "Direccion falsa 123", null, null));
-        clnts.add(new Cliente(2,"Cliente C", "Direccion falsa 123", null, null));
-        /*TEST FIN*/
-        JSONArray list = new JSONArray();
-        for (Cliente temp : clnts) {
-            JSONObject t = new JSONObject();
-            t.put("nombre", temp.getNombre());
-            t.put("id", temp.getId());
-            list.add(t);
-        }
-        return new Respuesta("", new Contenido(list, ""));
-    }
     private Respuesta crearCliente(JSONObject obj) {
         //ArrayList<Producto> prdts = ControlProductos.getProductos();
         /*TEST*/
@@ -121,15 +103,15 @@ public class ServletVentas extends HttpServlet {
         try {
             //Producto p = ControlProductos.getProducto((int) obj.get("datos"));
             /*TEST*/
-            Producto p = new Producto("Telefono", "muy comunicativo", 18000);
-            p.setId(123);
+            Cliente p = new Cliente(0, "Telefono", "muy comunicativo", null, null);
             /*TEST FIN*/
             if (p != null) {
                 JSONObject t = new JSONObject();
                 t.put("nombre", p.getNombre());
                 t.put("id", p.getId());
-                t.put("descripcion", p.getDescripcion());
-                t.put("valor", p.getValor());
+                t.put("informacion", p.getInformacion());
+                t.put("ventas", p.getVentas());
+                t.put("reporteDano", p.getReporteDano());
                 return new Respuesta("", new Contenido(t, ""));
             } else {
                 error = "No existe el producto, no debería de pasar, no sea curioso";//ERROR de SEGURIDAD
