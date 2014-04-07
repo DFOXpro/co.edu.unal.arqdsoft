@@ -24,7 +24,7 @@ public class ControlSoporte {
         if (id == 0 || id < -1) {
             return null;
         }
-        return DaoEmpleado.buscarEmpleado(id);
+        return DaoEmpleado.getEmpleado(id);
     }
 
     /**
@@ -51,7 +51,7 @@ public class ControlSoporte {
         if (idTecnico == 0 || idTecnico < -1) {
             return null;
         }
-        List<VisitaTecnica> visitasTecnicas = DaoEmpleado.buscarEmpleado(idTecnico).getVisitasTecnicas();
+        List<VisitaTecnica> visitasTecnicas = DaoVisitaTecnica.getVisitasTecnicas(idTecnico);
 
         return visitasTecnicas;
     }
