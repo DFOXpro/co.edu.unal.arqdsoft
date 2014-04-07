@@ -25,7 +25,7 @@ Ventas.Cliente.mostrarCliente = function (respuesta){
 
 Ventas.Venta = new Object();
 
-Venta.innit = function (){
+Ventas.innit = function (){
     Evento.boton($("#ve_b_buscarCliente"),Ventas.Cliente.get);
     Evento.boton($("#ve_b_cancelarVenta"),function (){
         $("#ve_idCliente").val("");
