@@ -59,7 +59,7 @@ public class DaoProductoTest {
     /**
      * Test of EliminarProducto method, of class DaoProducto.
      */
-   @Test
+   /*@Test
     public void testEliminarProducto(){
         System.out.println("eliminar");
         //int id = 132456;
@@ -72,17 +72,17 @@ public class DaoProductoTest {
     /**
      * Test of crearProducto method, of class DaoProducto.
      */
-//    @Test
-//    public void testCrearProducto() {
-//        System.out.println("crear");
-//        //int id = 132456;
-//        
-//        Producto productos = new Producto("Internet Ilimitado 5 Megas", "Internet banda ancha 5 megas", 40000);
-//        
-//        DaoProducto daoProducto = new DaoProducto();
-//
-//        assertTrue(daoProducto.crearProducto(productos));
-//    }
+    @Test
+    public void testCrearProducto() {
+        System.out.println("crear");
+        //int id = 132456;
+        
+        Producto productos = new Producto("Internet Ilimitado 5 Megas", "Internet banda ancha 5 megas", 40000);
+        
+        DaoProducto daoProducto = new DaoProducto();
+
+        assertTrue(daoProducto.crearProducto(productos));
+    }
        
     /**
      * Test of crearProducto method, of class DaoProducto.
@@ -100,5 +100,9 @@ public class DaoProductoTest {
 //        //fail("The test case is a prototype.");
 //    }
    
-    
+    @Test
+    public void testGetProductos(){
+        DaoProducto daoProductos = new DaoProducto();
+        System.out.println(daoProductos.getProductos());
+    }
 }
