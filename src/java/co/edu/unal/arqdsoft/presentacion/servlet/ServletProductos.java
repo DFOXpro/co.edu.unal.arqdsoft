@@ -120,12 +120,12 @@ public class ServletProductos extends HttpServlet {
     }// </editor-fold>
 
     private Respuesta listarProductos() {
-        //ArrayList<Producto> prdts = ControlProductos.getProductos();
+        ArrayList<Producto> prdts = ControlProductos.getProductos();
         /*TEST*/
-        ArrayList<Producto> prdts = new ArrayList();
-        prdts.add(new Producto("Telefono", null, 0));
-        prdts.add(new Producto("Internet", null, 0));
-        prdts.add(new Producto("PBX", null, 0));
+//        ArrayList<Producto> prdts = new ArrayList();
+//        prdts.add(new Producto("Telefono", null, 0));
+//        prdts.add(new Producto("Internet", null, 0));
+//        prdts.add(new Producto("PBX", null, 0));
         /*TEST FIN*/
         JSONArray list = new JSONArray();
         for (Producto temp : prdts) {
@@ -140,10 +140,10 @@ public class ServletProductos extends HttpServlet {
     private Respuesta getProducto(JSONObject obj) {
         String error = "Problemas con la comunicación";
         try {
-            //Producto p = ControlProductos.getProducto((int) obj.get("datos"));
+            Producto p = ControlProductos.getProducto(Integer.parseInt(obj.get("datos").toString()));
             /*TEST*/
-            Producto p = new Producto("Telefono", "muy comunicativo", 18000);
-            p.setId(123);
+//            Producto p = new Producto("Telefono", "muy comunicativo", 18000);
+//            p.setId(123);
             /*TEST FIN*/
             if (p != null) {
                 JSONObject t = new JSONObject();
@@ -173,10 +173,11 @@ public class ServletProductos extends HttpServlet {
                     obj.get("valor").toString());
             /*TEST*/
 //            p = new Producto(obj.get("nombre").toString(), obj.get("descripcion").toString(), 100);//Si se guardó
+//            p.setId(4321);
+//-------------------
 //            p = null;//Si NO se guardó
             /*TEST FIN*/
 
-            p.setId(4321);
             if (p != null) {
                 JSONObject t = new JSONObject();
                 t.put("nombre", p.getNombre());
@@ -197,9 +198,9 @@ public class ServletProductos extends HttpServlet {
     private Respuesta borrarProducto(JSONObject obj) {
         String error = "Problemas con la comunicación";
         try {
-            //boolean p = ControlProductos.borrarProducto((int) obj.get("datos"));
+            boolean p = ControlProductos.borrarProducto((int) obj.get("datos"));
             /*TEST*/
-            boolean p = true;
+            //boolean p = true;
             //boolean p = false;
             /*TEST FIN*/
             if (p) {
@@ -215,17 +216,17 @@ public class ServletProductos extends HttpServlet {
     }
 
     private Respuesta listarPlanes() {
-        //ArrayList<Producto> prdts = ControlProductos.getProductos();
+        ArrayList<Plan> planes = ControlProductos.getPlanes();
         /*TEST*/
-        ArrayList<Plan> planes = new ArrayList();
-        planes.add(new Plan("Plan A", null, 0, null));
-        planes.add(new Plan("Plan Telefono", null, 0, null));
-        planes.add(new Plan("Plan dadaese", null, 0, null));
-        planes.add(new Plan("Plan datos", null, 0, null));
-        planes.get(0).setId(321);
-        planes.get(1).setId(32);
-        planes.get(2).setId(3);
-        planes.get(3).setId(3210);
+//        ArrayList<Plan> planes = new ArrayList();
+//        planes.add(new Plan("Plan A", null, 0, null));
+//        planes.add(new Plan("Plan Telefono", null, 0, null));
+//        planes.add(new Plan("Plan dadaese", null, 0, null));
+//        planes.add(new Plan("Plan datos", null, 0, null));
+//        planes.get(0).setId(321);
+//        planes.get(1).setId(32);
+//        planes.get(2).setId(3);
+//        planes.get(3).setId(3210);
         /*TEST FIN*/
         JSONArray list = new JSONArray();
         for (Plan temp : planes) {
@@ -240,15 +241,15 @@ public class ServletProductos extends HttpServlet {
     private Respuesta getPlan(JSONObject obj) {
         String error = "Problemas con la comunicación";
         try{
-            //Producto p = ControlProductos.getProducto((int) obj.get("datos"));
+            Plan p = ControlProductos.getPlane(Integer.parseInt(obj.get("datos").toString()));
             /*TEST*/
-            ArrayList<Producto> pr= new ArrayList<Producto>();
-            pr.add(new Producto("Telefono", null, 0));
-            pr.add(new Producto("Internet", null, 0));
-            pr.get(0).setId(123);
-            pr.get(1).setId(465);
-            Plan p = new Plan("TelefonoASD", "muy comunicativo", 18000,pr);
-            p.setId(123);
+//            ArrayList<Producto> pr= new ArrayList<Producto>();
+//            pr.add(new Producto("Telefono", null, 0));
+//            pr.add(new Producto("Internet", null, 0));
+//            pr.get(0).setId(123);
+//            pr.get(1).setId(465);
+//            Plan p = new Plan("TelefonoASD", "muy comunicativo", 18000,pr);
+//            p.setId(123);
             /*TEST FIN*/
             if(p != null){
                 JSONObject t = new JSONObject();
@@ -257,7 +258,7 @@ public class ServletProductos extends HttpServlet {
                 t.put("descripcion", p.getDescripcion());
                 t.put("valor", p.getValor());
                 JSONArray list = new JSONArray();
-                for (Producto temp : pr) {
+                for (Producto temp : p.getProductos()) {
                     JSONObject t1 = new JSONObject();
                     t1.put("nombre", temp.getNombre());
                     t1.put("id", temp.getId());
@@ -295,10 +296,11 @@ public class ServletProductos extends HttpServlet {
             );
             /*TEST*/
 //            p = new Producto(obj.get("nombre").toString(), obj.get("descripcion").toString(), 100);//Si se guardó
+//            p.setId(4321);
+//-------------------------
 //            p = null;//Si NO se guardó
             /*TEST FIN*/
 
-            p.setId(4321);
             if(p != null){
                 JSONObject t = new JSONObject();
                 t.put("nombre", p.getNombre());
@@ -319,9 +321,9 @@ public class ServletProductos extends HttpServlet {
     private Respuesta borrarPlan(JSONObject obj) {
         String error = "Problemas con la comunicación";
         try {
-            //boolean p = ControlProductos.borrarPlan((int) obj.get("datos"));
+            boolean p = ControlProductos.borrarPlan((int) obj.get("datos"));
             /*TEST*/
-            boolean p = true;
+            //boolean p = true;
             //boolean p = false;
             /*TEST FIN*/
             if (p) {
