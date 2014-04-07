@@ -222,6 +222,10 @@ public class ServletProductos extends HttpServlet {
         planes.add(new Plan("Plan Telefono", null, 0, null));
         planes.add(new Plan("Plan dadaese", null, 0, null));
         planes.add(new Plan("Plan datos", null, 0, null));
+        planes.get(0).setId(321);
+        planes.get(1).setId(32);
+        planes.get(2).setId(3);
+        planes.get(3).setId(3210);
         /*TEST FIN*/
         JSONArray list = new JSONArray();
         for (Plan temp : planes) {
