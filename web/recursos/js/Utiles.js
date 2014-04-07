@@ -6,10 +6,11 @@
 
 //AJAX inicio
 /**
- * @param {string} url
- * @param {function(req)} callback Funcion de respuesta, es asincrono
- * @param {string} data Datos a enviar Json 
- * @returns {undefined}
+ * Funcion principal esta se encarga de enviar peticiones para realizar conexiones
+ * al servidor mediante los servlets usando los parametros descritos acontinuacion.
+ * @param {string} url por medio de esta cambiaremos el servlet al cual accederemos
+ * @param {function(req)} callback Funcion de respuesta esta se ejecuta luego de recibir la respuesta, es asincrono
+ * @param {string} data Datos que se van a enviar Json 
  */
 function sendRequest(url, callback, accion, datos) {
     $("#error").html("Confirmando...");
