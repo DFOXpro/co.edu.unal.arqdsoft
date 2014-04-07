@@ -41,7 +41,7 @@ public class ControlProductos {
      * @return
      */
     public static boolean modificarProducto(Producto p, String producto, String producto1, String producto2) {
-        if (producto.isEmpty() || producto1.isEmpty() || producto2.isEmpty() || p.equals(null)) {
+        if (producto.isEmpty() || producto1.isEmpty() || producto2.isEmpty() || p == null) {
             return false;
         }
         Producto p2 = new Producto(producto, producto1, Double.valueOf(producto2));

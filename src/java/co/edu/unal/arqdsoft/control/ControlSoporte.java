@@ -35,10 +35,10 @@ public class ControlSoporte {
      */
     public static Map<Integer, ArrayList<Date>> tiempoTecnicos() {
         List<Empleado> n = DaoEmpleado.buscarEmpleadosDisponibles();
-        Map<Integer, ArrayList<Date>> d = new HashMap<>();
-        n.stream().forEach((empleado) -> {
-            d.put(empleado.getId(), null);
-        });
+        Map<Integer, ArrayList<Date>> d = new LinkedHashMap<>();
+        for (Empleado empleado : n) {
+            d.put(empleado.getId(),null);//se cambio esto chambonamente por tiempo
+        }
         return d;
     }
 
@@ -47,11 +47,12 @@ public class ControlSoporte {
      * @param idTecnico
      * @return
      */
-    public static List<VisitaTecnica> visitas(int idTecnico) {
-        if (idTecnico == 0 || idTecnico < -1) {
+    public static List<VisitaTecnica> visitas(ReporteDano rP) {
+        if (rP == null ) {
             return null;
         }
-        List<VisitaTecnica> visitasTecnicas = DaoVisitaTecnica.getVisitasTecnicas();
+        
+        List<VisitaTecnica> visitasTecnicas = DaoVisitaTecnica.getVisitaTecnica(rP);
 
         return visitasTecnicas;
     }
@@ -66,12 +67,12 @@ public class ControlSoporte {
      * @return
      */
     public static boolean crearVisitaTecnica(int idCliente, Empleado tecnico, Date fecha, ReporteDano rD, String dirreccion) {
-        if (idCliente == 0 || idCliente < -1 || tecnico.getId() == 0 || tecnico.getId() < -1 || rD.getId() == 0 || rD.getId() < -1 || fecha.equals(null)
+        if (idCliente == 0 || idCliente < -1 || tecnico.getId() == 0 || tecnico.getId() < -1 || rD.getId() == 0 || rD.getId() < -1 || fecha == null
                 || dirreccion.isEmpty()) {
             return false;
         }
         DaoVisitaTecnica dVT = new DaoVisitaTecnica();
-        VisitaTecnica vT = new VisitaTecnica(idCliente, tecnico, fecha, rD, dirreccion);
+        VisitaTecnica vT = new VisitaTecnica( tecnico, fecha, rD, dirreccion);
         return dVT.crearVisita(vT);
     }
 
@@ -85,14 +86,14 @@ public class ControlSoporte {
      * @return
      */
     public static boolean crearReportedano(int idCliente, Date fecha, String dirreccion, int idOperador, boolean fueResuelto) {
-        if (idCliente == 0 || idCliente < -1 || idOperador == 0 || idOperador < -1 || fecha.equals(null)) {
+        if (idCliente == 0 || idCliente < -1 || idOperador == 0 || idOperador < -1 || fecha == null) {
             return false;
         }
         return DaoReporteDano.crearReporteDano(fecha, dirreccion, fueResuelto, idOperador, idCliente);
     }
 
     public static boolean modificarReportedano(ReporteDano old, ReporteDano  new1) {
-        if (old.equals(null) || new1.equals(null)) {
+        if (old == null || new1 == null) {
             return false;
         }
         return DaoReporteDano.modificarReporteDano(old, new1);

@@ -4,6 +4,11 @@
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <class>co.edu.unal.arqdsoft.entidad.Empleado</class>
     <class>co.edu.unal.arqdsoft.entidad.Producto</class>
+    <class>co.edu.unal.arqdsoft.entidad.Cliente</class>
+    <class>co.edu.unal.arqdsoft.entidad.Plan</class>
+    <class>co.edu.unal.arqdsoft.entidad.ReporteDano</class>
+    <class>co.edu.unal.arqdsoft.entidad.Venta</class>
+    <class>co.edu.unal.arqdsoft.entidad.VisitaTecnica</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
