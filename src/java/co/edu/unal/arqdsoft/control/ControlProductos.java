@@ -151,7 +151,7 @@ public class ControlProductos {
             if (id == -1) {
                 ControlProductos.nuevoProducto(p[0],p[1],p[2]);
             } else {
-                ControlProductos.modificarProducto(dP.getProducto(id), p[1],p[2],p[3]);
+                ControlProductos.modificarProducto(dP.getProducto(id), p[0],p[1],p[2]);
             }
         } catch (Exception e) {
             return null;

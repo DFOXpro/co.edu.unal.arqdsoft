@@ -27,12 +27,14 @@ import org.json.simple.JSONObject;
 public class ServletAutenticacion extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * Por medio de este servlet manejamos todo el tema de la autenticacion esta
+     * clase es la que nos permite responder a las solicitudes enviadas por los 
+     * scripts 
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
+     * @param request La solicitud que llega por medio del script
+     * @param response La respuesta si la hay de algun script
+     * @throws ServletException Si hay una excepcion con respecto al procesamiento
+     * de el request mediante el servlet.
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
