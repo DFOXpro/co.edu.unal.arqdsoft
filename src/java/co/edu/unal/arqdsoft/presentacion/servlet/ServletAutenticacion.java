@@ -40,14 +40,14 @@ public class ServletAutenticacion extends HttpServlet {
         try {
             /*TEST*/
             //Empleado emp = null;//Si no da autorizacion
-            Empleado emp = new Empleado("Pedro", "asd",false, "pedro", null, Empleado.roles.ADMINPRODUCTOS,null,null,null);//Si sí da autorización
+            //Empleado emp = new Empleado("Pedro", "asd",false, "pedro", null, Empleado.roles.VENDEDOR,null,null,null);//Si sí da autorización
             /*TEST FIN*/
             /*CONDUCTO REGULAR*/
-//            JSONObject obj = JSON.toObject(request);
-//            Empleado emp = ControlAutenticacion.certificarUsuario(
-//                    "" + obj.get("accion"),
-//                    "" + obj.get("datos")
-//            );
+            JSONObject obj = JSON.toObject(request);
+            Empleado emp = ControlAutenticacion.certificarUsuario(
+                    "" + obj.get("accion"),//Usuario
+                    "" + obj.get("datos")//Contraseña
+            );
             /*CONDUCTO REGULAR FIN*/
             response.setContentType("application/json;charset=UTF-8");
             try (PrintWriter out = response.getWriter()) {
@@ -58,7 +58,7 @@ public class ServletAutenticacion extends HttpServlet {
                     String t = JSON.getTemplate(getServletContext().getResourceAsStream("/vistas/" + emp.getRol().name() + ".html"));
                     JSONObject d = new JSONObject();
                     d.put("id", emp.getId());
-                    d.put("nombre", emp.getNombre());
+                    //d.put("nombre", emp.getNombre());
                     d.put("rol", emp.getRol().name());
                     Contenido c = new Contenido(d, t);
                     r = new Respuesta("", c);

@@ -5,10 +5,8 @@
  */
 package co.edu.unal.arqdsoft.presentacion.servlet;
 
-import co.edu.unal.arqdsoft.control.ControlProductos;
-import co.edu.unal.arqdsoft.entidad.Cliente;
-import co.edu.unal.arqdsoft.entidad.Plan;
-import co.edu.unal.arqdsoft.entidad.Producto;
+import co.edu.unal.arqdsoft.control.*;
+import co.edu.unal.arqdsoft.entidad.*;
 import co.edu.unal.arqdsoft.presentacion.Contenido;
 import co.edu.unal.arqdsoft.presentacion.JSON;
 import co.edu.unal.arqdsoft.presentacion.Respuesta;
@@ -110,8 +108,6 @@ public class ServletVentas extends HttpServlet {
                 t.put("nombre", p.getNombre());
                 t.put("id", p.getId());
                 t.put("informacion", p.getInformacion());
-                t.put("ventas", p.getVentas());
-                t.put("reporteDano", p.getReporteDano());
                 return new Respuesta("", new Contenido(t, ""));
             } else {
                 error = "No existe el producto, no debería de pasar, no sea curioso";//ERROR de SEGURIDAD
@@ -127,11 +123,21 @@ public class ServletVentas extends HttpServlet {
         String error = "Problemas con la comunicación";
         try {
             obj = (JSONObject) JSONValue.parse(obj.get("datos").toString());
-            Producto p = ControlProductos.setProducto(
-                    Integer.parseInt(obj.get("id").toString()),
+            Venta p=null;
+            try {
+                
+            p = ControlVentas.getVenta(
+                    /*idempleado ,cedula, nombre, informacion,plan,dirrecion*/
+                    Integer.parseInt(obj.get("empleado").toString()),
+                    obj.get("id").toString(),
                     obj.get("nombre").toString(),
-                    obj.get("descripcion").toString(),
-                    obj.get("valor").toString());
+                    obj.get("informacion").toString(),
+                    Integer.parseInt(obj.get("plan").toString()),
+                    obj.get("dirInstal").toString());
+            
+            } catch (Exception e) {
+                
+            }
             /*TEST*/
 //            p = new Producto(obj.get("nombre").toString(), obj.get("descripcion").toString(), 100);//Si se guardó
 //            p = null;//Si NO se guardó
@@ -140,10 +146,12 @@ public class ServletVentas extends HttpServlet {
             p.setId(4321);
             if (p != null) {
                 JSONObject t = new JSONObject();
-                t.put("nombre", p.getNombre());
+                t.put("nombre", p.getCliente().getNombre());
                 t.put("id", p.getId());
-                t.put("descripcion", p.getDescripcion());
-                t.put("valor", p.getValor());
+                t.put("informacion", p.getCliente().getInformacion());
+                t.put("empleado", p.getVendedor().getId());
+                t.put("plan", p.getPlan());
+                t.put("dirInstal", p.getDireccionInstalacion());
                 return new Respuesta("", new Contenido(t, ""));
             } else {
                 error = "No se creó el producto";

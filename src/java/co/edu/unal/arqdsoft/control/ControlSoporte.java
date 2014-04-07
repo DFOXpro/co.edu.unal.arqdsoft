@@ -85,14 +85,24 @@ public class ControlSoporte {
      * @return
      */
     public static boolean crearReportedano(int idCliente, Date fecha, String dirreccion, int idOperador, boolean fueResuelto) {
-        if (idCliente == 0 || idCliente < -1||idOperador == 0 || idOperador < -1||fecha.equals(null)) {
+        if (idCliente == 0 || idCliente < -1 || idOperador == 0 || idOperador < -1 || fecha.equals(null)) {
             return false;
         }
-        DaoReporteDano dRD = new DaoReporteDano();
-        DaoCliente c = new DaoCliente();
-        DaoEmpleado o = new DaoEmpleado();
-        ReporteDano rD = new ReporteDano(fecha, dirreccion, fueResuelto, c.getCliente(idCliente), o.getEmpleado(idOperador), null);
-        return dRD.crearReporteDano(rD);
+        return DaoReporteDano.crearReporteDano(fecha, dirreccion, fueResuelto, idOperador, idCliente);
+    }
+
+    public static boolean modificarReportedano(ReporteDano old, ReporteDano  new1) {
+        if (old.equals(null) || new1.equals(null)) {
+            return false;
+        }
+        return DaoReporteDano.modificarReporteDano(old, new1);
+    }
+    public static ReporteDano getReporte(int id){
+        if(id==0||id<-1){
+            return null;
+        }
+        return DaoReporteDano.getReporte(id);
+    
     }
 
 }

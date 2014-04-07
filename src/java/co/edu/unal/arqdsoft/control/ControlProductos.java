@@ -83,7 +83,7 @@ public class ControlProductos {
         }
         Plan p = new Plan(plan1, plan2, Double.valueOf(plan3), productos);
         DaoPlan dP = new DaoPlan();
-        boolean b = dP.modificarPlan(id, p);
+        boolean b = dP.modificarPlan(dP.getPlan(id), p);
 
         return b;
     }
