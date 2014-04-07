@@ -198,7 +198,7 @@ public class ServletProductos extends HttpServlet {
     private Respuesta borrarProducto(JSONObject obj) {
         String error = "Problemas con la comunicación";
         try {
-            boolean p = ControlProductos.borrarProducto((int) obj.get("datos"));
+            boolean p = ControlProductos.borrarProducto(Integer.parseInt(obj.get("datos").toString()));
             /*TEST*/
             //boolean p = true;
             //boolean p = false;
