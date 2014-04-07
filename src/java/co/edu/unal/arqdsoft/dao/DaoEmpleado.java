@@ -35,7 +35,7 @@ public class DaoEmpleado {
      */
     public static ArrayList<Empleado> buscarEmpleadosDisponibles() {
         EntityManager em = emf.createEntityManager();
-        ArrayList<Empleado> empleados = new ArrayList<>();
+        ArrayList<Empleado> empleados = new ArrayList();
         Query q;
 
         q = em.createQuery("SELECT e FROM Empleado e WHERE e.disponible=1");

@@ -40,14 +40,14 @@ public class ControlProductos {
      * @param producto2
      * @return
      */
-    public static boolean modificarProducto(int idProducto, String producto, String producto1, String producto2) {
-        if (producto.isEmpty() || producto1.isEmpty() || producto2.isEmpty() || idProducto == 0 || idProducto < -1) {
+    public static boolean modificarProducto(Producto p, String producto, String producto1, String producto2) {
+        if (producto.isEmpty() || producto1.isEmpty() || producto2.isEmpty() || p.equals(null)) {
             return false;
         }
-        Producto p = new Producto(producto, producto1, Double.valueOf(producto2));
-        p.setId(idProducto);
+        Producto p2 = new Producto(producto, producto1, Double.valueOf(producto2));
+        p2.setId(p.getId());
         DaoProducto dP=new DaoProducto();
-        return dP.modificarProducto(dP.getProducto(idProducto), p);
+        return dP.modificarProducto(dP.getProducto(p.getId()), p);
 
     }
 
