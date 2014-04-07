@@ -76,7 +76,7 @@ public class DaoReporteDano {
         }
     }
 
-    private static ReporteDano getReporte(int idReporte) {
+    public static ReporteDano getReporte(int idReporte) {
         EntityManager em = emf.createEntityManager();
         ReporteDano reporte = null;
         try{
