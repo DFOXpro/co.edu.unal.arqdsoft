@@ -88,11 +88,7 @@ public class ControlSoporte {
         if (idCliente == 0 || idCliente < -1||idOperador == 0 || idOperador < -1||fecha.equals(null)) {
             return false;
         }
-        DaoReporteDano dRD = new DaoReporteDano();
-        DaoCliente c = new DaoCliente();
-        DaoEmpleado o = new DaoEmpleado();
-        ReporteDano rD = new ReporteDano(fecha, dirreccion, fueResuelto, c.getCliente(idCliente), o.getEmpleado(idOperador), null);
-        return dRD.crearReporteDano(rD);
+        return DaoReporteDano.crearReporteDano(fecha, dirreccion, fueResuelto,idOperador,idCliente);
     }
 
 }

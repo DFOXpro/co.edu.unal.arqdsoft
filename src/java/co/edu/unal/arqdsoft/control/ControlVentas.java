@@ -63,7 +63,7 @@ public class ControlVentas {
      * @return
      */
     public static boolean agregarCliente(int id, String nombre, String informacion) {
-         if (idPlan == 0 || idPlan < -1||informacion.isEmpty()||nombre.isEmpty()||id == 0 || id < -1) {
+         if (informacion.isEmpty()||nombre.isEmpty()||id == 0 || id < -1) {
             return false;
         }
         return DaoCliente.nuevoCliente(id, nombre, informacion);
