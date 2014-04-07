@@ -12,10 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
-import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  *
@@ -42,6 +42,101 @@ public class DaoPlanTest {
     public void tearDown() {
     }
 
+    /**
+     * Test of getPlanes method, of class DaoPlan.
+     */
+    @Test
+    public void testGetPlanes() {
+        System.out.println("getPlanes");
+        ArrayList<Plan> expResult = null;
+        ArrayList<Plan> result = DaoPlan.getPlanes();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of CrearPlan method, of class DaoPlan.
+     */
+    @Test
+    public void testCrearPlan() {
+        System.out.println("CrearPlan");
+        Plan p = null;
+        boolean expResult = false;
+        boolean result = DaoPlan.CrearPlan(p);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getPlane method, of class DaoPlan.
+     */
+    @Test
+    public void testGetPlane() {
+        System.out.println("getPlane");
+        int idPlan = 0;
+        Plan expResult = null;
+        Plan result = DaoPlan.getPlan(idPlan);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of crear method, of class DaoPlan.
+     */
+    @Test
+    public void testCrear() {
+        System.out.println("crear");
+        Plan plan = null;
+        DaoPlan instance = new DaoPlan();
+        boolean expResult = false;
+        boolean result = instance.crear(plan);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of eliminarPlan method, of class DaoPlan.
+     */
+    @Test
+    public void testEliminarPlan() {
+        System.out.println("eliminarPlan");
+        Plan plan = null;
+        DaoPlan instance = new DaoPlan();
+        boolean expResult = false;
+        boolean result = instance.eliminarPlan(plan);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of modificarPlan method, of class DaoPlan.
+     */
+    @Test
+    public void testModificarPlan() {
+        System.out.println("modificarPlan");
+        int id = 0;
+        Plan p = null;
+        DaoPlan instance = new DaoPlan();
+        boolean expResult = false;
+        boolean result = instance.modificarPlan(id, p);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /**
      * Test of getPlanes method, of class DaoPlan.
      */
@@ -93,5 +188,4 @@ public class DaoPlanTest {
 //        DaoPlan instance = new DaoPlan();
 //        instance.crear(object);
 //    }
-    
 }
