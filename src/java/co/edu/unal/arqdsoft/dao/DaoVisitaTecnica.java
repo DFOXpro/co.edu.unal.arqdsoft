@@ -7,7 +7,12 @@
 package co.edu.unal.arqdsoft.dao;
 
 import co.edu.unal.arqdsoft.entidad.*;
+import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 /**
  *
@@ -15,8 +20,20 @@ import java.util.List;
  */
 public class DaoVisitaTecnica {
 
-    public static List<VisitaTecnica> getVisitasTecnicas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    static EntityManagerFactory emf = Persistence.createEntityManagerFactory("co-edu-unal-arqdsoftPU");
+    
+    public static ArrayList<VisitaTecnica> getVisitaTecnica(ReporteDano reporteDano) {
+        EntityManager em = emf.createEntityManager();
+        ArrayList<VisitaTecnica> visitasTecnicas = new ArrayList();
+        Query q = em.createQuery("SELECT u FROM VisitasTecnicas u");
+        try {
+            visitasTecnicas = (ArrayList<VisitaTecnica>) q.getResultList();
+        } catch (Exception e) {
+            //e.printStackTrace();
+        } finally {
+            em.close();
+            return visitasTecnicas;
+        }
     }
     
     /**
@@ -25,7 +42,19 @@ public class DaoVisitaTecnica {
      * @return
      */
     public boolean crearVisita(VisitaTecnica vT) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = emf.createEntityManager();
+
+        try {
+            em.getTransaction().begin();
+            em.persist(vT);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            return false;
+        } finally {
+            em.close();
+            return true;
+        }
     }
     
 }
