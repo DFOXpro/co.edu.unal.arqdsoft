@@ -25,9 +25,6 @@ public class DaoEmpleado {
      * @param id
      * @return
      */
-    public static Empleado buscarEmpleado(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     /**
      *
@@ -103,11 +100,21 @@ public class DaoEmpleado {
 
     /**
      *
-     * @param idOperador
+     * @param idEmpleado
      * @return
      */
-    public Empleado getEmpleado(int idOperador) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public static Empleado getEmpleado(int idEmpleado) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        Empleado empleado =null;
+        try {
+            empleado = em.find(Empleado.class, idEmpleado);
+        }catch (Exception e) {
+            empleado= null;
+        }finally {
+            em.close();
+            return empleado;
+        }
     }
 
 }
