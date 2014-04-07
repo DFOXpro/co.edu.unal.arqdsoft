@@ -128,7 +128,7 @@ public class ControlProductos {
             return null;
 
         }
-        return DaoPlan.getPlane(idPlan);
+        return DaoPlan.getPlan(idPlan);
     }
 
     /**
@@ -183,7 +183,7 @@ public class ControlProductos {
             return false;
         }
         DaoPlan p = new DaoPlan();
-        return p.eliminarPlan(ControlProductos.getProducto(id));
+        return p.eliminarPlan(DaoPlan.getPlan(id));
 
     }
 

@@ -51,7 +51,7 @@ public class ControlSoporte {
         if (idTecnico == 0 || idTecnico < -1) {
             return null;
         }
-        List<VisitaTecnica> visitasTecnicas = DaoVisitaTecnica.getVisitasTecnicas(idTecnico);
+        List<VisitaTecnica> visitasTecnicas = DaoVisitaTecnica.getVisitasTecnicas();
 
         return visitasTecnicas;
     }
