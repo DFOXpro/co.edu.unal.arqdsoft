@@ -6,7 +6,6 @@
 
 package co.edu.unal.arqdsoft.dao;
 
-import static co.edu.unal.arqdsoft.dao.DaoProducto.emf;
 import co.edu.unal.arqdsoft.entidad.Cliente;
 import co.edu.unal.arqdsoft.entidad.Empleado;
 import co.edu.unal.arqdsoft.entidad.Plan;
