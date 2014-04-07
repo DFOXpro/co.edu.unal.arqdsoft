@@ -77,15 +77,18 @@ public class DaoPlanTest {
     /**
      * Test of getPlane method, of class DaoPlan.
      */
- /*   @Test
-    public void testGetPlane() {
-        System.out.println("getPlane");
-        int idPlan = 0;
-        Plan expResult = null;
-        Plan result = DaoPlan.getPlan(idPlan);
-        assertEquals(expResult, result);
+    @Test
+    public void testGetPlan() {
+        System.out.println("getPlan");
+        int idPlan = 32768;
+        DaoPlan instance = new DaoPlan();
+        
+        Plan result = instance.getPlan(idPlan);
+        System.out.println(result);
+        assertEquals(idPlan, result.getId());
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
+
     }
 
 

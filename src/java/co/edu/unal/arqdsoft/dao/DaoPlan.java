@@ -8,7 +8,6 @@ package co.edu.unal.arqdsoft.dao;
 
 import static co.edu.unal.arqdsoft.dao.DaoProducto.emf;
 import co.edu.unal.arqdsoft.entidad.Plan;
-
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -70,27 +69,27 @@ public class DaoPlan {
      * @param idPlan
      * @return
      */
-    public static Plan getPlan(long idPlan) {
+    public static Plan getPlan(int idPlan) {
         EntityManager em = emf.createEntityManager();
         Plan plan = null;
         //System.out.println("ANTES DEL QUERY" + idProducto);
-        Query q = em.createQuery("SELECT u FROM Producto u "
+        Query q = em.createQuery("SELECT u FROM Plan u "
                 + "WHERE u.id = :idPlan").setParameter("idPlan", idPlan);
         //System.out.println("llego");
         try {
             plan = (Plan) q.getSingleResult();
-          //  System.out.println("LOGRO SINGLE");
+            System.out.println("LOGRO SINGLE");
         } catch (NonUniqueResultException e) {
             plan = (Plan) q.getResultList().get(0);
-          //  System.out.println("LOGRO CATCH SIMPLE");
+            System.out.println("LOGRO CATCH SIMPLE");
         } catch (Exception e) {
             e.printStackTrace();
-          //  System.out.println("LOGRO CATCH EXCEPT" + e.toString());
+            System.out.println("LOGRO CATCH EXCEPT" + e.toString());
         } finally {
             em.close();
-          //  System.out.println(producto.getNombre() + "nombre DEL PRODUCTO");
+            return plan;
         }
-        return plan;
+        
     }
 
     /**
