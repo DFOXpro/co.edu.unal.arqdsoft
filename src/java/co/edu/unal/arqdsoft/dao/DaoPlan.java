@@ -126,8 +126,25 @@ public class DaoPlan {
      * @param p
      * @return
      */
-    public boolean modificarPlan(int id, Plan p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public static boolean modificarPlan(Plan viejoPlan, Plan nuevoPlan) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        try {
+            Plan object = getPlan(viejoPlan.getId());
+            object.setNombre(nuevoPlan.getNombre());
+            object.setDescripcion(nuevoPlan.getDescripcion());
+            object.setValor(nuevoPlan.getValor());
+            object.setProductos(nuevoPlan.getProductos());
+            em.merge(object);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            em.getTransaction().rollback();
+            return false;
+        } finally {
+            em.close();
+            return true;
+        }
     }
     
     

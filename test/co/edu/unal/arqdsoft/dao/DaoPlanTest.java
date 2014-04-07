@@ -92,7 +92,7 @@ public class DaoPlanTest {
     /**
      * Test of eliminarPlan method, of class DaoPlan.
      */
-    @Test
+   /* @Test
     public void testEliminarPlan() {
         System.out.println("eliminarPlan");
         //int id = 132456;
@@ -107,17 +107,21 @@ public class DaoPlanTest {
     /**
      * Test of modificarPlan method, of class DaoPlan.
      */
- /*   @Test
+    @Test
     public void testModificarPlan() {
-        System.out.println("modificarPlan");
-        int id = 0;
-        Plan p = null;
-        DaoPlan instance = new DaoPlan();
-        boolean expResult = false;
-        boolean result = instance.modificarPlan(id, p);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        System.out.println("modificarProducto");
+        Plan planAModificar = DaoPlan.getPlan(32768);
+        Plan p = new Plan();
+        p.setNombre("Nuevo Plan");
+        p.setDescripcion("Descrip del nuevo plan");
+        p.setValor(35000);
+        DaoProducto daoProducto= new DaoProducto();
+        List<Producto> productos=new ArrayList();
+        productos.add(daoProducto.getProducto(1));
+        productos.add(daoProducto.getProducto(32768));
+        p.setProductos(productos);
+        assertTrue(DaoPlan.modificarPlan(planAModificar,p));
+        
     }
     
     
