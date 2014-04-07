@@ -6,7 +6,10 @@
 
 package co.edu.unal.arqdsoft.dao;
 
+import co.edu.unal.arqdsoft.entidad.Cliente;
+import co.edu.unal.arqdsoft.entidad.Empleado;
 import co.edu.unal.arqdsoft.entidad.ReporteDano;
+import java.util.Date;
 
 /**
  *
@@ -16,11 +19,16 @@ public class DaoReporteDano {
 
     /**
      *
-     * @param rD
+     * @param fechaCreacion
+     * @param descripcion
+     * @param resuelto
+     * @param idOperador
+     * @param idCliente
      * @return
      */
-    public boolean crearReporteDano(ReporteDano rD) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean crearReporteDano(Date fechaCreacion, String descripcion, boolean resuelto, int idOperador, long idCliente) {
+        
+        return false;
     }
     
 }
