@@ -31,17 +31,21 @@
             </div>
             <div>
                 <label for='ve_nombreCliente'>Nombre</label><br>
-                <input id='ve_nombreCliente' type='text' placeholder='Nombre del cliente'><br>
+                <input id='ve_nombreCliente' type='text' placeholder='Nombre del cliente' disabled><br>
             </div>
             <div>
                 <label for='ve_informacionCliente'>Descripción</label><br>
-                <input id='ve_informacionCliente' type='text' placeholder='Direccion, Telefono, Observaciones'><br>
+                <input id='ve_informacionCliente' type='text' placeholder='Direccion, Telefono o correo' disabled><br>
+            </div>
+            <div>
+                <label for='ve_direccionInstalacion'>Dirección de instalación</label><br>
+                <input id='ve_direccionInstalacion' type='text' placeholder='Direccion' disabled><br>
             </div>
             <div>
                 <div id='ve_PlanEscojido' class="hidden">
                     <label for='ve_PlanNombre'>Plan</label><br>
                     <input id='ve_PlanID' type='hidden'>
-                    <input id='ve_PlanNombre' type='text' placeholder='05' disabled><br>
+                    <input id='ve_PlanNombre' type='text' disabled><br>
                     <button id='ve_b_EscojerPlan'>Cambiar plan</button>
                 </div>
                 <div id='ve_PlanEscojer'>
