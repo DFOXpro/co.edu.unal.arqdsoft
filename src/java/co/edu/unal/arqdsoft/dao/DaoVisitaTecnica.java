@@ -25,8 +25,8 @@ public class DaoVisitaTecnica {
     public static ArrayList<VisitaTecnica> getVisitaTecnica(ReporteDano reporteDano) {
         EntityManager em = emf.createEntityManager();
         ArrayList<VisitaTecnica> visitasTecnicas = new ArrayList();
-        Query q = em.createQuery("SELECT u FROM VisitasTecnicas u "+
-                "WHERE u.reporte_id = :idReporte").setParameter("idReporte", reporteDano.getId());
+        Query q = em.createQuery("SELECT u FROM VisitaTecnica u "+
+                "WHERE u.reporte.id = :idReporte").setParameter("idReporte", reporteDano.getId());
         try {
             visitasTecnicas = (ArrayList<VisitaTecnica>) q.getResultList();
         } catch (Exception e) {
