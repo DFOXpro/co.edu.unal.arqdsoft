@@ -53,7 +53,7 @@ public class ServletProductos extends HttpServlet {
                 r = getPlan(obj);
             } else if (obj.get("accion").equals("setPlan")) {
                 r = setPlan(obj);
-            } else if (obj.get("accion").equals("borrarPlanes")) {
+            } else if (obj.get("accion").equals("borrarPlan")) {
                 r = borrarPlan(obj);
             } else {
                 r = new Respuesta("Error de comunicación", new Contenido());
@@ -204,7 +204,7 @@ public class ServletProductos extends HttpServlet {
             //boolean p = false;
             /*TEST FIN*/
             if (p) {
-                return new Respuesta("", new Contenido());
+                return new Respuesta("", new Contenido(null, "Producto borrado."));
             } else {
                 error = "No se pudo borrar el producto, tal vez un plan esté usando el producto.";//ERROR de SEGURIDAD ?
                 throw new SecurityException(obj.get("datos").toString());
@@ -328,7 +328,7 @@ public class ServletProductos extends HttpServlet {
             //boolean p = false;
             /*TEST FIN*/
             if (p) {
-                return new Respuesta("", new Contenido());
+                return new Respuesta("", new Contenido(null, "Plan borrado."));
             } else {
                 error = "No se pudo borrar el producto.";//ERROR de SEGURIDAD ?
                 throw new SecurityException(obj.get("datos").toString());

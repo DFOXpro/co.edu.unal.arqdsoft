@@ -74,9 +74,7 @@ Admin.Productos.borrarProducto = function (){
         "productos",
         function (respuesta){
             if(respuesta.error.length > 0) $("#error").html(respuesta.error);
-            else{
-                Admin.Productos.getProductos();
-            }
+            else Admin.Productos.getProductos();
         },
         "borrarProducto",
         $("#ad_idProductos").val()
@@ -197,9 +195,7 @@ Admin.Planes.borrarPlan = function (){
         "productos",
         function (respuesta){
             if(respuesta.error.length > 0) $("#error").html(respuesta.error);
-            else{
-                Admin.Planes.getPlanes();
-            }
+            else Admin.Planes.getPlanes();
         },
         "borrarPlan",
         $("#ad_idPlanes").val()
