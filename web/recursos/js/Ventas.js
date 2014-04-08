@@ -64,7 +64,7 @@ Ventas.Venta.enviar = function (){
     
     if(s == ""){//Paso la verificación
         $("#error").html("Comprobando");
-        var datos={
+        var data={
             cliente:{
                 id: $("#ve_idCliente").val(),
                 nombre: $("#ve_nombreCliente").val(),
@@ -83,7 +83,7 @@ Ventas.Venta.enviar = function (){
                 } else $("#error").html(respuesta.error);
             },
             "setVenta",
-            datos
+            JSON.stringify(data)
         );
     }else $("#error").html(s);
 };
