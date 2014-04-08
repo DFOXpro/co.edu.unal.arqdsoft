@@ -285,7 +285,7 @@ public class ServletProductos extends HttpServlet {
             for(int i = 0; i<ja.size();i++){
                 JSONObject t = (JSONObject)ja.get(i);
                 ar.add(new Producto(t.get("nombre").toString(), null, 0));
-                ar.get(i).setId((int)t.get("id"));
+                ar.get(i).setId(Integer.parseInt(t.get("id").toString()));
             }
             Plan p = ControlProductos.setPlan(
                 Integer.parseInt(obj.get("id").toString()),

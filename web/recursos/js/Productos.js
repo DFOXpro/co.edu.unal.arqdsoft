@@ -175,9 +175,11 @@ Admin.Planes.setPlan = function (){
     };
     sendRequest(
         "productos",
-        function (respuesta){
-            Admin.Planes.mostrarPlan(respuesta);
-            Admin.Planes.getPlanes();
+        function (respuesta){   
+            if(respuesta.error.length == 0){
+                Admin.Planes.mostrarPlan(respuesta);
+                Admin.Planes.getPlanes();
+            } else $("#error").html(respuesta.error);
         },
         "setPlan",
         JSON.stringify(data)
