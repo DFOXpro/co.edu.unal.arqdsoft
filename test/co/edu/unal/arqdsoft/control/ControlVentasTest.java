@@ -59,19 +59,19 @@ public class ControlVentasTest {
 //    }
 //
 //    /**
-//     * Test of ventaCE method, of class ControlVentas. Funciona
+//     * Test of ventaClienteExiste method, of class ControlVentas. Funciona
 //     */
-    @Test
-    public void testVentaCE() {
-        System.out.println("ventaCE");
-        int empleado = 3;
-        int cliente = 123456789;
-        int plan = 1;
-        String dirreccion = "China";
-        boolean expResult = true;
-        boolean result = ControlVentas.ventaCE(empleado, cliente, plan, dirreccion);
-        assertEquals(expResult, result);
-    }
+//    @Test
+//    public void testVentaCE() {
+//        System.out.println("ventaCE");
+//        int empleado = 3;
+//        int cliente = 123456789;
+//        int plan = 1;
+//        String dirreccion = "China";
+//        boolean expResult = true;
+//        boolean result = ControlVentas.ventaClienteExiste(empleado, cliente, plan, dirreccion);
+//        assertEquals(expResult, result);
+//    }
 
     /**
      * Test of agregarCliente method, of class ControlVentas.
@@ -119,20 +119,12 @@ public class ControlVentasTest {
 //    /**
 //     * Test of setVenta method, of class ControlVentas.
 //     */
-//    @Test
-//    public void testSetVenta() {
-//        System.out.println("setVenta");
-//        int parseInt = 0;
-//        String toString = "";
-//        String toString0 = "";
-//        String toString1 = "";
-//        int parseInt0 = 0;
-//        String toString2 = "";
-//        Venta expResult = null;
-//        Venta result = ControlVentas.setVenta(parseInt, toString, toString0, toString1, parseInt0, toString2);
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testSetVenta() {
+        System.out.println("setVenta"); 
+        boolean expResult = true;
+        boolean result = ControlVentas.setVenta(3, 45678903, "Camilo Andres", "carrera 15 #20-30;3154654140", 2, "Carrera 30 # 20-17");
+        assertEquals(expResult, result);
+    }
     
 }
