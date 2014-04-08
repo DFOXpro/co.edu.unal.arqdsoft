@@ -30,7 +30,7 @@ public class Empleado implements Serializable {
         /**
          *Rol encargado de reportar errores tecnicos y agendar las respectivas visitas de soporte
          */
-        OPERARIO,
+        OPERADOR,
 
         /**
          *Rol encargado de añadir nuevos clientes al sistema asi como añadirle productos a los actuales clientes
