@@ -52,7 +52,7 @@ public class DaoEmpleadoTest {
         DaoEmpleado.persist(new Empleado("Pedro", "abc", true, "pedro", "123456", Empleado.roles.ADMINPRODUCTOS, null, null, null));
         DaoEmpleado.persist(new Empleado("Polo", "abc", true, "polo", "123456", Empleado.roles.TECNICO, null, null, null));
         DaoEmpleado.persist(new Empleado("Dmlr", "abc", true, "dmlr", "123456", Empleado.roles.VENDEDOR, null, null, null));
-        DaoEmpleado.persist(new Empleado("Camilo", "abc", true, "camilo", "123456", Empleado.roles.OPERARIO, null, null, null));
+        DaoEmpleado.persist(new Empleado("Camilo", "abc", true, "camilo", "123456", Empleado.roles.OPERADOR, null, null, null));
     }
 
 //    @Test

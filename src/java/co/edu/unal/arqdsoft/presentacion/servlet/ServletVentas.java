@@ -117,44 +117,51 @@ public class ServletVentas extends HttpServlet {
         }
     }
 
-    private Respuesta setVenta(JSONObject obj) {
+    private Respuesta setVenta(JSONObject ventaJson) {
         String error = "Problemas con la comunicación";
         try {
-            obj = (JSONObject) JSONValue.parse(obj.get("datos").toString());
-            Venta p = null;
+            ventaJson = (JSONObject) JSONValue.parse(ventaJson.get("datos").toString());
+            //Venta p = null;
             try {
-
-                p = ControlVentas.setVenta(
-                        /*idempleado ,cedula, nombre, informacion,plan,dirrecion*/
-                        Integer.parseInt(obj.get("empleado").toString()),
-                        obj.get("id").toString(),
-                        obj.get("nombre").toString(),
-                        obj.get("informacion").toString(),
-                        Integer.parseInt(obj.get("plan").toString()),
-                        obj.get("dirInstal").toString());
+                JSONObject clienteJson=(JSONObject) JSONValue.parse(ventaJson.get("cliente").toString());
+                int idEmpleado = Integer.parseInt(ventaJson.get("empleado").toString());
+                int idCliente = Integer.parseInt(clienteJson.get("id").toString());
+                String nombreCliente = clienteJson.get("nombre").toString();
+                String informacionCliente = clienteJson.get("informacion").toString();
+                String direccionVenta = ventaJson.get("dirInstal").toString();
+                
+                boolean respuesta = ControlVentas.setVenta(idEmpleado, idCliente, nombreCliente, 
+                        informacionCliente, idCliente, direccionVenta);
+//                p = ControlVentas.setVenta(
+//                        *idempleado ,cedula, nombre, informacion,plan,dirrecion*/
+//                        ,
+//                        ventaJson.get("informacion").toString(),
+//                        Integer.parseInt(ventaJson.get("plan").toString()),
+//                        ventaJson.get("dirInstal").toString()
+//                );
 
             } catch (Exception e) {
 
             }
             /*TEST*/
-//            p = new Producto(obj.get("nombre").toString(), obj.get("descripcion").toString(), 100);//Si se guardó
+//            p = new Producto(ventaJson.get("nombre").toString(), ventaJson.get("descripcion").toString(), 100);//Si se guardó
 //            p = null;//Si NO se guardó
             /*TEST FIN*/
 
-            p.setId(4321);
-            if (p != null) {
+//            p.setId(4321);
+//            if (p != null) {
                 JSONObject t = new JSONObject();
-                t.put("nombre", p.getCliente().getNombre());
-                t.put("id", p.getId());
-                t.put("informacion", p.getCliente().getInformacion());
-                t.put("empleado", p.getVendedor().getId());
-                t.put("plan", p.getPlan());
-                t.put("dirInstal", p.getDireccionInstalacion());
+//                t.put("nombre", p.getCliente().getNombre());
+//                t.put("id", p.getId());
+//                t.put("informacion", p.getCliente().getInformacion());
+//                t.put("empleado", p.getVendedor().getId());
+//                t.put("plan", p.getPlan());
+//                t.put("dirInstal", p.getDireccionInstalacion());
                 return new Respuesta("", new Contenido(t, ""));
-            } else {
-                error = "No se creó el producto";
-                throw new Exception();
-            }
+//            } else {
+//                error = "No se creó el producto";
+//                throw new Exception();
+//            }
         } catch (Exception ex) {
             Logger.getLogger(ServletProductos.class.getName()).log(Level.SEVERE, null, ex);
             return new Respuesta(error, new Contenido());
