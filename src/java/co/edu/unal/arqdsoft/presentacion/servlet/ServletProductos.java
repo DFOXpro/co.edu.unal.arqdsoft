@@ -287,8 +287,9 @@ public class ServletProductos extends HttpServlet {
                 ar.add(new Producto(t.get("nombre").toString(), null, 0));
                 ar.get(i).setId(Integer.parseInt(t.get("id").toString()));
             }
+            int id = (obj.get("id").toString().equals("-1")) ? -1 : Integer.parseInt(obj.get("id").toString());
             Plan p = ControlProductos.setPlan(
-                Integer.parseInt(obj.get("id").toString()),
+                id,
                 obj.get("nombre").toString(),
                 obj.get("descripcion").toString(),
                 obj.get("valor").toString(),
@@ -309,7 +310,7 @@ public class ServletProductos extends HttpServlet {
                 t.put("valor", p.getValor());
                 return new Respuesta("", new Contenido(t, ""));
             }else{
-                error = "No se creó el producto";
+                error = "No se creó el plan, tiene algun producto?";
                 throw new Exception();
             }
         } catch(Exception ex){
@@ -321,7 +322,7 @@ public class ServletProductos extends HttpServlet {
     private Respuesta borrarPlan(JSONObject obj) {
         String error = "Problemas con la comunicación";
         try {
-            boolean p = ControlProductos.borrarPlan((int) obj.get("datos"));
+            boolean p = ControlProductos.borrarPlan(Integer.parseInt(obj.get("datos").toString()));
             /*TEST*/
             //boolean p = true;
             //boolean p = false;

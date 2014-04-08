@@ -304,6 +304,7 @@ Admin.innit = function (){
     Evento.boton($("#ad_b_ActualizarPlanes"), Admin.Planes.setPlan);
     Evento.boton($("#ad_b_Planes_QuitarProducto"), Admin.Planes.quitarProducto);
 
+    Evento.boton($("#ad_b_BorrarPlanes"), Admin.Planes.borrarPlan);
     Evento.boton($("#ad_b_BorrarProductos"), Admin.Productos.borrarProducto);
     Evento.boton($("#ad_b_CancelarProductos"), function (){
         $("#ad_infoProducto").addClass("hidden");

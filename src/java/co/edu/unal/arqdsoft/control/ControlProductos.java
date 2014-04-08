@@ -192,16 +192,17 @@ public class ControlProductos {
      * @param ar
      * @return
      */
-    public static Plan setPlan(int idPlan, String nombre, String valor, String descripcion, ArrayList<Producto> ar) {
+    public static Plan setPlan(int idPlan, String nombre, String descripcion, String valor, ArrayList<Producto> ar) {
         if (idPlan < -1 || idPlan == 0 || nombre.isEmpty() || valor.isEmpty() || descripcion.isEmpty()) {
             return null;
         }//String nombre, String descripcion, double valor, List<Producto> productos
-        Plan p = new Plan(nombre, descripcion, Integer.parseInt(valor), ar);
+        Plan p = new Plan(nombre, descripcion, Double.parseDouble(valor), ar);
         if (idPlan != -1) {
-            modificarPlan(idPlan, nombre, descripcion, valor, ar);
+            if(modificarPlan(idPlan, nombre, descripcion, valor, ar)) return p;
+            else return null;
         } else {
-            nuevoPlan(nombre, descripcion, valor, ar);
+            if(nuevoPlan(nombre, descripcion, valor, ar)) return p;
+            else return null;
         }
-        return p;
     }
 }
