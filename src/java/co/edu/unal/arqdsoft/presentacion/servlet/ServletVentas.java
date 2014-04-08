@@ -46,13 +46,9 @@ public class ServletVentas extends HttpServlet {
             JSONObject obj = JSON.toObject(request);
             Respuesta r;
             if (obj.get("accion").equals("getCliente")) {
-                r = getClientes(obj);
+                r = getCliente(obj);
             } else if (obj.get("accion").equals("setventa")) {
                 r = setVenta(obj);
-            } else if (obj.get("accion").equals("crearCliente")) {
-                r = crearCliente(obj);
-            } else if (obj.get("accion").equals("getCliente")) {
-                r = getCliente(obj);
             } else {
                 r = new Respuesta("Error de comunicación", new Contenido());
             }
@@ -99,18 +95,20 @@ public class ServletVentas extends HttpServlet {
     private Respuesta getCliente(JSONObject obj) {
         String error = "Problemas con la comunicación";
         try {
-            //Producto p = ControlProductos.getProducto((int) obj.get("datos"));
+            int idCliente = Integer.parseInt(obj.get("datos").toString());
+            Cliente cliente = ControlVentas.getcliente(idCliente);
+
             /*TEST*/
-            Cliente p = new Cliente(0, "Telefono", "muy comunicativo", null, null);
+            //Cliente p = new Cliente(0, "Telefono", "muy comunicativo", null, null);
             /*TEST FIN*/
-            if (p != null) {
+            if (cliente != null) {
                 JSONObject t = new JSONObject();
-                t.put("nombre", p.getNombre());
-                t.put("id", p.getId());
-                t.put("informacion", p.getInformacion());
+                t.put("nombre", cliente.getNombre());
+                t.put("id", cliente.getId());
+                t.put("informacion", cliente.getInformacion());
                 return new Respuesta("", new Contenido(t, ""));
             } else {
-                error = "No existe el producto, no debería de pasar, no sea curioso";//ERROR de SEGURIDAD
+                error = "No existe el cliente";//ERROR de SEGURIDAD
                 throw new SecurityException(obj.get("datos").toString());
             }
         } catch (Exception ex) {
@@ -123,20 +121,20 @@ public class ServletVentas extends HttpServlet {
         String error = "Problemas con la comunicación";
         try {
             obj = (JSONObject) JSONValue.parse(obj.get("datos").toString());
-            Venta p=null;
+            Venta p = null;
             try {
-                
-            p = ControlVentas.setVenta(
-                    /*idempleado ,cedula, nombre, informacion,plan,dirrecion*/
-                    Integer.parseInt(obj.get("empleado").toString()),
-                    obj.get("id").toString(),
-                    obj.get("nombre").toString(),
-                    obj.get("informacion").toString(),
-                    Integer.parseInt(obj.get("plan").toString()),
-                    obj.get("dirInstal").toString());
-            
+
+                p = ControlVentas.setVenta(
+                        /*idempleado ,cedula, nombre, informacion,plan,dirrecion*/
+                        Integer.parseInt(obj.get("empleado").toString()),
+                        obj.get("id").toString(),
+                        obj.get("nombre").toString(),
+                        obj.get("informacion").toString(),
+                        Integer.parseInt(obj.get("plan").toString()),
+                        obj.get("dirInstal").toString());
+
             } catch (Exception e) {
-                
+
             }
             /*TEST*/
 //            p = new Producto(obj.get("nombre").toString(), obj.get("descripcion").toString(), 100);//Si se guardó
@@ -183,4 +181,9 @@ public class ServletVentas extends HttpServlet {
         }
     }
 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
 }

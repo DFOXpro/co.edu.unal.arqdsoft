@@ -19,22 +19,21 @@ public class ControlVentas {
     /**
      *
      * @param empleado identificacion del empleado que realizo la venta
-     * @param cliente cliente al que se el hizo la venta
+     * @param idCliente idCliente al que se el hizo la venta
      * @param nombre
      * @param informacion
-     * @param plan plan que el cliente adquiere
+     * @param plan plan que el idCliente adquiere
      * @param dirreccion
      * @return retorna si se hizo la venta
      */
-    public static boolean venta(int empleado, String cliente, String nombre, String informacion, int plan, String dirreccion) {
-        if (plan == 0 || plan < -1 || empleado == 0 || empleado < -1 || cliente.isEmpty() || nombre.isEmpty() || informacion.isEmpty() || dirreccion.isEmpty()) {
+    public static boolean venta(int empleado, String idCliente, String nombre, String informacion, int plan, String dirreccion) {
+        if (plan == 0 || plan < -1 || empleado == 0 || empleado < -1 || idCliente.isEmpty() || nombre.isEmpty() || informacion.isEmpty() || dirreccion.isEmpty()) {
 
             return false;
         }
-        ControlVentas.agregarCliente(Integer.valueOf(cliente), nombre, informacion);
+        ControlVentas.agregarCliente(Integer.valueOf(idCliente), nombre, informacion);
 
-        DaoVenta.CrearVenta(Integer.valueOf(cliente), empleado, plan, dirreccion);
-        return false;
+        return DaoVenta.CrearVenta(Integer.valueOf(idCliente), empleado, plan, dirreccion);
     }
 
     /**
@@ -71,7 +70,7 @@ public class ControlVentas {
     }
 
     /**
-     *
+     * @deprecated 
      * @return
      */
     public static ArrayList<Cliente> getclientes() {
