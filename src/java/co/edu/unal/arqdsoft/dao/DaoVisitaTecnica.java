@@ -22,12 +22,7 @@ public class DaoVisitaTecnica {
 
     static EntityManagerFactory emf = Persistence.createEntityManagerFactory("co-edu-unal-arqdsoftPU");
     
-    /**
-     *
-     * @param idReporte
-     * @return
-     */
-    public static ArrayList<VisitaTecnica> getVisitasTecnicasReporte(int idReporte) {
+      public static ArrayList<VisitaTecnica> getVisitasTecnicasReporte(int idReporte) {
         EntityManager em = emf.createEntityManager();
         ReporteDano reporte=em.find(ReporteDano.class, idReporte);
         ArrayList<VisitaTecnica> visitasTecnicas = new ArrayList();
@@ -43,14 +38,44 @@ public class DaoVisitaTecnica {
         }
     }
 
-    /**
-     *
-     * @param old
-     * @param new1
-     * @return
-     */
-    public static boolean modificarVisitaTecnica(VisitaTecnica old, VisitaTecnica new1) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public static boolean modificarVisitaTecnica(VisitaTecnica oldVisita, VisitaTecnica newVisita) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        try {
+            VisitaTecnica visita = em.find(VisitaTecnica.class, oldVisita.getId());
+            visita.setFechaVisita(oldVisita.getFechaVisita());
+            visita.setDireccion(oldVisita.getDireccion());
+            visita.setReporte(oldVisita.getReporte());
+            visita.setTecnico(oldVisita.getTecnico());
+            em.merge(visita);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            em.getTransaction().rollback();
+            return false;
+        } finally {
+            em.close();
+            return true;
+        }
+    }
+
+    public static ArrayList<Empleado> obtenerVisitasSinTecnico(){
+        return null;
+    }
+    
+     public static ArrayList<VisitaTecnica> obtenerVisitasPorTecnico(int idTecnico){
+        EntityManager em = emf.createEntityManager();
+        ArrayList<VisitaTecnica> visitasTecnicas =null;
+        Query q = em.createQuery("SELECT v FROM VisitasTecnicos v "
+                + "WHERE Tecnico.id = :idTenico").setParameter("idTecnico", idTecnico);
+        try {
+            visitasTecnicas = (ArrayList<VisitaTecnica>) q.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
+        return visitasTecnicas;
     }
 
     
