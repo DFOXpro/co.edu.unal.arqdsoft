@@ -97,12 +97,7 @@ public class ControlSoporte {
             return false;
         }
         return DaoReporteDano.modificarReporteDano(old, new1);}
-    public static boolean modificarVisitaTecnica(VisitaTecnica old, VisitaTecnica  new1) {
-        if (old == null || new1 == null) {
-            return false;
-        }
-        return DaoVisitaTecnica.modificarVisitaTecnica(old, new1);
-    }
+
     public static ReporteDano getReporte(int id){
         if(id==0||id<-1){
             return null;
