@@ -5,7 +5,34 @@ Operador.Cliente = new Object();
 //Operador.Soporte.get = function (){};
 
 Operador.Soporte.set = function (){
-    
+    s = "";
+    if ($("#op_idCliente").val().length < 6) s += "Escriba bien el numero de cedula.<br>";
+    if ($("#op_nombreCliente").val() == "") s += "Qué cliente presenta el problema.<br>";
+    if ($("#op_planDano").find(":selected").val() == "-1") s += "Seleccione el plan dañado primero.<br>";
+    if ($("#op_informacionDano").val().length < 20) s += "Escriba una información detallada del error.<br>";
+    if ($("#op_solucionOfrecida").val().length < 20) s += "Escriba una solución dada detallada de la solucion dada.<br>";
+    if (
+        !($("#op_cb_EnvioDeTecnico").is(':checked') |
+        $("#op_cb_Solucinado").is(':checked'))
+    ) s += "Si no se solucionó el problema envía un tecnico.<br>";
+
+    if(s != "") $("#error").html(s);
+    else {
+        var data = {
+            cliente : $("#op_idCliente").val(),
+            plan: $("#op_planDano").find(":selected").val(),
+            enviaTecnico: $("op_cb_EnvioDeTecnico").is(':checked'),
+            solucionado: $("op_cb_Solucinado").is(':checked'),
+            info: $("#op_informacionDano").val(),
+            solucion: $("#op_solucionOfrecida").val()
+        };
+        sendRequest(
+            "ventas",
+            Operador.Soporte.respuesta,
+            "setSoporte",
+            JSON.stringify(data)
+        );
+    }
 };
 Operador.reset = function (){
     $("#op_idCliente").prop('disabled', false);
@@ -25,6 +52,11 @@ Operador.Cliente.mostrar = function (respuesta){
         $("#op_idCliente").prop('disabled', true);
         $("#op_idCliente").val(respuesta.contenido.dato.id);
         $("#op_nombreCliente").val(respuesta.contenido.dato.nombre);
+        var array = respuesta.contenido.dato.planes;
+        var s = "";
+        for (var i in array) {
+            s+="<option value='"+array[i].id+"'>"+array[i].nombre+": "+array[i].direccion+"</option>";//TODO FUTURE: use templates
+        }
     } else $("#error").html(respuesta.error);
 };
 Operador.Cliente.get = function (){
