@@ -7,6 +7,16 @@ Operador.Cliente = new Object();
 Operador.Soporte.set = function (){
     
 };
+Operador.reset = function (){
+    $("#op_idCliente").prop('disabled', false);
+    $("#op_idCliente").val("");
+    $("#op_nombreCliente").val("");
+    $("#op_informacionDano").val("");
+    $("#op_solucionOfrecida").val("");
+    $("#op_productoDano").html("");
+    $('#op_cb_EnvioDeTecnico').attr('checked', false);
+    $('#op_cb_Solucinado').attr('checked', false);
+};
 
 
 Operador.Cliente.mostrar = function (respuesta){
@@ -33,6 +43,7 @@ Operador.innit = function (){
         event.preventDefault();
         Operador.Cliente.get();
     });
-    Evento.boton($("op_b_enviarReporte"),Operador.Soporte.set);
+    Evento.boton($("#op_b_enviarReporte"),Operador.Soporte.set);
+    Evento.boton($("#op_b_resetReporte"),Operador.reset);
     Evento.cerrarSesion($("#l_op_cerrarSesion"));
 };
