@@ -6,12 +6,14 @@
 package co.edu.unal.arqdsoft.presentacion.servlet;
 
 import co.edu.unal.arqdsoft.control.ControlSoporte;
+import co.edu.unal.arqdsoft.entidad.VisitaTecnica;
 import co.edu.unal.arqdsoft.presentacion.Contenido;
 import co.edu.unal.arqdsoft.presentacion.JSON;
 import co.edu.unal.arqdsoft.presentacion.Respuesta;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.logging.Level;
@@ -167,12 +169,18 @@ public class ServletSoporte extends HttpServlet {
         JSONObject datos = (JSONObject) obj.get("datos");
         int idCliente = Integer.parseInt(datos.get("cliente").toString());
         boolean enviatecnico = Boolean.valueOf(datos.get("enviatecnico").toString());
-        Date fechatecnico = new SimpleDateFormat("yy-MM-dd HH:mm:ss").parse(datos.get("fechatecnico").toString());
+        Date fechatecnico=null;
+        try {
+            fechatecnico = new SimpleDateFormat("yy-MM-dd HH:mm:ss").parse(datos.get("fechatecnico").toString());
+        } catch (ParseException ex) {
+            Logger.getLogger(ServletSoporte.class.getName()).log(Level.SEVERE, null, ex);
+        }
         boolean solucion = Boolean.valueOf(datos.get("enviatecnico").toString());
-        String info = datos.get("fechatecnico").toString();
+        String info = datos.get("info").toString();
 
-        ControlSoporte.crearReportedano(idCliente, fechatecnico,null, info, idCliente, solucion):
-        return new Respuesta("not implemented", new Contenido(t, ""));
+        ControlSoporte.crearReportedano(idCliente, fechatecnico, info, idCliente, solucion);
+//        return new Respuesta("not implemented", new Contenido(t, ""));
+        return null;
     }
 
     private Respuesta modificarReporteDano(JSONObject obj) {

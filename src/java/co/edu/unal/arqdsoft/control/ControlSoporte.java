@@ -28,8 +28,9 @@ public class ControlSoporte {
     }
 
     /**
+     * @deprecated 
      * se encarga de buscar a los tecnicos por id y su tiempo libre
-     *
+     * 
      * @return retorna un mapa con llave el id, y valor el arreglo de horario
      * disponible del empleado
      */
@@ -88,17 +89,17 @@ public class ControlSoporte {
     /**
      *
      * @param idCliente
-     * @param fecha
-     * @param dirreccion
+     * @param fechaCreacionReporte
+     * @param descripcion
      * @param idOperador
      * @param fueResuelto
      * @return
      */
-    public static boolean crearReportedano(int idCliente, Date fecha, String dirreccion, int idOperador, boolean fueResuelto) {
-        if (idCliente == 0 || idCliente < -1 || idOperador == 0 || idOperador < -1 || fecha == null) {
+    public static boolean crearReportedano(int idCliente, Date fechaCreacionReporte, String descripcion, int idOperador, boolean fueResuelto) {
+        if (idCliente == 0 || idCliente < -1 || idOperador == 0 || idOperador < -1 || fechaCreacionReporte == null) {
             return false;
         }
-        return DaoReporteDano.crearReporteDano(fecha, dirreccion, fueResuelto, idOperador, idCliente);
+        return DaoReporteDano.crearReporteDano(fechaCreacionReporte, descripcion, fueResuelto, idOperador, idCliente);
     }
 
     /**
