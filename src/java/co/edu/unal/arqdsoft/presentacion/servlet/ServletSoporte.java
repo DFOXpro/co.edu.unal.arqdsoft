@@ -27,7 +27,7 @@ import org.json.simple.JSONObject;
  * @author dmlr
  */
 @WebServlet(name = "ServletReporteDano", urlPatterns = {"/ServletReporteDano"})
-public class ServletReporteDano extends HttpServlet {
+public class ServletSoporte extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -52,7 +52,7 @@ public class ServletReporteDano extends HttpServlet {
             } else if (obj.get("accion").equals("setventa")) {
                 r = getReporte(obj);
             } else if (obj.get("accion").equals("setventa")) {
-                r =  modificarVisitaTecnica(obj);
+                r = modificarVisitaTecnica(obj);
             } else if (obj.get("accion").equals("setventa")) {
                 r = modificarReporteDano(obj);
             } else if (obj.get("accion").equals("setventa")) {
@@ -86,20 +86,18 @@ public class ServletReporteDano extends HttpServlet {
 
     private Respuesta buscarTecnico(JSONObject obj) {
         //ArrayList<Producto> prdts = ControlProductos.getProductos();
-        /*TEST*/
-        ArrayList<Producto> prdts = new ArrayList();
-        prdts.add(new Producto("Telefono", null, 0));
-        prdts.add(new Producto("Internet", null, 0));
-        prdts.add(new Producto("PBX", null, 0));
-        /*TEST FIN*/
-        JSONArray list = new JSONArray();
-        for (Producto temp : prdts) {
-            JSONObject t = new JSONObject();
-            t.put("nombre", temp.getNombre());
-            t.put("id", temp.getId());
-            list.add(t);
+        /*TEST*
+         /*TEST FIN*/
+        int idTecnico = Integer.parseInt(obj.get("datos").toString());
+        Empleado tecnico = ControlSoporte.buscarTecnico(idTecnico);
+        JSONObject t = new JSONObject();
+        if (tecnico != null) {
+                t.put("id", tecnico.getId());
+                t.put("nombre", tecnico.getNombre());
+                t.put("informacion", tecnico.getInformacion());
         }
-        return new Respuesta("", new Contenido(list, ""));
+
+        return new Respuesta("wii?", new Contenido(t, ""));
     }
 
     private Respuesta tiempoTecnicos(JSONObject obj) {
