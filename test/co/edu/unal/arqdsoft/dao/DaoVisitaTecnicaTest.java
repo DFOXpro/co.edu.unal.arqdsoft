@@ -6,21 +6,18 @@
 
 package co.edu.unal.arqdsoft.dao;
 
-import co.edu.unal.arqdsoft.entidad.Empleado;
-import co.edu.unal.arqdsoft.entidad.ReporteDano;
 import co.edu.unal.arqdsoft.entidad.VisitaTecnica;
 import java.util.ArrayList;
-import java.util.Date;
 import org.junit.After;
 import org.junit.AfterClass;
-import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  *
- * @author Jhh
+ * @author dmlr
  */
 public class DaoVisitaTecnicaTest {
     
@@ -44,15 +41,59 @@ public class DaoVisitaTecnicaTest {
     }
 
     /**
-     * Test of getVisitaTecnica method, of class DaoVisitaTecnica.
+     * Test of getVisitasTecnicasReporte method, of class DaoVisitaTecnica.
      */
     @Test
-    public void testGetVisitaTecnica() {
-        System.out.println("getVisitaTecnica");
-        DaoVisitaTecnica daoVisitaTecnica = new DaoVisitaTecnica();
-        DaoReporteDano daoReporteDano = new DaoReporteDano();
-        ReporteDano reporteDano = daoReporteDano.getReporte(1);
-        System.out.println(daoVisitaTecnica.getVisitaTecnica(reporteDano).get(0).getReporte().getDescripcion());
+    public void testGetVisitasTecnicasReporte() {
+        System.out.println("getVisitasTecnicasReporte");
+        int idReporte = 0;
+        ArrayList<VisitaTecnica> expResult = null;
+        ArrayList<VisitaTecnica> result = DaoVisitaTecnica.getVisitasTecnicasReporte(idReporte);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of modificarVisitaTecnica method, of class DaoVisitaTecnica.
+     */
+    @Test
+    public void testModificarVisitaTecnica() {
+        System.out.println("modificarVisitaTecnica");
+        VisitaTecnica oldVisita = null;
+        VisitaTecnica newVisita = null;
+        boolean expResult = false;
+        boolean result = DaoVisitaTecnica.modificarVisitaTecnica(oldVisita, newVisita);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of obtenerVisitasSinTecnico method, of class DaoVisitaTecnica.
+     */
+    @Test
+    public void testObtenerVisitasSinTecnico() {
+        System.out.println("obtenerVisitasSinTecnico");
+        ArrayList<VisitaTecnica> expResult = null;
+        ArrayList<VisitaTecnica> result = DaoVisitaTecnica.obtenerVisitasSinTecnico();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of obtenerVisitasPorTecnico method, of class DaoVisitaTecnica.
+     */
+    @Test
+    public void testObtenerVisitasPorTecnico() {
+        System.out.println("obtenerVisitasPorTecnico");
+        int idTecnico = 0;
+        ArrayList<VisitaTecnica> expResult = null;
+        ArrayList<VisitaTecnica> result = DaoVisitaTecnica.obtenerVisitasPorTecnico(idTecnico);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
 
     /**
@@ -60,20 +101,14 @@ public class DaoVisitaTecnicaTest {
      */
     @Test
     public void testCrearVisita() {
-        
         System.out.println("crearVisita");
-        DaoEmpleado daoEmpleado = new DaoEmpleado();
-        Empleado tecnico = daoEmpleado.getEmpleado(2);
-        DaoReporteDano daoReporteDano = new DaoReporteDano();
-        ReporteDano reporteDano = daoReporteDano.getReporte(1);
-                
-        VisitaTecnica visitaTecnica = new VisitaTecnica(tecnico, new Date(2012,02,20), reporteDano, "calle falsa 543");
-        
-        DaoVisitaTecnica daoVisitaTecnica = new DaoVisitaTecnica();
-
-        assertTrue(daoVisitaTecnica.crearVisita(visitaTecnica));
+        VisitaTecnica vT = null;
+        DaoVisitaTecnica instance = new DaoVisitaTecnica();
+        boolean expResult = false;
+        boolean result = instance.crearVisita(vT);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
-        
-    
     
 }
