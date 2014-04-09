@@ -86,7 +86,6 @@ public class DaoProducto {
     /**
      *
      * @param p
-     * @param object
      * @return
      */
     public static boolean eliminarProducto(Producto p) {       

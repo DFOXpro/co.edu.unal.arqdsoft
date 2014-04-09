@@ -44,13 +44,18 @@ public class ControlSoporte {
 
     /**
      *
-     * @param rP
      * @return
      */
     public static List<VisitaTecnica> visitas() {
         List<VisitaTecnica> visitasTecnicas = DaoVisitaTecnica.obtenerVisitassinTecnico();
         return visitasTecnicas;
     }
+
+    /**
+     *
+     * @param id
+     * @return
+     */
     public static List<VisitaTecnica> visitas(int id) {
         List<VisitaTecnica> visitasTecnicas = DaoVisitaTecnica.getVisitasTecnicasReporte(id);
         return visitasTecnicas;
@@ -91,6 +96,12 @@ public class ControlSoporte {
         return DaoReporteDano.crearReporteDano(fecha, dirreccion, fueResuelto, idOperador, idCliente);
     }
 
+    /**
+     *
+     * @param old
+     * @param new1
+     * @return
+     */
     public static boolean modificarReportedano(ReporteDano old, ReporteDano new1) {
         if (old == null || new1 == null) {
             return false;
@@ -98,6 +109,12 @@ public class ControlSoporte {
         return DaoReporteDano.modificarReporteDano(old, new1);
     }
 
+    /**
+     *
+     * @param old
+     * @param new1
+     * @return
+     */
     public static boolean modificarVisitaTecnica(VisitaTecnica old, VisitaTecnica new1) {
         if (old == null || new1 == null) {
             return false;
@@ -105,6 +122,11 @@ public class ControlSoporte {
         return DaoVisitaTecnica.modificarVisitaTecnica(old, new1);
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public static ReporteDano getReporte(int id) {
         if (id == 0 || id < -1) {
             return null;

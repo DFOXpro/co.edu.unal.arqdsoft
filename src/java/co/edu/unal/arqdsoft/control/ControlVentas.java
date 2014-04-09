@@ -65,6 +65,16 @@ public class ControlVentas {
         return DaoCliente.getCliente(id);
     }
 
+    /**
+     *
+     * @param idEmpleado
+     * @param idCliente
+     * @param nombreCliente
+     * @param informacionCliente
+     * @param idPlan
+     * @param direccionVenta
+     * @return
+     */
     public static boolean setVenta(int idEmpleado, int idCliente, String nombreCliente, String informacionCliente, 
             int idPlan, String direccionVenta) {
         if (idPlan == 0 || idPlan < -1 || idEmpleado == 0 || idEmpleado < -1 || idCliente == 0 || idCliente < -1 ||

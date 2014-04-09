@@ -22,7 +22,12 @@ public class DaoVisitaTecnica {
 
     static EntityManagerFactory emf = Persistence.createEntityManagerFactory("co-edu-unal-arqdsoftPU");
     
-      public static ArrayList<VisitaTecnica> getVisitasTecnicasReporte(int idReporte) {
+    /**
+     *
+     * @param idReporte
+     * @return
+     */
+    public static ArrayList<VisitaTecnica> getVisitasTecnicasReporte(int idReporte) {
         EntityManager em = emf.createEntityManager();
         ReporteDano reporte=em.find(ReporteDano.class, idReporte);
         ArrayList<VisitaTecnica> visitasTecnicas = new ArrayList();
@@ -38,6 +43,12 @@ public class DaoVisitaTecnica {
         }
     }
 
+    /**
+     *
+     * @param old
+     * @param new1
+     * @return
+     */
     public static boolean modificarVisitaTecnica(VisitaTecnica old, VisitaTecnica new1) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

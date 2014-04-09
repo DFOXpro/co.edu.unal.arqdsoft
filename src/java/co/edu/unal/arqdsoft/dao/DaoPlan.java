@@ -99,6 +99,7 @@ public class DaoPlan {
     
     /**
      *
+     * @param p
      * @param Plan p
      * @return
      */
@@ -122,7 +123,7 @@ public class DaoPlan {
 
     /**
      *
-     * @param id
+     * @param viejoPlan
      * @param p
      * @return
      */
