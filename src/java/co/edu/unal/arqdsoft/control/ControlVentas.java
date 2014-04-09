@@ -66,16 +66,16 @@ public class ControlVentas {
     }
 
     public static boolean setVenta(int idEmpleado, int idCliente, String nombreCliente, String informacionCliente, 
-            int plan, String direccionVenta) {
-        if (plan == 0 || plan < -1 || idEmpleado == 0 || idEmpleado < -1 || idCliente == 0 || idCliente < -1 ||
+            int idPlan, String direccionVenta) {
+        if (idPlan == 0 || idPlan < -1 || idEmpleado == 0 || idEmpleado < -1 || idCliente == 0 || idCliente < -1 ||
                 nombreCliente.isEmpty() || informacionCliente.isEmpty() || direccionVenta.isEmpty()) {
             return false;
         }
         boolean exito;
-        if(DaoCliente.getCliente(idCliente)==null)
-            exito=ventaNuevoCliente(idEmpleado, idCliente, nombreCliente, informacionCliente, plan, direccionVenta);
+        if(DaoCliente.getCliente(idCliente) == null)
+            exito=ventaNuevoCliente(idEmpleado, idCliente, nombreCliente, informacionCliente, idPlan, direccionVenta);
         else
-            exito=ventaClienteExiste(idEmpleado, idCliente, plan, direccionVenta);
+            exito=ventaClienteExiste(idEmpleado, idCliente, idPlan, direccionVenta);
         return exito;
     }
 

@@ -78,7 +78,7 @@ Ventas.Venta.enviar = function (){
             "ventas",
             function (respuesta){
                 if(respuesta.error.length == 0){
-                    $("#error").html("respuesta.contenido.dato.mensaje");
+                    $("#error").html(respuesta.contenido.html);
                     Ventas.Venta.reset();
                 } else $("#error").html(respuesta.error);
             },

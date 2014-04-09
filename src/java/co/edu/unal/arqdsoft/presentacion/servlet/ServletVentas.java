@@ -47,7 +47,7 @@ public class ServletVentas extends HttpServlet {
             Respuesta r;
             if (obj.get("accion").equals("getCliente")) {
                 r = getCliente(obj);
-            } else if (obj.get("accion").equals("setventa")) {
+            } else if (obj.get("accion").equals("setVenta")) {
                 r = setVenta(obj);
             } else {
                 r = new Respuesta("Error de comunicación", new Contenido());
@@ -119,49 +119,42 @@ public class ServletVentas extends HttpServlet {
 
     private Respuesta setVenta(JSONObject ventaJson) {
         String error = "Problemas con la comunicación";
-        try {
+        try{
             ventaJson = (JSONObject) JSONValue.parse(ventaJson.get("datos").toString());
-            //Venta p = null;
+
+            int idEmpleado = Integer.parseInt(ventaJson.get("empleado").toString());
+            int idPlan = Integer.parseInt(ventaJson.get("plan").toString());
+            String direccionVenta = ventaJson.get("dirInstal").toString();
+            int idCliente = 0;
+            String nombreCliente = "";
+            String informacionCliente = "";
             try {
                 JSONObject clienteJson=(JSONObject) JSONValue.parse(ventaJson.get("cliente").toString());
-                int idEmpleado = Integer.parseInt(ventaJson.get("empleado").toString());
-                int idCliente = Integer.parseInt(clienteJson.get("id").toString());
-                String nombreCliente = clienteJson.get("nombre").toString();
-                String informacionCliente = clienteJson.get("informacion").toString();
-                String direccionVenta = ventaJson.get("dirInstal").toString();
-                
-                boolean respuesta = ControlVentas.setVenta(idEmpleado, idCliente, nombreCliente, 
-                        informacionCliente, idCliente, direccionVenta);
-//                p = ControlVentas.setVenta(
-//                        *idempleado ,cedula, nombre, informacion,plan,dirrecion*/
-//                        ,
-//                        ventaJson.get("informacion").toString(),
-//                        Integer.parseInt(ventaJson.get("plan").toString()),
-//                        ventaJson.get("dirInstal").toString()
-//                );
-
+                idCliente = Integer.parseInt(clienteJson.get("id").toString());
+                nombreCliente = clienteJson.get("nombre").toString();
+                informacionCliente = clienteJson.get("informacion").toString();
             } catch (Exception e) {
-
+                error = "Problemas con el cliente";
             }
+            boolean respuesta = ControlVentas.setVenta(idEmpleado, idCliente, nombreCliente, 
+            informacionCliente, idPlan, direccionVenta);
             /*TEST*/
-//            p = new Producto(ventaJson.get("nombre").toString(), ventaJson.get("descripcion").toString(), 100);//Si se guardó
-//            p = null;//Si NO se guardó
+//        respuesta = true;
+//        respuesta = false;
             /*TEST FIN*/
 
-//            p.setId(4321);
-//            if (p != null) {
-                JSONObject t = new JSONObject();
+            if(respuesta) {
 //                t.put("nombre", p.getCliente().getNombre());
 //                t.put("id", p.getId());
 //                t.put("informacion", p.getCliente().getInformacion());
 //                t.put("empleado", p.getVendedor().getId());
 //                t.put("plan", p.getPlan());
 //                t.put("dirInstal", p.getDireccionInstalacion());
-                return new Respuesta("", new Contenido(t, ""));
-//            } else {
-//                error = "No se creó el producto";
-//                throw new Exception();
-//            }
+                return new Respuesta("", new Contenido(null, "Venta realizada exitosamente"));
+            } else {
+                error = "No se realizó la venta";
+                throw new Exception();
+            }
         } catch (Exception ex) {
             Logger.getLogger(ServletProductos.class.getName()).log(Level.SEVERE, null, ex);
             return new Respuesta(error, new Contenido());
