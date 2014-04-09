@@ -25,7 +25,7 @@ public class ControlVentas {
      * @param direccionVenta
      * @return retorna si se hizo la venta
      */
-    public static boolean ventaNuevoCliente(int idEmpleado, int idCliente, String nombreCliente, 
+    public static boolean ventaNuevoCliente(int idEmpleado, long idCliente, String nombreCliente, 
             String informacionCliente, int idPlan, String direccionVenta) {
         boolean exito=false;
         if(DaoCliente.nuevoCliente(idCliente, nombreCliente, informacionCliente)==true)
@@ -41,7 +41,7 @@ public class ControlVentas {
      * @param dirreccion
      * @return
      */
-    public static boolean ventaClienteExiste(int idEmpleado, int idCliente, int idPlan, String dirreccion) {
+    public static boolean ventaClienteExiste(int idEmpleado, long idCliente, int idPlan, String dirreccion) {
         return DaoVenta.CrearVenta(idCliente, idEmpleado, idPlan, dirreccion);
     }
 
@@ -55,14 +55,14 @@ public class ControlVentas {
 
     /**
      *
-     * @param id
+     * @param idCliente
      * @return
      */
-    public static Cliente getcliente(int id) {
-        if (id == 0 || id < -1) {
+    public static Cliente getcliente(long idCliente) {
+        if (idCliente == 0 || idCliente < -1) {
             return null;
         }
-        return DaoCliente.getCliente(id);
+        return DaoCliente.getCliente(idCliente);
     }
 
     /**
@@ -75,7 +75,7 @@ public class ControlVentas {
      * @param direccionVenta
      * @return
      */
-    public static boolean setVenta(int idEmpleado, int idCliente, String nombreCliente, String informacionCliente, 
+    public static boolean setVenta(int idEmpleado, long idCliente, String nombreCliente, String informacionCliente, 
             int idPlan, String direccionVenta) {
         if (idPlan == 0 || idPlan < -1 || idEmpleado == 0 || idEmpleado < -1 || idCliente == 0 || idCliente < -1 ||
                 nombreCliente.isEmpty() || informacionCliente.isEmpty() || direccionVenta.isEmpty()) {
