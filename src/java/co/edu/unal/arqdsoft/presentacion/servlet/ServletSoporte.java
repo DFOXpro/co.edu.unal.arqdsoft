@@ -30,7 +30,7 @@ import org.json.simple.JSONObject;
  *
  * @author dmlr
  */
-@WebServlet(name = "ServletReporteDano", urlPatterns = {"/ServletReporteDano"})
+@WebServlet(name = "ServletReporteDano", urlPatterns = {"/soporte"})
 public class ServletSoporte extends HttpServlet {
 
     /**
