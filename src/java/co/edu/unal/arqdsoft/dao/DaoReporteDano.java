@@ -53,7 +53,13 @@ public class DaoReporteDano {
         }
     }
     
-     public static boolean modificarReporteDano(ReporteDano viejoReporte, ReporteDano nuevoReporte) {
+    /**
+     *
+     * @param viejoReporte
+     * @param nuevoReporte
+     * @return
+     */
+    public static boolean modificarReporteDano(ReporteDano viejoReporte, ReporteDano nuevoReporte) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         try {
@@ -72,6 +78,11 @@ public class DaoReporteDano {
         }
     }
 
+    /**
+     *
+     * @param idReporte
+     * @return
+     */
     public static ReporteDano getReporte(int idReporte) {
         EntityManager em = emf.createEntityManager();
         ReporteDano reporte = null;

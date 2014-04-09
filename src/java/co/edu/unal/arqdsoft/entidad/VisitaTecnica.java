@@ -40,7 +40,6 @@ public class VisitaTecnica implements Serializable {
     
     /**
      * Constructor de la clase VisitaTecnica especificando todos los campos del objeto
-     * @param id    Variable entera con el identificador de el numero de visita tecnica
      * @param tecnico   Variable tipo empleado que hace referencia a el tecnico que realizo o realizara la visita
      * @param fechaVisita   Variable de tipo daate con la fecha en la cual se realizo o realizara la visita tecnica
      * @param reporte   Objeto de tipo ReporteDano con la llamada y respectivo reporte de la cual deriva esta visita tecnica
