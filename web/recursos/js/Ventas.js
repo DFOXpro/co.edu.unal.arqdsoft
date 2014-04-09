@@ -109,7 +109,6 @@ Ventas.Venta.getPlanes = function (){
 Ventas.Venta.setPlan = function (id, nombre){
     $("#ve_PlanEscojido").removeClass("hidden");
     $("#ve_PlanEscojer").addClass("hidden");
-    $("#ve_direccionInstalacion").prop('disabled', false);
     $("#ve_PlanID").val(id);
     $("#ve_PlanNombre").val(nombre);
 };
@@ -136,7 +135,6 @@ Ventas.Venta.reset = function (){
     $("#ve_nombreCliente").val("");
     $("#ve_informacionCliente").prop('disabled', true);
     $("#ve_informacionCliente").val("");
-    $("#ve_direccionInstalacion").prop('disabled', true);
     $("#ve_direccionInstalacion").val("");
     Ventas.Venta.resetPlan();
 };
