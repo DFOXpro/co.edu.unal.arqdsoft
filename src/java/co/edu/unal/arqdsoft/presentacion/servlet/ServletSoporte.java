@@ -5,12 +5,14 @@
  */
 package co.edu.unal.arqdsoft.presentacion.servlet;
 
-import co.edu.unal.arqdsoft.presentacion.*;
-import co.edu.unal.arqdsoft.control.*;
-import co.edu.unal.arqdsoft.dao.*;
-import co.edu.unal.arqdsoft.entidad.*;
+import co.edu.unal.arqdsoft.control.ControlSoporte;
+import co.edu.unal.arqdsoft.presentacion.Contenido;
+import co.edu.unal.arqdsoft.presentacion.JSON;
+import co.edu.unal.arqdsoft.presentacion.Respuesta;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -43,12 +45,12 @@ public class ServletSoporte extends HttpServlet {
         try {
             JSONObject obj = JSON.toObject(request);
             Respuesta r;
-            if (obj.get("accion").equals("getCliente")) {
+            /*if (obj.get("accion").equals("getCliente")) {
                 r = buscarTecnico(obj);
-            } else if (obj.get("accion").equals("setventa")) {
+            } else*/ if (obj.get("accion").equals("setventa")) {
                 r = crearVisistaTecnica(obj);
-            } else if (obj.get("accion").equals("setventa")) {
-                r = crearRporteDano(obj);
+            } else if (obj.get("accion").equals("setSoporte")) {
+                r = crearReporteDano(obj);
             } else if (obj.get("accion").equals("setventa")) {
                 r = getReporte(obj);
             } else if (obj.get("accion").equals("setventa")) {
@@ -88,21 +90,21 @@ public class ServletSoporte extends HttpServlet {
 // </editor-fold>
     }
 
-    private Respuesta buscarTecnico(JSONObject obj) {
-        //ArrayList<Producto> prdts = ControlProductos.getProductos();
-        /*TEST*
-         /*TEST FIN*/
-        int idTecnico = Integer.parseInt(obj.get("datos").toString());
-        Empleado tecnico = ControlSoporte.buscarTecnico(idTecnico);
-        JSONObject t = new JSONObject();
-        if (tecnico != null) {
-            t.put("id", tecnico.getId());
-            t.put("nombre", tecnico.getNombre());
-            t.put("informacion", tecnico.getInformacion());
-        }
-
-        return new Respuesta("wii?", new Contenido(t, ""));
-    }
+//    private Respuesta buscarTecnico(JSONObject obj) {
+//        //ArrayList<Producto> prdts = ControlProductos.getProductos();
+//        /*TEST*
+//         /*TEST FIN*/
+////        int idTecnico = Integer.parseInt(obj.get("datos").toString());
+////        Empleado tecnico = ControlSoporte.buscarTecnico(idTecnico);
+////        JSONObject t = new JSONObject();
+////        if (tecnico != null) {
+////            t.put("id", tecnico.getId());
+////            t.put("nombre", tecnico.getNombre());
+////            t.put("informacion", tecnico.getInformacion());
+////        }
+////
+////        return new Respuesta("wii?", new Contenido(t, ""));
+//    }
 
     private Respuesta tiempoTecnicos(JSONObject obj) {
         //ArrayList<Producto> prdts = ControlProductos.getProductos();
@@ -161,10 +163,15 @@ public class ServletSoporte extends HttpServlet {
         return new Respuesta("not implemented", new Contenido(t, ""));
     }
 
-    private Respuesta crearRporteDano(JSONObject obj) {
+    private Respuesta crearReporteDano(JSONObject obj) {
+        JSONObject datos = (JSONObject) obj.get("datos");
+        int idCliente = Integer.parseInt(datos.get("cliente").toString());
+        boolean enviatecnico = Boolean.valueOf(datos.get("enviatecnico").toString());
+        Date fechatecnico = new SimpleDateFormat("yy-MM-dd HH:mm:ss").parse(datos.get("fechatecnico").toString());
+        boolean solucion = Boolean.valueOf(datos.get("enviatecnico").toString());
+        String info = datos.get("fechatecnico").toString();
 
-        JSONObject t = new JSONObject();
-
+        ControlSoporte.crearReportedano(idCliente, fechatecnico,null, info, idCliente, solucion):
         return new Respuesta("not implemented", new Contenido(t, ""));
     }
 
