@@ -1,8 +1,12 @@
 Operador = new Object();
 Operador.Soporte = new Object();
 Operador.Cliente = new Object();
-Operador.Soporte.get = function (){};
-Operador.Soporte.set = function (){};
+
+//Operador.Soporte.get = function (){};
+
+Operador.Soporte.set = function (){
+    
+};
 
 
 Operador.Cliente.mostrar = function (respuesta){
@@ -29,4 +33,6 @@ Operador.innit = function (){
         event.preventDefault();
         Operador.Cliente.get();
     });
+    Evento.boton($("op_b_enviarReporte"),Operador.Soporte.set);
+    Evento.cerrarSesion($("#l_op_cerrarSesion"));
 };

@@ -1,33 +1,33 @@
 <!-- Menu -->
-<div id="menu">
+<div id='menu'>
     <!-- ENDS menu-holder -->
-    <div id="menu-holder">
+    <div id='menu-holder'>
         <!-- Navigation -->
-        <ul id="nav" class="sf-menu">
-            <li id="l_op_operario"><a>Servicio Tecnico</a><span class="subheoper">Intente Resolver el problema del Cliente</span></li>
-            <li id="l_op_visitaTecnica"><a>Asignar Visita</a><span class="subheoper">Asigna visita tecnica al cliente</span></li>
-            <li id="l_op_cerrarSesion"><a>Cerrar Sesión</a>
+        <ul id='nav' class='sf-menu'>
+            <li id='l_op_operario'><a>Servicio Tecnico</a><span class='subheoper'>Intente Resolver el problema del Cliente</span></li>
+<!--            <li id='l_op_visitaTecnica'><a>Asignar Visita</a><span class='subheoper'>Asigna visita tecnica al cliente</span></li>-->
+            <li id='l_op_cerrarSesion'><a>Cerrar Sesión</a>
         </ul>
         <!-- Navigation -->
     </div>
     <!-- ENDS menu-holder -->
 </div>
 <!-- ENDS Menu -->
-<div id="error" class="error"></div>
-<article id="op_productos" class="panes">
+<div id='error' class='error'></div>
+<article id='op_productos' class='panes'>
     <h2>Servicio Tecnico</h2>
-    <ul class="blocks-thumbs thumbs-rollover">
+    <ul class='blocks-thumbs thumbs-rollover'>
         <li>
-            <ul id="op_listaEmpty">
+            <ul id='op_listaEmpty'>
                 <!-- Dinamico futuro:
                 Poner templates y sacar html del JS-->
             </ul>
         </li>
-        <li id="op_reporteDaño">
-            <form id="op_b_buscarCliente">
+        <li id='op_reporteDaño'>
+            <form id='op_b_buscarCliente'>
                 <label for='op_idCliente'>Cedula Cliente</label><br>
                 <input id='op_idCliente' type='number' placeholder='Cedula'><br>
-                <input type="submit" value="Buscar Por Cedula">
+                <input type='submit' value='Buscar Por Cedula'>
             </form>
             <div>
                 <label for='op_nombreCliente'>Nombre</label><br><!-- solo ver -->
@@ -44,24 +44,23 @@
         </li>
         <li>
             <div>
-                <button id='op_b_buscarCliente'>Crear Reporte</button>
-                <button id='op_b_actualizarReporte'>Actualizar Reporte</button>
-                <button id='op_b_actualizarReporte'>Cancelar</button>
+                <button id='op_b_enviarReporte'>Crear Reporte</button>
+                <button id='op_b_actualizarReporte'>Limpiar formulario</button>
             </div>
         </li>
     </ul>
 </article>
 
-<article id="op_visitaTecnica" class="panes hidden">
+<article id='op_visitaTecnica' class='panes hidden'>
     <h2>Asignar Visista Tecnica</h2>
-    <ul class="blocks-thumbs thumbs-rollover">
+    <ul class='blocks-thumbs thumbs-rollover'>
         <li>
-            <ul id="op_listaEmpty2">
+            <ul id='op_listaEmpty2'>
                 <!-- Dinamico futuro:
                 Poner templates y sacar html del JS-->
             </ul>
         </li>
-        <li id="op_asignarTecnico">
+        <li id='op_asignarTecnico'>
             <select>
                 <!-- lista de tecnicos -->
             </select>
