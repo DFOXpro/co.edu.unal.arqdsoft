@@ -11,7 +11,7 @@ import co.edu.unal.arqdsoft.dao.*;
 import co.edu.unal.arqdsoft.entidad.*;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -59,6 +59,10 @@ public class ServletSoporte extends HttpServlet {
                 r = tiempoTecnicos(obj);
             } else if (obj.get("accion").equals("setventa")) {
                 r = visitas(obj);
+            } else if (obj.get("accion").equals("setventa")) {
+                r = visitasPorEmpleado(obj);
+            } else if (obj.get("accion").equals("setventa")) {
+                r = visitasPorReporte(obj);
             } else {
                 r = new Respuesta("Error de comunicación", new Contenido());
             }// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -92,9 +96,9 @@ public class ServletSoporte extends HttpServlet {
         Empleado tecnico = ControlSoporte.buscarTecnico(idTecnico);
         JSONObject t = new JSONObject();
         if (tecnico != null) {
-                t.put("id", tecnico.getId());
-                t.put("nombre", tecnico.getNombre());
-                t.put("informacion", tecnico.getInformacion());
+            t.put("id", tecnico.getId());
+            t.put("nombre", tecnico.getNombre());
+            t.put("informacion", tecnico.getInformacion());
         }
 
         return new Respuesta("wii?", new Contenido(t, ""));
@@ -103,33 +107,47 @@ public class ServletSoporte extends HttpServlet {
     private Respuesta tiempoTecnicos(JSONObject obj) {
         //ArrayList<Producto> prdts = ControlProductos.getProductos();
         /*TEST*/
-        ArrayList<Producto> prdts = new ArrayList();
-        prdts.add(new Producto("Telefono", null, 0));
-        prdts.add(new Producto("Internet", null, 0));
-        prdts.add(new Producto("PBX", null, 0));
-        /*TEST FIN*/
+        JSONObject t = new JSONObject();
+
+        return new Respuesta("not implemented", new Contenido(t, ""));
+    }
+
+    private Respuesta visitas(JSONObject obj) {
+        List<VisitaTecnica> vT = ControlSoporte.visitas();
         JSONArray list = new JSONArray();
-        for (Producto temp : prdts) {
+        for (VisitaTecnica temp : vT) {
             JSONObject t = new JSONObject();
-            t.put("nombre", temp.getNombre());
+            t.put("fechavisita", temp.getFechaVisita());
+            t.put("cliente", temp.getReporte().getCliente());
+            t.put("direccion", temp.getDireccion());
             t.put("id", temp.getId());
             list.add(t);
         }
         return new Respuesta("", new Contenido(list, ""));
     }
 
-    private Respuesta visitas(JSONObject obj) {
-        //ArrayList<Producto> prdts = ControlProductos.getProductos();
-        /*TEST*/
-        ArrayList<Producto> prdts = new ArrayList();
-        prdts.add(new Producto("Telefono", null, 0));
-        prdts.add(new Producto("Internet", null, 0));
-        prdts.add(new Producto("PBX", null, 0));
-        /*TEST FIN*/
+    private Respuesta visitasPorEmpleado(JSONObject obj) {
+        List<VisitaTecnica> vT = ControlSoporte.visitasPorEmpleado(Integer.valueOf(obj.get("id").toString()));
         JSONArray list = new JSONArray();
-        for (Producto temp : prdts) {
+        for (VisitaTecnica temp : vT) {
             JSONObject t = new JSONObject();
-            t.put("nombre", temp.getNombre());
+            t.put("fechavisita", temp.getFechaVisita());
+            t.put("cliente", temp.getReporte().getCliente());
+            t.put("direccion", temp.getDireccion());
+            t.put("id", temp.getId());
+            list.add(t);
+        }
+        return new Respuesta("", new Contenido(list, ""));
+    }
+
+    private Respuesta visitasPorReporte(JSONObject obj) {
+      List<VisitaTecnica> vT = ControlSoporte.visitas(Integer.valueOf(obj.get("id").toString()));
+        JSONArray list = new JSONArray();
+        for (VisitaTecnica temp : vT) {
+            JSONObject t = new JSONObject();
+            t.put("fechavisita", temp.getFechaVisita());
+            t.put("cliente", temp.getReporte().getCliente());
+            t.put("direccion", temp.getDireccion());
             t.put("id", temp.getId());
             list.add(t);
         }
@@ -137,93 +155,39 @@ public class ServletSoporte extends HttpServlet {
     }
 
     private Respuesta crearVisistaTecnica(JSONObject obj) {
-        //ArrayList<Producto> prdts = ControlProductos.getProductos();
-        /*TEST*/
-        ArrayList<Producto> prdts = new ArrayList();
-        prdts.add(new Producto("Telefono", null, 0));
-        prdts.add(new Producto("Internet", null, 0));
-        prdts.add(new Producto("PBX", null, 0));
-        /*TEST FIN*/
-        JSONArray list = new JSONArray();
-        for (Producto temp : prdts) {
-            JSONObject t = new JSONObject();
-            t.put("nombre", temp.getNombre());
-            t.put("id", temp.getId());
-            list.add(t);
-        }
-        return new Respuesta("", new Contenido(list, ""));
+
+        JSONObject t = new JSONObject();
+
+        return new Respuesta("not implemented", new Contenido(t, ""));
     }
 
     private Respuesta crearRporteDano(JSONObject obj) {
-        //ArrayList<Producto> prdts = ControlProductos.getProductos();
-        /*TEST*/
-        ArrayList<Producto> prdts = new ArrayList();
-        prdts.add(new Producto("Telefono", null, 0));
-        prdts.add(new Producto("Internet", null, 0));
-        prdts.add(new Producto("PBX", null, 0));
-        /*TEST FIN*/
-        JSONArray list = new JSONArray();
-        for (Producto temp : prdts) {
-            JSONObject t = new JSONObject();
-            t.put("nombre", temp.getNombre());
-            t.put("id", temp.getId());
-            list.add(t);
-        }
-        return new Respuesta("", new Contenido(list, ""));
+
+        JSONObject t = new JSONObject();
+
+        return new Respuesta("not implemented", new Contenido(t, ""));
     }
 
     private Respuesta modificarReporteDano(JSONObject obj) {
-        //ArrayList<Producto> prdts = ControlProductos.getProductos();
-        /*TEST*/
-        ArrayList<Producto> prdts = new ArrayList();
-        prdts.add(new Producto("Telefono", null, 0));
-        prdts.add(new Producto("Internet", null, 0));
-        prdts.add(new Producto("PBX", null, 0));
-        /*TEST FIN*/
-        JSONArray list = new JSONArray();
-        for (Producto temp : prdts) {
-            JSONObject t = new JSONObject();
-            t.put("nombre", temp.getNombre());
-            t.put("id", temp.getId());
-            list.add(t);
-        }
-        return new Respuesta("", new Contenido(list, ""));
+
+        JSONObject t = new JSONObject();
+
+        return new Respuesta("not implemented", new Contenido(t, ""));
     }
 
     private Respuesta modificarVisitaTecnica(JSONObject obj) {
-        //ArrayList<Producto> prdts = ControlProductos.getProductos();
-        /*TEST*/
-        ArrayList<Producto> prdts = new ArrayList();
-        prdts.add(new Producto("Telefono", null, 0));
-        prdts.add(new Producto("Internet", null, 0));
-        prdts.add(new Producto("PBX", null, 0));
-        /*TEST FIN*/
-        JSONArray list = new JSONArray();
-        for (Producto temp : prdts) {
-            JSONObject t = new JSONObject();
-            t.put("nombre", temp.getNombre());
-            t.put("id", temp.getId());
-            list.add(t);
-        }
-        return new Respuesta("", new Contenido(list, ""));
+
+        JSONObject t = new JSONObject();
+
+        return new Respuesta("not implemented", new Contenido(t, ""));
     }
 
     private Respuesta getReporte(JSONObject obj) {
-        //ArrayList<Producto> prdts = ControlProductos.getProductos();
-        /*TEST*/
-        ArrayList<Producto> prdts = new ArrayList();
-        prdts.add(new Producto("Telefono", null, 0));
-        prdts.add(new Producto("Internet", null, 0));
-        prdts.add(new Producto("PBX", null, 0));
-        /*TEST FIN*/
-        JSONArray list = new JSONArray();
-        for (Producto temp : prdts) {
-            JSONObject t = new JSONObject();
-            t.put("nombre", temp.getNombre());
-            t.put("id", temp.getId());
-            list.add(t);
-        }
-        return new Respuesta("", new Contenido(list, ""));
+        int id=Integer.valueOf(obj.get("id").toString());
+        JSONObject t = new JSONObject();
+        t.put("Reporte", ControlSoporte.getReporte(id));
+
+        return new Respuesta("not implemented", new Contenido(t, ""));
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
