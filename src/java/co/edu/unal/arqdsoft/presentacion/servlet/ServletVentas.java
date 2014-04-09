@@ -57,7 +57,7 @@ public class ServletVentas extends HttpServlet {
                 out.write(r.toJSON());
             } catch (Exception ex) {
                 Logger.getLogger(ServletProductos.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            }// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
         } catch (Exception ex) {
             Logger.getLogger(ServletProductos.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Error con el request, no es valido:" + ex);
@@ -69,28 +69,11 @@ public class ServletVentas extends HttpServlet {
                 );
             } catch (Exception ex1) {
                 Logger.getLogger(ServletProductos.class.getName()).log(Level.SEVERE, null, ex1);
-            }
+            }//</editor-fold>
         }
 
     }
 
-    private Respuesta crearCliente(JSONObject obj) {
-        //ArrayList<Producto> prdts = ControlProductos.getProductos();
-        /*TEST*/
-        ArrayList<Producto> prdts = new ArrayList();
-        prdts.add(new Producto("Telefono", null, 0));
-        prdts.add(new Producto("Internet", null, 0));
-        prdts.add(new Producto("PBX", null, 0));
-        /*TEST FIN*/
-        JSONArray list = new JSONArray();
-        for (Producto temp : prdts) {
-            JSONObject t = new JSONObject();
-            t.put("nombre", temp.getNombre());
-            t.put("id", temp.getId());
-            list.add(t);
-        }
-        return new Respuesta("", new Contenido(list, ""));
-    }
 
     private Respuesta getCliente(JSONObject obj) {
         String error = "Problemas con la comunicación";
@@ -119,7 +102,7 @@ public class ServletVentas extends HttpServlet {
 
     private Respuesta setVenta(JSONObject ventaJson) {
         String error = "Problemas con la comunicación";
-        try{
+        try {
             ventaJson = (JSONObject) JSONValue.parse(ventaJson.get("datos").toString());
 
             int idEmpleado = Integer.parseInt(ventaJson.get("empleado").toString());
@@ -129,21 +112,21 @@ public class ServletVentas extends HttpServlet {
             String nombreCliente = "";
             String informacionCliente = "";
             try {
-                JSONObject clienteJson=(JSONObject) JSONValue.parse(ventaJson.get("cliente").toString());
+                JSONObject clienteJson = (JSONObject) JSONValue.parse(ventaJson.get("cliente").toString());
                 idCliente = Integer.parseInt(clienteJson.get("id").toString());
                 nombreCliente = clienteJson.get("nombre").toString();
                 informacionCliente = clienteJson.get("informacion").toString();
             } catch (Exception e) {
                 error = "Problemas con el cliente";
             }
-            boolean respuesta = ControlVentas.setVenta(idEmpleado, idCliente, nombreCliente, 
-            informacionCliente, idPlan, direccionVenta);
+            boolean respuesta = ControlVentas.setVenta(idEmpleado, idCliente, nombreCliente,
+                    informacionCliente, idPlan, direccionVenta);
             /*TEST*/
 //        respuesta = true;
 //        respuesta = false;
             /*TEST FIN*/
 
-            if(respuesta) {
+            if (respuesta) {
 //                t.put("nombre", p.getCliente().getNombre());
 //                t.put("id", p.getId());
 //                t.put("informacion", p.getCliente().getInformacion());
@@ -161,25 +144,6 @@ public class ServletVentas extends HttpServlet {
         }
     }
 
-    private Respuesta getClientes(JSONObject obj) {
-        String error = "Problemas con la comunicación";
-        try {
-            //boolean p = ControlProductos.borrarProducto((int) obj.get("datos"));
-            /*TEST*/
-            boolean p = true;
-            //boolean p = false;
-            /*TEST FIN*/
-            if (p) {
-                return new Respuesta("", new Contenido());
-            } else {
-                error = "No se pudo borrar el producto.";//ERROR de SEGURIDAD ?
-                throw new SecurityException(obj.get("datos").toString());
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(ServletProductos.class.getName()).log(Level.SEVERE, null, ex);
-            return new Respuesta(error, new Contenido());
-        }
-    }
 
     /**
      *
