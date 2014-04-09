@@ -116,36 +116,34 @@ public class ControlSoporteTest {
     /**
      * Test of crearVisitaTecnica method, of class ControlSoporte.
      */
-//    @Test
+    @Test
     public void testCrearVisitaTecnica() {
         System.out.println("crearVisitaTecnica");
-        int idCliente = 0;
-        Empleado tecnico = null;
-        Date fecha = null;
-        ReporteDano rD = null;
-        String dirreccion = "";
-        boolean expResult = false;
-        boolean result = ControlSoporte.crearVisitaTecnica(idCliente, tecnico, fecha, rD, dirreccion);
+        int idCliente = 987654321;
+        int idTecnico = 2;
+        Date fecha = new Date();
+        int idReporte = 1;
+        String direccion = "carrera 20 #23-30";
+        boolean expResult = true;
+        boolean result = ControlSoporte.crearVisitaTecnica(idCliente, idTecnico, fecha, idReporte, direccion);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of crearReportedano method, of class ControlSoporte.
      */
-    @Test
-    public void testCrearReportedano() {
-        System.out.println("crearReportedano");
-        int idCliente = 987654321;
-        Date fechaCreacionReporte = new Date();
-        String descripcion = "El internet no funciona, se reiniciaron los puertos";
-        int idOperador = 4;
-        boolean fueResuelto = true;
-        boolean expResult = true;
-        boolean result = ControlSoporte.crearReportedano(idCliente, fechaCreacionReporte, descripcion, idOperador, fueResuelto);
-        assertEquals(expResult, result);
-    }
+//    @Test
+//    public void testCrearReportedano() {
+//        System.out.println("crearReportedano");
+//        int idCliente = 987654321;
+//        Date fechaCreacionReporte = new Date();
+//        String descripcion = "El internet no funciona, se reiniciaron los puertos";
+//        int idOperador = 4;
+//        boolean fueResuelto = true;
+//        boolean expResult = true;
+//        boolean result = ControlSoporte.crearReportedano(idCliente, fechaCreacionReporte, descripcion, idOperador, fueResuelto);
+//        assertEquals(expResult, result);
+//    }
 
     /**
      * Test of modificarReportedano method, of class ControlSoporte.

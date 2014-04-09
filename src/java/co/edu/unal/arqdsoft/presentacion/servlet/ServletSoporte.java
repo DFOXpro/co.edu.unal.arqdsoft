@@ -25,6 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
 
 /**
  *
@@ -48,8 +49,8 @@ public class ServletSoporte extends HttpServlet {
             JSONObject obj = JSON.toObject(request);
             Respuesta r;
             /*if (obj.get("accion").equals("getCliente")) {
-                r = buscarTecnico(obj);
-            } else*/ if (obj.get("accion").equals("setventa")) {
+             r = buscarTecnico(obj);
+             } else*/ if (obj.get("accion").equals("setventa")) {
                 r = crearVisistaTecnica(obj);
             } else if (obj.get("accion").equals("setSoporte")) {
                 r = crearReporteDano(obj);
@@ -107,7 +108,6 @@ public class ServletSoporte extends HttpServlet {
 ////
 ////        return new Respuesta("wii?", new Contenido(t, ""));
 //    }
-
     private Respuesta tiempoTecnicos(JSONObject obj) {
         //ArrayList<Producto> prdts = ControlProductos.getProductos();
         /*TEST*/
@@ -145,7 +145,7 @@ public class ServletSoporte extends HttpServlet {
     }
 
     private Respuesta visitasPorReporte(JSONObject obj) {
-      List<VisitaTecnica> vT = ControlSoporte.visitas(Integer.valueOf(obj.get("id").toString()));
+        List<VisitaTecnica> vT = ControlSoporte.visitas(Integer.valueOf(obj.get("id").toString()));
         JSONArray list = new JSONArray();
         for (VisitaTecnica temp : vT) {
             JSONObject t = new JSONObject();
@@ -166,19 +166,20 @@ public class ServletSoporte extends HttpServlet {
     }
 
     private Respuesta crearReporteDano(JSONObject obj) {
-        JSONObject datos = (JSONObject) obj.get("datos");
+        JSONObject datos = (JSONObject) JSONValue.parse(obj.get("datos").toString());
         int idCliente = Integer.parseInt(datos.get("cliente").toString());
-        boolean enviatecnico = Boolean.valueOf(datos.get("enviatecnico").toString());
-        Date fechatecnico=null;
+        boolean enviaTecnico = Boolean.valueOf(datos.get("enviaTecnico").toString());
+        Date fechatecnico = null;
         try {
-            fechatecnico = new SimpleDateFormat("yy-MM-dd HH:mm:ss").parse(datos.get("fechatecnico").toString());
+            fechatecnico = new SimpleDateFormat("yy-mm-dd z").parse(datos.get("fechaTecnico").toString());
         } catch (ParseException ex) {
             Logger.getLogger(ServletSoporte.class.getName()).log(Level.SEVERE, null, ex);
         }
-        boolean solucion = Boolean.valueOf(datos.get("enviatecnico").toString());
+        boolean solucion = Boolean.valueOf(datos.get("solucion").toString());
         String info = datos.get("info").toString();
+        String direccion = datos.get("direccion").toString();
 
-        ControlSoporte.crearReportedano(idCliente, fechatecnico, info, idCliente, solucion);
+        ControlSoporte.crearReportedano(idCliente, fechatecnico, info, idCliente, solucion, enviaTecnico,direccion);
 //        return new Respuesta("not implemented", new Contenido(t, ""));
         return null;
     }
@@ -198,7 +199,7 @@ public class ServletSoporte extends HttpServlet {
     }
 
     private Respuesta getReporte(JSONObject obj) {
-        int id=Integer.valueOf(obj.get("id").toString());
+        int id = Integer.valueOf(obj.get("id").toString());
         JSONObject t = new JSONObject();
         t.put("Reporte", ControlSoporte.getReporte(id));
 

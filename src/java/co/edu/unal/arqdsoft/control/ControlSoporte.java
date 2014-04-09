@@ -70,19 +70,21 @@ public class ControlSoporte {
     /**
      *
      * @param idCliente
-     * @param tecnico
+     * @param idTecnico
      * @param fecha
-     * @param rD
-     * @param dirreccion
+     * @param idReporte
+     * @param direccion
      * @return
      */
-    public static boolean crearVisitaTecnica(int idCliente, Empleado tecnico, Date fecha, ReporteDano rD, String dirreccion) {
-        if (idCliente == 0 || idCliente < -1 || tecnico.getId() == 0 || tecnico.getId() < -1 || rD.getId() == 0 || rD.getId() < -1 || fecha == null
-                || dirreccion.isEmpty()) {
+    public static boolean crearVisitaTecnica(int idCliente,int idTecnico, Date fecha, int idReporte, String direccion) {
+        if (idCliente == 0 || idCliente < -1 || idTecnico == 0 || idTecnico < -1 || idReporte == 0 || idReporte < -1 || fecha == null
+                || direccion.isEmpty()) {
             return false;
         }
         DaoVisitaTecnica dVT = new DaoVisitaTecnica();
-        VisitaTecnica vT = new VisitaTecnica(tecnico, fecha, rD, dirreccion);
+        Empleado tecnico = DaoEmpleado.getEmpleado(idTecnico);
+        ReporteDano rD = DaoReporteDano.getReporte(idReporte);
+        VisitaTecnica vT = new VisitaTecnica(tecnico, fecha, rD, direccion);
         return dVT.crearVisita(vT);
     }
 
@@ -95,7 +97,8 @@ public class ControlSoporte {
      * @param fueResuelto
      * @return
      */
-    public static boolean crearReportedano(int idCliente, Date fechaCreacionReporte, String descripcion, int idOperador, boolean fueResuelto) {
+    public static boolean crearReportedano(int idCliente, Date fechaCreacionReporte, String descripcion, int idOperador, 
+            boolean fueResuelto, boolean crearVisita, String direccionVisita) {
         if (idCliente == 0 || idCliente < -1 || idOperador == 0 || idOperador < -1 || fechaCreacionReporte == null) {
             return false;
         }
