@@ -37,7 +37,7 @@ public class ControlSoporte {
         List<Empleado> n = DaoEmpleado.buscarEmpleadosDisponibles();
         Map<Integer, ArrayList<Date>> d = new LinkedHashMap<>();
         for (Empleado empleado : n) {
-            d.put(empleado.getId(),null);//se cambio esto chambonamente por tiempo
+            d.put(empleado.getId(), null);//se cambio esto chambonamente por tiempo
         }
         return d;
     }
@@ -47,13 +47,12 @@ public class ControlSoporte {
      * @param rP
      * @return
      */
-    public static List<VisitaTecnica> visitas(ReporteDano rP) {
-        if (rP == null ) {
-            return null;
-        }
-        
-        List<VisitaTecnica> visitasTecnicas = DaoVisitaTecnica.getVisitaTecnica(rP);
-
+    public static List<VisitaTecnica> visitas() {
+        List<VisitaTecnica> visitasTecnicas = DaoVisitaTecnica.obtenerVisitassinTecnico();
+        return visitasTecnicas;
+    }
+    public static List<VisitaTecnica> visitas(int id) {
+        List<VisitaTecnica> visitasTecnicas = DaoVisitaTecnica.getVisitasTecnicasReporte(id);
         return visitasTecnicas;
     }
 
@@ -72,7 +71,7 @@ public class ControlSoporte {
             return false;
         }
         DaoVisitaTecnica dVT = new DaoVisitaTecnica();
-        VisitaTecnica vT = new VisitaTecnica( tecnico, fecha, rD, dirreccion);
+        VisitaTecnica vT = new VisitaTecnica(tecnico, fecha, rD, dirreccion);
         return dVT.crearVisita(vT);
     }
 
@@ -92,18 +91,26 @@ public class ControlSoporte {
         return DaoReporteDano.crearReporteDano(fecha, dirreccion, fueResuelto, idOperador, idCliente);
     }
 
-    public static boolean modificarReportedano(ReporteDano old, ReporteDano  new1) {
+    public static boolean modificarReportedano(ReporteDano old, ReporteDano new1) {
         if (old == null || new1 == null) {
             return false;
         }
-        return DaoReporteDano.modificarReporteDano(old, new1);}
+        return DaoReporteDano.modificarReporteDano(old, new1);
+    }
 
-    public static ReporteDano getReporte(int id){
-        if(id==0||id<-1){
+    public static boolean modificarVisitaTecnica(VisitaTecnica old, VisitaTecnica new1) {
+        if (old == null || new1 == null) {
+            return false;
+        }
+        return DaoVisitaTecnica.modificarVisitaTecnica(old, new1);
+    }
+
+    public static ReporteDano getReporte(int id) {
+        if (id == 0 || id < -1) {
             return null;
         }
         return DaoReporteDano.getReporte(id);
-    
+
     }
 
 }
