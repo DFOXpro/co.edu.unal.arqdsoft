@@ -60,7 +60,18 @@ public class DaoVisitaTecnica {
     }
 
     public static ArrayList<VisitaTecnica> obtenerVisitasSinTecnico(){
-        return null;
+        EntityManager em = emf.createEntityManager();
+        ArrayList<VisitaTecnica> visitasTecnicas =null;
+        Query q = em.createQuery("SELECT v FROM VisitaTecnica v "
+                + "WHERE Tecnico_id = null");
+        try {
+            visitasTecnicas = (ArrayList<VisitaTecnica>) q.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
+        return visitasTecnicas;
     }
     
      public static ArrayList<VisitaTecnica> obtenerVisitasPorTecnico(int idTecnico){
