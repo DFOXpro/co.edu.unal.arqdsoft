@@ -50,6 +50,7 @@ public class ControlSoporte {
         List<VisitaTecnica> visitasTecnicas = DaoVisitaTecnica.obtenerVisitasSinTecnico();
         return visitasTecnicas;
     }
+
     public static List<VisitaTecnica> visitasPorEmpleado(int id) {
         List<VisitaTecnica> visitasTecnicas = DaoVisitaTecnica.obtenerVisitasPorTecnico(id);
         return visitasTecnicas;
