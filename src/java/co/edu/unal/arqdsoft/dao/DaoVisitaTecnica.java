@@ -22,11 +22,12 @@ public class DaoVisitaTecnica {
 
     static EntityManagerFactory emf = Persistence.createEntityManagerFactory("co-edu-unal-arqdsoftPU");
     
-    public static ArrayList<VisitaTecnica> getVisitaTecnica(ReporteDano reporteDano) {
+      public static ArrayList<VisitaTecnica> getVisitasTecnicasReporte(int idReporte) {
         EntityManager em = emf.createEntityManager();
+        ReporteDano reporte=em.find(ReporteDano.class, idReporte);
         ArrayList<VisitaTecnica> visitasTecnicas = new ArrayList();
         Query q = em.createQuery("SELECT u FROM VisitaTecnica u "+
-                "WHERE u.reporte.id = :idReporte").setParameter("idReporte", reporteDano.getId());
+                "WHERE u.reporte.id = :idReporte").setParameter("idReporte", reporte.getId());
         try {
             visitasTecnicas = (ArrayList<VisitaTecnica>) q.getResultList();
         } catch (Exception e) {
@@ -40,6 +41,7 @@ public class DaoVisitaTecnica {
     public static boolean modificarVisitaTecnica(VisitaTecnica old, VisitaTecnica new1) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
     
     /**
      *
