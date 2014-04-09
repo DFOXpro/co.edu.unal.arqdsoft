@@ -13,7 +13,7 @@
     <!-- ENDS menu-holder -->
 </div>
 <!-- ENDS Menu -->
-<div id='error'></div>
+<div id="error" class="error"></div>
 <article id="op_productos" class="panes">
     <h2>Servicio Tecnico</h2>
     <ul class="blocks-thumbs thumbs-rollover">
@@ -24,25 +24,29 @@
             </ul>
         </li>
         <li id="op_reporteDaño">
-            <label for='op_idCliente'>Cedula Cliente</label><br>
-            <input id='op_idCliente' type='number' placeholder='05'><br>
+            <form id="op_b_buscarCliente">
+                <label for='op_idCliente'>Cedula Cliente</label><br>
+                <input id='op_idCliente' type='number' placeholder='Cedula'><br>
+                <input type="submit" value="Buscar Por Cedula">
+            </form>
             <div>
                 <label for='op_nombreCliente'>Nombre</label><br><!-- solo ver -->
-                <input id='op_nombreCliente' type='text' placeholder='05' disabled><br>
+                <input id='op_nombreCliente' type='text' disabled><br>
             </div>
             <div>
-                <label for='op_informacionDaño'>Informacion Daño</label><br>
-                <input id='op_informacionDaño' type='text' placeholder='05'><br>
+                <label for='op_informacionDano'>Informacion Daño</label><br>
+                <textarea id='op_informacionDano' placeholder='Descripción detallada del error.'></textarea><br>
             </div>
             <div>
                 <label for='op_solucionOfrecida'>Solucion ofrecida</label><br>
-                <input id='op_solucionOfrecida' type='number' placeholder='05'><br>
+                <textarea id='op_solucionOfrecida' placeholder='Descripción detallada de la solución.'></textarea><br>
             </div>
         </li>
         <li>
             <div>
-                <button id='op_b_buscarCliente'>Buscar Por Cedula</button>            
-                <button id='op_b_actualizarReporte'>Actualizar Reporte</button>            
+                <button id='op_b_buscarCliente'>Crear Reporte</button>
+                <button id='op_b_actualizarReporte'>Actualizar Reporte</button>
+                <button id='op_b_actualizarReporte'>Cancelar</button>
             </div>
         </li>
     </ul>
@@ -68,9 +72,9 @@
         </li>
         <li>
             <div>
-                <button id='op_b_buscarTecnico'>Buscar Tecnico</button>            
-                <button id='op_b_enviarTecnico'>Enviar Tecnico</button>            
+                <button id='op_b_buscarTecnico'>Buscar tecnico</button>            
+                <button id='op_b_ReportarDano'>Reportar daño</button>            
             </div>
         </li>
 </article>
-<script>Ventas.innit();</script>
+<script>Operador.innit();</script>
