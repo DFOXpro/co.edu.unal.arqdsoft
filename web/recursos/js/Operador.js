@@ -11,10 +11,10 @@ Operador.Soporte.set = function (){
     //if ($("#op_planDano").find(":selected").val() == "-1") s += "Seleccione el plan dañado primero.<br>";
     if ($("#op_informacionDano").val().length < 20) s += "Escriba una información detallada del error.<br>";
     //if ($("#op_solucionOfrecida").val().length < 20) s += "Escriba una solución dada detallada de la solucion dada.<br>";
-    if ($("#op_cb_Solucinado").is(':checked'))
+    if ($("#op_cb_Solucinado").is(':checked')){
         if($("#op_cb_EnvioDeTecnico").is(':checked'))
             s += "para qué enviar tecnico si se solucionó el problema.<br>";
-    else if(!$("#op_cb_EnvioDeTecnico").is(':checked'))
+    } else if(!$("#op_cb_EnvioDeTecnico").is(':checked'))
         s += "Si no se solucionó el problema envía un tecnico.<br>";
     if($("#op_cb_EnvioDeTecnico").is(':checked'))
         if($("#op_i_fechaTecnico").val()=="" | new Date() > $("#op_i_fechaTecnico").datepicker("getDate"))
@@ -29,6 +29,7 @@ Operador.Soporte.set = function (){
             enviaTecnico: $("op_cb_EnvioDeTecnico").is(':checked'),
             solucion: $("op_cb_Solucinado").is(':checked'),
             info: $("#op_informacionDano").val()//,
+            direccion: $("op_i_direccionVisita")
             //solucion: $("#op_solucionOfrecida").val()
         };
 //{"cliente":"1234567","enviaTecnico":false,"fechaTecnico":"2014-04-09T05:00:00.000Z","solucion":false,"info":"awqeqeqeqeqeqeqeqweqweqew"}
