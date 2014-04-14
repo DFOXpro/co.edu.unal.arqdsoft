@@ -8,6 +8,7 @@ package co.edu.unal.arqdsoft.control;
 import co.edu.unal.arqdsoft.dao.*;
 import co.edu.unal.arqdsoft.entidad.*;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -17,7 +18,7 @@ public class ControlVentas {
 
     /**
      *
-     * @param idEmpleado identificacion del idEmpleado que realizo la venta
+     * @param idVendedor identificacion del idVendedor que realizo la venta
      * @param idCliente idCliente al que se el hizo la venta
      * @param nombreCliente
      * @param informacionCliente
@@ -25,24 +26,33 @@ public class ControlVentas {
      * @param direccionVenta
      * @return retorna si se hizo la venta
      */
-    public static boolean ventaNuevoCliente(int idEmpleado, long idCliente, String nombreCliente, 
+    public static boolean ventaNuevoCliente(int idVendedor, long idCliente, String nombreCliente, 
             String informacionCliente, int idPlan, String direccionVenta) {
         boolean exito=false;
-        if(DaoCliente.nuevoCliente(idCliente, nombreCliente, informacionCliente)==true)
-            exito= DaoVenta.CrearVenta(idCliente, idEmpleado, idPlan, direccionVenta);
+        Empleado vendedor = DaoEmpleado.getEmpleado(idVendedor);
+        Plan plan = DaoPlan.getPlan(idPlan);
+        Cliente cliente= new Cliente(idCliente, nombreCliente, informacionCliente, null, null);
+        if(DaoCliente.nuevoCliente(cliente)==true)
+            exito= DaoVenta.CrearVenta(new Venta(new Date(),direccionVenta,cliente,vendedor,plan));
         return exito;
     }
 
     /**
      *
-     * @param idEmpleado
+     * @param idVendedor
      * @param idCliente
      * @param idPlan
-     * @param dirreccion
+     * @param direccion
      * @return
      */
-    public static boolean ventaClienteExiste(int idEmpleado, long idCliente, int idPlan, String dirreccion) {
-        return DaoVenta.CrearVenta(idCliente, idEmpleado, idPlan, dirreccion);
+    public static boolean ventaClienteExiste(int idVendedor, long idCliente, int idPlan, String direccion) {
+        Cliente cliente = DaoCliente.getCliente(idCliente);
+        Empleado vendedor = DaoEmpleado.getEmpleado(idVendedor);
+        Plan plan = DaoPlan.getPlan(idPlan);
+        if(cliente==null || vendedor == null || plan==null)
+            return false;
+        Venta venta = new Venta(new Date(),direccion,cliente,vendedor,plan);
+        return DaoVenta.CrearVenta(venta);
     }
 
     /**

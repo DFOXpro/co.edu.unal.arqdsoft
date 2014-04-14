@@ -44,82 +44,70 @@ public class ControlVentasTest {
     /**
      * Test of venta method, of class ControlVentas.
      */
-//    @Test
-//    public void testVenta() {
-//        System.out.println("venta");
-//        int empleado = 3;
-//        String idCliente = "123456789";
-//        String nombre = "Gengiskan";
-//        String informacion = "Emperador de Asia";
-//        int plan = 2;
-//        String dirreccion = "China";
-//        boolean expResult = true;
-//        boolean result = ControlVentas.venta(empleado, idCliente, nombre, informacion, plan, dirreccion);
-//        assertEquals(expResult, result);
-//    }
-//
-//    /**
-//     * Test of ventaClienteExiste method, of class ControlVentas. Funciona
-//     */
-//    @Test
-//    public void testVentaCE() {
-//        System.out.println("ventaCE");
-//        int empleado = 3;
-//        int cliente = 123456789;
-//        int plan = 1;
-//        String dirreccion = "China";
-//        boolean expResult = true;
-//        boolean result = ControlVentas.ventaClienteExiste(empleado, cliente, plan, dirreccion);
-//        assertEquals(expResult, result);
-//    }
+    @Test
+    public void testVenta() {
+        System.out.println("ventaNuevoCliente");
+        int empleado = 3;
+        long idCliente = 1000232453;
+        String nombre = "Nueva dao";
+        String informacion = "Emperador de Asia";
+        int plan = 2;
+        String dirreccion = "China";
+        boolean expResult = true;
+        boolean result = ControlVentas.ventaNuevoCliente(empleado, idCliente, nombre, informacion, plan, dirreccion);
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of ventaClienteExiste method, of class ControlVentas. Funciona
+     */
+    //@Test
+    public void testVentaCE() {
+        System.out.println("ventaCE");
+        int empleado = 3;
+        int cliente = 123456789;
+        int plan = 1;
+        String dirreccion = "China";
+        boolean expResult = true;
+        boolean result = ControlVentas.ventaClienteExiste(empleado, cliente, plan, dirreccion);
+        assertEquals(expResult, result);
+    }
 
     /**
      * Test of agregarCliente method, of class ControlVentas.
      */
-//    @Test
-//    public void testAgregarCliente() {
-//        System.out.println("agregarCliente");
-//        int id = 0;
-//        String nombre = "";
-//        String informacion = "";
-//        boolean expResult = false;
-//        boolean result = ControlVentas.agregarCliente(id, nombre, informacion);
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//
-//    /**
-//     * Test of getclientes method, of class ControlVentas.
-//     */
-//    @Test
-//    public void testGetclientes() {
-//        System.out.println("getclientes");
-//        ArrayList<Cliente> expResult = null;
-//        ArrayList<Cliente> result = ControlVentas.getclientes();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//
-//    /**
-//     * Test of getcliente method, of class ControlVentas.
-//     */
-//    @Test
-//    public void testGetcliente() {
-//        System.out.println("getcliente");
-//        int id = 0;
-//        Cliente expResult = null;
-//        Cliente result = ControlVentas.getcliente(id);
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//
-//    /**
-//     * Test of setVenta method, of class ControlVentas.
-//     */
-    @Test
+
+    /**
+     * Test of getclientes method, of class ControlVentas.
+     */
+    //@Test
+    public void testGetclientes() {
+        System.out.println("getclientes");
+        ArrayList<Cliente> expResult = null;
+        ArrayList<Cliente> result = ControlVentas.getclientes();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getcliente method, of class ControlVentas.
+     */
+    //@Test
+    public void testGetcliente() {
+        System.out.println("getcliente");
+        int id = 0;
+        Cliente expResult = null;
+        Cliente result = ControlVentas.getcliente(id);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of setVenta method, of class ControlVentas.
+     */
+    //@Test
     public void testSetVenta() {
         System.out.println("setVenta"); 
         boolean expResult = true;

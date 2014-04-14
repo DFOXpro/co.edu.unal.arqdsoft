@@ -22,17 +22,14 @@ public class DaoCliente {
 
     /**
      *
-     * @param id
-     * @param nombre
-     * @param informacion
+     * @param cliente
      * @return 
      * 
      */
-    public static boolean nuevoCliente(long id, String nombre, String informacion) {
+    public static boolean nuevoCliente(Cliente cliente) {
         EntityManager em = emf.createEntityManager();
         boolean exito=false;
         em.getTransaction().begin();
-        Cliente cliente= new Cliente(id, nombre, informacion, null, null);
         try {
             em.persist(cliente);
             em.getTransaction().commit();
@@ -66,7 +63,7 @@ public class DaoCliente {
     }
 
     /**
-     *
+     * @deprecated 
      * @return
      */
     public static ArrayList<Cliente> getClientes() {

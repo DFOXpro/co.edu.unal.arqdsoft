@@ -26,19 +26,10 @@ public class DaoVenta {
 
     /**
      *
-     * @param idCliente
-     * @param idVendedor
-     * @param idPlan
-     * @param direccion
+     * @param venta
      * @return 
      */
-    public static boolean CrearVenta(long idCliente, int idVendedor, int idPlan, String direccion) {
-        Cliente cliente = DaoCliente.getCliente(idCliente);
-        Empleado vendedor = DaoEmpleado.getEmpleado(idVendedor);
-        Plan plan = DaoPlan.getPlan(idPlan);
-        if(cliente==null || vendedor == null || plan==null)
-            return false;
-        Venta venta = new Venta(new Date(),direccion,cliente,vendedor,plan);
+    public static boolean CrearVenta(Venta venta) {
         EntityManager em = emf.createEntityManager();
         boolean exito = false;
         try {
