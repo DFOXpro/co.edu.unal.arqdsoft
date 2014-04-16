@@ -95,14 +95,33 @@ public class ControlSoporte {
      * @param descripcion
      * @param idOperador
      * @param fueResuelto
+     * @param crearVisita
+     * @param direccionVisita
+     * @param fechaVisita
      * @return
      */
-    public static boolean crearReportedano(int idCliente, Date fechaCreacionReporte, String descripcion, int idOperador, 
-            boolean fueResuelto, boolean crearVisita, String direccionVisita) {
-        if (idCliente == 0 || idCliente < -1 || idOperador == 0 || idOperador < -1 || fechaCreacionReporte == null) {
+    public static boolean crearReporteDano(int idCliente, Date fechaCreacionReporte, String descripcion, int idOperador, 
+            boolean fueResuelto, boolean crearVisita, String direccionVisita, Date fechaVisita) {
+        if (idCliente == 0 || idCliente < -1 || idOperador == 0 || idOperador < -1 || fechaCreacionReporte == null
+                || fechaVisita == null) {
             return false;
         }
-        return DaoReporteDano.crearReporteDano(fechaCreacionReporte, descripcion, fueResuelto, idOperador, idCliente);
+        boolean exito=false;
+        Cliente cliente = DaoCliente.getCliente(idCliente);
+        Empleado operador = DaoEmpleado.getEmpleado(idOperador);
+        VisitaTecnica visita;
+        ReporteDano reporte = new ReporteDano(fechaCreacionReporte,descripcion,fueResuelto,cliente,operador,null);
+        reporte = DaoReporteDano.crearReporteDano(reporte);
+        if(reporte==null)
+            return exito;
+        exito=true;
+        System.out.println("id "+reporte.getId());
+        if(crearVisita==true){
+            //se crea una visita sin tecnico asignado
+            visita = new VisitaTecnica(null, fechaVisita, reporte,direccionVisita);
+            exito=DaoVisitaTecnica.crearVisita(visita);
+        }
+        return exito;
     }
 
     /**

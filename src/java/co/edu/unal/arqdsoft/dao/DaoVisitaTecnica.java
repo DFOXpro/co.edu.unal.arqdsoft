@@ -95,7 +95,7 @@ public class DaoVisitaTecnica {
      * @param vT
      * @return
      */
-    public boolean crearVisita(VisitaTecnica vT) {
+    public static boolean crearVisita(VisitaTecnica vT) {
         EntityManager em = emf.createEntityManager();
 
         try {

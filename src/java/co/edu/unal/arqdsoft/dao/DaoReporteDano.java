@@ -24,32 +24,21 @@ public class DaoReporteDano {
     
     /**
      *
-     * @param fechaCreacion
-     * @param descripcion
-     * @param resuelto
-     * @param idOperador
-     * @param idCliente
-     * @return
+     * @param reporte
+     * @return retorna el reporte, null si no se crea
      */
-    public static boolean crearReporteDano(Date fechaCreacion, String descripcion, boolean resuelto, int idOperador, long idCliente) {
-        Cliente cliente = DaoCliente.getCliente(idCliente);
-        Empleado operador = DaoEmpleado.getEmpleado(idOperador);
-        if(cliente==null || operador == null)
-            return false;
-        ReporteDano reporte = new ReporteDano(fechaCreacion,descripcion,resuelto,cliente,operador,null);
+    public static ReporteDano crearReporteDano(ReporteDano reporte) {
         EntityManager em = emf.createEntityManager();
-        boolean exito = false;
         try {
             em.getTransaction().begin();
             em.persist(reporte);
             em.getTransaction().commit();
-            exito = true;
         } catch (Exception e) {
             em.getTransaction().rollback();
-            exito = false;
+            return null;
         } finally {
             em.close();
-            return exito;
+            return reporte;
         }
     }
     
