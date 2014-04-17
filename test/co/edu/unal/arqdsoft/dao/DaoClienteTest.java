@@ -61,8 +61,9 @@ public class DaoClienteTest {
         int id = 12345678;
         String nombre = "Andres Perez";
         String informacion = "carrera 24 #48-50";
+        Cliente cliente = new Cliente(id,nombre,informacion,null,null);
         boolean expResult = true;//true para la primera ejecucion, si no se cambia el id debe ponerse false
-        boolean result = DaoCliente.nuevoCliente(id, nombre, informacion);
+        boolean result = DaoCliente.nuevoCliente(cliente);
         assertEquals(expResult, result);
     }
 

@@ -168,6 +168,7 @@ public class ServletSoporte extends HttpServlet {
     private Respuesta crearReporteDano(JSONObject obj) {
         JSONObject datos = (JSONObject) JSONValue.parse(obj.get("datos").toString());
         int idCliente = Integer.parseInt(datos.get("cliente").toString());
+        int idOperador = Integer.parseInt(datos.get("operador").toString());;
         boolean enviaTecnico = Boolean.valueOf(datos.get("enviaTecnico").toString());
         Date fechatecnico = null;
         try {
@@ -179,7 +180,7 @@ public class ServletSoporte extends HttpServlet {
         String info = datos.get("info").toString();
         String direccion = datos.get("direccion").toString();
 
-        ControlSoporte.crearReportedano(idCliente, fechatecnico, info, idCliente, solucion, enviaTecnico,direccion);
+        ControlSoporte.crearReporteDano(idCliente, fechatecnico, info, idOperador, solucion, enviaTecnico,direccion,fechatecnico);
 //        return new Respuesta("not implemented", new Contenido(t, ""));
         return null;
     }

@@ -6,6 +6,11 @@
 
 package co.edu.unal.arqdsoft.dao;
 
+import co.edu.unal.arqdsoft.entidad.Cliente;
+import co.edu.unal.arqdsoft.entidad.Empleado;
+import co.edu.unal.arqdsoft.entidad.Plan;
+import co.edu.unal.arqdsoft.entidad.Venta;
+import java.util.Date;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -44,12 +49,16 @@ public class DaoVentaTest {
     @Test
     public void testCrearVenta() {
         System.out.println("CrearVenta");
-        long idCliente = 80128928;
+        long idCliente = 987654321;
         int idVendedor = 3;
         int idPlan = 1;
         String direccion = "carrera 15 #27 18";
+        Cliente cliente = DaoCliente.getCliente(idCliente);
+        Empleado vendedor = DaoEmpleado.getEmpleado(idVendedor);
+        Plan plan = DaoPlan.getPlan(idPlan);
+        Venta venta  = new Venta(new Date(),direccion,cliente,vendedor,plan);
         boolean expResult = true;
-        boolean result = DaoVenta.CrearVenta(idCliente, idVendedor, idPlan, direccion);
+        boolean result = DaoVenta.CrearVenta(venta);
         assertEquals(expResult, result);
     }
     

@@ -116,13 +116,13 @@ public class ControlSoporteTest {
     /**
      * Test of crearVisitaTecnica method, of class ControlSoporte.
      */
-    @Test
+    //@Test
     public void testCrearVisitaTecnica() {
         System.out.println("crearVisitaTecnica");
         int idCliente = 987654321;
         int idTecnico = 2;
         Date fecha = new Date();
-        int idReporte = 1;
+        int idReporte = 32768;
         String direccion = "carrera 20 #23-30";
         boolean expResult = true;
         boolean result = ControlSoporte.crearVisitaTecnica(idCliente, idTecnico, fecha, idReporte, direccion);
@@ -130,20 +130,23 @@ public class ControlSoporteTest {
     }
 
     /**
-     * Test of crearReportedano method, of class ControlSoporte.
+     * Test of crearReporteDano method, of class ControlSoporte.
      */
-//    @Test
-//    public void testCrearReportedano() {
-//        System.out.println("crearReportedano");
-//        int idCliente = 987654321;
-//        Date fechaCreacionReporte = new Date();
-//        String descripcion = "El internet no funciona, se reiniciaron los puertos";
-//        int idOperador = 4;
-//        boolean fueResuelto = true;
-//        boolean expResult = true;
-//        boolean result = ControlSoporte.crearReportedano(idCliente, fechaCreacionReporte, descripcion, idOperador, fueResuelto);
-//        assertEquals(expResult, result);
-//    }
+    @Test
+    public void testCrearReportedano() {
+        System.out.println("crearReportedano");
+        int idCliente = 123456789;
+        Date fechaCreacionReporte = new Date();
+        String descripcion = "El internet no funciona";
+        int idOperador = 4;
+        boolean fueResuelto = true;
+        String direccionVisita = "calle falsa 123";
+        boolean crearVisita = true;
+        Date fechaVisita = new Date();
+        int idSoporte=ControlSoporte.crearReporteDano(idCliente,fechaCreacionReporte,descripcion,
+                idOperador,fueResuelto,crearVisita,direccionVisita,fechaVisita);
+        System.out.println("id reporte " + idSoporte);
+    }
 
     /**
      * Test of modificarReportedano method, of class ControlSoporte.

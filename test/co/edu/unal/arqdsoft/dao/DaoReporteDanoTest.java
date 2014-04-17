@@ -5,6 +5,8 @@
  */
 package co.edu.unal.arqdsoft.dao;
 
+import co.edu.unal.arqdsoft.entidad.Cliente;
+import co.edu.unal.arqdsoft.entidad.Empleado;
 import co.edu.unal.arqdsoft.entidad.ReporteDano;
 import java.util.Date;
 import org.junit.After;
@@ -49,9 +51,12 @@ public class DaoReporteDanoTest {
         String descripcion = "Internet no funciona, se reiniciaron los puertos";
         boolean resuelto = true;
         int idOperador = 4;
-        long idCliente = 80128928;
-        boolean expResult = false;
-        boolean result = DaoReporteDano.crearReporteDano(fechaCreacion, descripcion, resuelto, idOperador, idCliente);
+        long idCliente = 987654321;
+        Cliente cliente = DaoCliente.getCliente(idCliente);
+        Empleado operador = DaoEmpleado.getEmpleado(idOperador);
+        ReporteDano reporte = new ReporteDano(fechaCreacion,descripcion,resuelto,cliente,operador,null);
+        long expResult= 987654321;
+        long result = DaoReporteDano.crearReporteDano(reporte).getCliente().getId();
         assertEquals(expResult, result);
     }
 //    @Test
