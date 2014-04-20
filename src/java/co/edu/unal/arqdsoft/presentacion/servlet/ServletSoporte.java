@@ -54,19 +54,19 @@ public class ServletSoporte extends HttpServlet {
                 r = crearVisistaTecnica(obj);
             } else if (obj.get("accion").equals("setSoporte")) {
                 r = crearReporteDano(obj);
-            } else if (obj.get("accion").equals("setventa")) {
+            } else if (obj.get("accion").equals("getReporte")) {
                 r = getReporte(obj);
-            } else if (obj.get("accion").equals("setventa")) {
+            } else if (obj.get("accion").equals("modificarVisitaTecnica")) {
                 r = modificarVisitaTecnica(obj);
-            } else if (obj.get("accion").equals("setventa")) {
+            } else if (obj.get("accion").equals("modificarReporteDaño")) {
                 r = modificarReporteDano(obj);
-            } else if (obj.get("accion").equals("setventa")) {
+            } else if (obj.get("accion").equals("tiempoTecnicos")) {
                 r = tiempoTecnicos(obj);
-            } else if (obj.get("accion").equals("setventa")) {
+            } else if (obj.get("accion").equals("visitas")) {
                 r = visitas(obj);
-            } else if (obj.get("accion").equals("setventa")) {
+            } else if (obj.get("accion").equals("visitarPorEmpleado")) {
                 r = visitasPorEmpleado(obj);
-            } else if (obj.get("accion").equals("setventa")) {
+            } else if (obj.get("accion").equals("visitasPorReporte")) {
                 r = visitasPorReporte(obj);
             } else {
                 r = new Respuesta("Error de comunicación", new Contenido());
