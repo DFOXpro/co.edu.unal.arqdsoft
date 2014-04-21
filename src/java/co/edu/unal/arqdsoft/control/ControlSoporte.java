@@ -106,16 +106,15 @@ public class ControlSoporte {
                 || fechaVisita == null) {
             return 0;
         }
-        int idReporte = 0;
         Cliente cliente = DaoCliente.getCliente(idCliente);
         Empleado operador = DaoEmpleado.getEmpleado(idOperador);
         VisitaTecnica visita;
-        ReporteDano reporte = new ReporteDano(fechaCreacionReporte,descripcion,fueResuelto,cliente,operador,null);
+        ReporteDano reporte = new ReporteDano(new Date(),descripcion,fueResuelto,cliente,operador,null);
         reporte = DaoReporteDano.crearReporteDano(reporte);
         if(reporte==null)
-            return idReporte;
-        idReporte = reporte.getId();
-        if(crearVisita==true){
+            return 0;
+        int idReporte = reporte.getId();
+        if(crearVisita){
             //se crea una visita sin tecnico asignado
             visita = new VisitaTecnica(null, fechaVisita, reporte,direccionVisita);
             DaoVisitaTecnica.crearVisita(visita);

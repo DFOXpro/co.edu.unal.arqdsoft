@@ -171,18 +171,31 @@ public class ServletSoporte extends HttpServlet {
         int idOperador = Integer.parseInt(datos.get("operador").toString());;
         boolean enviaTecnico = Boolean.valueOf(datos.get("enviaTecnico").toString());
         Date fechatecnico = null;
+        boolean solucion = Boolean.valueOf(datos.get("solucion").toString());
         try {
+            if(!solucion)
             fechatecnico = new SimpleDateFormat("yy-mm-dd z").parse(datos.get("fechaTecnico").toString());
         } catch (ParseException ex) {
             Logger.getLogger(ServletSoporte.class.getName()).log(Level.SEVERE, null, ex);
         }
-        boolean solucion = Boolean.valueOf(datos.get("solucion").toString());
         String info = datos.get("info").toString();
         String direccion = datos.get("direccion").toString();
 
-        ControlSoporte.crearReporteDano(idCliente, fechatecnico, info, idOperador, solucion, enviaTecnico,direccion,fechatecnico);
+        if(
+            ControlSoporte.crearReporteDano(
+                idCliente,
+                fechatecnico,
+                info,
+                idOperador,
+                solucion,
+                enviaTecnico,
+                direccion,
+                fechatecnico
+            )
+            == 0
+        ) return new Respuesta("Error de servidor", new Contenido(null, ""));
 //        return new Respuesta("not implemented", new Contenido(t, ""));
-        return null;
+        return new Respuesta("Reporte creado con exito", new Contenido(null, ""));
     }
 
     private Respuesta modificarReporteDano(JSONObject obj) {

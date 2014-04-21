@@ -110,5 +110,4 @@ public class DaoVisitaTecnica {
             return true;
         }
     }
-    
 }

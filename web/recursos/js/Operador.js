@@ -27,10 +27,12 @@ Operador.Soporte.set = function (){
     else {
         var data = {
             cliente : $("#op_idCliente").val(),
+            operador : usuario.id,
             //plan: $("#op_planDano").find(":selected").val(),
-            fechaTecnico: $("#op_i_fechaTecnico").datepicker("getDate").toJSON(),
+            fechaTecnico: (($("#op_cb_Solucinado").is(':checked')) ? 
+                "": $("#op_i_fechaTecnico").datepicker("getDate").toJSON()),
             enviaTecnico: $("op_cb_EnvioDeTecnico").is(':checked'),
-            solucion: $("op_cb_Solucinado").is(':checked'),
+            solucion: $("#op_cb_Solucinado").is(':checked'),
             info: $("#op_informacionDano").val(),
             direccion: $("#op_i_direccionVisita").val()
             //solucion: $("#op_solucionOfrecida").val()
@@ -43,6 +45,10 @@ Operador.Soporte.set = function (){
             JSON.stringify(data)
         );
     }
+};
+
+Operador.respuesta = function (){
+    //DO nithig
 };
 Operador.reset = function (){
     $("#op_idCliente").prop('disabled', false);
