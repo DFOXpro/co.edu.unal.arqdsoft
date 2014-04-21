@@ -136,15 +136,20 @@ public class ControlSoporteTest {
     public void testCrearReportedano() {
         System.out.println("crearReportedano");
         int idCliente = 123456789;
-        Date fechaCreacionReporte = new Date();
         String descripcion = "El internet no funciona";
         int idOperador = 4;
         boolean fueResuelto = true;
         String direccionVisita = "calle falsa 123";
         boolean crearVisita = true;
         Date fechaVisita = new Date();
-        int idSoporte=ControlSoporte.crearReporteDano(idCliente,fechaCreacionReporte,descripcion,
-                idOperador,fueResuelto,crearVisita,direccionVisita,fechaVisita);
+        int idSoporte = ControlSoporte.crearReporteDano(
+            idCliente,
+            descripcion,
+            idOperador,
+            fueResuelto,
+            crearVisita,
+            direccionVisita,
+            fechaVisita);
         System.out.println("id reporte " + idSoporte);
     }
 

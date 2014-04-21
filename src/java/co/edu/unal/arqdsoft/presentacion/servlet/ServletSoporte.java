@@ -167,7 +167,7 @@ public class ServletSoporte extends HttpServlet {
 
     private Respuesta crearReporteDano(JSONObject obj) {
         JSONObject datos = (JSONObject) JSONValue.parse(obj.get("datos").toString());
-        int idCliente = Integer.parseInt(datos.get("cliente").toString());
+        long idCliente = Long.parseLong(datos.get("cliente").toString());
         int idOperador = Integer.parseInt(datos.get("operador").toString());;
         boolean enviaTecnico = Boolean.valueOf(datos.get("enviaTecnico").toString());
         Date fechatecnico = null;
@@ -180,20 +180,19 @@ public class ServletSoporte extends HttpServlet {
         }
         String info = datos.get("info").toString();
         String direccion = datos.get("direccion").toString();
-
+        int respuestaControl = ControlSoporte.crearReporteDano(
+            idCliente,
+            info,
+            idOperador,
+            solucion,
+            enviaTecnico,
+            direccion,
+            fechatecnico
+        );
         if(
-            ControlSoporte.crearReporteDano(
-                idCliente,
-                fechatecnico,
-                info,
-                idOperador,
-                solucion,
-                enviaTecnico,
-                direccion,
-                fechatecnico
-            )
-            == 0
-        ) return new Respuesta("Error de servidor", new Contenido(null, ""));
+            respuestaControl
+            <= 0
+        ) return new Respuesta("Error de servidor: "+respuestaControl, new Contenido(null, ""));
 //        return new Respuesta("not implemented", new Contenido(t, ""));
         return new Respuesta("Reporte creado con exito", new Contenido(null, ""));
     }

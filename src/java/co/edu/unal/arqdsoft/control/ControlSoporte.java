@@ -89,7 +89,10 @@ public class ControlSoporte {
     }
 
     /**
-     *
+     * 0 si los datos son erroneos
+     * -1 si la dao reportedano falla
+     * -2 si la dao vistatecnica falla
+     * id del reporte si fue exito
      * @param idCliente
      * @param fechaCreacionReporte
      * @param descripcion
@@ -100,10 +103,15 @@ public class ControlSoporte {
      * @param fechaVisita
      * @return
      */
-    public static int crearReporteDano(int idCliente, Date fechaCreacionReporte, String descripcion, int idOperador, 
+    public static int crearReporteDano(long idCliente, String descripcion, int idOperador, 
             boolean fueResuelto, boolean crearVisita, String direccionVisita, Date fechaVisita) {
-        if (idCliente == 0 || idCliente < -1 || idOperador == 0 || idOperador < -1 || fechaCreacionReporte == null
-                || fechaVisita == null) {
+        if (
+            idCliente == 0 ||
+            idCliente < -1 ||
+            idOperador == 0 ||
+            descripcion.length() < 20 ||
+            idOperador < -1 
+        ) {
             return 0;
         }
         Cliente cliente = DaoCliente.getCliente(idCliente);
@@ -111,13 +119,13 @@ public class ControlSoporte {
         VisitaTecnica visita;
         ReporteDano reporte = new ReporteDano(new Date(),descripcion,fueResuelto,cliente,operador,null);
         reporte = DaoReporteDano.crearReporteDano(reporte);
-        if(reporte==null)
-            return 0;
+        if(reporte == null)
+            return -1;
         int idReporte = reporte.getId();
         if(crearVisita){
             //se crea una visita sin tecnico asignado
             visita = new VisitaTecnica(null, fechaVisita, reporte,direccionVisita);
-            DaoVisitaTecnica.crearVisita(visita);
+            if(DaoVisitaTecnica.crearVisita(visita)) return -2;
         }
         return idReporte;
     }
