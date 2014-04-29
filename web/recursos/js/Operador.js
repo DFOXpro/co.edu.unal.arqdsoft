@@ -25,17 +25,21 @@ Operador.Soporte.set = function (){
 
     if(s != "") $("#error").html(s);
     else {
+        var fecha = 
+            $("#op_i_fechaTecnico").datepicker("getDate").getDate() +"/"+
+            $("#op_i_fechaTecnico").datepicker("getDate").getMonth() +"/"+
+            $("#op_i_fechaTecnico").datepicker("getDate").getFullYear();
         var data = {
             cliente : $("#op_idCliente").val(),
             operador : usuario.id,
             //plan: $("#op_planDano").find(":selected").val(),
             fechaTecnico: (($("#op_cb_Solucinado").is(':checked')) ? 
-                "": $("#op_i_fechaTecnico").datepicker("getDate").toJSON()),
-            enviaTecnico: $("op_cb_EnvioDeTecnico").is(':checked'),
+                "": fecha),
+            enviaTecnico: $("#op_cb_EnvioDeTecnico").is(':checked'),
             solucion: $("#op_cb_Solucinado").is(':checked'),
             info: $("#op_informacionDano").val(),
             direccion: $("#op_i_direccionVisita").val()
-            //solucion: $("#op_solucionOfrecida").val()
+            //, solucion: $("#op_solucionOfrecida").val()
         };
 //{"cliente":"1234567","enviaTecnico":false,"fechaTecnico":"2014-04-09T05:00:00.000Z","solucion":false,"info":"awqeqeqeqeqeqeqeqweqweqew"}
         sendRequest(

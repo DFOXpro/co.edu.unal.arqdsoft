@@ -174,7 +174,7 @@ public class ServletSoporte extends HttpServlet {
         boolean solucion = Boolean.valueOf(datos.get("solucion").toString());
         try {
             if(!solucion)
-            fechatecnico = new SimpleDateFormat("yy-mm-dd z").parse(datos.get("fechaTecnico").toString());
+            fechatecnico = new SimpleDateFormat("dd/mm/yy").parse(datos.get("fechaTecnico").toString());
         } catch (ParseException ex) {
             Logger.getLogger(ServletSoporte.class.getName()).log(Level.SEVERE, null, ex);
         }

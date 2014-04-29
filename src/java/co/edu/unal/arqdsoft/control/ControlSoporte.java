@@ -125,7 +125,7 @@ public class ControlSoporte {
         if(crearVisita){
             //se crea una visita sin tecnico asignado
             visita = new VisitaTecnica(null, fechaVisita, reporte,direccionVisita);
-            if(DaoVisitaTecnica.crearVisita(visita)) return -2;
+            if(!DaoVisitaTecnica.crearVisita(visita)) return -2;
         }
         return idReporte;
     }
